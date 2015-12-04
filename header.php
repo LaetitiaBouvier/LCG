@@ -4,7 +4,7 @@
 
   <header>
     <div id="bloc_titre_principal">
-      <img src="images/[A1G2E]Logo La Connexion Gauloise2.png" alt="titre principal" />
+      <img src="Images_code/nomsiteentier.png" alt="titre principal" />
       <ul>
         <li id="se_connecter"><a href="#">Se Connecter</a></li>
         <li id="s_inscrire"><a href="#">S'inscrire</a></li>
