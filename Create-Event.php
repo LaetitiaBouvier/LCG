@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<title> CREER UN EVENEMENT</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="Style-form.css"/>
+	</head>
+	<body>
+
+		<h2> Formulaire de création/modification d'événements : </h2>
+
+		<form name="inscription" method="post" action="creer-evenement.php" enctype="multiplart/form-data">
+
+		<p>VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/></p>
+		<br/>
+
+		<fieldset>
+	  <legend>Informations générales</legend>
+
+		Nom de l'événement<em>*</em> : <input type="text" name="nom-evenement"/> <br/>  <br/>
+
+		Description de l'événement<em>*</em> : <br />
+		<div>
+		<textarea id="desc-evenement"></textarea>
+	  </div>
+	  </br>
+
+		Ajouter une photo pour l'événement<em>*</em> :  <input type="file" name="photo-event" id="photo-event" /><br /> <br />
+
+		Ajouter une vidéo pour l'événement :  <input type="file" name="photo-event" id="video-event" /><br /> <br />
+
+		Catégorie de l'événement (1 seule réponse possible)<em>*</em> : <br/> <br/>
+
+		<input type="radio" name="rubrique" value="Festivals" />Festivals<br/>
+		<input type="radio" name="rubrique" value="Repas/Banquets" />Repas/Banquets<br/>
+		<input type="radio" name="rubrique" value="Concerts" />Concerts<br/>
+		<input type="radio" name="rubrique" value="Brocantes/Marchés" />Brocantes/Marchés<br/>
+		<input type="radio" name="rubrique" value="Soirées" />Soirées<br/>
+		<input type="radio" name="rubrique" value="Conférences" />Conférences<br/>
+		<input type="radio" name="rubrique" value="Humanitaires" />Humanitaires<br/>
+		<input type="radio" name="rubrique" value="Sportifs" />Sportifs<br/>
+		<input type="radio" name="rubrique" value="Manifestations" />Manifestations<br/>
+		<br/>
+
+		Cibles de l'événement (plusieurs réponses possibles) <em>*</em>: <br/> </br>
+
+		<input type="checkbox" value="Bas-âge"/>Bas-âge</br>
+		<input type="checkbox" value="Enfants"/>Enfants</br>
+		<input type="checkbox" value="Ados"/>Ados</br>
+		<input type="checkbox" value="Adultes"/>Adultes</br>
+		<input type="checkbox" value="Seniors"/>Seniors</br>
+
+		</fieldset>
+
+		<fieldset>
+	  <legend>Informations sur le lieu et la date de l'événement</legend>
+
+		LIEU DE L'EVENEMENT : <br/> <br/>
+
+		Nom de l'endroit / de la salle <em>*</em>: <input type="text" name="nom-endroit-evenement"/><br/><br/>
+		ADRESSE : <br/><br/>
+		n°/rue : <input type="text" name="nom-rue-evenement" maxlength="3"/><br/>
+		Code postal <em>*</em>: <input type="text" name="nom-codepostal-evenement" maxlength="5"/><br/>
+		Ville : <input type="text" name="nom-ville-evenement"/><br/>
+		Département : <select name="nom-departement-evenement">
+		<option selected="selected" value="Selectionner">Selectionner</option>
+		<option value="01-Ain">01-Ain</option>
+		<option value="02-Aisne">02-Aisne</option>
+		<option value="03-Allier">03-Allier</option>
+		<option value="04-Alpes-de-Haute-Provence">04-Alpes-de-Haute-Provence</option>
+		<option value="05-Hautes-Alpes">05-Hautes-Alpes</option>
+		<option value="06-Alpes-Maritimes">06-Alpes-Maritimes</option>
+		<option value="07-Ardèche">07-Ardèche</option>
+		<option value="08-Ardennes">08-Ardennes</option>
+		<option value="09-Ariège">09-Ariège</option>
+		<option value="10-Aube">10-Aube</option>
+		<option value="11-Aude">11-Aude</option>
+		<option value="12-Aveyron">12-Aveyron</option>
+		<option value="13-Bouches-du-Rhône">13-Bouches-du-Rhône</option>
+		<option value="14-Calvados">14-Calvados</option>
+		<option value="15-Cantal">15-Cantal</option>
+		<option value="16-Charente">16-Charente</option>
+		<option value="17-Charente-Maritime">17-Charente-Maritime</option>
+		<option value="18-Cher">18-Cher</option>
+		<option value="19-Corrèze">19-Corrèze</option>
+		<option value="21-Côte-d'Or">21-Côte-d'Or</option>
+		<option value="22-Côtes-d'Armor">22-Côtes-d'Armor</option>
+		<option value="23-Creuse">23-Creuse</option>
+		<option value="24-Dordogne">24-Dordogne</option>
+		<option value="25-Doubs">25-Doubs</option>
+		<option value="26-Drôme">26-Drôme</option>
+		<option value="27-Eure">27-Eure</option>
+		<option value="28-Eure-et-Loir">28-Eure-et-Loir</option>
+		<option value="29-Finistère">29-Finistère</option>
+		<option value="30-Gard">30-Gard</option>
+		<option value="31-Haute-Garonne">31-Haute-Garonne</option>
+		<option value="32-Gers">32-Gers</option>
+		<option value="33-Gironde">33-Gironde</option>
+		<option value="34-Hérault">34-Hérault</option>
+		<option value="35-Ille-et-Vilaine">35-Ille-et-Vilaine</option>
+		<option value="36-Indre">36-Indre</option>
+		<option value="37-Indre-et-Loire">37-Indre-et-Loire</option>
+		<option value="38-Isère">38-Isère</option>
+		<option value="39-Jura">39-Jura</option>
+		<option value="40-Landes">40-Landes</option>
+		<option value="41-Loir-et-Cher">41-Loir-et-Cher</option>
+		<option value="42-Loire">42-Loire</option>
+		<option value="43-Haute-Loire">43-Haute-Loire</option>
+		<option value="44-Loire-Atlantique">44-Loire-Atlantique</option>
+		<option value="45-Loiret">45-Loiret</option>
+		<option value="46-Lot">46-Lot</option>
+		<option value="47-Lot-et-Garonne">47-Lot-et-Garonne</option>
+		<option value="48-Lozère">48-Lozère</option>
+		<option value="49-Maine-et-Loire">49-Maine-et-Loire</option>
+		<option value="50-Manche">50-Manche</option>
+		<option value="51-Marne">51-Marne</option>
+		<option value="52-Haute-Marne">52-Haute-Marne</option>
+		<option value="53-Mayenne">53-Mayenne</option>
+		<option value="54-Meurthe-et-Moselle">54-Meurthe-et-Moselle</option>
+		<option value="55-Meuse">55-Meuse</option>
+		<option value="56-Morbihan">56-Morbihan</option>
+		<option value="57-Moselle">57-Moselle</option>
+		<option value="58-Nièvre">58-Nièvre</option>
+		<option value="59-Nord">59-Nord</option>
+		<option value="60-Oise">60-Oise</option>
+		<option value="61-Orne">61-Orne</option>
+		<option value="62-Pas-de-Calais">62-Pas-de-Calais</option>
+		<option value="63-Puy-de-Dôme">63-Puy-de-Dôme</option>
+		<option value="64-Pyrénées-Atlantiques">64-Pyrénées-Atlantiques</option>
+		<option value="65-Hautes-Pyrénées">65-Hautes-Pyrénées</option>
+		<option value="66-Pyrénées-Orientales">66-Pyrénées-Orientales</option>
+		<option value="67-Bas-Rhin">67-Bas-Rhin</option>
+		<option value="68-Haut-Rhin">68-Haut-Rhin</option>
+		<option value="69-Rhône">69-Rhône</option>
+		<option value="70-Haute-Saône">70-Haute-Saône</option>
+		<option value="71-Saône-et-Loire">71-Saône-et-Loire</option>
+		<option value="72-Sarthe">72-Sarthe</option>
+		<option value="73-Savoie">73-Savoie</option>
+		<option value="74-Haute-Savoie">74-Haute-Savoie</option>
+		<option value="75-Paris">75-Paris</option>
+		<option value="76-Seine-Maritime">76-Seine-Maritime</option>
+		<option value="77-Seine-et-Marne">77-Seine-et-Marne</option>
+		<option value="78-Yvelines">78-Yvelines</option>
+		<option value="79-Deux-Sèvres">79-Deux-Sèvres</option>
+		<option value="80-Somme">80-Somme</option>
+		<option value="81-Tarn">81-Tarn</option>
+		<option value="82-Tarn-et-Garonne">82-Tarn-et-Garonne</option>
+		<option value="83-Var">83-Var</option>
+		<option value="84-Vaucluse">84-Vaucluse</option>
+		<option value="85-Vendée">85-Vendée</option>
+		<option value="86-Vienne">86-Vienne</option>
+		<option value="87-Haute-Vienne">87-Haute-Vienne</option>
+		<option value="88-Vosges">88-Vosges</option>
+		<option value="89-Yonne">89-Yonne</option>
+		<option value="90-Territoire de Belfort">90-Territoire de Belfort</option>
+		<option value="91-Essonne">91-Essonne</option>
+		<option value="92-Hauts-de-Seine">92-Hauts-de-Seine</option>
+		<option value="93-Seine-Saint-Denis">93-Seine-Saint-Denis</option>
+		<option value="94-Val-de-Marne">94-Val-de-Marne</option>
+		<option value="95-Val-d'Oise">95-Val-d'Oise</option>
+		<option value="971-Guadeloupe">971-Guadeloupe</option>
+		<option value="972-Martinique">972-Martinique</option>
+		<option value="973-Guyane">973-Guyane</option>
+		<option value="974-La Réunion">974-La Réunion</option>
+		<option value="975-Mayotte">975-Mayotte</option>
+		<option value="2A-Corse-du-Sud">2A-Corse-du-Sud</option>
+		<option value="2B-Haute-Corse">2B-Haute-Corse</option>
+		</select><br/>
+
+		Région : <select name="nom-departement-evenement">
+		<option selected="selected" value="Selectionner">Selectionner</option>
+		<option value="Alsace">Alsace</option>
+		<option value="Aquitaine">Aquitaine</option>
+		<option value="Auvergne">Auvergne</option>
+		<option value="Basse-Normandie">Basse-Normandie</option>
+		<option value="Bourgogne">Bourgogne</option>
+		<option value="Bretagne">Bretagne</option>
+		<option value="Centre">Centre</option>
+		<option value="Champagne-Ardenne">Champagne-Ardenne</option>
+		<option value="Corse">Corse</option>
+		<option value="Franche-Comté">Franche-Comté</option>
+		<option value="Haute-Normandie">Haute-Normandie</option>
+		<option value="Ile-de-France">Ile-de-France</option>
+		<option value="Languedoc-Roussillon">Languedoc-Roussillon</option>
+		<option value="Limousin">Limousin</option>
+		<option value="Lorraine">Lorraine</option>
+		<option value="Midi-Pyrénées">Midi-Pyrénées</option>
+		<option value="Nord-Pas-de-Calais">Nord-Pas-de-Calais</option>
+		<option value="Pays de la Loire">Pays de la Loire</option>
+		<option value="Picardie">Picardie</option>
+		<option value="Poitou-Charentes">Poitou-Charentes</option>
+		<option value="Provence-Alpes-Côte-d'Azur">Provence-Alpes-Côte-d'Azur</option>
+		<option value="Rhône-Alpes">Rhône-Alpes</option>
+		<option value="DOM">DOM</option>
+		</select><br/>
+		</br>
+
+		DEBUT DE L'EVENEMENT : <br/><br/>
+		Date <em>*</em>: <input type="date" name="date-debut-evenement"/>
+		Heure : <input type="time" name="hdébut-evenement"/><br/>
+		<br/>
+
+		FIN DE L'EVENEMENT : <br/><br/>
+		Date <em>*</em>: <input type="date" name="date-fin-evenement"/>
+		Heure : <input type="time" name="hfin-evenement"/><br/>
+		<br/>
+
+		</fieldset>
+
+		<fieldset>
+			<legend>Informations complémentaires</legend>
+
+		Nombre maximum de participants : <input type="text" name="quota-participants"/><br/> <br/>
+
+		Evénement payant <em>*</em>:
+		<select >
+		<option selected="selected" value="oui">oui</option>
+		<option value="non">non</option>
+		</select><br/><br/>
+
+		Lien vers le site web de l'événement (facultatif):
+		<input type="url" value="http://" name="website-evenement"> <br />
+		</fieldset>
+
+		<p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
+
+
+		<br/><div><input type="submit" name="valider" value="VALIDER MON EVENEMENT"/></div><br/>
+
+		</form>
+
+	</body>
+</html>
