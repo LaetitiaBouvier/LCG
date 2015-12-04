@@ -1,0 +1,124 @@
+header
+{
+	border-bottom: 1px solid #333;
+}
+#recherche_avancee, #se_connecter a, #s_inscrire a, #creer_un_evenement a,#rechercher
+{
+	font-family: Arial Black;
+	font-size: 1em;
+	color: white;
+}
+
+#bloc_titre_principal img
+{
+	width: 55%;
+	margin-left: 10px;
+}
+#barre_de_recherche
+{
+	margin-left: 38%;
+	height:35px;
+	border-radius: 10px 10px 10px 10px
+}
+#bloc_titre_principal ul
+{
+	min-width: 450px;
+	width: 40%;
+	float: right;
+}
+#bloc_titre_principal li
+{
+ 	list-style-type:none;
+	display: inline-block;
+}
+#recherche_avancee
+{
+	display: inline-block;
+	margin-top: 9px;
+	margin-right: 3px;
+	margin-left: 5px;
+	border: 2px solid #333;
+	box-shadow: 1px 1px 0px;
+	border-radius: 15px 15px 15px 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #000099;
+}
+
+#rechercher
+{
+	margin-top: 9px;
+	margin-right: 3px;
+	margin-left: 30px;
+	border: 2px solid #333;
+	box-shadow: 1px 1px 0px;
+	border-radius: 15px 15px 15px 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #000099;
+}
+
+#se_connecter, #s_inscrire, #creer_un_evenement
+{
+	background-color: #000099;
+	display: inline-block;
+	border: 2px solid #333;
+	box-shadow: 1px 1px 0px;
+	border-radius: 15px 15px 15px 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#se_connecter
+{
+	margin-top: 10px;
+	margin-right: 10px;
+	padding-left: 43px;
+	padding-right: 42px;
+	white-space: nowrap;
+}
+
+#s_inscrire
+{
+	margin-right: 10px;
+	margin-top: 15px;
+	padding-left: 62px;
+	padding-right: 62px;
+}
+
+#creer_un_evenement
+{
+
+	display: inline-block;
+	background-color: #990000;
+	margin-top: 10px;
+	margin-left: 15%;
+	padding-left: 40px;
+	white-space: nowrap;
+}
+
+#se_connecter a, #s_inscrire a
+{
+	text-decoration: none;
+}
+
+#creer_un_evenement a
+{
+	text-decoration: none;
+	color: white;
+	padding-right: 40px;
+}
+
+#se_connecter:hover, #s_inscrire:hover, #recherche_avancee:hover
+{
+	background-color: #539ef9;
+}
+
+#creer_un_evenement:hover
+{
+	background-color: #e8222b;
+}
