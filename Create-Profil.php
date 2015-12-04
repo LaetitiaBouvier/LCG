@@ -17,7 +17,7 @@
 		<h2> Formulaire de création/modification de profil </h2>
 
 
-		<form name="inscription" method="post" action="inscription.php" enctype="multiplart/form-data">
+		<form name="inscription" method="post" action="Create-Profil.php" enctype="multiplart/form-data">
 
     <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
 		<br/>
@@ -57,7 +57,7 @@
 	  <br />
 		<br />
 
-		Mot de passe<em>*</em>: <input type="password" name="mdp" required=""/><br/>
+		Mot de passe<em>*</em> (6 caractères au moins): <input type="password" name="mdp" required=""/><br/>
 		<br/>
 
 		Confirmez votre mot de passe<em>*</em> : <input type="password" name="confirm_mdp" required=""/><br/>
