@@ -1,0 +1,28 @@
+footer{
+  background-color: #990000;
+  margin-top: 40px;
+  height: 180px
+}
+footer a {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-family: cursive;
+  color:#ffffff;
+}
+footer div{
+  text-align: center;
+}
+footer h3{
+  text-align: center;
+  color:#ffffff;
+}
+#facebook {
+  width:400px;
+  height:450px;
+}
+footer img{
+  width:35px;
+  height:35px;
+  margin:.6em;
+}

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="menu.css" />
   <body>
     <nav>
       <div id="menu">
         <ul id="menu-demo2">
-          <li><img src="images/[A1G2E]Logo LaCG.png" alt="logo" width=200px /></li>
+          <li><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></li>
           <li><a href="@">Accueil </a></li>
 
           <li><a href="@"> Catégories </a></li>
@@ -32,8 +33,8 @@
             </ul>
           </li>
 
-          <li> <a href="map.png"><img src="map.png" class="carte" width=120px/></a> </li>
-          <li><a href="calendrier.png"> <img src="calendrier.png" class="calendrier" width=110px/> </a></li>
+          <li> <a href="map.png"><img src="Images_code/map.png" class="carte" width=120px/></a> </li>
+          <li><a href="calendrier.png"> <img src="Images_code/calendrier.png" class="calendrier" width=110px/> </a></li>
         </ul>
       </div>
     </nav>

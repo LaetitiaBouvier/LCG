@@ -22,7 +22,7 @@
       		<div class="c_slider"></div>
       		<div class="slider">
       			<figure>
-      				<a href="@"><img src="images/4-albuquerque-international-balloon-festival__large.jpg" alt="" width="1100" height="600" /></a>
+      				<a href="@"><img src="Images_code/4-albuquerque-international-balloon-festival__large.jpg" alt="" width="1100" height="600" /></a>
       				<figcaption>
                 <p><h3> Rassemblement - 23 Avril 2016 </h3></p>
                 <p> Paris </p>
@@ -30,7 +30,7 @@
       			</figure>
 
             <figure>
-      				<a href="@"><img src="images/camping-lac-festival-bordeaux.jpg" alt="" width="1100" height="600"/></a>
+      				<a href="@"><img src="Images_code/camping-lac-festival-bordeaux.jpg" alt="" width="1100" height="600"/></a>
               <figcaption>
                 <p><h3> Concert - 24 Avril 2016 </h3></p>
                 <p> Strasbourg </p>
@@ -38,7 +38,7 @@
       			</figure>
 
             <figure>
-      				<a href="@" ><img src="images/concert en plein air.jpg" alt="" width="1100" height="600"/></a>
+      				<a href="@" ><img src="Images_code/concert en plein air.jpg" alt="" width="1100" height="600"/></a>
               <figcaption>
                 <p><h3> Festival - 24 Avril 2016 </h3></p>
                 <p> Dunkerque </p>
@@ -55,7 +55,7 @@
             </ul>
           </div>
 
-          <img src="images/Marathon.jpg" class="photo1"/>
+          <img src="Images_code/Marathon.jpg" class="photo1"/>
 
           <div id="ssmenu1">
             <ul>
@@ -69,7 +69,7 @@
   	</div>
 
     <footer>
-      <?php include("Footer.php"); ?>
+      <?php include("footer.php"); ?>
     </footer>
 
   </body>
