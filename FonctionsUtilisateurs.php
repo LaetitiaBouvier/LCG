@@ -1,6 +1,7 @@
 <?php
 
 // Conexion à la base
+$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 // Vérifier la connexion
 if (!$connect)
@@ -22,8 +23,8 @@ function insert_users()
         if(mysqli_num_rows($query) == 1)
           { $cond = false; print "Votre pseudo est déjà utilisé par un autre utilisateur! Veuillez en choisir un autre."; }
       }
-      else
-        { $cond = false; print "Votre pseudo n'est pas configuré ! ";}
+    else
+      { $cond = false; print "Votre pseudo n'est pas configuré ! ";}
 
 
 //NOM UTILISATEUR
@@ -103,18 +104,18 @@ function insert_users()
 
 // CATEGORIES FAVORITES UTILSATEUR
     $categorieFavorite = "";
-    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))
-      { $categorieFavorite 	.= $_POST['categorieFavorite1']; $categorieFavorite .= " ";}
+    if(isset($_POST['Festivals']) && !empty($_POST['Festivals']))
+      { $categorieFavorite 	.= $_POST['Festivals']; $categorieFavorite .= " ";}
       else
       { $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.= $_POST['categorieFavorite2']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.= $_POST['categorieFavorite3']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.= $_POST['categorieFavorite4']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.= $_POST['categorieFavorite5']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.= $_POST['categorieFavorite6']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.= $_POST['categorieFavorite7']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.= $_POST['categorieFavorite8']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.= $_POST['categorieFavorite9']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Repas/Banquets']) && !empty($_POST['Repas/Banquets']))	{ $categorieFavorite 	.= $_POST['Repas/Banquets']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Concerts']) && !empty($_POST['Concerts']))	{ $categorieFavorite 	.= $_POST['Concerts']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Brocantes/Marchés']) && !empty($_POST['Brocantes/Marchés']))	{ $categorieFavorite 	.= $_POST['Brocantes/Marchés']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Soirées']) && !empty($_POST['Soirées']))	{ $categorieFavorite 	.= $_POST['Soirées']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Conférences']) && !empty($_POST['Conférences']))	{ $categorieFavorite 	.= $_POST['Conférences']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Humanitaires']) && !empty($_POST['Humanitaires']))	{ $categorieFavorite 	.= $_POST['Humanitaires']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Sportifs']) && !empty($_POST['Sportifs']))	{ $categorieFavorite 	.= $_POST['Sportifs']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['Manifestations']) && !empty($_POST['Manifestations']))	{ $categorieFavorite 	.= $_POST['Manifestations']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
 
 
   // ADRESSE EMAIL VISIBLE
@@ -196,7 +197,7 @@ function insert_users()
 
 	}
 
-	mysqli_close($connect);
+	mysqli_close($connect);}
 
 
 ?>
