@@ -13,8 +13,8 @@ Prénom <em>*</em>: <input type="text" name="prenom" required="" value="<?php if
 <br/>
 
 Sexe :
-<input type="radio" name="genre" value="H"/> Homme
-<input type="radio" name="genre" value="F"/> Femme
+<input type="radio" name="genre" value="H" <?php if (isset($_POST['genre'])){if($_POST['genre']=='H') echo 'checked="checked"';}?>/> Homme
+<input type="radio" name="genre" value="F" <?php if (isset($_POST['genre'])){if($_POST['genre']=='F') echo 'checked="checked"';}?>/> Femme
 <br/><br/>
 
 Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="<?php if (isset($_POST['dateNaissance'])){echo $_POST['dateNaissance'];} ?>"/><br/>
@@ -33,7 +33,7 @@ Avatar/Photo de profil :  <input type="file" name="avatar" id="avatar" value=""/
 
 Présentez-vous en quelques lignes : <br />
 <div>
-<textarea id="desc" name="description" > <?php echo $_POST['description'];?> </textarea>
+<textarea id="desc" name="description" > <?php if (isset($_POST['description'])){echo $_POST['description'];}?> </textarea>
 </div>
 <br />
 <br />
@@ -65,43 +65,43 @@ Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mai
 
 Catégories qui vont m'interesser le plus (plusieurs réponses possibles): <br>
 <br/>
-<input type="checkbox" name="Festivals" value="" />Festivals<br>
-<input type="checkbox" name="Repas/Banquets" value="" />Repas/Banquets<br>
-<input type="checkbox" name="Concerts" value="" />Concerts<br>
-<input type="checkbox" name="Brocantes/Marchés" value="" />Brocantes/Marchés<br>
-<input type="checkbox" name="Soirées" value="" />Soirées<br>
-<input type="checkbox" name="Conférences" value="" />Conférences<br>
-<input type="checkbox" name="Humanitaires" value="" />Humanitaires<br>
-<input type="checkbox" name="Sportifs" value="" />Sportifs<br>
-<input type="checkbox" name="Manifestations" value="" />Manifestations<br>
+<input type="checkbox" name="categorieFavorite1" value="Festivals" />Festivals<br>
+<input type="checkbox" name="categorieFavorite2" value="Repas/Banquets" />Repas/Banquets<br>
+<input type="checkbox" name="categorieFavorite3" value="Concerts" />Concerts<br>
+<input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés" />Brocantes/Marchés<br>
+<input type="checkbox" name="categorieFavorite5" value="Soirées" />Soirées<br>
+<input type="checkbox" name="categorieFavorite6" value="Conférences" />Conférences<br>
+<input type="checkbox" name="categorieFavorite7" value="Humanitaires" />Humanitaires<br>
+<input type="checkbox" name="categorieFavorite8" value="Sportifs" />Sportifs<br>
+<input type="checkbox" name="categorieFavorite9" value="Manifestations" />Manifestations<br>
 <br/>
 
 Souhaitez vous que les autres utilisateurs aient accès à : <br/></br>
 Votre 	adresse e-mail ?
 <select >
-<option selected="selected" name="mailOK" value="">oui</option>
-<option name="mailNOK" value="">non</option>
+<option selected="selected" name="mailOK" value=1>oui</option>
+<option value=0>non</option>
 </select><br/>
 Votre code-postal?
 <select >
-<option selected="selected" name="adresseOK" value="">oui</option>
-<option name="adresseNOK" value="">non </option>
+<option selected="selected" name="adresseOK" value=1>oui</option>
+<option value=0>non</option>
 </select><br/>
 Votre nom et prénom?
 <select >
-<option selected="selected" name="nomPrenomOK" value="">oui</option>
-<option name="nomPrenomNOK" value="">non</option>
+<option selected="selected" name="nomPrenomOK" value=1>oui</option>
+<option value=0>non</option>
 </select><br/>
 Votre planning?
 <select >
-<option selected="selected" name="planningOK" vvalue="">oui</option>
-<option name="planningNOK" value="">non</option>
+<option selected="selected" name="planningOK" value=1>oui</option>
+<option value=0>non</option>
 </select><br/>
 <br/>
 
-<br/><input type="checkbox" name="AlertesEvenementsOK" value=""> Je souhaite recevoir par e-mail des alertes sur les événements auxquels je m'inscris.
+<br/><input type="checkbox" name="AlertesEvenementsOK" value=1 checked> Je souhaite recevoir par e-mail des alertes sur les événements auxquels je m'inscris.
 
-<br/><input type="checkbox" name="AlertesAbonnementsOK" value=""}> Je souhaite recevoir par e-mail des alertes sur mes abonnements.<br />
+<br/><input type="checkbox" name="AlertesAbonnementsOK" value=1 checked> Je souhaite recevoir par e-mail des alertes sur mes abonnements.<br />
 <br/>
 
 </fieldset>
