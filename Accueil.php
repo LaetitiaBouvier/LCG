@@ -49,9 +49,7 @@ else
 }
 
 ?>
-    <!--  <div id="creer_un_evenement_div">
-        <li id="creer_un_evenement"><a href="Create-Event.php">Créer un événement</a></li>
-      </div> -->
+
 			<div id="barre_recherche">
 
         <form method="post" action="page_fictive.php" id="bloc_barre_de_recherche">

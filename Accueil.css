@@ -3,6 +3,7 @@ header
 	border-bottom: 1px solid #333;
 }
 
+
 #recherche_avancee, #s_inscrire a, #creer_un_evenement a,#rechercher
 {
 	font-family: Arial Black;
@@ -178,7 +179,6 @@ header
 {
 	display:inherit;
 	border-radius:2px;
-	width: 239px;
 }
 
 #menu-demo3 ul li:hover
