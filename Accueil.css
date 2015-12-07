@@ -32,6 +32,8 @@ header
  	list-style-type:none;
 	display: inline-block;
 }
+
+
 #recherche_avancee
 {
 	display: inline-block;
@@ -124,7 +126,7 @@ header
 	background-color: #e8222b;
 }
 
-#menu-demo3 li a
+#menu-demo3 li span
 {
 	font-size: 1.2em;
 	font-weight: bold;
