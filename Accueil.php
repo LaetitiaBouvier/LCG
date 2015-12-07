@@ -61,7 +61,7 @@ else
 
 	<div id="menu">
 	<ul id="menu-demo2">
-	  <li><img src="images/[A1G2E]Logo LaCG.png" alt="logo" width=233px /></li>
+	  <li><img src="images/[A1G2E]Logo LaCG.png" alt="logo" width=175px /></li>
 	  <li><a href="@">Accueil </a></li>
 
 	  <li><a href="@"> Catégories </a></li>
