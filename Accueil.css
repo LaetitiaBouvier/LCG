@@ -122,7 +122,7 @@ header
 	white-space: nowrap;
 }
 
-#se_connecter a, #s_inscrire a
+#s_inscrire a
 {
 	text-decoration: none;
 }
@@ -130,11 +130,10 @@ header
 #creer_un_evenement a
 {
 	text-decoration: none;
-	color: white;
 	padding-right: 40px;
 }
 
-#se_connecter:hover, #s_inscrire:hover, #recherche_avancee:hover
+#s_inscrire:hover, #recherche_avancee:hover
 {
 	background-color: #539ef9;
 }
@@ -178,7 +177,7 @@ header
 {
 	display:inherit;
 	border-radius:2px;
-	width: 239px;
+	line-height: 1.15;
 }
 
 #menu-demo3 ul li:hover
