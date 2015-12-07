@@ -1,12 +1,23 @@
 <?php
 
+try
+{
+  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+}
+
+catch (Exception $e)
+{
+  die('Erreur : ' . $e->getMessage());
+}
+
+
 if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 {
 /* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
   $mdp_hache = $_POST['mdp'];
 
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-  $req = $bdd->prepare('SELECT id_utilisateur, pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+  $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
   $data = $req->fetch();
@@ -49,9 +60,7 @@ else
 }
 
 ?>
-    <!--  <div id="creer_un_evenement_div">
-        <li id="creer_un_evenement"><a href="Create-Event.php">Créer un événement</a></li>
-      </div> -->
+
 			<div id="barre_recherche">
 
         <form method="post" action="page_fictive.php" id="bloc_barre_de_recherche">
