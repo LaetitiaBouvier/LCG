@@ -83,6 +83,8 @@ header
 }
 
 
+
+
 #s_inscrire, #creer_un_evenement
 {
 	background-color: #000099;
@@ -134,7 +136,7 @@ header
 	background-color: #e8222b;
 }
 
-#menu-demo3 li span
+#se_connecter li span
 {
 	font-size: 1.2em;
 	font-weight: bold;
@@ -152,31 +154,31 @@ header
 
 }
 
-#menu-demo3, #menu-demo3 ul
+#se_connecter, #se_connecter ul
 {
 	padding:0;
 	list-style:none;
 }
 
-#menu-demo3 li
+#se_connecter li
 {
 	position:relative;
 	border-radius:2px 2px 0 0;
 }
 
-#menu-demo3 ul li
+#se_connecter ul li
 {
 	display:inherit;
 	border-radius:2px;
 	line-height: 1.15;
 }
 
-#menu-demo3 ul li:hover
+#se_connecter ul li:hover
 {
 	border-radius:2px;
 }
 
-#menu-demo3 ul
+#se_connecter ul
 {
 	position:absolute;
 	background-color: white;
@@ -186,7 +188,7 @@ header
 	overflow:hidden;
 }
 
-#menu-demo3 li:hover ul
+#se_connecter li:hover ul
 {
 	max-height:15em;
 }
