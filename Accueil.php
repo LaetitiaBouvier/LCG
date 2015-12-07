@@ -2,7 +2,8 @@
 
 if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 {
-  $mdp_hache = sha1($_POST['mdp']);
+/* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
+  $mdp_hache = $_POST['mdp'];
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
   $req = $bdd->prepare('SELECT id_utilisateur, pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
@@ -44,7 +45,7 @@ if (!isset($_SESSION['id_utilisateur']))
 }
 else
 {
-  echo "<a href='signout.php'>Deconnexion</a>";
+  echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /><a href='signout.php'>Deconnexion</a></div>";
 }
 
 ?>
