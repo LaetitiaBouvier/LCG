@@ -21,7 +21,7 @@
     </nav>
 
 		<centralform>
-			<div>
+			<div id="corps_inscription">
 				<h2> Formulaire de création/modification de profil </h2>
 				<!-- insertion du formulaire!-->
 				<?php include("Form-Profil.php"); ?>

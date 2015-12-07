@@ -4,6 +4,14 @@ centralform{
   margin-bottom:15%;
 }
 
+#corps_inscription{
+  display: inline-block;
+  border : 2px solid #990000;
+}
+#menu, #corps_inscription{
+  align-items: baseline;
+}
+
 h2 {
   font-family:Fantasy,Cursive;
   font-size:60px;
@@ -35,7 +43,7 @@ fieldset {
   text-align:justify;
   font-size: 25px;
   background-color:#f4f4f4;
-  border : 2px solid #990000
+  border : 2px solid #990000;
 }
 
 legend {
