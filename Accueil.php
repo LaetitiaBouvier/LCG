@@ -146,7 +146,7 @@ else
         <li> <h5> Soirée Raclette </h5></li>
       </ul>
     </div>
-    <img src="images/raclette.jpg" class="photo2"/>
+    <img src="Images_code/raclette.jpg" class="photo2"/>
     <div id="ssmenu2">
       <ul>
         <li> Soirée à la salle des fêtes du XVIIIème, Paris</li>
@@ -161,7 +161,7 @@ else
         <li> <h5> Concert Time Impala </h5></li>
       </ul>
     </div>
-    <img src="images/tame-impala-couv.jpg" class="photo3"/>
+    <img src="Images_code/tame-impala-couv.jpg" class="photo3"/>
     <div id="ssmenu3">
       <ul>
         <li> Concert du Groupe de Rock australien </li>
