@@ -10,7 +10,7 @@
 <legend>Se connecter</legend>
 <form>
 Pseudo : <input type="text" name="pseudo-utilisateur"/> </br>  </br>
-Mot de passe : <input type="text" name="email-utilisateur"/> </br>  </br>
+Mot de passe : <input type="text" name="mdp-utilisateur"/> </br>  </br>
 <div><input type="submit" name="valider" value="ME CONNECTER" OnClick="window.close()"/></div></br>
 </form>
 </fieldset>

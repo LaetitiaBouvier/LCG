@@ -6,9 +6,9 @@
     <div id="bloc_titre_principal">
       <img src="Images_code/nomsiteentier.png" alt="titre principal" />
       <ul>
-        <li id="se_connecter"><a href="#">Se Connecter</a></li>
-        <li id="s_inscrire"><a href="#">S'inscrire</a></li>
-        <li id="creer_un_evenement"><a href="#">Créer un événement</a></li>
+        <li id="se_connecter"><a href="Log-In.php">Se Connecter</a></li>
+        <li id="s_inscrire"><a href="Create-Profil.php">S'inscrire</a></li>
+        <li id="creer_un_evenement"><a href="Create-Event.php">Créer un événement</a></li>
       </ul>
     </div>
     <div id="barre_recherche">
