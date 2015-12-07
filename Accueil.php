@@ -180,9 +180,9 @@ else
 	    <img src="images/google-plus-logo-transparent.png" class="google"/>
 	  </div>
 	  <div id="site">
-	    <a href="#"> <h3> Nous Contactez </h3> </a>
-	    <a href="#"> <h3> Aide en ligne </h3> </a>
-	    <a href="#"> <h3> Charte </h3> </a>
+	    <a href="#"> <h3> Nous Contactez &nbsp &nbsp &nbsp</h3> </a>
+	    <a href="#"> <h3> Aide en ligne &nbsp &nbsp &nbsp</h3> </a>
+	    <a href="#"> <h3> Charte &nbsp &nbsp &nbsp</h3> </a>
 	  </div>
 	  <h3> La Connexion Gauloise  </h3>
 	</footer>
