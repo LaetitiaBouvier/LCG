@@ -18,8 +18,9 @@ header
 {
 	margin-left: 38%;
 	height:35px;
-	border-radius: 10px 10px 10px 10px
+	border-radius: 10px;
 }
+
 #bloc_titre_principal ul
 {
 	min-width: 450px;
@@ -125,8 +126,11 @@ header
 
 #menu-demo3 li a
 {
-  color: white;
-	font-size: 1.5em;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: white;
+	font-family: arial;
+	color: white;
 	text-decoration: none;
 	background-color: #000099;
 	display: inline-block;
@@ -135,48 +139,50 @@ header
 	border-radius: 15px;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	padding-left: 41px;
+	padding-right: 41px;
 
 }
 
 #menu-demo3, #menu-demo3 ul
 {
-padding:0;
-list-style:none;
+	padding:0;
+	list-style:none;
 }
 
 #menu-demo3 li
 {
-position:relative;
-border-radius:2px 2px 0 0;
-padding-right:10px;
+	position:relative;
+	border-radius:2px 2px 0 0;
+	padding-right:10px;
 }
 
 #menu-demo3 ul li
 {
-display:inherit;
-border-radius:2px;
+	display:inherit;
+	border-radius:2px;
 }
 
 #menu-demo3 ul li:hover
 {
-border-radius:2px;
+	border-radius:2px;
 }
 
 #menu-demo3 ul
 {
-position:absolute;
-border: black 2px;
-background-color: white;
-z-index: 1000;
-max-height:0;
-left: 0;
-right: 0;
-overflow:hidden;
+	position:absolute;
+	border: black 2px;
+	background-color: white;
+	z-index: 1000;
+	max-height:0;
+	left: 0;
+	right: 0;
+	overflow:hidden;
 }
 
 #menu-demo3 li:hover ul
 {
-max-height:15em;
+	max-height:15em;
 }
 
 
