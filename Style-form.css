@@ -4,13 +4,7 @@ centralform{
   margin-bottom:15%;
 }
 
-#corps_inscription{
-  display: inline-block;
-  border : 2px solid #990000;
-}
-#menu, #corps_inscription{
-  align-items: baseline;
-}
+
 
 h2 {
   font-family:Fantasy,Cursive;
@@ -124,6 +118,6 @@ textarea {
   margin-top:10px;
 }
 
-div{
+#pres, #valid{
   text-align:center;
 }

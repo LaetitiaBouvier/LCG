@@ -32,7 +32,7 @@ Avatar/Photo de profil :  <input type="file" name="avatar" id="avatar" value=""/
 <br />
 
 Présentez-vous en quelques lignes : <br />
-<div>
+<div id="pres">
 <textarea id="desc" name="description" > <?php if (isset($_POST['description'])){echo $_POST['description'];}?> </textarea>
 </div>
 <br />
@@ -108,6 +108,6 @@ Votre planning?
 
 <p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
 
-<br/><div><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
+<br/><div id="valid"><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
 
 </form>

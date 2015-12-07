@@ -2,7 +2,9 @@
 {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	background-color: #c7c7c7
+	background-color: #c7c7c7;
+	display :inline-block;
+	left: auto;
 }
 
 
