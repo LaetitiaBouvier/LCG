@@ -21,7 +21,7 @@
 
 			<p>VEUILLEZ CLIQUER SUR LA REGION QUI VOUS INTERESSE <em>*</em>:<br/> </p>
 
-			<img src="map.png" width="490" height="440" border="0" usemap="#map"/>
+			<img src="Images_code/map.png" width="490" height="440" border="0" usemap="#map"/>
 
 			<map name="map">
 			<!-- #$-:Image map file created by GIMP Image Map plug-in -->
