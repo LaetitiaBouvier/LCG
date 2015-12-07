@@ -5,7 +5,7 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 /* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
   $mdp_hache = $_POST['mdp'];
 
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
   $req = $bdd->prepare('SELECT id_utilisateur, pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
@@ -146,7 +146,7 @@ else
         <li> <h5> Soirée Raclette </h5></li>
       </ul>
     </div>
-    <img src="raclette.jpg" class="photo2"/>
+    <img src="images/raclette.jpg" class="photo2"/>
     <div id="ssmenu2">
       <ul>
         <li> Soirée à la salle des fêtes du XVIIIème, Paris</li>
@@ -161,7 +161,7 @@ else
         <li> <h5> Concert Time Impala </h5></li>
       </ul>
     </div>
-    <img src="tame-impala-couv.jpg" class="photo3"/>
+    <img src="images/tame-impala-couv.jpg" class="photo3"/>
     <div id="ssmenu3">
       <ul>
         <li> Concert du Groupe de Rock australien </li>
