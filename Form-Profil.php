@@ -1,4 +1,4 @@
-<form name="inscription" method="post" action="Create-Profil.php" enctype="multiplart/form-data">
+<form name="inscription" method="post" action="Confirm-Create-Profil.html" enctype="multiplart/form-data">
 
 <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
 <br/>
