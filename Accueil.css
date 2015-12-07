@@ -2,6 +2,7 @@ header
 {
 	border-bottom: 1px solid #333;
 }
+
 #recherche_avancee, #s_inscrire a, #creer_un_evenement a,#rechercher
 {
 	font-family: Arial Black;
@@ -33,21 +34,6 @@ header
 	display: inline-block;
 }
 
-#bloc_titre_principal a
-{
-	border: 2px solid #333;
-	box-shadow: 1px 1px 0px;
-	border-radius: 15px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-left: 20px;
-	padding-right: 20px;
-	background-color: #000099;
-	font-family: Arial;
-	color: white;
-	text-decoration: none;
-	font-weight: bold;
-}
 
 
 #recherche_avancee
@@ -152,7 +138,6 @@ header
 	text-decoration: none;
 	background-color: #000099;
 	display: inline-block;
-	border: 2px solid #333;
 	box-shadow: 1px 1px 0px;
 	border-radius: 15px;
 	padding-top: 3px;
