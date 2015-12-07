@@ -45,7 +45,7 @@ if (!isset($_SESSION['id_utilisateur']))
 }
 else
 {
-  echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /><a href='signout.php'>Se déconnecter</a></div>";
+  echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
 }
 
 ?>
