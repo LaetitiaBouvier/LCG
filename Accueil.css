@@ -130,7 +130,6 @@ header
 	font-weight: bold;
 	color: white;
 	font-family: arial;
-	color: white;
 	text-decoration: none;
 	background-color: #000099;
 	display: inline-block;
@@ -154,7 +153,6 @@ header
 {
 	position:relative;
 	border-radius:2px 2px 0 0;
-	padding-right:10px;
 }
 
 #menu-demo3 ul li
@@ -173,7 +171,6 @@ header
 {
 	position:absolute;
 	background-color: white;
-	z-index: 1000;
 	max-height:0;
 	left: 0;
 	right: 0;
