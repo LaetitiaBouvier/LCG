@@ -100,7 +100,7 @@
     <img src="images/Marathon.jpg" class="photo1"/>
     <div id="ssmenu1">
       <ul>
-        <li> La 21ème édition des 21km du Luxembourg </li>
+        <li> La 21 ème édition des 21km du Luxembourg </li>
         <li> N'hésitez pas à vous inscrire ! </li>
       </ul>
     </div>
@@ -111,10 +111,10 @@
 
 	<footer>
 	  <div id="logof">
-	    <img src="facebook.png" class="facebook" />
-	    <img src="logo-twitter.png" class="twitter"/>
-	    <img src="instagram-logo-vector-image1.png" class="insta" />
-	    <img src="google-plus-logo-transparent.png" class="google"/>
+	    <img src="images/facebook.png" class="facebook" />
+	    <img src="images/logo-twitter.png" class="twitter"/>
+	    <img src="images/instagram-logo-vector-image1.png" class="insta" />
+	    <img src="images/google-plus-logo-transparent.png" class="google"/>
 	  </div>
 	  <div id="site">
 	    <a href="#"> <h3> Nous Contactez </h3> </a>
