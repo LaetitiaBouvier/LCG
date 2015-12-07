@@ -133,7 +133,7 @@ header
 {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	background-color: #c7c7c7
+	background-color: #c7c7c7;
 }
 
 
@@ -255,6 +255,9 @@ color:#ffffff;
   padding-top: 3px;
   padding-bottom: 3px;
   width: 235px;
+  position: relative;
+  bottom:400px;
+  left:10px;
 
 }
 #carte{
@@ -367,39 +370,10 @@ color:#ffffff;
 /* complétez le sélecteur : */
 #slideshow .slider {
 	/* ... avec la propriété animation */
-	animation: slider 14s infinite;
-}
-@keyframes timeliner {
-	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
-	20%, 45%, 70%, 90%		{ width: 640px;	}
-}
-* ajouter à l'élément : */
-#slideshow figcaption {
-	/* ... la propriété animation */
-	animation: figcaptionner 17s infinite;
-}
-#slideshow .commands {
-	position: absolute;
-	top: 45%;
-	padding: 5px 13px;
-	border-bottom:0;
-	font-size: 1.3em;
-	color: #aaa;
-	text-decoration:none;
-	background-color: #eee;
-	background-image: linear-gradient(#fff,#ddd);
-	text-shadow: 0 0 1px #aaa;
-	border-radius: 50%;
-	box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+	animation: slider 17s infinite;
 }
 
-#slideshow .prev { left: -48px; }
-#slideshow .next { right: -48px; }
-
-#slideshow .commands { display:none; }
-#slideshow .commands1 {	display: block; }
-
-#cat1{
+#cat1 ,#cat2, #cat3{
 	border: solid black 2px;
 	margin-top: 30px;
 	padding: 5px;
@@ -407,7 +381,7 @@ color:#ffffff;
 	width: 95%;
 }
 
-#titre1{
+#titre1 ,#titre2 ,#titre3{
 	border: solid 2px ;
 	background-color: #990000;
 	color: white;
@@ -418,14 +392,14 @@ color:#ffffff;
 	width: 70%;
 	display: inline-block;
 }
-#titre1 ul{
+#titre1 ul, #titre2 ul ,#titre3 ul{
 	list-style-type: none;
 	text-decoration: none;
 	padding: 3px;
 	margin: 3px;
 	font-family: arial black;
 }
-#ssmenu1 ul{
+#ssmenu1 ul ,#ssmenu2 ul ,#ssmenu3 ul{
 	list-style-type: none;
 	text-decoration: none;
 	padding:0;
@@ -433,16 +407,16 @@ color:#ffffff;
 	font-family: fantasy;
 	font-weight: bold;
 }
-#titre1 ul h5, #titre1 ul h3{
+#titre1 ul h5, #titre1 ul h3 ,#titre2 ul h5, #titre2 ul h3 ,#titre3 ul h3, #titre3 ul h5{
 	margin:0; padding:0;
 }
-#cat1 img{
+#cat1 img, #cat2 img ,#cat3 img{
 	float: right;
-	width: 19%;
+	width: 20%;
 	display: inline-block;
 	margin: 0; padding:0;
 }
-#ssmenu1{
+#ssmenu1 ,#ssmenu2 ,#ssmenu3{
 	width: 70%;
 	display: inline-block;
 }

@@ -137,7 +137,36 @@ else
         <li> N'hésitez pas à vous inscrire ! </li>
       </ul>
     </div>
+	</div>
+    <div id="cat2">
+    <div id="titre2">
+      <ul>
+        <li> <h3> 23 Octobre 2016 </h3> </li>
+        <li> <h5> Soirée Raclette </h5></li>
+      </ul>
+    </div>
+    <img src="raclette.jpg" class="photo2"/>
+    <div id="ssmenu2">
+      <ul>
+        <li> Soirée à la salle des fêtes du XVIIIème, Paris</li>
+        <li> Venez nombreux !</li>
+    </div>
+  </div>
 
+  <div id="cat3">
+    <div id="titre3">
+      <ul>
+        <li> <h3> 2 Novembre 2016 </h3> </li>
+        <li> <h5> Concert Time Impala </h5></li>
+      </ul>
+    </div>
+    <img src="tame-impala-couv.jpg" class="photo3"/>
+    <div id="ssmenu3">
+      <ul>
+        <li> Concert du Groupe de Rock australien </li>
+        <li> Nouvel album : Currents </li>
+    </div>
+  </div>
 		</section>
 	</div>
 
