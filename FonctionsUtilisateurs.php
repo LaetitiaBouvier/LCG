@@ -19,8 +19,17 @@ function insert_users()
   //PSEUDO UTILISATEUR
 		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo']))
       { $pseudo = $_POST['pseudo'];
-        $query = mysqli_query($connect, "SELECT id FROM utilisateur_table WHERE Pseudo_Utilisateur = '$pseudo'");
-        if(mysqli_num_rows($query) == 1)
+
+        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+        $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ?');
+        $req->execute(array($pseudo));
+
+        $data = $req->fetch();
+
+        //$query = mysqli_query($connect, "SELECT id_utilisateur FROM utilisateur_table WHERE Pseudo_Utilisateur = '$pseudo'");
+        //$resultat = mysqli_fetch_row($query);
+
+        if($data)
           { $cond = false; print "Votre pseudo est déjà utilisé par un autre utilisateur! Veuillez en choisir un autre."; }
       }
     else
@@ -188,6 +197,8 @@ $categorieFavorite = "";
                               values ('$pseudo', '$mdp', '$nom','$prenom', '$avatar', '$description', '$adresse','$mail','$genre','$dateNaissance','$categorieFavorite', '$dateInscription', '$admin',
                                       '$adresseOK', '$mailOK', '$nomPrenomOK', '$planningOK', '$AlertesEvenementsOK', '$AlertesAbonnementsOK')")
                               or die('Error: ' . mysqli_error($connect));
+
+      header("location:Accueil.php");
 		  }
     else
       { print "Les informations entrées sont incorrectes ! "; }
