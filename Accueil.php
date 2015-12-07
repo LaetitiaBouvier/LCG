@@ -89,8 +89,8 @@ else
 	    </ul>
 	  </li>
 
-	  <li> <a href="map.png"><img src="Images_code\map.png" class="carte" width=120px/></a> </li>
-	  <li><a href="calendrier.png"> <img src="Images_code\calendrier.png" class="calendrier" width=110px/> </a></li>
+	  <li> <a href="http://localhost/github/LCG/Page_map.php"><img src="Images_code\map.png" class="carte" width=120px/></a> </li>
+	  <li><a href="http://localhost/github/LCG/calendrier.png"> <img src="Images_code\calendrier.png" class="calendrier" width=110px/> </a></li>
 	</ul>
 
 		<div id="corps">
