@@ -65,15 +65,15 @@ Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mai
 
 Catégories qui vont m'interesser le plus (plusieurs réponses possibles): <br>
 <br/>
-<input type="checkbox" name="categorieFavorite1" value="Festivals" />Festivals<br>
-<input type="checkbox" name="categorieFavorite2" value="Repas/Banquets" />Repas/Banquets<br>
-<input type="checkbox" name="categorieFavorite3" value="Concerts" />Concerts<br>
-<input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés" />Brocantes/Marchés<br>
-<input type="checkbox" name="categorieFavorite5" value="Soirées" />Soirées<br>
-<input type="checkbox" name="categorieFavorite6" value="Conférences" />Conférences<br>
-<input type="checkbox" name="categorieFavorite7" value="Humanitaires" />Humanitaires<br>
-<input type="checkbox" name="categorieFavorite8" value="Sportifs" />Sportifs<br>
-<input type="checkbox" name="categorieFavorite9" value="Manifestations" />Manifestations<br>
+<input type="checkbox" name="categorieFavorite1" value="Festivals" <?php if (isset($_POST['categorieFavorite1'])){if($_POST['categorieFavorite1']=='Festivals') echo 'checked="checked"';}?> />Festivals<br>
+<input type="checkbox" name="categorieFavorite2" value="Repas/Banquets" <?php if (isset($_POST['categorieFavorite2'])){if($_POST['categorieFavorite2']=='Repas/Banquets') echo 'checked="checked"';}?>/>Repas/Banquets<br>
+<input type="checkbox" name="categorieFavorite3" value="Concerts" <?php if (isset($_POST['categorieFavorite3'])){if($_POST['categorieFavorite3']=='Concerts') echo 'checked="checked"';}?>/>Concerts<br>
+<input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés" <?php if (isset($_POST['categorieFavorite4'])){if($_POST['categorieFavorite4']=='Brocantes/Marchés') echo 'checked="checked"';}?>/>Brocantes/Marchés<br>
+<input type="checkbox" name="categorieFavorite5" value="Soirées" <?php if (isset($_POST['categorieFavorite5'])){if($_POST['categorieFavorite5']=='Soirées') echo 'checked="checked"';}?>/>Soirées<br>
+<input type="checkbox" name="categorieFavorite6" value="Conférences" <?php if (isset($_POST['categorieFavorite6'])){if($_POST['categorieFavorite6']=='Conférences') echo 'checked="checked"';}?> />Conférences<br>
+<input type="checkbox" name="categorieFavorite7" value="Humanitaires" <?php if (isset($_POST['categorieFavorite7'])){if($_POST['categorieFavorite7']=='Humanitaires') echo 'checked="checked"';}?>/>Humanitaires<br>
+<input type="checkbox" name="categorieFavorite8" value="Sportifs" <?php if (isset($_POST['categorieFavorite8'])){if($_POST['categorieFavorite8']=='Sportifs') echo 'checked="checked"';}?>/>Sportifs<br>
+<input type="checkbox" name="categorieFavorite9" value="Manifestations" <?php if (isset($_POST['categorieFavorite9'])){if($_POST['categorieFavorite9']=='Manifestations') echo 'checked="checked"';}?>/>Manifestations<br>
 <br/>
 
 Souhaitez vous que les autres utilisateurs aient accès à : <br/></br>
