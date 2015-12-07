@@ -1,17 +1,20 @@
-<div id="bloc_titre_principal">
+<div id='bloc_titre_principal'>
   <img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' />
   <ul>
-    <li id="se_connecter">Se Connecter</li>
+    <li>
+  		<ul id="menu-demo3">
+  		  <li><a href="@">Se connecter</a>
+  				<form method=POST action='Accueil.php' >
+  	      <ul>
+  	        <li><label for='pseudo_utilisateur'>Pseudo:</label><input type='text' name='pseudo' id='pseudo' /></li>
+  	        <li><label for="mdp_utilisateur">Mot de passe:</label><input type="password" name="mdp" id="mdp" /></li>
+  	        <li><input type="submit" value="Connexion" /></li>
+  	      </ul>
+  	      </form>
+  		  </li>
+  		</ul>
+      </li>
 
-      <form method=POST action="Accueil.php">
-      <ul>
-        <li><label for="pseudo_utilisateur">Pseudo:</label><input type="text" name="pseudo" id="pseudo" /></li>
-        <li><label for="mdp_utilisateur">Mot de passe:</label><input type="password" name="mdp" id="mdp" /></li>
-        <li><input type="submit" value="Connexion" /></li>
-      </lu>
-      </form>
-
-    </li>
     <li id="s_inscrire"><a href="Create-Profil.php">S'inscrire</a></li>
     <li id="creer_un_evenement"><a href="Create-Event.php">Créer un événement</a></li>
   </ul>
