@@ -13,9 +13,9 @@
       </div>
 
       <div id="site">
-        <a href="#"> <h3> Nous Contactez </h3> </a>
-        <a href="#"> <h3> Aide en ligne </h3> </a>
-        <a href="#"> <h3> Charte </h3> </a>
+        <a href="#"> <h3> Nous Contactez   </h3> </a>
+        <a href="#"> <h3>   Aide en ligne   </h3> </a>
+        <a href="#"> <h3>   Charte </h3> </a>
       </div>
       <h3> La Connexion Gauloise  </h3>
     </footer>

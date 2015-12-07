@@ -1,10 +1,11 @@
-#corps_inscription{
+#corps_inscription, #confirm_inscription, #maps, #modifOK, #redirect{
   display: inline-block;
   margin-left: 5%;
+  width: 65%;
 }
 
-#corps_inscription{
-  width: 65%;
+#redirect{
+  margin-top: 50px;
 }
 
 nav{

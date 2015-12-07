@@ -16,7 +16,7 @@
 			<?php include("menu_deroulant.php"); ?>
     </nav>
 
-
+		<div id="maps">
 			<h2> Carte de France : </h2>
 
 			<p>VEUILLEZ CLIQUER SUR LA REGION QUI VOUS INTERESSE <em>*</em>:<br/> </p>
@@ -47,9 +47,11 @@
 
 			<br/>
 			<p2><em>*</em>Vous pouvez cliquer sur l'une des treize nouvelles régions.</p2><br/>
+		</div>
+		</br></br></br>
 
-			<footer>
-				<?php include("footer.php"); ?>
-			</footer>
+		<footer>
+			<?php include("footer.php"); ?>
+		</footer>
 	 </body>
 </html>

@@ -15,10 +15,12 @@
 			<?php include("menu_deroulant.php"); ?>
 		</nav>
 
-		<lien>
-		<a href="http://localhost/github/Se-connecter.php" onclick="window.open('http://localhost/github/Se-connecter.php', 'popup', 'toolbar=no, menubar=no, location=no, resizable=no, scrollbars=no, status=no, '); return false;"> SE CONNECTER </a>
-		</lien>
-
+		<div id="redirect">
+			<lien>
+			<a href="http://localhost/github/Se-connecter.php" onclick="window.open('http://localhost/github/Se-connecter.php', 'popup', 'toolbar=no, menubar=no, location=no, resizable=no, scrollbars=no, status=no, '); return false;"> CONNECTEZ-VOUS POUR ACCEDER A CETTE PAGE </a>
+			</lien>
+		</div>
+	</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 	<footer>
 		<?php include("footer.php"); ?>
 	</footer>

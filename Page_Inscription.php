@@ -11,6 +11,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" href="Style-form.css"/>
 	</head>
+
 	<body>
 		<header>
 			<?php include("header.php"); ?>

@@ -14,14 +14,17 @@
 			<?php include("menu_deroulant.php"); ?>
 		</nav>
 
-		<h2> Formulaire de création/modification de profil </h2>
+		<div id="confirm_inscription">
+			<h2> Formulaire de création/modification de profil </h2>
 
-	  <p> Votre inscription a bien été prise en compte ! </p>
+		  <p> Votre inscription a bien été prise en compte ! </p>
 
 
-		<br/><div>
-			<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
-		</div><br/>
+			<br/><div>
+				<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
+			</div><br/>
+		</div>
+		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 		<footer>
 			<?php include("footer.php"); ?>

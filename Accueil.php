@@ -2,7 +2,7 @@
 
 try
 {
-  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 }
 
 catch (Exception $e)
@@ -16,7 +16,7 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 /* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
   $mdp_hache = $_POST['mdp'];
 
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
   $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
