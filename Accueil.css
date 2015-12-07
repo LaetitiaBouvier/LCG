@@ -2,7 +2,7 @@ header
 {
 	border-bottom: 1px solid #333;
 }
-#recherche_avancee, #se_connecter, #s_inscrire a, #creer_un_evenement a,#rechercher
+#recherche_avancee, #s_inscrire a, #creer_un_evenement a,#rechercher
 {
 	font-family: Arial Black;
 	font-size: 1em;
@@ -39,7 +39,7 @@ header
 	margin-left: 5px;
 	border: 2px solid #333;
 	box-shadow: 1px 1px 0px;
-	border-radius: 15px 15px 15px 15px;
+	border-radius: 15px;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	padding-left: 20px;
@@ -54,7 +54,7 @@ header
 	margin-left: 30px;
 	border: 2px solid #333;
 	box-shadow: 1px 1px 0px;
-	border-radius: 15px 15px 15px 15px;
+	border-radius: 15px;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	padding-left: 20px;
@@ -62,13 +62,13 @@ header
 	background-color: #000099;
 }
 
-#se_connecter, #s_inscrire, #creer_un_evenement
+#s_inscrire, #creer_un_evenement
 {
 	background-color: #000099;
 	display: inline-block;
 	border: 2px solid #333;
 	box-shadow: 1px 1px 0px;
-	border-radius: 15px 15px 15px 15px;
+	border-radius: 15px;
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
@@ -122,6 +122,63 @@ header
 {
 	background-color: #e8222b;
 }
+
+#menu-demo3 li a
+{
+  color: white;
+	font-size: 1.5em;
+	text-decoration: none;
+	background-color: #000099;
+	display: inline-block;
+	border: 2px solid #333;
+	box-shadow: 1px 1px 0px;
+	border-radius: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+
+}
+
+#menu-demo3, #menu-demo3 ul
+{
+padding:0;
+list-style:none;
+}
+
+#menu-demo3 li
+{
+position:relative;
+border-radius:2px 2px 0 0;
+padding-right:10px;
+}
+
+#menu-demo3 ul li
+{
+display:inherit;
+border-radius:2px;
+}
+
+#menu-demo3 ul li:hover
+{
+border-radius:2px;
+}
+
+#menu-demo3 ul
+{
+position:absolute;
+border: black 2px;
+background-color: white;
+z-index: 1000;
+max-height:0;
+left: 0;
+right: 0;
+overflow:hidden;
+}
+
+#menu-demo3 li:hover ul
+{
+max-height:15em;
+}
+
 
 
 
