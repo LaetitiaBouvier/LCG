@@ -15,7 +15,7 @@
 
 	<body>
 		<centralform>
-		<h2> Formulaire de création/modification de profil </h2>
+		<h2> Formulaire de création de profil </h2>
 		<!-- insertion du formulaire!-->
 		<?php include("Form-Profil.php"); ?>
 	 </centralform>
