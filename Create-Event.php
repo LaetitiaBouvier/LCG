@@ -13,7 +13,7 @@
 	</head>
 	<body>
 
-		<h2> Formulaire de création/modification d'événements : </h2>
+		<h2> Formulaire de création d'événements : </h2>
 		<!-- insertion du formulaire!-->
 		<?php include("Form-Event.php"); ?>
 
