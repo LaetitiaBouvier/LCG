@@ -120,7 +120,7 @@ function insert_events()
   else{ $participants = NULL;}
 
   //EVENEMENT PAYANT
-    $payant=NULL;
+    $payant=0;
   // LIEN
   if(isset($_POST['website'])			&& !empty($_POST['website']))
     { $website=$_POST['website'];}
