@@ -137,6 +137,7 @@ function insert_events()
                                 values ('$nom', '$organisateur', '$photo','$video', '$datedeb', '$datefin', '$heuredeb','$heurefin','$description','$participants',
                                 '$categorie', '$cible', '$endroit', '$rue', '$CP', '$ville', '$departement', '$region', '$payant','$website')")
                                 or die('Error: ' . mysqli_error($connect));
+          header("location:Confirm-Create-Event.html");
 
   	mysqli_close($connect);
   }

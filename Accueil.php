@@ -29,9 +29,15 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
   else
   {
   	session_start();
+<<<<<<< HEAD
   	if(isset($_SESSION['id_utilisateur']))     $_SESSION['id_utilisateur'] = $data['id_utilisateur'];
   	if(isset($_SESSION['pseudo_utilisateur'])) $_SESSION['pseudo_utilisateur'] = $data['pseudo_utilisateur'];
   	echo 'Bonjour ' . $data['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
+=======
+  	//$_SESSION['id_utilisateur'] = $data['id_utilisateur'];
+  	$_SESSION['pseudo_utilisateur'] = $data['pseudo_utilisateur'];
+  	echo 'Bonjour ' . $_SESSION['id_utilisateur'] . "! Bienvenue sur La Connexion Gauloise!" . $_SESSION['id_utilisateur'];
+>>>>>>> origin/master
   }
 }
 
