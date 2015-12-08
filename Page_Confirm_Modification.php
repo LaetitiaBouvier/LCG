@@ -16,7 +16,7 @@
 		</nav>
 
 		<div id="modifOK">
-		  <h2> Formulaire de création/modification de profil </h2>
+		  <h2> Formulaire de modification de profil </h2>
 
 		  <p> Votre modification de profil a bien été prise en compte ! </p>
 

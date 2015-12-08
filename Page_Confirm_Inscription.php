@@ -15,7 +15,7 @@
 		</nav>
 
 		<div id="confirm_inscription">
-			<h2> Formulaire de création/modification de profil </h2>
+			<h2> Formulaire de création de profil </h2>
 
 		  <p> Votre inscription a bien été prise en compte ! </p>
 
