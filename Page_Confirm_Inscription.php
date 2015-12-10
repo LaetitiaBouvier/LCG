@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<header>
-			<?php include("header.php"); ?>
+			<?php include("header2.php"); ?>
 		</header>
 
 		<nav>
@@ -19,12 +19,21 @@
 
 		  <p> Votre inscription a bien été prise en compte ! </p>
 
-
-			<br/><div>
-				<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
-			</div><br/>
+			<br/>
 		</div>
-		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+		</br></br></br>
+
+		<div id='bloc_connexion'>
+		    <ul id="se_connecter">
+		      <p> Connectez-vous </p>
+		  	  <li><label for='pseudo_utilisateur'>Pseudo:</label><input type='text' name='pseudo' id='pseudo' /></li></br>
+		  	  <li><label for="mdp_utilisateur">Mot de passe:</label><input type="password" name="mdp" id="mdp" /></li>
+		  	  <li><input type="submit" value="Connexion" /></li>
+		  	</ul>
+				</br>
+		</div>
+		</br></br></br></br></br></br></br></br></br>
 
 		<footer>
 			<?php include("footer.php"); ?>
