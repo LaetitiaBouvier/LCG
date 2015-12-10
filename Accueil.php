@@ -2,7 +2,7 @@
 
 try
 {
-  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 }
 
 catch (Exception $e)
@@ -16,7 +16,7 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 /* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
   $mdp_hache = $_POST['mdp'];
 
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
   $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
@@ -50,7 +50,7 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 
 <?php
 
-if (!isset($_SESSION['id_utilisateur']))
+if (!isset($_SESSION['pseudo_utilisateur']))
 {
   include("signinup.html");
 }
