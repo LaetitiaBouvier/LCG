@@ -19,7 +19,7 @@
 		<div id="maps">
 			<h2> Carte de France : </h2>
 
-			<p>VEUILLEZ CLIQUER SUR LA REGION QUI VOUS INTERESSE <em>*</em>:<br/> </p>
+			<p>VEUILLEZ CLIQUER SUR LA REGION QUI VOUS INTERESSE <em>*</em>:</br></br> </p>
 
 			<img src="Images_code/map.png" width="490" height="440" border="0" usemap="#map"/>
 
@@ -45,10 +45,10 @@
 			<area shape="rect" coords="418,33,485,415" alt="DOM" href="http://www.google.com" />
 			</map>
 
-			<br/>
+			</br></br>
 			<p2><em>*</em>Vous pouvez cliquer sur l'une des treize nouvelles régions.</p2><br/>
+			</br></br>
 		</div>
-		</br></br></br>
 
 		<footer>
 			<?php include("footer.php"); ?>
