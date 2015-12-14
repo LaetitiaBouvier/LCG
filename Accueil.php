@@ -104,6 +104,7 @@ else
 	  <li> <a href="http://localhost/github/LCG/Page_map.php"><img src="Images_code\map.png" class="carte" width=120px/></a> </li>
 	  <li><a href="http://localhost/github/LCG/calendrier.png"> <img src="Images_code\calendrier.png" class="calendrier" width=110px/> </a></li>
 	</ul>
+  </div>
 
 		<div id="corps">
 		<section id="slideshow">
