@@ -10,18 +10,50 @@
 	  $ID = -1;
 	}
 
-	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
-	$req = $bdd->prepare('SELECT * FROM utilisateur_table WHERE id_utilisateur = ?');
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	$req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
 	$req->execute(array($ID));
 
 	$data = $req->fetch();
-	//print_r($data);
 
-	foreach($data as $cle => $valeur)
-	{
-		 //echo $cle ,' : ', $valeur;
-		 if($cle == '[nom_utilisateur]'){ $nom = $valeur; echo $nom; }
-		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; echo $prenom; }
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; echo $adresse;}
+	}
+
+	$req = $bdd->prepare('SELECT Nom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Nom_Utilisateur]'){ $nom = $valeur; echo $nom;}
+	}
+
+	$req = $bdd->prepare('SELECT Prenom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Prenom_Utilisateur]'){ $prenom = $valeur; echo $prenom; }
+	}
+
+	$req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Mail_Utilisateur]'){ $mail = $valeur; echo $mail; }
+	}
+
+	$req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Description_Utilisateur]'){ $desc = $valeur; echo $desc; }
 	}
 
 ?>
@@ -44,14 +76,14 @@
 
 <fieldset>
 <legend>Informations personnelles</legend>
-</br> Nom :
-</br> Prénom :
+</br> Nom : <?php echo $nom ?>
+</br> Prénom : <?php echo $prenom ?>
 </br>
-</br> Code postal :
+</br> Code postal : <?php echo $adresse ?>
 </br>
-</br> Adresse e-mail :
+</br> Adresse e-mail : <?php echo $mail ?>
 </br>
-</br> Présentation :
+</br> Présentation : <?php echo $desc ?>
 </fieldset>
 
 <fieldset>
