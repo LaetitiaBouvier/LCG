@@ -6,7 +6,7 @@
 <?php
 
 session_start() ;
-$_SESSION["idUtilisateur"] = 33;
+$_SESSION["idUtilisateur"] = 52;
 
 if(isset($_SESSION["idUtilisateur"])){
   $ID = $_SESSION["idUtilisateur"];
@@ -40,9 +40,19 @@ else{
       Nom <em>*</em>: <input type="text" name="nom" required="" value="
 
           <?php
-            if($ID != -1){ $query = mysqli_query($connect, "SELECT * FROM utilisateur_table WHERE id_utilisateur = '$ID'");
-                           $resultat = mysqli_fetch_row($query);
-                           echo $resultat[0];
+            if($ID != -1){
+                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                           $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                           $req->execute(array($ID));
+
+                           $data = $req->fetch();
+                           //print_r($data);
+
+                           foreach($data as $cle => $valeur)
+                           {
+                              //echo $cle ,' : ', $valeur;
+                              if($cle == '[nom_utilisateur]'){ echo $valeur; }
+                           }
                          }
            ?>"
         /><br/>
@@ -50,9 +60,19 @@ else{
 
       Prénom <em>*</em>: <input type="text" name="prenom" required="" value="
         <?php
-          if($ID != -1){ $query = mysqli_query($connect, "SELECT * FROM Utilisateur_table WHERE ID_Evenement = '$ID'");
-                         $resultat = mysqli_fetch_row($query);
-                         echo $resultat[0];
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT prenom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+                        //print_r($data);
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          // echo $cle ,' : ', $valeur;
+                          if($cle == '[prenom_utilisateur]'){ echo $valeur; }
+                        }
                        }
          ?>"
         /><br/>
@@ -61,23 +81,60 @@ else{
       Sexe :
       <input type="radio" name="genre" value="H"
         <?php
-          if($ID != -1){ $query = mysqli_query($connect, "SELECT * FROM Utilisateur_table WHERE ID_Evenement = '$ID'");
-                         $resultat = mysqli_fetch_row($query);
-                         if($resultat[0] == 'H'){ echo 'checked="checked"'; }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[genre]'){
+                              if($valeur == 'H'){ echo 'checked="checked"'; }
+                            }
+                          }
                        }
          ?>/> Homme
       <input type="radio" name="genre" value="F"
         <?php
-          if($ID != -1){ $query = mysqli_query($connect, "SELECT * FROM Utilisateur_table WHERE ID_Evenement = '$ID'");
-                         $resultat = mysqli_fetch_row($query);
-                         if($resultat[0] == 'F'){ echo 'checked="checked"'; }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[genre]'){
+                              if($valeur == 'F'){ echo 'checked="checked"'; }
+                            }
+                          }
                        }
         ?>/> Femme
       <br/><br/>
 
       Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="
         <?php
-          if($ID != -1){ $query = mysqli_query($connect, "SELECT Date_Naissance FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Date_Naissance FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Date_Naissance]'){  echo $valeur; }
+                          }
+                       }
         ?>"
         /><br/>
       <br/>
@@ -89,7 +146,20 @@ else{
 
       Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="
         <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT Pseudo_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Pseudo_Utilisateur]'){  echo $valeur; }
+                          }
+                       }
         ?>"
         /> <br/>
       <br/>
@@ -101,24 +171,30 @@ else{
       <div>
       <textarea id="desc" name="description" >
         <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT Description_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Description_Utilisateur]'){  echo $valeur; }
+                          }
+                       }
         ?>
       </textarea>
       </div>
       <br />
       <br />
 
-      Mot de passe<em>*</em> (6 caractères au moins): <input type="password" name="mdp" required="" value="
-        <?php
-        if($ID != -1){ echo $query = mysqli_query($connect, "SELECT MDP_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
-        ?>"
-        /><br/>
+      Mot de passe<em>*</em> (6 caractères au moins): <input type="password" name="mdp" required="" value=""/><br/>
       <br/>
 
-      Confirmez votre mot de passe<em>*</em> : <input type="password" name="confirm_mdp" required="" value="
-        <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT MDP_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
-        ?>"/><br/>
+      Confirmez votre mot de passe<em>*</em> : <input type="password" name="confirm_mdp" required="" value=""/><br/>
       <br/>
 
       </fieldset>
@@ -128,7 +204,20 @@ else{
 
       Code postal<em>*</em> : <input type="text" name="adresse" maxlength="5" required="" value="
         <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT Adresse_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Adresse_Utilisateur]'){  echo $valeur; }
+                          }
+                       }
         ?>"
         /><br/>
       <br/>
