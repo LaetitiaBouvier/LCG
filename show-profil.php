@@ -1,5 +1,14 @@
 <?php
-	$ID = 52;
+
+	session_start() ;
+	$_SESSION["idUtilisateur"] = 52;
+
+	if(isset($_SESSION["idUtilisateur"])){
+	  $ID = $_SESSION["idUtilisateur"];
+	}
+	else{
+	  $ID = -1;
+	}
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 	$req = $bdd->prepare('SELECT * FROM utilisateur_table WHERE id_utilisateur = ?');
