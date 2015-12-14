@@ -8,7 +8,7 @@
 
 	<body>
 		<header>
-			<?php include("header2.php"); ?>
+			<?php include("header.php"); ?>
 		</header>
 
 		<nav>

@@ -49,14 +49,14 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 		<header>
 
 <?php
-
+echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></div>";
 if (!isset($_SESSION['id_utilisateur']))
 {
   include("signinup.html");
 }
 else
 {
-  echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
+  echo "<div id='deconexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
 }
 
 ?>
