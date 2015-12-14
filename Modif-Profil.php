@@ -224,16 +224,25 @@ else{
 
       Adresse e-mail<em>*</em> : <input type="email" name="mail" required="" value="
         <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT Mail_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Mail_Utilisateur]'){  echo $valeur; }
+                          }
+                        }
         ?>"
         /><br/>
       <br/>
 
-      Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mail" required="" value="
-        <?php
-          if($ID != -1){ echo $query = mysqli_query($connect, "SELECT Mail_Utilisateur FROM Utilisateur_table WHERE ID_Evenement = '$ID'"); }
-        ?>"
-        /><br/>
+      Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mail" required="" value="" /><br/>
       <br/>
 
       </fieldset>
@@ -243,15 +252,168 @@ else{
 
       Catégories qui vont m'interesser le plus (plusieurs réponses possibles): <br>
       <br/>
-      <input type="checkbox" name="categorieFavorite1" value="Festivals" <?php if (isset($_POST['categorieFavorite1'])){if($_POST['categorieFavorite1']=='Festivals') echo 'checked="checked"';}?> />Festivals<br>
-      <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets" <?php if (isset($_POST['categorieFavorite2'])){if($_POST['categorieFavorite2']=='Repas/Banquets') echo 'checked="checked"';}?>/>Repas/Banquets<br>
-      <input type="checkbox" name="categorieFavorite3" value="Concerts" <?php if (isset($_POST['categorieFavorite3'])){if($_POST['categorieFavorite3']=='Concerts') echo 'checked="checked"';}?>/>Concerts<br>
-      <input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés" <?php if (isset($_POST['categorieFavorite4'])){if($_POST['categorieFavorite4']=='Brocantes/Marchés') echo 'checked="checked"';}?>/>Brocantes/Marchés<br>
-      <input type="checkbox" name="categorieFavorite5" value="Soirées" <?php if (isset($_POST['categorieFavorite5'])){if($_POST['categorieFavorite5']=='Soirées') echo 'checked="checked"';}?>/>Soirées<br>
-      <input type="checkbox" name="categorieFavorite6" value="Conférences" <?php if (isset($_POST['categorieFavorite6'])){if($_POST['categorieFavorite6']=='Conférences') echo 'checked="checked"';}?> />Conférences<br>
-      <input type="checkbox" name="categorieFavorite7" value="Humanitaires" <?php if (isset($_POST['categorieFavorite7'])){if($_POST['categorieFavorite7']=='Humanitaires') echo 'checked="checked"';}?>/>Humanitaires<br>
-      <input type="checkbox" name="categorieFavorite8" value="Sportifs" <?php if (isset($_POST['categorieFavorite8'])){if($_POST['categorieFavorite8']=='Sportifs') echo 'checked="checked"';}?>/>Sportifs<br>
-      <input type="checkbox" name="categorieFavorite9" value="Manifestations" <?php if (isset($_POST['categorieFavorite9'])){if($_POST['categorieFavorite9']=='Manifestations') echo 'checked="checked"';}?>/>Manifestations<br>
+      <input type="checkbox" name="categorieFavorite1" value="Festivals"
+        <?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+                        //print_r($data);
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          // echo $cle ,' : ', $valeur;
+                          if($cle == '[Categorie_Favorite]' && strstr($valeur, "Festivals")){  echo 'checked="checked"'; }
+                        }
+                      }
+        ?>
+       />Festivals<br>
+      <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"
+        <?php
+          if($ID != -1){
+                      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                      $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                      $req->execute(array($ID));
+
+                      $data = $req->fetch();
+                      //print_r($data);
+
+                      foreach($data as $cle => $valeur)
+                      {
+                        // echo $cle ,' : ', $valeur;
+                        if($cle == '[Categorie_Favorite]' && strstr($valeur, "Repas/Banquets")){  echo 'checked="checked"'; }
+                      }
+                    }
+          //if (isset($_POST['categorieFavorite2'])){if($_POST['categorieFavorite2']=='Repas/Banquets') echo 'checked="checked"';}
+        ?>/>Repas/Banquets<br>
+      <input type="checkbox" name="categorieFavorite3" value="Concerts"
+        <?php
+        if($ID != -1){
+                    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                    $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                    $req->execute(array($ID));
+
+                    $data = $req->fetch();
+                    //print_r($data);
+
+                    foreach($data as $cle => $valeur)
+                    {
+                      // echo $cle ,' : ', $valeur;
+                      if($cle == '[Categorie_Favorite]' && strstr($valeur, "Concerts")){  echo 'checked="checked"'; }
+                    }
+                  }
+          //if (isset($_POST['categorieFavorite3'])){if($_POST['categorieFavorite3']=='Concerts') echo 'checked="checked"';}
+        ?>/>Concerts<br>
+      <input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés"
+        <?php
+          if($ID != -1){
+                    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                    $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                    $req->execute(array($ID));
+
+                    $data = $req->fetch();
+                    //print_r($data);
+
+                    foreach($data as $cle => $valeur)
+                    {
+                      // echo $cle ,' : ', $valeur;
+                      if($cle == '[Categorie_Favorite]' && strstr($valeur, "Brocantes/Marchés")){  echo 'checked="checked"'; }
+                    }
+                  }
+          //if (isset($_POST['categorieFavorite4'])){if($_POST['categorieFavorite4']=='Brocantes/Marchés') echo 'checked="checked"';}
+        ?>/>Brocantes/Marchés<br>
+      <input type="checkbox" name="categorieFavorite5" value="Soirées"
+        <?php
+          if($ID != -1){
+                  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                  $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                  $req->execute(array($ID));
+
+                  $data = $req->fetch();
+                  //print_r($data);
+
+                  foreach($data as $cle => $valeur)
+                  {
+                    // echo $cle ,' : ', $valeur;
+                    if($cle == '[Categorie_Favorite]' && strstr($valeur, "Soirées")){  echo 'checked="checked"'; }
+                  }
+                }
+          //if (isset($_POST['categorieFavorite5'])){if($_POST['categorieFavorite5']=='Soirées') echo 'checked="checked"';}
+        ?>/>Soirées<br>
+      <input type="checkbox" name="categorieFavorite6" value="Conférences"
+        <?php
+          if($ID != -1){
+                $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+                $req->execute(array($ID));
+
+                $data = $req->fetch();
+                //print_r($data);
+
+                foreach($data as $cle => $valeur)
+                {
+                  // echo $cle ,' : ', $valeur;
+                  if($cle == '[Categorie_Favorite]' && strstr($valeur, "Conférences")){  echo 'checked="checked"'; }
+                }
+              }
+          //if (isset($_POST['categorieFavorite6'])){if($_POST['categorieFavorite6']=='Conférences') echo 'checked="checked"';}
+        ?> />Conférences<br>
+      <input type="checkbox" name="categorieFavorite7" value="Humanitaires"
+        <?php
+          if($ID != -1){
+              $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+              $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+              $req->execute(array($ID));
+
+              $data = $req->fetch();
+              //print_r($data);
+
+              foreach($data as $cle => $valeur)
+              {
+                // echo $cle ,' : ', $valeur;
+                if($cle == '[Categorie_Favorite]' && strstr($valeur, "Humanitaires")){  echo 'checked="checked"'; }
+              }
+            }
+          //if (isset($_POST['categorieFavorite7'])){if($_POST['categorieFavorite7']=='Humanitaires') echo 'checked="checked"';}
+        ?>/>Humanitaires<br>
+      <input type="checkbox" name="categorieFavorite8" value="Sportifs"
+        <?php
+          if($ID != -1){
+            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+            $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+            $req->execute(array($ID));
+
+            $data = $req->fetch();
+            //print_r($data);
+
+            foreach($data as $cle => $valeur)
+            {
+              // echo $cle ,' : ', $valeur;
+              if($cle == '[Categorie_Favorite]' && strstr($valeur, "Sportifs")){  echo 'checked="checked"'; }
+            }
+          }
+          //if (isset($_POST['categorieFavorite8'])){if($_POST['categorieFavorite8']=='Sportifs') echo 'checked="checked"';}
+        ?>/>Sportifs<br>
+      <input type="checkbox" name="categorieFavorite9" value="Manifestations"
+        <?php
+          if($ID != -1){
+            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+            $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
+            $req->execute(array($ID));
+
+            $data = $req->fetch();
+            //print_r($data);
+
+            foreach($data as $cle => $valeur)
+            {
+              // echo $cle ,' : ', $valeur;
+              if($cle == '[Categorie_Favorite]' && strstr($valeur, "Manifestations")){  echo 'checked="checked"'; }
+            }
+          }
+          //if (isset($_POST['categorieFavorite9'])){if($_POST['categorieFavorite9']=='Manifestations') echo 'checked="checked"';}
+        ?>/>Manifestations<br>
       <br/>
 
       Souhaitez vous que les autres utilisateurs aient accès à : <br/></br>

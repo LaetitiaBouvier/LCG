@@ -1,7 +1,7 @@
 <?php
 
 // Conexion à la base
-$connect = mysqli_connect("localhost", "root", "root", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 // Vérifier la connexion
 if (!$connect)
@@ -20,7 +20,7 @@ function insert_users()
 		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo']))
       { $pseudo = $_POST['pseudo'];
 
-        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root'); /*root pour mac*/
+        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
         $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ?');
         $req->execute(array($pseudo));
 

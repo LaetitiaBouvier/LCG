@@ -1,7 +1,7 @@
 <?php
 
 // Conexion à la base
-$connect = mysqli_connect("localhost", "root", "root", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 // Vérifier la connexion
 if (!$connect)
@@ -10,7 +10,7 @@ if (!$connect)
 
 //insérer un nouveau profil dans la table "utilisateur_table" de la base de données "Connexion_Gauloise"
 function insert_events()
-  { $connect = mysqli_connect("localhost", "root", "root", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+  { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 
   if (isset($_POST['valider']) && $_POST['valider'] == "VALIDER MON EVENEMENT")
