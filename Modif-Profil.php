@@ -10,6 +10,22 @@ $_SESSION["idUtilisateur"] = 52;
 
 if(isset($_SESSION["idUtilisateur"])){
   $ID = $_SESSION["idUtilisateur"];
+
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+	$req = $bdd->prepare('SELECT * FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur)
+	{
+		 //echo $cle ,' : ', $valeur;
+		 if($cle == '[nom_utilisateur]'){ $nom = $valeur;}
+		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; }
+     if($cle == '[genre]'){ if($valeur == 'H'){ $genre = 'checked="checked"'; } }
+     
+
+	}
 }
 else{
   $ID = -1;

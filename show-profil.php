@@ -20,8 +20,8 @@
 	foreach($data as $cle => $valeur)
 	{
 		 //echo $cle ,' : ', $valeur;
-		 if($cle == '[nom_utilisateur]'){ $nom = $valeur; echo $nom;}
-		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; echo " ".$prenom;}
+		 if($cle == '[nom_utilisateur]'){ $nom = $valeur; echo $nom; }
+		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; echo $prenom; }
 	}
 
 ?>
