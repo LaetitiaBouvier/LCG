@@ -106,8 +106,8 @@ else
 	</ul>
   </div>
 
-		<div id="corps">
-		<section id="slideshow">
+	<div id="corps">
+	<section id="slideshow">
 
 	<div class="container">
 		<div class="c_slider"></div>
@@ -128,12 +128,14 @@ else
         </figcaption>
 
 			</figure><!--
-			--><figure>
+			-->
+      <figure>
 				<a href="@" ><img src="images/concert en plein air.jpg" alt="" width="1100" height="600"/></a>
         <figcaption>
           <p><h3> Festival - 24 Avril 2016 </h3></p>
           <p> Dunkerque </p>
         </figcaption>
+      </figure>
 		</div>
 	</div>
 
@@ -152,7 +154,8 @@ else
       </ul>
     </div>
 	</div>
-    <div id="cat2">
+
+  <div id="cat2">
     <div id="titre2">
       <ul>
         <li> <h3> 23 Octobre 2016 </h3> </li>
