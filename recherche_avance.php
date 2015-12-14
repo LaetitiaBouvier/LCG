@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['requete']) && $_POST['requete'] != NULL) // on vérifie d'abord l'existence du POST et aussi si la requete n'est pas vide.
 {
-mysql_connect('localhost','root','root');
+mysql_connect('localhost','root','');
 mysql_select_db('connexion_gauloise'); // on se connecte à MySQL.
 $requete = htmlspecialchars($_POST['requete']); // on crée une variable $requete pour faciliter l'écriture de la requête SQ
 $query = mysql_query("SELECT * FROM evenement_table, utilisateur_table WHERE nom_fonction LIKE '%$requete%' ORDER BY id DESC") or die (mysql_error());
