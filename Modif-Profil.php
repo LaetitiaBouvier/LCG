@@ -51,7 +51,10 @@ else{
                            foreach($data as $cle => $valeur)
                            {
                               //echo $cle ,' : ', $valeur;
-                              if($cle == '[nom_utilisateur]'){ echo $valeur; }
+                              if($cle == '[nom_utilisateur]'){
+                                $valeur=preg_replace('/\s/', '', $valeur);
+                                echo $valeur;
+                              }
                            }
                          }
            ?>"
@@ -71,7 +74,7 @@ else{
                         foreach($data as $cle => $valeur)
                         {
                           // echo $cle ,' : ', $valeur;
-                          if($cle == '[prenom_utilisateur]'){ echo $valeur; }
+                          if($cle == '[prenom_utilisateur]'){ $valeur=str_replace(' ','',$valeur); echo $valeur; }
                         }
                        }
          ?>"
