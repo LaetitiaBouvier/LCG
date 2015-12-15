@@ -2,6 +2,7 @@ header
 {
 	border-bottom: 1px solid #333;
 }
+
 #recherche_avancee, #s_inscrire a, #creer_un_evenement a,#rechercher
 {
 	font-family: Arial Black;
@@ -23,8 +24,8 @@ header
 
 #bloc_titre_principal ul
 {
-	min-width: 450px;
-	width: 40%;
+	min-width: 300px;
+	width: 24%;
 	float: right;
 }
 #bloc_titre_principal li
@@ -171,6 +172,7 @@ header
 	display:inherit;
 	border-radius:2px;
 	line-height: 1.15;
+	font-family: Arial Black
 }
 
 #se_connecter ul li:hover
@@ -191,4 +193,12 @@ header
 #se_connecter li:hover ul
 {
 	max-height:15em;
+}
+#se_connecter input[type=text] {
+  width: 50%;
+  border-radius:10px;
+}
+#se_connecter input[type=password] {
+  width: 50%;
+  border-radius:10px;
 }
