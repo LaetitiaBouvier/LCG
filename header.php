@@ -49,7 +49,6 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 		<header>
 
 <?php
-echo "<div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></div>";
 if (!isset($_SESSION['id_utilisateur']))
 {
   include("signinup.html");
@@ -62,7 +61,7 @@ else
 ?>
 
 		  <div id="barre_recherche">
-
+        <div id='bloc_titre_principal'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></div>
         <form method="post" action="page_fictive.php" id="bloc_barre_de_recherche">
           <li id="creer_un_evenement"><a href="Create-Event.php">Créer un événement</a></li>
            <input type="search" name="barre_de_recherche" id="barre_de_recherche" size="50" placeholder=" Rechercher un membre ou un événement" />
