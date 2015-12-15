@@ -1,7 +1,7 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idUtilisateur"] = 52;
+	$_SESSION["idUtilisateur"] = 54;
 
 	if(isset($_SESSION["idUtilisateur"])){
 	  $ID = $_SESSION["idUtilisateur"];
@@ -11,6 +11,15 @@
 	}
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Pseudo_Utilisateur]'){ $pseudo = $valeur; echo $pseudo;}
+	}
+
 	$req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
 	$req->execute(array($ID));
 
@@ -69,14 +78,44 @@
 
 	<body>
 		<centralform>
-		<h2> <!-- Pseudo !--> </h2>
+		<h2> <?php echo $pseudo ?></h2>
 
 
 <!-- photo !-->
 
+<img src="show-image.php" title="Mon image"/>
+
+<?php
+try{
+    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+}
+catch(Exception $e){
+        die('Erreur : '.$e->getMessage());
+}
+
+$reponse = $bdd->query("SELECT avatar_utilisateur FROM utilisateur_table WHERE id_utilisateur =$ID");
+
+while ($donnees = $reponse->fetch())
+{
+	//header('Content-type: images/png');
+  echo '<img src="'.$donnees['avatar_utilisateur'].'">';
+}
+
+$reponse->closeCursor();
+
+//$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise");
+//$result = mysqli_query($connect, "SELECT avatar_utilisateur FROM utilisateur_table WHERE id_utilisateur=$ID");
+//header("content-type: ".mysql_result($result, 0, 0));
+//echo mysql_result($result, 0, 1);
+
+?>
+
+
+
 <fieldset>
 <legend>Informations personnelles</legend>
 
+</br>
 </br> Nom : <?php echo $nom ?>
 </br> Prénom : <?php echo $prenom ?>
 </br>
@@ -88,11 +127,11 @@
 </fieldset>
 
 <fieldset>
-</br> <legend>Evenements auxquels <!-- pseudo !--> participe :</legend>
+</br> <legend>Evenements auxquels <?php echo $pseudo ?> participe :</legend>
 </br>
 </fieldset>
 
 <fieldset>
-</br> <legend>Evenements que <!-- pseudo !--> organise :</legend>
+</br> <legend>Evenements que <?php echo $pseudo ?> organise :</legend>
 </br>
 </fieldset>
