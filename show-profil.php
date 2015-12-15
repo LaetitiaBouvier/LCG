@@ -76,6 +76,7 @@
 
 <fieldset>
 <legend>Informations personnelles</legend>
+
 </br> Nom : <?php echo $nom ?>
 </br> Prénom : <?php echo $prenom ?>
 </br>

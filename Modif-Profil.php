@@ -17,13 +17,16 @@ if(isset($_SESSION["idUtilisateur"])){
 
 	$data = $req->fetch();
 
+  var_dump($data);
+
 	foreach($data as $cle => $valeur)
 	{
 		 //echo $cle ,' : ', $valeur;
-		 if($cle == '[nom_utilisateur]'){ $nom = $valeur;}
-		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; }
+		 if($cle == '[nom_utilisateur]'){ $nom = $valeur; echo $nom;}
+		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; echo $prenom;}
+     if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; echo $adresse;}
      if($cle == '[genre]'){ if($valeur == 'H'){ $genre = 'checked="checked"'; } }
-     
+
 
 	}
 }
@@ -53,32 +56,24 @@ else{
       <fieldset>
       <legend>Informations personnelles</legend>
 
-      Nom <em>*</em>: <input type="text" name="nom" required="" value="
-
-          <?php
+      Nom <em>*</em>: <input type="text" name="nom" required="" value="<?php
             if($ID != -1){
                            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                            $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
                            $req->execute(array($ID));
 
                            $data = $req->fetch();
-                           //print_r($data);
 
                            foreach($data as $cle => $valeur)
                            {
-                              //echo $cle ,' : ', $valeur;
-                              if($cle == '[nom_utilisateur]'){
-                                $valeur=preg_replace('/\s/', '', $valeur);
-                                echo $valeur;
-                              }
+                              if($cle == '[nom_utilisateur]'){ echo $valeur; }
                            }
                          }
            ?>"
         /><br/>
       <br/>
 
-      Prénom <em>*</em>: <input type="text" name="prenom" required="" value="
-        <?php
+      Prénom <em>*</em>: <input type="text" name="prenom" required="" value="<?php
           if($ID != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT prenom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -98,8 +93,7 @@ else{
       <br/>
 
       Sexe :
-      <input type="radio" name="genre" value="H"
-        <?php
+      <input type="radio" name="genre" value="H"<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -117,8 +111,7 @@ else{
                           }
                        }
          ?>/> Homme
-      <input type="radio" name="genre" value="F"
-        <?php
+      <input type="radio" name="genre" value="F"<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -138,8 +131,7 @@ else{
         ?>/> Femme
       <br/><br/>
 
-      Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="
-        <?php
+      Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Date_Naissance FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -163,8 +155,7 @@ else{
       <fieldset>
       <legend>Informations de connexion</legend>
 
-      Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="
-        <?php
+      Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -188,8 +179,7 @@ else{
 
       Présentez-vous en quelques lignes : <br />
       <div>
-      <textarea id="desc" name="description" >
-        <?php
+      <textarea id="desc" name="description" ><?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -221,8 +211,7 @@ else{
       <fieldset>
       <legend>Contact</legend>
 
-      Code postal<em>*</em> : <input type="text" name="adresse" maxlength="5" required="" value="
-        <?php
+      Code postal<em>*</em> : <input type="text" name="adresse" maxlength="5" required="" value="<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -241,8 +230,7 @@ else{
         /><br/>
       <br/>
 
-      Adresse e-mail<em>*</em> : <input type="email" name="mail" required="" value="
-        <?php
+      Adresse e-mail<em>*</em> : <input type="email" name="mail" required="" value="<?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -271,8 +259,7 @@ else{
 
       Catégories qui vont m'interesser le plus (plusieurs réponses possibles): <br>
       <br/>
-      <input type="checkbox" name="categorieFavorite1" value="Festivals"
-        <?php
+      <input type="checkbox" name="categorieFavorite1" value="Festivals"<?php
           if($ID != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -289,8 +276,7 @@ else{
                       }
         ?>
        />Festivals<br>
-      <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"
-        <?php
+      <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"<?php
           if($ID != -1){
                       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                       $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -307,8 +293,7 @@ else{
                     }
           //if (isset($_POST['categorieFavorite2'])){if($_POST['categorieFavorite2']=='Repas/Banquets') echo 'checked="checked"';}
         ?>/>Repas/Banquets<br>
-      <input type="checkbox" name="categorieFavorite3" value="Concerts"
-        <?php
+      <input type="checkbox" name="categorieFavorite3" value="Concerts"<?php
         if($ID != -1){
                     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                     $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -325,8 +310,7 @@ else{
                   }
           //if (isset($_POST['categorieFavorite3'])){if($_POST['categorieFavorite3']=='Concerts') echo 'checked="checked"';}
         ?>/>Concerts<br>
-      <input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés"
-        <?php
+      <input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés"<?php
           if($ID != -1){
                     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                     $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -343,8 +327,7 @@ else{
                   }
           //if (isset($_POST['categorieFavorite4'])){if($_POST['categorieFavorite4']=='Brocantes/Marchés') echo 'checked="checked"';}
         ?>/>Brocantes/Marchés<br>
-      <input type="checkbox" name="categorieFavorite5" value="Soirées"
-        <?php
+      <input type="checkbox" name="categorieFavorite5" value="Soirées"<?php
           if($ID != -1){
                   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                   $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -361,8 +344,7 @@ else{
                 }
           //if (isset($_POST['categorieFavorite5'])){if($_POST['categorieFavorite5']=='Soirées') echo 'checked="checked"';}
         ?>/>Soirées<br>
-      <input type="checkbox" name="categorieFavorite6" value="Conférences"
-        <?php
+      <input type="checkbox" name="categorieFavorite6" value="Conférences"<?php
           if($ID != -1){
                 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                 $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -379,8 +361,7 @@ else{
               }
           //if (isset($_POST['categorieFavorite6'])){if($_POST['categorieFavorite6']=='Conférences') echo 'checked="checked"';}
         ?> />Conférences<br>
-      <input type="checkbox" name="categorieFavorite7" value="Humanitaires"
-        <?php
+      <input type="checkbox" name="categorieFavorite7" value="Humanitaires"<?php
           if($ID != -1){
               $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
               $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -397,8 +378,7 @@ else{
             }
           //if (isset($_POST['categorieFavorite7'])){if($_POST['categorieFavorite7']=='Humanitaires') echo 'checked="checked"';}
         ?>/>Humanitaires<br>
-      <input type="checkbox" name="categorieFavorite8" value="Sportifs"
-        <?php
+      <input type="checkbox" name="categorieFavorite8" value="Sportifs"<?php
           if($ID != -1){
             $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
             $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -415,8 +395,7 @@ else{
           }
           //if (isset($_POST['categorieFavorite8'])){if($_POST['categorieFavorite8']=='Sportifs') echo 'checked="checked"';}
         ?>/>Sportifs<br>
-      <input type="checkbox" name="categorieFavorite9" value="Manifestations"
-        <?php
+      <input type="checkbox" name="categorieFavorite9" value="Manifestations"<?php
           if($ID != -1){
             $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
             $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
