@@ -6,7 +6,7 @@
 <?php
 
 session_start() ;
-$_SESSION["idUtilisateur"] = 52;
+$_SESSION["idUtilisateur"] = 35;
 
 if(isset($_SESSION["idUtilisateur"])){
   $ID = $_SESSION["idUtilisateur"];

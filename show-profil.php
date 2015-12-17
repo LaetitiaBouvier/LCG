@@ -1,7 +1,7 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idUtilisateur"] = 54;
+	$_SESSION["idUtilisateur"] = 35;
 
 	if(isset($_SESSION["idUtilisateur"])){
 	  $ID = $_SESSION["idUtilisateur"];
@@ -83,9 +83,10 @@
 
 <!-- photo !-->
 
-<img src="show-image.php" title="Mon image"/>
+<img src="show-image.php?id=<?php echo $ID ?>" title="Mon image"/>
 
 <?php
+/*
 try{
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 }
@@ -101,14 +102,20 @@ while ($donnees = $reponse->fetch())
   echo '<img src="'.$donnees['avatar_utilisateur'].'">';
 }
 
+
+
 $reponse->closeCursor();
 
 //$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise");
 //$result = mysqli_query($connect, "SELECT avatar_utilisateur FROM utilisateur_table WHERE id_utilisateur=$ID");
 //header("content-type: ".mysql_result($result, 0, 0));
 //echo mysql_result($result, 0, 1);
-
+*/
 ?>
+
+
+
+
 
 
 
