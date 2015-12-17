@@ -17,7 +17,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Pseudo_Utilisateur]'){ $pseudo = $valeur; echo $pseudo;}
+		if($cle == '[Pseudo_Utilisateur]'){ $pseudo = $valeur; }
 	}
 
 	$req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -26,7 +26,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; echo $adresse;}
+		if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; }
 	}
 
 	$req = $bdd->prepare('SELECT Nom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -35,7 +35,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Nom_Utilisateur]'){ $nom = $valeur; echo $nom;}
+		if($cle == '[Nom_Utilisateur]'){ $nom = $valeur; }
 	}
 
 	$req = $bdd->prepare('SELECT Prenom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -44,7 +44,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Prenom_Utilisateur]'){ $prenom = $valeur; echo $prenom; }
+		if($cle == '[Prenom_Utilisateur]'){ $prenom = $valeur; }
 	}
 
 	$req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -53,7 +53,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Mail_Utilisateur]'){ $mail = $valeur; echo $mail; }
+		if($cle == '[Mail_Utilisateur]'){ $mail = $valeur; }
 	}
 
 	$req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -62,7 +62,7 @@
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Description_Utilisateur]'){ $desc = $valeur; echo $desc; }
+		if($cle == '[Description_Utilisateur]'){ $desc = $valeur; }
 	}
 
 ?>

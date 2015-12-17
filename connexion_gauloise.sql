@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 03 Décembre 2015 à 11:02
+-- Généré le :  Jeu 17 Décembre 2015 à 11:00
 -- Version du serveur :  5.6.27-log
 -- Version de PHP :  5.5.12
 
@@ -19,6 +19,229 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `connexion_gauloise`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `abonnercategorie_table`
+--
+
+CREATE TABLE IF NOT EXISTS `abonnercategorie_table` (
+  `ID_AbonnementCategorie` int(10) NOT NULL AUTO_INCREMENT,
+  `ID_UtilisateurAbonne` int(10) NOT NULL,
+  `ID_CategorieCible` int(10) NOT NULL,
+  PRIMARY KEY (`ID_AbonnementCategorie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `abonnerutilisateur_table`
+--
+
+CREATE TABLE IF NOT EXISTS `abonnerutilisateur_table` (
+  `ID_AbonnementUtilisateur` int(10) NOT NULL AUTO_INCREMENT,
+  `ID_UtilisateurAbonne` int(10) NOT NULL,
+  `ID_UtilisateurCible` int(10) NOT NULL,
+  PRIMARY KEY (`ID_AbonnementUtilisateur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_table`
+--
+
+CREATE TABLE IF NOT EXISTS `categorie_table` (
+  `ID_Categorie` int(10) NOT NULL,
+  `Nom_Categorie` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cibler_table`
+--
+
+CREATE TABLE IF NOT EXISTS `cibler_table` (
+  `ID_Cible` int(11) NOT NULL,
+  `ID_Evenement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cible_table`
+--
+
+CREATE TABLE IF NOT EXISTS `cible_table` (
+  `ID_Cible` int(11) NOT NULL,
+  `BasAge_Cible` int(11) NOT NULL,
+  `Enfant_Cible` int(11) NOT NULL,
+  `Ados_Cible` int(11) NOT NULL,
+  `Adulte_Cible` int(11) NOT NULL,
+  `Senior_Cible` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `date_table`
+--
+
+CREATE TABLE IF NOT EXISTS `date_table` (
+  `ID_Date` int(11) NOT NULL,
+  `JourDebut_Date` date NOT NULL,
+  `JourFin_Date` date NOT NULL,
+  `HeureDebut_Date` int(11) NOT NULL,
+  `HeureFin_Date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement_table`
+--
+
+CREATE TABLE IF NOT EXISTS `evenement_table` (
+  `Nom_Evenement` varchar(32) NOT NULL,
+  `Organisateur_Evenement` varchar(32) NOT NULL,
+  `Image_Evenement` blob NOT NULL,
+  `Video_Evenement` blob NOT NULL,
+  `JourDebut_Evenement` date NOT NULL,
+  `JourFin_Evenement` date NOT NULL,
+  `HeureDebut_Evenement` time NOT NULL,
+  `HeureFin_Evenement` time NOT NULL,
+  `Description_Evenement` varchar(500) NOT NULL,
+  `NbMaxParticipants_Evenement` int(8) NOT NULL,
+  `Categorie_Evenement` varchar(32) NOT NULL,
+  `Cibles_Evenement` varchar(255) NOT NULL,
+  `NomLieu_Evenement` varchar(32) NOT NULL,
+  `AdresseRue_Evenement` varchar(255) NOT NULL,
+  `AdressePostal_Evenement` varchar(5) NOT NULL,
+  `AdresseVille_Evenement` varchar(32) NOT NULL,
+  `AdresseDepartement_Evenement` varchar(32) NOT NULL,
+  `AdresseRegion_Evenement` varchar(32) NOT NULL,
+  `Payant_Evenement` tinyint(1) NOT NULL,
+  `LienSiteWeb_Evenement` varchar(500) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID_Evenement`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `evenement_table`
+--
+
+INSERT INTO `evenement_table` (`Nom_Evenement`, `Organisateur_Evenement`, `Image_Evenement`, `Video_Evenement`, `JourDebut_Evenement`, `JourFin_Evenement`, `HeureDebut_Evenement`, `HeureFin_Evenement`, `Description_Evenement`, `NbMaxParticipants_Evenement`, `Categorie_Evenement`, `Cibles_Evenement`, `NomLieu_Evenement`, `AdresseRue_Evenement`, `AdressePostal_Evenement`, `AdresseVille_Evenement`, `AdresseDepartement_Evenement`, `AdresseRegion_Evenement`, `Payant_Evenement`, `LienSiteWeb_Evenement`, `ID_Evenement`) VALUES
+('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '22:00:00', '23:30:00', 'test', 20, 'Repas/Banquets', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', 0, 'http://google.com', 1),
+('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '19:00:00', '22:00:00', 'test', 20, 'Soirées', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', 0, 'http://google.com', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lieu_table`
+--
+
+CREATE TABLE IF NOT EXISTS `lieu_table` (
+  `ID_Lieu` int(10) NOT NULL,
+  `CodePostal_Lieu` int(5) NOT NULL,
+  `Region_Lieu` varchar(255) NOT NULL,
+  `Departement_Lieu` varchar(255) NOT NULL,
+  `Ville_Lieu` varchar(255) NOT NULL,
+  `Salle_Lieu` varchar(255) NOT NULL,
+  `NumeroRue_Lieu` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `localiser_table`
+--
+
+CREATE TABLE IF NOT EXISTS `localiser_table` (
+  `ID_Evenement` int(10) NOT NULL,
+  `ID_Lieu` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `media_table`
+--
+
+CREATE TABLE IF NOT EXISTS `media_table` (
+  `ID_Media` int(10) NOT NULL,
+  `URL_Media` varchar(255) NOT NULL,
+  `Fichier_Media` blob NOT NULL,
+  `Type_Media` varchar(255) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message_table`
+--
+
+CREATE TABLE IF NOT EXISTS `message_table` (
+  `ID_Message` int(10) NOT NULL,
+  `ID_Utilisateur` int(10) NOT NULL,
+  `Sujet_Message` varchar(255) NOT NULL,
+  `DatePublication_Message` date NOT NULL,
+  `PseudoAuteur_Message` varchar(255) NOT NULL,
+  `Contenu_Message` varchar(255) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL,
+  `ID_Topic` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `noter_table`
+--
+
+CREATE TABLE IF NOT EXISTS `noter_table` (
+  `ID_Utilisateur` int(10) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `organiser_table`
+--
+
+CREATE TABLE IF NOT EXISTS `organiser_table` (
+  `ID_Utilisateur` int(10) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `participation_table`
+--
+
+CREATE TABLE IF NOT EXISTS `participation_table` (
+  `ID_Utilisateur` int(10) NOT NULL,
+  `ID_Evenement` int(10) NOT NULL,
+  `NbReservations_Participation` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `topic_table`
+--
+
+CREATE TABLE IF NOT EXISTS `topic_table` (
+  `ID_Topic` int(10) NOT NULL,
+  `ID_Utilisateur` int(10) NOT NULL,
+  `ID_Message` int(10) NOT NULL,
+  `Titre_Topic` varchar(255) NOT NULL,
+  `DateCreation_Topic` date NOT NULL,
+  `PseudoAuteur_Topic` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -46,15 +269,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur_table` (
   `OKplanning_Utilisateur` binary(1) NOT NULL,
   `OKAlertesEvenements_Utilisateur` binary(1) NOT NULL,
   `OKAlertesAbonnements_Utilisateur` binary(1) NOT NULL,
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+  `ID_Utilisateur` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID_Utilisateur`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Contenu de la table `utilisateur_table`
 --
 
-INSERT INTO `utilisateur_table` (`Pseudo_Utilisateur`, `MDP_Utilisateur`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Avatar_Utilisateur`, `Description_Utilisateur`, `Adresse_Utilisateur`, `Mail_Utilisateur`, `Genre_Utilisateur`, `Date_Naissance`, `Categorie_Favorite`, `Date_Inscription`, `Admin_Utilisateur`, `OKadresse_Utilisateur`, `OKmail_Utilisateur`, `OKNomPrenom_Utilisateur`, `OKplanning_Utilisateur`, `OKAlertesEvenements_Utilisateur`, `OKAlertesAbonnements_Utilisateur`, `id`) VALUES
+INSERT INTO `utilisateur_table` (`Pseudo_Utilisateur`, `MDP_Utilisateur`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Avatar_Utilisateur`, `Description_Utilisateur`, `Adresse_Utilisateur`, `Mail_Utilisateur`, `Genre_Utilisateur`, `Date_Naissance`, `Categorie_Favorite`, `Date_Inscription`, `Admin_Utilisateur`, `OKadresse_Utilisateur`, `OKmail_Utilisateur`, `OKNomPrenom_Utilisateur`, `OKplanning_Utilisateur`, `OKAlertesEvenements_Utilisateur`, `OKAlertesAbonnements_Utilisateur`, `ID_Utilisateur`) VALUES
 ('test', 'testtest', 'test', 'test', '', 'test', 78200, 'test@test', '', '1993-01-22', 'Festivals Concerts Soirées ', '2015-12-01', '0', '\0', '\0', '\0', '\0', '1', '\0', 33);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
