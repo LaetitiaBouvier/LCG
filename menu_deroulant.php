@@ -5,7 +5,7 @@
     <nav>
       <div id="menu">
         <ul id="menu-demo2">
-          <li><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></li>
+          <li><a href='Accueil.php'><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></a></li>
           <li><a href="Accueil.php"> Accueil </a></li>
 
           <li><a href="@"> Catégories </a></li>
