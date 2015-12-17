@@ -8,7 +8,7 @@
       <div id="logof">
         <img src="Images_code/facebook.png" class="facebook" />
         <img src="Images_code/logo-twitter.png" class="twitter"/>
-        <img src="Images_code/instagram-logo-vector-image1.png" class="insta" />
+        <img src="Images_code/instagram-logo-vector-image.png" class="insta" />
         <img src="Images_code/google-plus-logo-transparent.png" class="google"/>
       </div>
 
