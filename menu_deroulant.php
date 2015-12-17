@@ -6,7 +6,7 @@
       <div id="menu">
         <ul id="menu-demo2">
           <li><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></li>
-          <li><a href="@">Accueil </a></li>
+          <li><a href="Accueil.php"> Accueil </a></li>
 
           <li><a href="@"> Catégories </a></li>
 
@@ -33,7 +33,7 @@
             </ul>
           </li>
 
-          <li> <a href="map.png"><img src="Images_code/map.png" class="carte" width=120px/></a> </li>
+          <li> <a href="Page_Map.php"><img src="Images_code/map.png" class="carte" width=120px/></a> </li>
           <li><a href="calendrier.png"> <img src="Images_code/calendrier.png" class="calendrier" width=110px/> </a></li>
         </ul>
       </div>
