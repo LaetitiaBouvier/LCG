@@ -126,9 +126,8 @@ $categorieFavorite = "";
 
   // ADRESSE EMAIL VISIBLE
     if(isset($_POST['mailOK']) && !empty($_POST['mailOK']))
-      { $mailOK=$_POST['mailOK'];
-      if($mailOK != 1)
-        { $mailOK == 0; }
+      {
+        $mailOK = $_POST['mailOK'];
       }
     else
       { $mailOK = NULL;}
@@ -136,9 +135,8 @@ $categorieFavorite = "";
 
   // CODE POSTAL VISIBLE
     if(isset($_POST['adresseOK']) && !empty($_POST['adresseOK']))
-      { $adresseOK=$_POST['adresseOK'];
-      if($adresseOK != 1)
-        { $adresseOK == 0; }
+      {
+        $adresseOK = $_POST['adresseOK'];
       }
     else
       { $adresseOK = NULL;}
@@ -146,9 +144,8 @@ $categorieFavorite = "";
 
 // NOM ET PRENOM VISIBLES
     if(isset($_POST['nomPrenomOK']) && !empty($_POST['nomPrenomOK']))
-      { $nomPrenomOK=$_POST['nomPrenomOK'];
-      if($nomPrenomOK != 1)
-        { $nomPrenomOK == 0; }
+      {
+        $nomPrenomOK = $_POST['nomPrenomOK'];
       }
     else
       { $nomPrenomOK = NULL;}
@@ -156,9 +153,8 @@ $categorieFavorite = "";
 
   // PLANNING PERSO VISIBLE
     if(isset($_POST['planningOK']) && !empty($_POST['planningOK']))
-      { $planningOK=$_POST['planningOK'];
-      if($planningOK != 1)
-        { $planningOK == 0; }
+      {
+        $planningOK = $_POST['planningOK'];
       }
     else
       { $planningOK = NULL;}
@@ -166,9 +162,8 @@ $categorieFavorite = "";
 
   // SPAM EMAIL EVENEMENTS
     if(isset($_POST['AlertesEvenementsOK']) && !empty($_POST['AlertesEvenementsOK']))
-      { $AlertesEvenementsOK=$_POST['AlertesEvenementsOK'];
-      if($AlertesEvenementsOK != 1)
-        { $AlertesEvenementsOK == 0; }
+      {
+        $AlertesEvenementsOK = $_POST['AlertesEvenementsOK'];
       }
     else
       { $AlertesEvenementsOK = NULL;}
@@ -176,9 +171,8 @@ $categorieFavorite = "";
 
   // SPAM EMAIL ABONNEMENTS
     if(isset($_POST['AlertesAbonnementsOK']) && !empty($_POST['AlertesAbonnementsOK']))
-      { $AlertesAbonnementsOK=$_POST['AlertesAbonnementsOK'];
-      if($AlertesAbonnementsOK != 1)
-        { $AlertesAbonnementsOK == 0; }
+      {
+        $AlertesAbonnementsOK = $_POST['AlertesAbonnementsOK'];
       }
     else
       { $AlertesAbonnementsOK = NULL;}

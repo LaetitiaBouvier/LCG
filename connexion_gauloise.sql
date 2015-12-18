@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 17 Décembre 2015 à 11:00
+-- Généré le :  Ven 18 Décembre 2015 à 14:55
 -- Version du serveur :  5.6.27-log
 -- Version de PHP :  5.5.12
 
@@ -45,6 +45,17 @@ CREATE TABLE IF NOT EXISTS `abonnerutilisateur_table` (
   `ID_UtilisateurCible` int(10) NOT NULL,
   PRIMARY KEY (`ID_AbonnementUtilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `abonner_table`
+--
+
+CREATE TABLE IF NOT EXISTS `abonner_table` (
+  `ID_Utilisateur` int(10) NOT NULL,
+  `ID_Categorie` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -122,19 +133,28 @@ CREATE TABLE IF NOT EXISTS `evenement_table` (
   `AdresseVille_Evenement` varchar(32) NOT NULL,
   `AdresseDepartement_Evenement` varchar(32) NOT NULL,
   `AdresseRegion_Evenement` varchar(32) NOT NULL,
-  `Payant_Evenement` tinyint(1) NOT NULL,
+  `Payant_Evenement` varchar(3) NOT NULL,
   `LienSiteWeb_Evenement` varchar(500) NOT NULL,
   `ID_Evenement` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID_Evenement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `evenement_table`
 --
 
 INSERT INTO `evenement_table` (`Nom_Evenement`, `Organisateur_Evenement`, `Image_Evenement`, `Video_Evenement`, `JourDebut_Evenement`, `JourFin_Evenement`, `HeureDebut_Evenement`, `HeureFin_Evenement`, `Description_Evenement`, `NbMaxParticipants_Evenement`, `Categorie_Evenement`, `Cibles_Evenement`, `NomLieu_Evenement`, `AdresseRue_Evenement`, `AdressePostal_Evenement`, `AdresseVille_Evenement`, `AdresseDepartement_Evenement`, `AdresseRegion_Evenement`, `Payant_Evenement`, `LienSiteWeb_Evenement`, `ID_Evenement`) VALUES
-('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '22:00:00', '23:30:00', 'test', 20, 'Repas/Banquets', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', 0, 'http://google.com', 1),
-('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '19:00:00', '22:00:00', 'test', 20, 'Soirées', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', 0, 'http://google.com', 2);
+('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '22:00:00', '23:30:00', 'test', 20, 'Repas/Banquets', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', '0', 'http://google.com', 1),
+('test', '', 0x5374c3a97068616e652e4a5047, '', '1993-01-22', '1993-01-22', '19:00:00', '22:00:00', 'test', 20, 'Soirées', 'Bas-âge Enfants ', 'test', '666', '78200', 'Paris', '', '', '0', 'http://google.com', 2),
+('testX', 'test', 0x6275675f667265655f636f64652e6a7067, '', '2015-12-18', '2015-12-19', '18:00:00', '20:00:00', 'testX testX testX ', 20, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Paris', '', '', '\0', 'http://google.com', 3),
+('testOui', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '12:00:00', '12:00:00', 'tfusdgZDBOzdhlnsxj', 20, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Magnanville', '', '', '\0', 'http://google.com', 4),
+('testNON', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '12:00:00', '12:00:00', 'izudksc', 22, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Magnanville', '', '', '\0', 'http://google.com', 5),
+('testOUI', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '12:00:00', '12:00:00', 'pirusdcnpzfnsd', 23, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Magnanville', '', '', '\0', 'http://google.com', 6),
+('testbisOUI', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '12:00:00', '12:00:00', 'khbcqkhsdn', 1, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Magnanville', '', '', '', 'http://google.com', 7),
+('testbisbisOUI', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '12:00:00', '12:00:00', 'kdhnscm', 111, 'Soirées', 'Adultes ', 'Chez Pierre Philippe', '666', '78200', 'Magnanville', '', '', 'non', 'http://google.com', 8),
+('sfxc', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-12', '1993-01-12', '23:43:00', '03:23:00', 'sdc', 20, 'Soirées', 'Bas-âge Seniors ', 'sdcx', 'sdc', '78200', '', '', '', '', 'http://google.com', 9),
+('ezudxb', 'test', 0x6275675f667265655f636f64652e6a7067, '', '1993-01-22', '1993-01-22', '22:22:00', '22:22:00', 'ierdnj', 22, 'Concerts', 'Ados ', 'ersd', '666', '78200', 'Magnanville', '', '', '', 'http://google.com', 10),
+('ibhk', 'test', 0x6275675f667265655f636f64652e6a7067, '', '2022-02-22', '2022-02-22', '22:22:00', '22:22:00', 'rdedsqrcdsx', 22, 'Soirées', 'Adultes ', 'efcefc', '666', '78200', 'Magnanville', '', '', 'oui', 'http://google.com', 11);
 
 -- --------------------------------------------------------
 
@@ -262,23 +282,26 @@ CREATE TABLE IF NOT EXISTS `utilisateur_table` (
   `Date_Naissance` date NOT NULL,
   `Categorie_Favorite` varchar(32) DEFAULT NULL,
   `Date_Inscription` date NOT NULL,
-  `Admin_Utilisateur` binary(1) NOT NULL,
-  `OKadresse_Utilisateur` binary(1) NOT NULL,
-  `OKmail_Utilisateur` binary(1) NOT NULL,
-  `OKNomPrenom_Utilisateur` binary(1) NOT NULL,
-  `OKplanning_Utilisateur` binary(1) NOT NULL,
-  `OKAlertesEvenements_Utilisateur` binary(1) NOT NULL,
-  `OKAlertesAbonnements_Utilisateur` binary(1) NOT NULL,
+  `Admin_Utilisateur` varchar(3) NOT NULL,
+  `OKadresse_Utilisateur` varchar(3) NOT NULL,
+  `OKmail_Utilisateur` varchar(3) NOT NULL,
+  `OKNomPrenom_Utilisateur` varchar(3) NOT NULL,
+  `OKplanning_Utilisateur` varchar(3) NOT NULL,
+  `OKAlertesEvenements_Utilisateur` varchar(3) NOT NULL,
+  `OKAlertesAbonnements_Utilisateur` varchar(3) NOT NULL,
   `ID_Utilisateur` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID_Utilisateur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Contenu de la table `utilisateur_table`
 --
 
 INSERT INTO `utilisateur_table` (`Pseudo_Utilisateur`, `MDP_Utilisateur`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Avatar_Utilisateur`, `Description_Utilisateur`, `Adresse_Utilisateur`, `Mail_Utilisateur`, `Genre_Utilisateur`, `Date_Naissance`, `Categorie_Favorite`, `Date_Inscription`, `Admin_Utilisateur`, `OKadresse_Utilisateur`, `OKmail_Utilisateur`, `OKNomPrenom_Utilisateur`, `OKplanning_Utilisateur`, `OKAlertesEvenements_Utilisateur`, `OKAlertesAbonnements_Utilisateur`, `ID_Utilisateur`) VALUES
-('test', 'testtest', 'test', 'test', '', 'test', 78200, 'test@test', '', '1993-01-22', 'Festivals Concerts Soirées ', '2015-12-01', '0', '\0', '\0', '\0', '\0', '1', '\0', 33);
+('test', 'testtest', 'test', 'test', '', 'test', 78200, 'test@test', '', '1993-01-22', 'Festivals Concerts Soirées ', '2015-12-01', '0', '\0', '\0', '\0', '\0', '1', '\0', 33),
+('testX', 'testtest', 'testX', 'testX', '', 'test test test   ', 78200, 'test@test', 'H', '1993-01-22', 'Festivals Concerts ', '2015-12-17', '0', '\0', '\0', '\0', '\0', '1', '1', 34),
+('testS', 'testtest', 'testS', 'testS', 0x6275675f667265655f636f64652e6a7067, 'testS testS testS', 78200, 'test@test', 'H', '1993-01-22', 'Festivals Concerts ', '2015-12-17', '0', '\0', '\0', '\0', '\0', '1', '1', 35),
+('minute', 'testtest', 'minute', 'minute', '', '  minute minute minute !', 78200, 'test@test', 'H', '1993-01-22', 'Festivals Concerts ', '2015-12-18', '0', 'non', 'oui', 'oui', 'non', 'oui', 'non', 36);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

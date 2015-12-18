@@ -202,10 +202,9 @@ Heure : <input type="time" name="heurefin"/><br/>
 Nombre maximum de participants : <input type="text" name="participants"/><br/> <br/>
 
 Evénement payant <em>*</em>:
-<select >
-<option selected="selected" value="oui">oui</option>
-<option value="non">non</option>
-</select><br/><br/>
+<input type="radio" name="payant" value="oui"/> oui
+<input type="radio" name="payant" value="non"/> non
+<br/><br/>
 
 Lien vers le site web de l'événement (facultatif):
 <input type="url" value="http://" name="website"> <br />

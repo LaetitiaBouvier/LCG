@@ -120,16 +120,20 @@ function insert_events()
   else{ $participants = NULL;}
 
   //EVENEMENT PAYANT
-    $payant=0;
+  if(isset($_POST['payant'])			&& !empty($_POST['payant'])) {
+      $payant = $_POST['payant'];
+    }
+  else{ $payant = NULL;}
+
   // LIEN
   if(isset($_POST['website'])			&& !empty($_POST['website']))
     { $website=$_POST['website'];}
   else{ $website = NULL; }
 
-    $organisateur = NULL;
+    $organisateur = "test";
     // ENREGISTREMENT DANS LA BASE DE DONNEES
 
-         mysqli_query($connect, "insert into evenement_table (Nom_Evenement, Organisateur, Image_Evenement, Video_Evenement, JourDebut_Evenement,
+         mysqli_query($connect, "insert into evenement_table (Nom_Evenement, Organisateur_Evenement, Image_Evenement, Video_Evenement, JourDebut_Evenement,
                                   JourFin_Evenement, HeureDebut_Evenement, HeureFin_Evenement, Description_Evenement, NbMaxParticipants_Evenement,
                                   Categorie_Evenement, Cibles_Evenement, NomLieu_Evenement, AdresseRue_Evenement, AdressePostal_Evenement,
                                   AdresseVille_Evenement, AdresseDepartement_Evenement, AdresseRegion_Evenement, Payant_Evenement,
