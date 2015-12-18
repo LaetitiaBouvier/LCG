@@ -92,7 +92,7 @@ em {
 }
 
 input[type=text] {
-  width: 20%; /largeur du champs
+  width: 40%; /largeur du champs
   height: 25px;
   font-size: 25px; //taille du texte dans la barre
 }
