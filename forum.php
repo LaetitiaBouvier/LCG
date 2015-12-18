@@ -128,7 +128,7 @@ while ($donnees = $req->fetch())
       </table>
 
 			<br />
-			<a href='forum.php' ><img src='images/rightarrow.jpg' alt='flèche gauche' /></a>
+			<a href='forum.php' ><img src='images/leftarrow.jpg' alt='flèche gauche' /></a>
 			<a href='forum.php' id="rightarrow"><img src='images/rightarrow.jpg' alt='flèche droite' /></a>
 
 			<br />
