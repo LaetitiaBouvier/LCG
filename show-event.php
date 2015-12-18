@@ -1,7 +1,7 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idEvenement"] = 35;
+	$_SESSION["idEvenement"] = 1;
 
 	if(isset($_SESSION["idEvenement"])){
 	  $ID = $_SESSION["idEvenement"];
@@ -110,13 +110,58 @@
 		if($cle == '[NbMaxParticipants_Evenement]'){ $max = $valeur; }
 	}
 
-	$req = $bdd->prepare('SELECT 	NbMaxParticipants_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req = $bdd->prepare('SELECT 	Payant_Evenement FROM evenement_table WHERE ID_Evenement = ?');
 	$req->execute(array($ID));
 
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[NbMaxParticipants_Evenement]'){ $max = $valeur; }
+		if($cle == '[Payant_Evenement]'){ $payant = $valeur; }
+	}
+
+	$req = $bdd->prepare('SELECT 	LienSiteWeb_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[LienSiteWeb_Evenement]'){ $web = $valeur; }
+	}
+
+	$req = $bdd->prepare('SELECT 	JourDebut_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[JourDebut_Evenement]'){ $jourDebut = $valeur; }
+	}
+
+	$req = $bdd->prepare('SELECT 	JourFin_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[JourFin_Evenement]'){ $jourFin = $valeur; }
+	}
+
+	$req = $bdd->prepare('SELECT 	HeureDebut_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[HeureDebut_Evenement]'){ $heureDebut = $valeur; }
+	}
+
+	$req = $bdd->prepare('SELECT 	HeureFin_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[HeureFin_Evenement]'){ $heureFin = $valeur; }
 	}
 
 ?>
@@ -132,7 +177,7 @@
 
 	<body>
 		<centralform>
-		<h2> <?php echo $pseudo ?></h2>
+		<h2> <?php echo $nom ?></h2>
 
 
 <!-- photo !-->
@@ -142,26 +187,26 @@
 
 </br>
 </br> Nom de l'Evenement : <?php echo $nom ?>
-</br> Description de l'Evenement : <?php echo $prenom ?>
+</br> Description de l'Evenement : <?php echo $description ?>
 </br>
-</br> Categorie : <?php echo $adresse ?>
+</br> Categorie : <?php echo $categorie ?>
 </br>
-</br> Publique ciblé : <?php echo $mail ?>
+</br> Publique ciblé : <?php echo $cibles ?>
 </br>
-</br> Lieu de l'endroit / la salle : <?php echo $desc ?>
-</br> N° de rue :
-</br> Code postal :
-</br> Ville :
-</br> Département :
-</br>	Region :
+</br> Lieu de l'endroit / la salle : <?php echo $lieu ?>
+</br> N° de rue : <?php echo $rue ?>
+</br> Code postal : <?php echo $postal ?>
+</br> Ville : <?php echo $ville ?>
+</br> Département : <?php echo $departement ?>
+</br>	Region : <?php echo $region ?>
 </br>
-</br> Début de l'Evement : à :
-</br> Fin de l'Evement : à :
+</br> Début de l'Evement : <?php echo $jourDebut ?> à : <?php echo $heureDebut ?>
+</br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
 </br>
-</br> Nombre maximum de participants :
-</br> Evénement payant :
+</br> Nombre maximum de participants : <?php echo $max ?>
+</br> Evénement payant : <?php echo $payant ?>
 </br>
-</br> Lien vers le site web de l'événement :
+</br> Lien vers le site web de l'événement : <?php echo $max ?>
 </br>
 </br>
 
