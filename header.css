@@ -17,15 +17,16 @@ header
 }
 #barre_de_recherche
 {
-	margin-left: 10%;
+	margin-left: 8%;
 	height:35px;
 	border-radius: 10px;
+	width:24.5%;
 }
 
 #bloc_titre_principal ul
 {
-	min-width: 450px;
-	width: 40%;
+	min-width: 300px;
+	width: 24%;
 	float: right;
 }
 #bloc_titre_principal li
@@ -110,7 +111,7 @@ header
 	display: inline-block;
 	background-color: #990000;
 	margin-top: 10px;
-	margin-left: 10%;
+	margin-left: 8%;
 	padding-left: 40px;
 	white-space: nowrap;
 }
@@ -172,6 +173,7 @@ header
 	display:inherit;
 	border-radius:2px;
 	line-height: 1.15;
+	font-family: Arial Black
 }
 
 #se_connecter ul li:hover
@@ -192,4 +194,12 @@ header
 #se_connecter li:hover ul
 {
 	max-height:15em;
+}
+#se_connecter input[type=text] {
+  width: 50%;
+  border-radius:10px;
+}
+#se_connecter input[type=password] {
+  width: 50%;
+  border-radius:10px;
 }

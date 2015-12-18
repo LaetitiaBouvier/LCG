@@ -1,6 +1,7 @@
 header
 {
 	border-bottom: 1px solid #333;
+	background-color: #fff;
 }
 
 #recherche_avancee, #s_inscrire a, #creer_un_evenement a,#rechercher
@@ -199,7 +200,9 @@ header
 
 /* ------------------- MENU NAV ------------------- */
 
-
+nav{
+  float: left;
+}
 
 #menu
 {
@@ -339,6 +342,9 @@ color:#ffffff;
 }
 
 /*---------------- BODY --------------------*/
+body{
+  background-color: #d7d7d7;
+}
 
 #slideshow {
 	position: relative;
