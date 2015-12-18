@@ -28,7 +28,10 @@ Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required=
 Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="<?php if (isset($_POST['pseudo'])){echo $_POST['pseudo'];} ?>"/> <br/>
 <br/>
 
-Avatar/Photo de profil :  <input type="file" name="avatar" id="avatar" value=""/><br />
+Avatar/Photo de profil :
+<!-- On limite le fichier à 100Ko -->
+<input type="hidden" name="MAX_FILE_SIZE" value="100000">
+<input type="file" name="avatar" id="avatar" value=""/><br />
 <br />
 
 Présentez-vous en quelques lignes : <br />
