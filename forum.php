@@ -4,10 +4,31 @@ session_start();
 $_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
 echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
 
+if (isset($_POST['nouveau_titre_topic']))
+{
+	$bdd1 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+	$req = $bdd1->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,1,NOW())');
+	$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
+}
 
-$bdd1 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd1->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,1,NOW())');
-$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
+if (!isset($_GET['f']))
+{
+	header("Location: forum.php?f=1");
+}
+
+if (isset($_POST['leftarrow']))
+{
+	$_GET['f']--;
+	echo "oui";
+}
+elseif (isset($_POST['rightarrow']))
+{
+	$_GET['f']++;
+	echo "non";
+}
+
+$page1 = 0;
+$page2 = $page1 + 25;
 
 ?>
 
@@ -78,11 +99,6 @@ $req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur
 			width: 100%;
 		}
 
-		#rightarrow
-		{
-			float: right;
-		}
-
 
 		</style>
 	</head>
@@ -105,9 +121,6 @@ $req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur
 
 echo '<tr><th>Sujet</th><th>Auteur</th><th>NB</th><th>Dernier MSG</th>';
 
-$page1 = 0;
-$page2 = $page1 + 25;
-
 $bdd2 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd2->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page1, $page2");
 $req->execute(array($page1, $page2));
@@ -128,8 +141,13 @@ while ($donnees = $req->fetch())
       </table>
 
 			<br />
-			<a href='forum.php' ><img src='images/leftarrow.png' alt='flèche gauche' /></a>
-			<a href='forum.php' id="rightarrow"><img src='images/rightarrow.png' alt='flèche droite' /></a>
+
+			<form action="forum.php" method="POST">
+
+	      <input type="submit" name="leftarrow" value="<" />
+				<input type="submit" name="rightarrow" value=">" />
+
+	    </form>
 
 			<br />
 			<br />
