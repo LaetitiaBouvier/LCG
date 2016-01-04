@@ -1,14 +1,22 @@
 <?php
 
-	session_start() ;
-	$_SESSION["idEvenement"] = 1;
-
 	if(isset($_SESSION["idEvenement"])){
 	  $ID = $_SESSION["idEvenement"];
 	}
 	else{
 	  $ID = -1;
 	}
+
+	if(isset($_GET["IDE"])){
+			$ID = $_GET["IDE"];
+	}
+	else{
+		$ID = -1;
+	}
+
+?>
+
+<?php
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 	$req = $bdd->prepare('SELECT Nom_Evenement FROM evenement_table WHERE 	ID_Evenement = ?');
@@ -170,7 +178,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 	<head>
-		<title> INSCRIPTION </title>
+		<title> Mon Evènement </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" href="Style-form.css"/>
 	</head>
