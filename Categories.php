@@ -68,15 +68,15 @@
 
 <br>
 <br/>
-<a href="@"> Festivals 					</a>	<br/>
-<a href="@"> Repas/Banquets 		</a>	<br/>
-<a href="@"> Concerts 					</a>	<br/>
-<a href="@"> Brocantes/Marchés 	</a>	<br/>
-<a href="@"> Soirées 						</a>	<br/>
-<a href="@"> Conférences 				</a>	<br/>
-<a href="@"> Humanitaires 			</a>	<br/>
-<a href="@"> Sportifs 					</a>	<br/>
-<a href="@"> Manifestations 		</a>	<br/>
+<a href="show-1-categorie.php"> Festivals 					</a>	<br/>
+<a href="show-1-categorie.php"> Repas/Banquets 		</a>	<br/>
+<a href="show-1-categorie.php"> Concerts 					</a>	<br/>
+<a href="show-1-categorie.php"> Brocantes/Marchés 	</a>	<br/>
+<a href="show-1-categorie.php"> Soirées 						</a>	<br/>
+<a href="show-1-categorie.php"> Conférences 				</a>	<br/>
+<a href="show-1-categorie.php"> Humanitaires 			</a>	<br/>
+<a href="show-1-categorie.php"> Sportifs 					</a>	<br/>
+<a href="show-1-categorie.php"> Manifestations 		</a>	<br/>
 
 <br/>
 

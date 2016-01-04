@@ -20,7 +20,7 @@
           <li><a href="@"> Mes Evenements </a>
             <ul>
               <li><a href="@"> Créer un évènement </a></li>
-              <li><a href="@"> Modifier mes évènemements </a></li>
+              <li><a href="show-all-events.php"> Modifier mes évènemements </a></li>
             </ul>
           </li>
 

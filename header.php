@@ -27,17 +27,24 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 
   $dataID = $reqbis->fetch();
 
-  if (!$dataPseudo)
+  if(isset($_SESSION['ID_Utilisateur']) && isset($_SESSION['pseudo_utilisateur']))
   {
-  	echo 'Mauvais identifiant ou mot de passe!';
+    echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . " Bienvenue sur La Connexion Gauloise!";
   }
   else
   {
+    if (!$dataPseudo)
+    {
+    	echo 'Mauvais identifiant ou mot de passe!';
+    }
+    else
+    {
 
-  	session_start();
-  	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
-  	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
-  	echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . " Bienvenue sur La Connexion Gauloise!";
+    	session_start();
+    	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
+    	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
+    	echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . " Bienvenue sur La Connexion Gauloise!";
+    }
   }
 }
 
