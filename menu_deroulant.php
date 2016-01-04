@@ -8,7 +8,7 @@
           <li><a href='Accueil.php'><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></a></li>
           <li><a href="Accueil.php"> Accueil </a></li>
 
-          <li><a href="@"> Catégories </a></li>
+          <li><a href="Categories.php"> Catégories </a></li>
 
           <li><a href="@"> Mes Abonnements </a>
             <ul>

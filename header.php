@@ -20,18 +20,24 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
   $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
-  $data = $req->fetch();
+  $dataPseudo = $req->fetch();
 
-  if (!$data)
+  $reqbis = $bdd->prepare('SELECT ID_Utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
+  $reqbis->execute(array($_POST['pseudo'], $mdp_hache));
+
+  $dataID = $reqbis->fetch();
+
+  if (!$dataPseudo)
   {
   	echo 'Mauvais identifiant ou mot de passe!';
   }
   else
   {
+
   	session_start();
-  	$_SESSION['id_utilisateur'] = $data['id_utilisateur'];
-  	$_SESSION['pseudo_utilisateur'] = $data['pseudo_utilisateur'];
-  	echo 'Bonjour ' . $data['pseudo_utilisateur'] . "Bienvenue sur La Connexion Gauloise!";
+  	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
+  	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
+  	echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . " Bienvenue sur La Connexion Gauloise!";
   }
 }
 
