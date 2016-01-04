@@ -47,15 +47,22 @@
 
   foreach($req as $row)
   {
-  $pseudo = $row['Pseudo_Utilisateur'];
+    $pseudo = $row['Pseudo_Utilisateur'];
   }
 
   $req = $bdd->prepare('SELECT Nom_Evenement FROM evenement_table WHERE Organisateur_Evenement ="'.$pseudo.'"');
   $req->execute();
 
-  foreach($req as $row)
-  {
-  echo $row['Nom_Evenement'], '<br/>';
+  foreach($req as $row){
+
+    $reqbis = $bdd->prepare('SELECT ID_Evenement FROM evenement_table WHERE Organisateur_Evenement ="'.$pseudo.'" AND Nom_Evenement ="'.$row['Nom_Evenement'].'"');
+    $reqbis->execute();
+
+    foreach($reqbis as $rowbis){
+
+        $IDE = $rowbis['ID_Evenement'];
+        echo '<a href="show-event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
+    }
   }
 
 ?>
