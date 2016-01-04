@@ -1,13 +1,14 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idUtilisateur"] = 35;
 
-	if(isset($_SESSION["idUtilisateur"])){
-	  $ID = $_SESSION["idUtilisateur"];
+	if(isset($_SESSION["ID_Utilisateur"])){
+	  $ID = $_SESSION["ID_Utilisateur"];
 	}
 	else{
 	  $ID = -1;
+
+		echo "Vous ne vous êtes pas connecté !!!";
 	}
 
 ?>
@@ -60,10 +61,30 @@
 
 <form name="categories" method="post" action="" enctype="multiplart/form-data">
 
-<p>    Vous pouvez vous abonner ou vous désabonner à une ou plusieurs catégories ! <br/> </p>
+<p>    Vous pouvez consulter les évènements liés à un catégorie en cliquant sur la catégorie de votre choix ! <br/> </p>
+
+<fieldset>
+<legend>Liste des categories :</legend>
+
+<br>
+<br/>
+<a href="@"> Festivals 					</a>	<br/>
+<a href="@"> Repas/Banquets 		</a>	<br/>
+<a href="@"> Concerts 					</a>	<br/>
+<a href="@"> Brocantes/Marchés 	</a>	<br/>
+<a href="@"> Soirées 						</a>	<br/>
+<a href="@"> Conférences 				</a>	<br/>
+<a href="@"> Humanitaires 			</a>	<br/>
+<a href="@"> Sportifs 					</a>	<br/>
+<a href="@"> Manifestations 		</a>	<br/>
+
 <br/>
 
+</fieldset>
 
+<p>    Vous pouvez vous aussi abonner ou vous désabonner à une ou plusieurs catégories ! <br/> </p>
+
+<br/>
 <fieldset>
 <legend>Liste des categories :</legend>
 
@@ -105,6 +126,8 @@
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
     $req = $bdd->prepare('UPDATE utilisateur_table SET Categorie_Favorite="'.$categorieFavorite.'" WHERE ID_Utilisateur ="'.$ID.'"');
     $req->execute();
+
+		header("location:Confirm-Modif-Categories.html");
 
   }
 ?>
