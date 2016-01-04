@@ -10,6 +10,10 @@
 	  $ID = -1;
 	}
 
+?>
+
+<?php
+
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
   $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
   $req->execute(array($ID));
