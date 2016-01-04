@@ -2,7 +2,7 @@
 
 try
 {
-  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+  new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 }
 
 catch (Exception $e)

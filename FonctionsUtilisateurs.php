@@ -123,7 +123,7 @@ function insert_users()
 
 
 // GENRE / SEXE UTILISATEUR
-    if(isset($_POST['genre'])							 && !empty($_POST['genre']))
+    if( isset($_POST['genre'])							 && !empty($_POST['genre']))
       {	$genre=$_POST['genre'];}
     else
       { $genre = NULL;}
