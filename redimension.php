@@ -1,7 +1,7 @@
-
+<!-- FICHIER QUI FONCTIONNE SI L'IMAGE SE TROUVE DANS LE DOSSIER Images_code/IMG_Event_Original/... !-->
 <?php
 
-//$nomphoto = "acc.png";
+$nomphoto = "Cute Geek Box.jpg";  // A METTRE EN RELATION AVEC LA BDD
 
 // On récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
 $extension = strrchr($nomphoto, '.');
