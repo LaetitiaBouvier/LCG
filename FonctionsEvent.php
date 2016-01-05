@@ -10,6 +10,13 @@ if (!$connect)
   { printf("Echec de la connexion : %s\n", mysqli_connect_error());
     exit(); }
 
+
+function update_events()
+{
+  
+}
+
+
 //insérer un nouveau profil dans la table "utilisateur_table" de la base de données "Connexion_Gauloise"
 function insert_events()
   { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
