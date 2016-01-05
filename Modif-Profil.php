@@ -13,10 +13,11 @@
 if(isset($_SESSION["ID_Utilisateur"])){
   $ID = $_SESSION["ID_Utilisateur"];
 
+/*
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 	$req = $bdd->prepare('SELECT * FROM utilisateur_table WHERE id_utilisateur = ?');
 	$req->execute(array($ID));
-/*
+
 	$data = $req->fetch();
 
   var_dump($data);
@@ -28,6 +29,8 @@ if(isset($_SESSION["ID_Utilisateur"])){
 		 if($cle == '[prenom_utilisateur]'){ $prenom = $valeur; echo $prenom;}
      if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; echo $adresse;}
      if($cle == '[genre]'){ if($valeur == 'H'){ $genre = 'checked="checked"'; } }
+
+
 	}
   */
 }
@@ -51,7 +54,7 @@ else{
 
  	<body>
  		<h2> Formulaire de modification de profil </h2>
-      <form name="inscription" method="post" action="Page_Confirm_Modification.php" enctype="multiplart/form-data">
+      <form name="inscription" method="post" action="Page_Modif-Profil.php" enctype="multiplart/form-data">
 
       <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
       <br/>
