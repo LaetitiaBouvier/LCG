@@ -17,7 +17,7 @@ if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
   $mdp_hache = $_POST['mdp'];
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
-  $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
+  $req = $bdd->prepare('SELECT pseudo_utilisateur,id_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $req->execute(array($_POST['pseudo'], $mdp_hache));
 
   $data = $req->fetch();

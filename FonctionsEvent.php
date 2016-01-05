@@ -32,7 +32,7 @@ function insert_events()
 
 
   // AJOUTER UNE PHOTO
-    if(isset($_POST['photo'])						 && !empty($_POST['photo']))
+    if(isset($_FILES['photo'])						 && !empty($_FILES['photo']))
       {	$photo=$_POST['photo'];}
     else
       { print "La photo de l'evenement n'est pas configurée ! ";}

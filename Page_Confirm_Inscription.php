@@ -20,6 +20,10 @@
 		  <p> Votre inscription a bien été prise en compte ! </p>
 
 			<br/>
+
+			<br/><div>
+				<a href="Accueil.php" onclick="window.open('http://localhost/github/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
+			</div><br/>
 		</div>
 
 		</br></br></br>

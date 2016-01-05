@@ -142,7 +142,7 @@
 }
 #cat1 img, #cat2 img ,#cat3 img{
 	float: right;
-	width: 16%;
+	<!--width: 16%;--!>
 	display: inline-block;
 	margin: 0; padding:0;
 }

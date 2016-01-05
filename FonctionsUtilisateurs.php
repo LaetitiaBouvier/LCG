@@ -97,7 +97,7 @@ function insert_users()
     else
       { $description = " ";}
 
-// AVATAR / PHOTO DE PROFIL UTILISATEUR
+/*// AVATAR / PHOTO DE PROFIL UTILISATEUR
     if(isset($_FILES['avatar'])
       // On fait un tableau contenant les extensions autorisées.
       $extensions = array('.png', '.gif', '.jpg', '.jpeg');
@@ -120,7 +120,7 @@ function insert_users()
       }
     else
       { $avatar = NULL;}
-
+      */
 
 // GENRE / SEXE UTILISATEUR
     if( isset($_POST['genre'])							 && !empty($_POST['genre']))
@@ -210,7 +210,7 @@ $categorieFavorite = "";
                                       '$adresseOK', '$mailOK', '$nomPrenomOK', '$planningOK', '$AlertesEvenementsOK', '$AlertesAbonnementsOK')")
                               or die('Error: ' . mysqli_error($connect));
 
-      header("location:Confirm-Create-Profil.html");
+      header("location:Page_Confirm_Inscription.php");
 		  }
     else
       { print "Les informations entrées sont incorrectes ! "; }
