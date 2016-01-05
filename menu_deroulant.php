@@ -12,14 +12,14 @@
 
           <li><a> Mes Abonnements </a>
             <ul>
-              <li><a href="CategoriesAbo.php"> Catégories </a></li>
+              <li><a href="Page_CategoriesAbo.php"> Catégories </a></li>
               <li><a href="@"> Profils </a></li>
             </ul>
           </li>
 
           <li><a> Mes Evenements </a>
             <ul>
-              <li><a href="Create-Event.php"> Créer un évènement </a></li>
+              <li><a href="Page_Create-Event.php"> Créer un évènement </a></li>
               <li><a href="@"> Modifier mes évènemements </a></li>
             </ul>
           </li>
@@ -28,7 +28,7 @@
 
           <li><a href="@"> Profil </a>
             <ul>
-              <li><a href="Modif-Profil.php"> Modifier mon profil </a></li>
+              <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
               <li><a href="@"> Mes participations </a></li>
             </ul>
           </li>
