@@ -1,6 +1,9 @@
+
 <?php
+/*
   require 'FonctionsUtilisateurs.php';
   insert_users();
+  */
 ?>
 
 <?php
@@ -48,7 +51,7 @@ else{
 
  	<body>
  		<h2> Formulaire de modification de profil </h2>
-      <form name="inscription" method="post" action="Create-Profil.php" enctype="multiplart/form-data">
+      <form name="inscription" method="post" action="Modif-Profil.php" enctype="multiplart/form-data">
 
       <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
       <br/>
@@ -155,7 +158,7 @@ else{
       <fieldset>
       <legend>Informations de connexion</legend>
 
-      Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="<?php
+      Pseudo <em>*</em>: <?php
           if($ID != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -170,8 +173,8 @@ else{
                             if($cle == '[Pseudo_Utilisateur]'){  echo $valeur; }
                           }
                        }
-        ?>"
-        /> <br/>
+      ?>
+      <br/>
       <br/>
 
       Avatar/Photo de profil :  <input type="file" name="avatar" id="avatar" value=""/><br />
