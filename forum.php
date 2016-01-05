@@ -6,29 +6,14 @@ echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexi
 
 if (isset($_POST['nouveau_titre_topic']))
 {
-	$bdd1 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-	$req = $bdd1->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,1,NOW())');
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+	$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
 	$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
 }
 
-if (!isset($_GET['f']))
-{
-	header("Location: forum.php?f=1");
-}
-
-if (isset($_POST['leftarrow']))
-{
-	$_GET['f']--;
-	echo "oui";
-}
-elseif (isset($_POST['rightarrow']))
-{
-	$_GET['f']++;
-	echo "non";
-}
-
-$page1 = 0;
-$page2 = $page1 + 25;
+$page = $_GET['f'] - 1;
+$leftarrow = $_GET['f'] - 25;
+$rightarrow = $_GET['f'] + 25;
 
 ?>
 
@@ -57,7 +42,7 @@ $page2 = $page1 + 25;
 		td
 		{
 			border: 1px solid black;
-			font-size: 1.2em;
+			font-size: 1.15em;
 		}
 
 		.impair
@@ -99,6 +84,30 @@ $page2 = $page1 + 25;
 			width: 100%;
 		}
 
+		#taillesujet
+		{
+			width: 470px;
+		}
+
+		#taillepseudo
+		{
+			width: 130px;
+		}
+
+		#leftarrow
+		{
+			display: inline-block;
+			margin-left: 20px;
+			margin-bottom: 30px;
+		}
+
+		#rightarrow
+		{
+			display: inline-block;
+			float: right;
+			margin-right: 20px;
+		}
+
 
 		</style>
 	</head>
@@ -119,35 +128,45 @@ $page2 = $page1 + 25;
 
 <?php
 
-echo '<tr><th>Sujet</th><th>Auteur</th><th>NB</th><th>Dernier MSG</th>';
+echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
-$bdd2 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd2->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page1, $page2");
-$req->execute(array($page1, $page2));
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$req = $bdd->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+$req->execute(array($page));
 
 $i = 0;
 
-while ($donnees = $req->fetch())
+while ($data = $req->fetch())
 {
 	$i++;
 
 ($i%2 == 1)?$classe="impair":$classe="pair";
 
-  echo '<tr class=' . $classe . '><td>' . htmlspecialchars($donnees['Titre_Topic']) . '</td><td>' . htmlspecialchars($donnees['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($donnees['NB_MSG']) . '</td><td>' . htmlspecialchars($donnees['Dernier_MSG']) . '</td></tr>';
+  echo '<tr class=' . $classe . '><td>' . htmlspecialchars($data['Titre_Topic']) . '</td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td>' . htmlspecialchars($data['Dernier_MSG']) . '</td></tr>';
 }
 
 ?>
 
       </table>
 
-			<br />
+<?php
 
-			<form action="forum.php" method="POST">
+$req = $bdd->query("SELECT COUNT(*) FROM forum_table");
+$nbtopic = $req->fetch();
+$limitetopic = $nbtopic[0] - 25;
 
-	      <input type="submit" name="leftarrow" value="<" />
-				<input type="submit" name="rightarrow" value=">" />
+if ($page != 0)
+{
+	echo '<form action="forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+}
 
-	    </form>
+if ($page < $limitetopic)
+{
+	echo '<form action="forum.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+}
+
+
+?>
 
 			<br />
 			<br />
@@ -157,7 +176,7 @@ while ($donnees = $req->fetch())
 
 			<h2 id="nouveau_topic">Nouveau Topic</h2>
 
-			<form action="forum.php" method="POST">
+			<form action="forum.php?f=1" method="POST">
 
 	      <p><input type="text" name="nouveau_titre_topic" id="nouveau_titre_topic" maxlength=50 placeholder="Saisir le titre du topic" size="300px" /></p>
 	      <p><textarea name="premier_message" id="premier_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>

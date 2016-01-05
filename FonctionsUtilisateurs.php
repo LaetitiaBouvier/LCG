@@ -97,7 +97,12 @@ function insert_users()
     else
       { $description = " ";}
 
+<<<<<<< HEAD
 /*// AVATAR / PHOTO DE PROFIL UTILISATEUR
+=======
+/*
+// AVATAR / PHOTO DE PROFIL UTILISATEUR
+>>>>>>> origin/master
     if(isset($_FILES['avatar'])
       // On fait un tableau contenant les extensions autorisées.
       $extensions = array('.png', '.gif', '.jpg', '.jpeg');
