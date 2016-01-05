@@ -8,7 +8,7 @@
           <li><a href='Accueil.php'><img src="Images_code/Logo_LCG.png" alt="logo" width=200px /></a></li>
           <li><a href="Accueil.php"> Accueil </a></li>
 
-          <li><a href="Categories.php"> Catégories </a></li>
+          <li><a href="Page_Categories.php"> Catégories </a></li>
 
           <li><a> Mes Abonnements </a>
             <ul>
@@ -17,10 +17,10 @@
             </ul>
           </li>
 
-          <li><a href="@"> Mes Evenements </a>
+          <li><a> Mes Evenements </a>
             <ul>
               <li><a href="Create-Event.php"> Créer un évènement </a></li>
-              <li><a href="show-all-events.php"> Modifier mes évènemements </a></li>
+              <li><a href="@"> Modifier mes évènemements </a></li>
             </ul>
           </li>
 
@@ -28,7 +28,7 @@
 
           <li><a href="@"> Profil </a>
             <ul>
-              <li><a href="@"> Modifier mon profil </a></li>
+              <li><a href="Modif-Profil.php"> Modifier mon profil </a></li>
               <li><a href="@"> Mes participations </a></li>
             </ul>
           </li>

@@ -36,10 +36,15 @@
   $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement FROM evenement_table');
   $req->execute();
 
+	$Ev = $_GET["Ev"];
+
   foreach($req as $row){
-    if( strstr($row['Categorie_Evenement'], "Festivals")){
-      echo "Nom_Evenement";
+    if( strstr($row['Categorie_Evenement'], $Ev)){
+
+			$IDE = $row['ID_Evenement'];
+			echo '<a href="show-event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
     }
+
   }
 
 ?>
