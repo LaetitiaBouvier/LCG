@@ -97,6 +97,7 @@ function insert_users()
     else
       { $description = " ";}
 
+/*
 // AVATAR / PHOTO DE PROFIL UTILISATEUR
     if(isset($_FILES['avatar'])
       // On fait un tableau contenant les extensions autorisées.
@@ -120,7 +121,7 @@ function insert_users()
       }
     else
       { $avatar = NULL;}
-
+*/
 
 // GENRE / SEXE UTILISATEUR
     if( isset($_POST['genre'])							 && !empty($_POST['genre']))

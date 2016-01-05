@@ -10,16 +10,16 @@
 
           <li><a href="Categories.php"> Catégories </a></li>
 
-          <li><a href="@"> Mes Abonnements </a>
+          <li><a> Mes Abonnements </a>
             <ul>
-              <li><a href="@"> Catégories </a></li>
+              <li><a href="CategoriesAbo.php"> Catégories </a></li>
               <li><a href="@"> Profils </a></li>
             </ul>
           </li>
 
           <li><a href="@"> Mes Evenements </a>
             <ul>
-              <li><a href="@"> Créer un évènement </a></li>
+              <li><a href="Create-Event.php"> Créer un évènement </a></li>
               <li><a href="show-all-events.php"> Modifier mes évènemements </a></li>
             </ul>
           </li>
