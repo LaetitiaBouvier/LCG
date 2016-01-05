@@ -34,7 +34,7 @@
           </li>
 
           <li> <a href="Page_Map.php"><img src="Images_code/map.png" class="carte" width=120px/></a> </li>
-          <li><a href="calendrier.png"> <img src="Images_code/calendrier.png" class="calendrier" width=110px/> </a></li>
+          <li><a href="Page_Calendrier.php"> <img src="Images_code/calendrier.png" class="calendrier" width=110px/> </a></li>
         </ul>
       </div>
     </nav>
