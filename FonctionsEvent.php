@@ -34,55 +34,33 @@ function insert_events()
 
 
   // AJOUTER UNE PHOTO
-  // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-  if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
-  {
-    // Testons si le fichier n'est pas trop gros
-    if ($_FILES['photo']['size'] <= 1000000)
-    {
-      // Testons si l'extension est autorisée
-      $infosfichier = pathinfo($_FILES['photo']['name']);
-      $extension_upload = $infosfichier['extension'];
-      $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-      if (in_array($extension_upload, $extensions_autorisees))
+    // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
+    if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
+    { $nomphoto=basename($_FILES['photo']['name'])."";
+      $photo="Images_code/IMG_Event_Original/".$nomphoto;
+
+      // Testons si le fichier n'est pas trop gros
+      if ($_FILES['photo']['size'] <= 1000000)
       {
-        $nomphoto = ''.basename($_FILES['photo']['name']);
-        // On peut valider le fichier et le stocker définitivement
-        move_uploaded_file($_FILES['photo']['tmp_name'], "".$nomphoto."");
+        // Testons si l'extension est autorisée
+        $infosfichier = pathinfo($_FILES['photo']['name']);
+        $extension_upload = $infosfichier['extension'];
+        $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+        if (in_array($extension_upload, $extensions_autorisees))
+        {
 
-        $photo="Images_code/IMG_Event_Original/".$nomphoto."";
-        $source = imagecreatefromjpeg("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+          // On peut valider le fichier et le stocker définitivement
+          move_uploaded_file($_FILES['photo']['tmp_name'], "".$nomphoto."");
 
-        $destination_mini = imagecreatetruecolor(270, 100); // On crée la miniature vide
+          include ("redimension.php");
 
-        $destination_large = imagecreatetruecolor(1000, 545); // On crée l'agrandissement vide
-
-        // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
-
-        $largeur_source = imagesx($source);
-        $hauteur_source = imagesy($source);
-
-        $largeur_destination_mini = imagesx($destination_mini);
-        $hauteur_destination_mini = imagesy($destination_mini);
-
-        $largeur_destination_large = imagesx($destination_large);
-        $hauteur_destination_large = imagesy($destination_large);
-
-        // On crée la miniature et l'agrandissement
-
-        imagecopyresampled($destination_mini, $source, 0, 0, 0, 0, $largeur_destination_mini, $hauteur_destination_mini, $largeur_source, $hauteur_source);
-
-        imagecopyresampled($destination_large, $source, 0, 0, 0, 0, $largeur_destination_large, $hauteur_destination_large, $largeur_source, $hauteur_source);
-
-        // On enregistre la miniature et l'agrandissement
-
-        imagejpeg($destination_mini, "Images_code/IMG_Event_Mini/".$nomphoto.".jpg");
-        imagejpeg($destination_large, "Images_code/IMG_Event_Large/".$nomphoto.".jpg");
-
-
+        }
+        else {echo ("le fichier doit être de format .jpg, .jpeg, .png ou .gif");}
       }
+      else {echo ("le fichier est trop volumineux");}
     }
-  }
+    //echo ("nomphoto : ".$nomphoto);    //affiche nomdelaphoto.extension
+    //echo ("urel photo : ".$photo);      //affiche urldelaphoto
     else
       { print "La photo de l'evenement n'est pas configurée ! ";}
 
@@ -190,7 +168,7 @@ function insert_events()
                                 values ('$nom', '$organisateur', '$photo','$video', '$datedeb', '$datefin', '$heuredeb','$heurefin','$description','$participants',
                                 '$categorie', '$cible', '$endroit', '$rue', '$CP', '$ville', '$departement', '$region', '$payant','$website')")
                                 or die('Error: ' . mysqli_error($connect));
-          header("location:Confirm-Create-Event.html");
+          header("location:Page_Confirm_Creation_Event.php");
 
   	mysqli_close($connect);
   }

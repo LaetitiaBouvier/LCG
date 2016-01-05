@@ -1,22 +1,24 @@
-<!-- switch ($imgtype)
-        {
-            case ".jpeg":
-            case ".jpg":
-                $source = imagecreatefromjpeg("Images_code/IMG_Event_Original/$nom_image.jpg");
-                break;
-            case ".gif":
-                $source = imagecreatefromgif("Images_code/IMG_Event_Original/$nom_image.gif");
-                break;
-            case ".png":
-                $source = imagecreatefrompng("Images_code/IMG_Event_Original/$nom_image.png");
-                break;!-->
 
 <?php
 
-$nomphoto = "festival.jpg";
+//$nomphoto = "acc.png";
 
-$source = imagecreatefromjpeg("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+// On récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
+$extension = strrchr($nomphoto, '.');
 
+switch ($extension)
+        {
+            case ".jpeg":
+            case ".jpg":
+                $source = imagecreatefromjpeg("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                break;
+            case ".gif":
+                $source = imagecreatefromgif("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                break;
+            case ".png":
+                $source = imagecreatefrompng("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                break;
+ }
 $destination_mini = imagecreatetruecolor(270, 100); // On crée la miniature vide
 
 $destination_large = imagecreatetruecolor(1000, 545); // On crée l'agrandissement vide
@@ -42,4 +44,5 @@ imagecopyresampled($destination_large, $source, 0, 0, 0, 0, $largeur_destination
 
 imagejpeg($destination_mini, "Images_code/IMG_Event_Mini/".$nomphoto.".jpg");
 imagejpeg($destination_large, "Images_code/IMG_Event_Large/".$nomphoto.".jpg");
+
 ?>
