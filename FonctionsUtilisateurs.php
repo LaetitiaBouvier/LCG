@@ -97,14 +97,14 @@ function insert_users()
     else
       { $description = " ";}
 
-// AVATAR / PHOTO DE PROFIL UTILISATEUR
+/*// AVATAR / PHOTO DE PROFIL UTILISATEUR
     if(isset($_FILES['avatar'])
       // On fait un tableau contenant les extensions autorisées.
       $extensions = array('.png', '.gif', '.jpg', '.jpeg');
       // On récupère la partie de la chaine à partir du dernier . pour connaître l'extension.
       $extension = strrchr($_FILES['avatar']['name'], '.');
       //Ensuite on teste
-      if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+      //if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
         {echo 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...'; }
       if ($_FILES['avatar']['error'] > 0)
         {echo "Erreur lors du transfert";}
@@ -120,7 +120,7 @@ function insert_users()
       }
     else
       { $avatar = NULL;}
-
+*/
 
 // GENRE / SEXE UTILISATEUR
     if( isset($_POST['genre'])							 && !empty($_POST['genre']))
