@@ -49,28 +49,17 @@
 
 ?>
 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+	<head>
+		<title> Categories </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="Style-form.css"/>
+	</head>
+
 <form name="categories" method="post" action="" enctype="multiplart/form-data">
-
-<p>    Vous pouvez consulter les évènements liés à un catégorie en cliquant sur la catégorie de votre choix ! <br/> </p>
-
-<fieldset>
-<legend>Liste des categories :</legend>
-
-<br>
-<br/>
-<a href="Page_show-1-categorie.php?Ev=Festivals"> 				Festivals 				</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Repas/Banquets"> 		Repas/Banquets 		</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Concerts"> 					Concerts 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Brocantes/Marchés"> Brocantes/Marchés </a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Soirées"> 					Soirées 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Conférences"> 			Conférences 			</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Humanitaires"> 			Humanitaires 			</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Sportifs"> 					Sportifs 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Manifestations"> 		Manifestations 		</a>	<br/>
-
-<br/>
-
-</fieldset>
 
 <p>    Vous pouvez vous aussi abonner ou vous désabonner à une ou plusieurs catégories ! <br/> </p>
 

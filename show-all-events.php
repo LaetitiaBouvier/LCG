@@ -1,10 +1,9 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idUtilisateur"] = 33;
 
-	if(isset($_SESSION["idUtilisateur"])){
-	  $ID = $_SESSION["idUtilisateur"];
+	if(isset($_SESSION["ID_Utilisateur"])){
+	  $ID = $_SESSION["ID_Utilisateur"];
 	}
 	else{
 	  $ID = -1;

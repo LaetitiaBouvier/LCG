@@ -8,6 +8,164 @@ if (!$connect)
   { printf("Echec de la connexion : %s\n", mysqli_connect_error());
     exit(); }
 
+    @@ -8,6 +8,159 @@ if (!$connect)
+      { printf("Echec de la connexion : %s\n", mysqli_connect_error());
+        exit(); }
+
+
+    function update_users()
+    {
+      $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+
+      if (isset($_POST['valider']) && $_POST['valider'] == "VALIDER MON PROFIL")
+      {
+        $cond = true;
+
+        // VERIFICATION DU NOM
+        if(isset($_POST['nom']) && !empty($_POST['nom'])){
+          $nom=$_POST['nom'];}
+        }else{ $cond = false; }
+
+
+        // VERIFICATION DU PRENOM
+        if(isset($_POST['prenom']) && !empty($_POST['prenom'])){
+          $prenom=$_POST['prenom'];}
+        }else{ $cond = false; }
+
+
+        // VERIFICATION DU GENRE
+        if( isset($_POST['genre']) && !empty($_POST['genre']))
+        {	$genre=$_POST['genre']; }
+        else
+        { $genre = NULL; }
+
+
+        // VERIFICATION DE LA DATE DE NAISSANCE
+        if(isset($_POST['dateNaissance']) && !empty($_POST['dateNaissance'])){
+          $dateNaissance=$_POST['dateNaissance'];
+        }else{ $cond = false; }
+
+
+        // VERIFICATION DE LA DESCRITPION
+        if(isset($_POST['description']) && !empty($_POST['description']))
+        {	$description=$_POST['description']; }
+        else
+        { $description = " "; }
+
+
+        // VERIFICATION DU MDP
+        if(isset($_POST['mdp']) && !empty($_POST['mdp']) && isset($_POST['confirm_mdp']) && !empty($_POST['confirm_mdp'])){
+
+          $mdp=$_POST['mdp'];
+          $confirm_mdp= $_POST['confirm_mdp'];
+
+          if($mdp != $confirm_mdp)
+          { $cond = false; print "Votre mot de passe est mal confirmé ! Veuillez réessayer ! ";}
+          if(strlen($mdp) <= 5)
+          { $cond = false; print "Votre mot de passe doit faire au moins 6 caractères ! Veuillez réessayer ! ";}
+
+        }else{ $cond = false; }
+
+
+        // VERIFICATION DE L'ADRESSE
+        if(isset($_POST['adresse']) && !empty($_POST['adresse']))
+        { $adresse=$_POST['adresse'];
+
+          if(strlen($adresse) != 5 AND !is_numeric($adresse))
+            { $cond = false; print "Votre adresse n'est pas configurée ! N'est pas un entier"; }
+        }
+
+
+        // VERIFICATION DU MAIL
+        if(isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['confirm_mail']) && !empty($_POST['confirm_mail']))
+        { $mail=$_POST['mail'];
+          $confirm_mail = $_POST['confirm_mail'];
+
+          if($mail != $confirm_mail)
+          { $cond = false; print "Votre mail est mal confirmé ! Veuillez réessayer ! "; }
+
+        }else{ $cond = false; print "Votre mail n'est pas configuré ! "; }
+
+
+        // CATEGORIES FAVORITES UTILSATEUR
+        $categorieFavorite = "";
+            if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))	{ $categorieFavorite 	.= $_POST['categorieFavorite1']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.= $_POST['categorieFavorite2']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.= $_POST['categorieFavorite3']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.= $_POST['categorieFavorite4']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.= $_POST['categorieFavorite5']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.= $_POST['categorieFavorite6']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.= $_POST['categorieFavorite7']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.= $_POST['categorieFavorite8']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+            if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.= $_POST['categorieFavorite9']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+
+
+          // ADRESSE EMAIL VISIBLE ?
+            if(isset($_POST['mailOK']) && !empty($_POST['mailOK']))
+            { $mailOK = $_POST['mailOK']; }
+            else
+            { $mailOK = NULL;}
+
+
+          // CODE POSTAL VISIBLE
+            if(isset($_POST['adresseOK']) && !empty($_POST['adresseOK']))
+            { $adresseOK = $_POST['adresseOK']; }
+            else
+            { $adresseOK = NULL; }
+
+
+        // NOM ET PRENOM VISIBLES
+            if(isset($_POST['nomPrenomOK']) && !empty($_POST['nomPrenomOK']))
+            { $nomPrenomOK = $_POST['nomPrenomOK']; }
+            else
+            { $nomPrenomOK = NULL; }
+
+
+          // PLANNING PERSO VISIBLE
+            if(isset($_POST['planningOK']) && !empty($_POST['planningOK']))
+            { $planningOK = $_POST['planningOK']; }
+            else
+            { $planningOK = NULL; }
+
+
+          // SPAM EMAIL EVENEMENTS
+            if(isset($_POST['AlertesEvenementsOK']) && !empty($_POST['AlertesEvenementsOK']))
+            { $AlertesEvenementsOK = $_POST['AlertesEvenementsOK']; }
+            else
+            { $AlertesEvenementsOK = NULL;}
+
+
+          // SPAM EMAIL ABONNEMENTS
+            if(isset($_POST['AlertesAbonnementsOK']) && !empty($_POST['AlertesAbonnementsOK']))
+            { $AlertesAbonnementsOK = $_POST['AlertesAbonnementsOK']; }
+            else
+            { $AlertesAbonnementsOK = NULL; }
+
+
+          // MAJ DANS LA BASE DE DONNEES
+          		if($cond == true)
+              {
+                $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                $req = $bdd->prepare('UPDATE utilisateur_table SET Nom_Utilisateur="'.$nom.'",
+                                                                   Prenom_Utilisateur="'.$prenom.'",
+                                                                   Genre_Utilisateur="'.$genre.'",
+                                                                   Date_Naissance="'.$dateNaissance'",
+                                                                   Description_Utilisateur="'.$description.'",
+
+                                      WHERE ID_Utilisateur ="'.$ID.'"');
+                $req->execute();
+
+                header("location:Confirm-Create-Profil.html");
+          		}
+              else
+              { print "Les informations entrées sont incorrectes ! "; }
+
+      }
+    }
+
+
+    
+
 //insérer un nouveau profil dans la table "utilisateur_table" de la base de données "Connexion_Gauloise"
 function insert_users()
   { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
