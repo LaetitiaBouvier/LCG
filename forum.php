@@ -6,8 +6,8 @@ echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexi
 
 if (isset($_POST['nouveau_titre_topic']))
 {
-	$bdd1 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-	$req = $bdd1->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,1,NOW())');
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+	$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
 	$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
 }
 
@@ -96,13 +96,14 @@ $rightarrow = $_GET['f'] + 25;
 
 		#leftarrow
 		{
-			display: inline;
+			display: inline-block;
 			margin-left: 20px;
+			margin-bottom: 30px;
 		}
 
 		#rightarrow
 		{
-			display: inline;
+			display: inline-block;
 			float: right;
 			margin-right: 20px;
 		}
@@ -129,19 +130,19 @@ $rightarrow = $_GET['f'] + 25;
 
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
-$bdd2 = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd2->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$req = $bdd->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 $req->execute(array($page));
 
 $i = 0;
 
-while ($donnees = $req->fetch())
+while ($data = $req->fetch())
 {
 	$i++;
 
 ($i%2 == 1)?$classe="impair":$classe="pair";
 
-  echo '<tr class=' . $classe . '><td>' . htmlspecialchars($donnees['Titre_Topic']) . '</td><td>' . htmlspecialchars($donnees['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($donnees['NB_MSG']) . '</td><td>' . htmlspecialchars($donnees['Dernier_MSG']) . '</td></tr>';
+  echo '<tr class=' . $classe . '><td>' . htmlspecialchars($data['Titre_Topic']) . '</td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td>' . htmlspecialchars($data['Dernier_MSG']) . '</td></tr>';
 }
 
 ?>
@@ -150,11 +151,11 @@ while ($donnees = $req->fetch())
 
 <?php
 
-$req = $bdd2->query("SELECT COUNT(*) FROM forum_table");
+$req = $bdd->query("SELECT COUNT(*) FROM forum_table");
 $nbtopic = $req->fetch();
 $limitetopic = $nbtopic[0] - 25;
 
-if ($page > 1)
+if ($page != 0)
 {
 	echo '<form action="forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
