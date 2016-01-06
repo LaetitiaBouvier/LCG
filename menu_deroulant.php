@@ -13,7 +13,7 @@
           <li><a> Mes Abonnements </a>
             <ul>
               <li><a href="Page_CategoriesAbo.php"> Catégories </a></li>
-              <li><a href="@"> Profils </a></li>
+              <li><a href="Page_show-all-profilsAbo.php"> Profils </a></li>
             </ul>
           </li>
 
