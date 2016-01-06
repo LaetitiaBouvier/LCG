@@ -1,6 +1,6 @@
 <?php
 	session_start() ;
-	$IDU = $_SESSION["ID_Utilisateur"];
+	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 
 	if(isset($_GET["IDE"])){
 			$ID = $_GET["IDE"];
@@ -13,7 +13,7 @@
 
 <?php
 
-	if (isset($_POST['valider']) && ($_POST['valider'] == "Participer à cet évènement")){
+	if (isset($_POST['valider']) && ($_POST['valider'] == "Participer/Ne plus participer à cet évènement")){
 
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 		$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
@@ -32,11 +32,19 @@
 																values ('$IDU', '$ID', '$NbReservations_Participation')")
 																or die('Error: ' . mysqli_error($connect));
 
-				echo "Votre participation est confirmée !";
+				echo "Vous participez bien à cet évènement !";
 
 				//header("location:Confirm-Participation-Event.php");
 		}else{
-			echo "Vous participez déjà à cet évènement !";
+
+			$NbReservations_Participation = 0;
+
+			$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+
+			mysqli_query($connect, "DELETE FROM participation_table WHERE ID_Utilisateur = $IDU AND ID_Evenement = $ID")
+															or die('Error: ' . mysqli_error($connect));
+
+			echo "Vous ne participez pas/plus à cet évènement !";
 		}
 	}
 ?>
@@ -214,10 +222,14 @@
 
 
 <!-- photo !-->
-<form name="inscription" method="post" action="Page_show-event.php?IDE=<?=$ID?>" enctype="multiplart/form-data">
-	<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
-		<br/><div id="valid"><input type="submit" name="valider" value="Participer à cet évènement"/></div><br/>
-</form>
+
+<?php if (isset($_SESSION["ID_Utilisateur"])): ?>
+	<form name="inscription" method="post" action="Page_show-event.php?IDE=<?=$ID?>" enctype="multiplart/form-data">
+		<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
+			<br/><div id="valid"><input type="submit" name="valider" value="Participer/Ne plus participer à cet évènement"/></div><br/>
+	</form>
+<?php else: ?>
+<?php endif; ?>
 
 
 <fieldset>

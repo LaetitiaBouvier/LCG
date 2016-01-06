@@ -7,13 +7,12 @@
 	}
 	else{
 	  $ID = -1;
-
-		echo "Vous ne vous êtes pas connecté !!!";
 	}
 
 ?>
 
 <?php
+if(isset($_SESSION["ID_Utilisateur"])){
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
   $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -47,6 +46,7 @@
   if( strstr($chaineCat, "Sportifs"           ))  { $OKSportifs = true;           }
   if( strstr($chaineCat, "Manifestations"     ))  { $OKManifestations = true;     }
 
+}
 ?>
 
 <form name="categories" method="post" action="" enctype="multiplart/form-data">
@@ -69,31 +69,6 @@
 <a href="Page_show-1-categorie.php?Ev=Manifestations"> 		Manifestations 		</a>	<br/>
 
 <br/>
-
-</fieldset>
-
-<p>    Vous pouvez vous aussi abonner ou vous désabonner à une ou plusieurs catégories ! <br/> </p>
-
-<br/>
-<fieldset>
-<legend>Liste des categories :</legend>
-
-<br>
-<br/>
-<input type="checkbox" name="categorieFavorite1" value="Festivals"          <?php if ($OKFestivals)         { echo 'checked="checked"'; }         ?>/>Festivals<br>
-<input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"     <?php if ($OKRespas_Banquets)   { echo 'checked="checked"'; }    ?>/>Repas/Banquets<br>
-<input type="checkbox" name="categorieFavorite3" value="Concerts"           <?php if ($OKConcerts)          { echo 'checked="checked"'; }          ?>/>Concerts<br>
-<input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés"  <?php if ($OKBroquante_Marchés) { echo 'checked="checked"'; } ?>/>Brocantes/Marchés<br>
-<input type="checkbox" name="categorieFavorite5" value="Soirées"            <?php if ($OKSoirées)           { echo 'checked="checked"'; }           ?>/>Soirées<br>
-<input type="checkbox" name="categorieFavorite6" value="Conférences"        <?php if ($OKConférences)       { echo 'checked="checked"'; }       ?>/>Conférences<br>
-<input type="checkbox" name="categorieFavorite7" value="Humanitaires"       <?php if ($OKHumanitaires)      { echo 'checked="checked"'; }      ?>/>Humanitaires<br>
-<input type="checkbox" name="categorieFavorite8" value="Sportifs"           <?php if ($OKSportifs)          { echo 'checked="checked"'; }          ?>/>Sportifs<br>
-<input type="checkbox" name="categorieFavorite9" value="Manifestations"     <?php if ($OKManifestations)    { echo 'checked="checked"'; }    ?>/>Manifestations<br>
-<br/>
-
-</fieldset>
-
-<br/><div id="valid"><input type="submit" name="valider" value="Valider mes selections"/></div><br/>
 
 </form>
 

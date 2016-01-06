@@ -42,7 +42,7 @@
     if( strstr($row['Categorie_Evenement'], $Ev)){
 
 			$IDE = $row['ID_Evenement'];
-			echo '<a href="show-event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
+			echo '<a href="Page_show-event.php?IDE='.$IDE.' ">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
     }
 
   }
