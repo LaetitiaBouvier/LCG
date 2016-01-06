@@ -1,14 +1,56 @@
 <?php
 
 	session_start() ;
+	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; } // ATTENTION : Ici $IDU correspond à l'ID de l'utilisateur connecté
 
 	if(isset($_GET['IDU'])){
-	  $ID = $_GET['IDU'];
+	  $ID = $_GET['IDU'];																													// ATTENTION : Ici 'IDU' correspond à l'ID de l'utilisateur recherché
 	}
 	else{
 	  $ID = -1;
 	}
 
+	?>
+
+	<?php
+
+		if (isset($_POST['valider']) && ($_POST['valider'] == "Suivre/Ne plus suivre cet utilisateur")){
+
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+			$req = $bdd->prepare('SELECT ID_UtilisateurAbonne FROM abonnerutilisateur_table WHERE ID_UtilisateurAbonne = ? AND ID_UtilisateurCible = ?');
+			$req->execute(array($IDU, $ID));
+
+			$data = $req->fetch();
+
+			if($data['ID_UtilisateurAbonne'] != $IDU){
+
+					$NbReservations_Participation = 0;
+
+					$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+
+					mysqli_query($connect, "insert into abonnerutilisateur_table (ID_UtilisateurAbonne, ID_UtilisateurCible)
+																	values ('$IDU', '$ID')")
+																	or die('Error: ' . mysqli_error($connect));
+
+					echo "Vous suivez bien cet utilisateur !";
+
+					//header("location:Confirm-Participation-Event.php");
+			}else{
+
+				$NbReservations_Participation = 0;
+
+				$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+
+				mysqli_query($connect, "DELETE FROM abonnerutilisateur_table WHERE ID_UtilisateurAbonne = $IDU AND ID_UtilisateurCible = $ID")
+																or die('Error: ' . mysqli_error($connect));
+
+				echo "Vous ne suivez pas/plus cet utilisateur !";
+			}
+		}
+	?>
+
+
+	<?php
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -82,6 +124,14 @@
 
 
 <!-- photo !-->
+
+<?php if (isset($_SESSION["ID_Utilisateur"])): ?>
+	<form name="inscription" method="post" action="Page_show-profil.php?IDU=<?=$ID?>" enctype="multiplart/form-data">
+		<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
+			<br/><div id="valid"><input type="submit" name="valider" value="Suivre/Ne plus suivre cet utilisateur"/></div><br/>
+	</form>
+<?php else: ?>
+<?php endif; ?>
 
 <img src="show-image.php?id=<?php echo $ID ?>" title="Mon image"/>
 
