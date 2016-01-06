@@ -1,6 +1,8 @@
 <!-- insertion de la fonction permettant d'ajouter des utilisateurs à la base de données !-->
 <?php
-	
+
+	session_start() ;
+
 	require 'FonctionsEvent.php';
 	insert_events();
 

@@ -60,7 +60,7 @@
     foreach($reqbis as $rowbis){
 
         $IDE = $rowbis['ID_Evenement'];
-        echo '<a href="show-event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
+        echo '<a href="Page_Modif-Event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
     }
   }
 
