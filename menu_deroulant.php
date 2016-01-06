@@ -21,6 +21,7 @@
             <ul>
               <li><a href="Page_Create-Event.php"> Créer un évènement </a></li>
               <li><a href="Page_show-all-events.php"> Modifier mes évènemements </a></li>
+              <li><a href="Page_show-all-eventsAbo.php"> Evènements auxquels je participe </a></li>
             </ul>
           </li>
 
@@ -29,7 +30,7 @@
           <li><a href="@"> Profil </a>
             <ul>
               <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
-              <li><a href="@"> Mes participations </a></li>
+              <li><a href="@"> Consulter mon profil </a></li>
             </ul>
           </li>
 
