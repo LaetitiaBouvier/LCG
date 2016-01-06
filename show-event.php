@@ -1,12 +1,5 @@
 <?php
 
-	if(isset($_SESSION["idEvenement"])){
-	  $ID = $_SESSION["idEvenement"];
-	}
-	else{
-	  $ID = -1;
-	}
-
 	if(isset($_GET["IDE"])){
 			$ID = $_GET["IDE"];
 	}

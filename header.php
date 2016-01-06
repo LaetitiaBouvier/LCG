@@ -76,7 +76,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 
 		  <div id="barre_recherche">
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></a></div>
-        <form method="post" action="page_fictive.php" id="bloc_barre_de_recherche">
+        <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
           <li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>
            <input type="search" name="barre_de_recherche" id="barre_de_recherche" size="50" placeholder=" Rechercher un membre ou un événement" />
 					 <input type="submit" id="rechercher" value="Rechercher"/>

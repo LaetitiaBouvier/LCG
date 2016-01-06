@@ -1,14 +1,14 @@
 <?php
 
 	session_start() ;
-	$_SESSION["idUtilisateur"] = 35;
 
-	if(isset($_SESSION["idUtilisateur"])){
-	  $ID = $_SESSION["idUtilisateur"];
+	if(isset($_GET['IDU'])){
+	  $ID = $_GET['IDU'];
 	}
 	else{
 	  $ID = -1;
 	}
+
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
