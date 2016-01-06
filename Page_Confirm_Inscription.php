@@ -15,7 +15,7 @@
 		</nav>
 
 		<div id="confirm_inscription">
-			<h2> Formulaire de création de profil </h2>
+			<h2> Création de profil </h2>
 
 		  <p> Votre inscription a bien été prise en compte ! </p>
 
@@ -28,7 +28,7 @@
 
 		</br></br></br>
 
-		<div id='bloc_connexion'>
+<!--		<div id='bloc_connexion'>
 		    <ul id="se_connecter">
 		      <p> Connectez-vous </p>
 		  	  <li><label for='pseudo_utilisateur'>Pseudo:</label><input type='text' name='pseudo' id='pseudo' /></li></br>
@@ -37,8 +37,9 @@
 		  	</ul>
 				</br>
 		</div>
-		</br></br></br></br></br></br></br></br></br>
 
+!-->
+</br></br></br></br></br></br></br></br></br>
 		<footer>
 			<?php include("footer.php"); ?>
 		</footer>

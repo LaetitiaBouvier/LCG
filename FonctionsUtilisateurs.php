@@ -391,7 +391,7 @@ $categorieFavorite = "";
                                       '$adresseOK', '$mailOK', '$nomPrenomOK', '$planningOK', '$AlertesEvenementsOK', '$AlertesAbonnementsOK')")
                               or die('Error: ' . mysqli_error($connect));
 
-      header("location:Confirm-Create-Profil.html");
+      header("location:Page_Confirm_Inscription.php");
 		  }
     else
       { print "Les informations entrées sont incorrectes ! "; }
