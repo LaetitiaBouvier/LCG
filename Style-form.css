@@ -102,11 +102,9 @@ em {
 }
 
 input[type=text] {
-<<<<<<< HEAD
+
   width: 40%; /largeur du champs
-=======
-  width: 30%; /largeur du champs
->>>>>>> origin/master
+
   height: 25px;
   font-size: 25px; //taille du texte dans la barre
 }
