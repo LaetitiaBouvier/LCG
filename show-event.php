@@ -1,4 +1,6 @@
 <?php
+	session_start() ;
+	$IDU = $_SESSION["ID_Utilisateur"];
 
 	if(isset($_GET["IDE"])){
 			$ID = $_GET["IDE"];
@@ -7,6 +9,36 @@
 		$ID = -1;
 	}
 
+?>
+
+<?php
+
+	if (isset($_POST['valider']) && ($_POST['valider'] == "Participer à cet évènement")){
+
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+		$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
+		$req->execute(array($IDU, $ID));
+
+		$data = $req->fetch();
+
+
+		if($data['ID_Utilisateur'] != $IDU){
+
+				$NbReservations_Participation = 0;
+
+				$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
+
+				mysqli_query($connect, "insert into participation_table (ID_Utilisateur, ID_Evenement, NbReservations_Participation)
+																values ('$IDU', '$ID', '$NbReservations_Participation')")
+																or die('Error: ' . mysqli_error($connect));
+
+				echo "Votre participation est confirmée !";
+
+				//header("location:Confirm-Participation-Event.php");
+		}else{
+			echo "Vous participez déjà à cet évènement !";
+		}
+	}
 ?>
 
 <?php
@@ -182,6 +214,11 @@
 
 
 <!-- photo !-->
+<form name="inscription" method="post" action="Page_show-event.php?IDE=<?=$ID?>" enctype="multiplart/form-data">
+	<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
+		<br/><div id="valid"><input type="submit" name="valider" value="Participer à cet évènement"/></div><br/>
+</form>
+
 
 <fieldset>
 <legend>Informations sur l'Evenement </legend>
