@@ -1,14 +1,5 @@
 <?php
 
-  session_start() ;
-
-  require 'FonctionsEvent.php';
-  update_events();
-
-?>
-
-<?php
-
   if(isset($_GET["IDE"]))
   {
     $ID = $_GET["IDE"];
@@ -18,7 +9,13 @@
     $ID = -1;
   }
 
- ?>
+  session_start() ;
+
+  require 'FonctionsEvent.php';
+  update_events($ID);
+
+?>
+
 
 
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -32,7 +29,7 @@
 
  	<body>
  		<h2> Formulaire de modification d'évènement </h2>
-      <form name="inscription" method="post" action="Modif-Event.php" enctype="multiplart/form-data">
+      <form name="inscription" method="post" <?php  echo 'action="Page_Modif-Event.php?IDE='.$ID.'"'?> enctype="multiplart/form-data">
 
       <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
       <br/>
@@ -76,7 +73,6 @@
 
 
       Catégorie de l'événement (1 seule réponse possible)<em>*</em> : <br/> <br/>
-
       <?php
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
         $req = $bdd->prepare('SELECT Categorie_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -101,8 +97,6 @@
         $OKManifestations = false;      if( strstr($chaineCat, "Manifestations"     ))  { $OKManifestations = true;     }
 
       ?>
-      <br/>
-      <br/>
       <input type="checkbox" name="categorieFavorite1" value="Festivals"          <?php if ($OKFestivals)         { echo 'checked="checked"'; }         ?>/>Festivals<br>
       <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"     <?php if ($OKRespas_Banquets)   { echo 'checked="checked"'; }    ?>/>Repas/Banquets<br>
       <input type="checkbox" name="categorieFavorite3" value="Concerts"           <?php if ($OKConcerts)          { echo 'checked="checked"'; }          ?>/>Concerts<br>
@@ -151,26 +145,206 @@
 
       LIEU DE L'EVENEMENT : <br/> <br/>
 
-      Nom de l'endroit / de la salle <em>*</em>: <input type="text" name="endroit"/><br/><br/>
-      ADRESSE : <br/><br/>
-      n°/rue : <input type="text" name="rue" maxlength="3"/><br/>
-      Code postal <em>*</em>: <input type="text" name="CP" maxlength="5"/><br/>
-      Ville : <input type="text" name="ville"/><br/>
+      Nom de l'endroit / de la salle <em>*</em>: <input type="text" name="endroit" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT NomLieu_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
 
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[NomLieu_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/>
+      <br/><br/>
+
+      ADRESSE : <br/><br/>
+      n°/rue : <input type="text" name="rue" maxlength="3" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT AdresseRue_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[AdresseRue_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/>
+      <br/>
+      Code postal <em>*</em>: <input type="text" name="CP" maxlength="5" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT AdressePostal_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[AdressePostal_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/><br/>
+      Ville : <input type="text" name="ville" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT AdresseVille_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[AdresseVille_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/><br/><br/>
       DEBUT DE L'EVENEMENT : <br/><br/>
-      Date <em>*</em>: <input type="date" name="datedeb"/>
-      Heure : <input type="time" name="heuredeb"/><br/>
+      Date <em>*</em>: <input type="date" name="datedeb" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[JourDebut_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/>
+      Heure : <input type="time" name="heuredeb" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT HeureDebut_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[HeureDebut_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/><br/>
       <br/>
 
       FIN DE L'EVENEMENT : <br/><br/>
-      Date <em>*</em>: <input type="date" name="datefin"/>
-      Heure : <input type="time" name="heurefin"/><br/>
+      Date <em>*</em>: <input type="date" name="datefin" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT JourFin_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[JourFin_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/>
+      Heure : <input type="time" name="heurefin" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT HeureFin_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[HeureFin_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/><br/>
       <br/>
+      </fieldset>
+
+      <fieldset>
+        <legend>Informations complémentaires</legend>
+
+      Nombre maximum de participants : <input type="text" name="participants" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT NbMaxParticipants_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[NbMaxParticipants_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"/><br/> <br/>
+
+      Evénement payant <em>*</em>:
+      <input type="radio" name="payant" value="oui" <?php
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Payant_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Payant_Evenement]'){
+                              if($valeur == 'oui'){ echo 'checked="checked"'; }
+                            }
+                          }
+                       }
+         ?>/> oui
+      <input type="radio" name="payant" value="non" <?php
+          if($ID != -1){
+                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                          $req = $bdd->prepare('SELECT Payant_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                          $req->execute(array($ID));
+
+                          $data = $req->fetch();
+                          //print_r($data);
+
+                          foreach($data as $cle => $valeur)
+                          {
+                            // echo $cle ,' : ', $valeur;
+                            if($cle == '[Payant_Evenement]'){
+                              if($valeur == 'non'){ echo 'checked="checked"'; }
+                            }
+                          }
+                       }
+         ?>/> non
+      <br/><br/>
+
+      Lien vers le site web de l'événement (facultatif):
+      <input type="url" name="website" value="<?php
+          if($ID != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT LienSiteWeb_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($ID));
+
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[LienSiteWeb_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?>"> <br />
       </fieldset>
 
       <p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
 
-      <br/><div><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
+      <br/><div><input type="submit" name="valider" value="VALIDER MON EVENEMENT"/></div><br/>
 
       </form>
     </body>
