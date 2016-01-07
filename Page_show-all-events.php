@@ -3,6 +3,7 @@
 	<head>
 		<title> MODIFICATION D'EVENEMENT </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="corps_accueil.css"/>
 		<link rel="stylesheet" href="Style-form.css"/>
 	</head>
 
@@ -16,7 +17,7 @@
     </nav>
 
 		<centralform>
-			<div id="corps_inscription">
+			<div id="corps_accueil">
 				<h2> Affichage et Modification </h2>
 
 				<?php include("show-all-events.php"); ?>
