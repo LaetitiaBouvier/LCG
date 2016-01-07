@@ -15,7 +15,7 @@ if (isset($_POST['nouveau_titre_topic']))
 {
 	if (isset($_SESSION['pseudo_utilisateur']))
 	{
-		if (($_POST['nouveau_titre_topic'] != "") OR ($_POST['premier_message'] != ""))
+		if (($_POST['nouveau_titre_topic'] != "") AND ($_POST['premier_message'] != ""))
 		{
 			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 			$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
@@ -31,11 +31,11 @@ if (isset($_POST['nouveau_titre_topic']))
 		}
 		else
 		{
-			if ($_POST['nouveau_titre_topic'] = "")
+			if ($_POST['nouveau_titre_topic'] == "")
 			{
 				echo "Écrivez un titre!";
 			}
-			if ($_POST['premier_message'] = "")
+			if ($_POST['premier_message'] == "")
 			{
 				echo "Écrivez un message!";
 			}
