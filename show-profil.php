@@ -113,7 +113,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 	<head>
-		<title> INSCRIPTION </title>
+		<title> Profil </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" href="Style-form.css"/>
 	</head>
@@ -185,10 +185,54 @@ $reponse->closeCursor();
 
 <fieldset>
 </br> <legend>Evenements auxquels <?php echo $pseudo ?> participe :</legend>
-</br>
+<?php
+
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+
+$req = $bdd->prepare('SELECT ID_Evenement FROM participation_table WHERE ID_Utilisateur ="'.$IDU.'"');
+$req->execute();
+
+foreach($req as $row){
+
+	$reqbis = $bdd->prepare('SELECT Nom_Evenement FROM evenement_table WHERE ID_Evenement ="'.$row['ID_Evenement'].'"');
+	$reqbis->execute();
+
+	$data = $reqbis->fetch();
+
+	echo '<a href="Page_show-event.php?IDE='.$row['ID_Evenement'].'">"'.$data['Nom_Evenement'].'"</a>', '<br/>';
+}
+
+
+?>
+
 </fieldset>
 
 <fieldset>
 </br> <legend>Evenements que <?php echo $pseudo ?> organise :</legend>
-</br>
+<?php
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$IDU.'"');
+	$req->execute();
+
+	foreach($req as $row)
+	{
+		$pseudo = $row['Pseudo_Utilisateur'];
+	}
+
+	$req = $bdd->prepare('SELECT Nom_Evenement FROM evenement_table WHERE Organisateur_Evenement ="'.$pseudo.'"');
+	$req->execute();
+
+	foreach($req as $row){
+
+		$reqbis = $bdd->prepare('SELECT ID_Evenement FROM evenement_table WHERE Organisateur_Evenement ="'.$pseudo.'" AND Nom_Evenement ="'.$row['Nom_Evenement'].'"');
+		$reqbis->execute();
+
+		foreach($reqbis as $rowbis){
+
+				$IDE = $rowbis['ID_Evenement'];
+				echo '<a href="Page_Modif-Event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
+		}
+	}
+?>
 </fieldset>
