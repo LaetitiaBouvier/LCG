@@ -25,12 +25,6 @@
 
 <?php
 
-//  $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise");
-
-  //$reponses = mysqli_query($connect, "SELECT Nom_Evenement FROM evenement_table WHERE Organisateur_Evenement ='.test.'");
-
-  //echo $reponses;
-
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
   $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$ID.'"');

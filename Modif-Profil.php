@@ -318,32 +318,51 @@ else{
       <br/>
       <br/>
 
+      <?php
+        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+        $req = $bdd->prepare('SELECT OKadresse_Utilisateur, OKmail_Utilisateur, OKNomPrenom_Utilisateur, OKplanning_Utilisateur, OKAlertesEvenements_Utilisateur, OKAlertesAbonnements_Utilisateur
+                              FROM utilisateur_table WHERE id_utilisateur = ?');
+        $req->execute(array($ID));
+
+
+
+        foreach($req as $row)
+        {
+          $OKadresse_Utilisateur             = false; if($row['OKadresse_Utilisateur']             == "oui"){ $OKadresse_Utilisateur             = true; }
+          $OKmail_Utilisateur                = false; if($row['OKmail_Utilisateur']                == "oui"){ $OKmail_Utilisateur                = true; }
+          $OKNomPrenom_Utilisateur           = false; if($row['OKNomPrenom_Utilisateur']           == "oui"){ $OKNomPrenom_Utilisateur           = true; }
+          $OKplanning_Utilisateur            = false; if($row['OKplanning_Utilisateur']            == "oui"){ $OKplanning_Utilisateur            = true; }
+          $OKAlertesEvenements_Utilisateur   = false; if($row['OKAlertesEvenements_Utilisateur']   == "oui"){ $OKAlertesEvenements_Utilisateur   = true; }
+          $OKAlertesAbonnements_Utilisateur  = false; if($row['OKAlertesAbonnements_Utilisateur']  == "oui"){ $OKAlertesAbonnements_Utilisateur  = true; }
+        }
+      ?>
+
       Souhaitez vous que les autres utilisateurs aient accès à : <br/></br>
       Votre 	adresse e-mail ?
-      <select >
-      <option selected="selected" name="mailOK" value=1>oui</option>
-      <option value=0>non</option>
-      </select><br/>
+      <br/><input type="radio" name="mailOK" value="oui" <?php if ($OKmail_Utilisateur) {echo 'checked="checked"';}?>/>                 oui
+      <br/><input type="radio" name="mailOK" value="non" <?php if (!$OKmail_Utilisateur){echo 'checked="checked"';}?>/>                 non
+      <br/>
       Votre code-postal?
-      <select >
-      <option selected="selected" name="adresseOK" value=1>oui</option>
-      <option value=0>non</option>
-      </select><br/>
+      <br/><input type="radio" name="adresseOK" value="oui" <?php if ($OKadresse_Utilisateur) { echo 'checked="checked"';}?>/>          oui
+      <br/><input type="radio" name="adresseOK" value="non" <?php if (!$OKadresse_Utilisateur){ echo 'checked="checked"';}?>/>          non
+      <br/>
       Votre nom et prénom?
-      <select >
-      <option selected="selected" name="nomPrenomOK" value=1>oui</option>
-      <option value=0>non</option>
-      </select><br/>
+      <br/><input type="radio" name="nomPrenomOK" value="oui" <?php if ($OKNomPrenom_Utilisateur) { echo 'checked="checked"';}?>/>      oui
+      <br/><input type="radio" name="nomPrenomOK" value="non" <?php if (!$OKNomPrenom_Utilisateur){ echo 'checked="checked"';}?>/>      non
+      <br/>
       Votre planning?
-      <select >
-      <option selected="selected" name="planningOK" value=1>oui</option>
-      <option value=0>non</option>
-      </select><br/>
+      <br/><input type="radio" name="planningOK" value="oui" <?php if ($OKplanning_Utilisateur) { echo 'checked="checked"';}?>/>        oui
+      <br/><input type="radio" name="planningOK" value="non" <?php if (!$OKplanning_Utilisateur){ echo 'checked="checked"';}?>/>        non
+      <br/>
       <br/>
 
-      <br/><input type="checkbox" name="AlertesEvenementsOK" value=1 checked> Je souhaite recevoir par e-mail des alertes sur les événements auxquels je m'inscris.
-
-      <br/><input type="checkbox" name="AlertesAbonnementsOK" value=1 checked> Je souhaite recevoir par e-mail des alertes sur mes abonnements.<br />
+      Je souhaite recevoir par e-mail des alertes sur les événements auxquels je m'inscris :
+      <br/><input type="radio" name="AlertesEvenementsOK" value="oui" <?php if ($OKAlertesEvenements_Utilisateur) { echo 'checked="checked"';}?>/>  oui
+      <br/><input type="radio" name="AlertesEvenementsOK" value="non" <?php if (!$OKAlertesEvenements_Utilisateur){ echo 'checked="checked"';}?>/>  non
+      <br/>
+      Je souhaite recevoir par e-mail des alertes sur mes abonnements :
+      <br/><input type="radio" name="AlertesAbonnementsOK" value="oui" <?php if ($OKAlertesAbonnements_Utilisateur) { echo 'checked="checked"';}?>/> oui
+      <br/><input type="radio" name="AlertesAbonnementsOK" value="non" <?php if (!$OKAlertesAbonnements_Utilisateur){ echo 'checked="checked"';}?>/> non
       <br/>
 
       </fieldset>
