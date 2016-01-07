@@ -1,6 +1,13 @@
 <?php
 
 session_start();
+
+if (!isset($_GET['f']))
+{
+	header('Location: forum.php?f=1');
+	exit;
+}
+
 $_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
 echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
 
@@ -9,8 +16,21 @@ if (isset($_POST['nouveau_titre_topic']))
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 	$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
 	$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
+
+	$req = $bdd->query('SELECT ID_Topic FROM forum_table ORDER BY ID_Topic DESC');
+	$data = $req->fetch();
+
+	$t = $data[0];
+
+	echo $t;
+
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+	$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
+	$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $_POST['premier_message']));
+
 }
 
+$f = $_GET['f'];
 $page = $_GET['f'] - 1;
 $leftarrow = $_GET['f'] - 25;
 $rightarrow = $_GET['f'] + 25;
@@ -124,6 +144,12 @@ $rightarrow = $_GET['f'] + 25;
 
 		<div id="forum">
 
+		<ul>
+	    <li><a href="#nouveau_topic">Nouveau sujet</a></li>
+	    <li>Barre de recherche</li>
+			<li> <?php echo "<a href='forum.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
+	  </ul>
+
       <table>
 
 <?php
@@ -131,8 +157,7 @@ $rightarrow = $_GET['f'] + 25;
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare("SELECT Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
-$req->execute(array($page));
+$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 
 $i = 0;
 
@@ -142,7 +167,7 @@ while ($data = $req->fetch())
 
 ($i%2 == 1)?$classe="impair":$classe="pair";
 
-  echo '<tr class=' . $classe . '><td>' . htmlspecialchars($data['Titre_Topic']) . '</td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td>' . htmlspecialchars($data['Dernier_MSG']) . '</td></tr>';
+  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td>' . htmlspecialchars($data['Dernier_MSG']) . '</td></tr>';
 }
 
 ?>

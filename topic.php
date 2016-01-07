@@ -1,16 +1,30 @@
 <?php
 
 session_start();
-$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
-echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
+
+if (!isset($_GET['f']))
+{
+	header('Location: topic.php?f=1');
+	exit;
+}
 
 if (isset($_POST['repondre_message']))
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-	$req = $bdd->prepare('INSERT INTO topic_table(Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,NOW(),?)');
-	$req->execute(array($_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
+	if (isset($_SESSION['pseudo_utilisateur']))
+	{
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic,Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
+		$req->execute(array($_GET['t'], $_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
+	}
+	else
+	{
+		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).<p><div id='arrow'><img src=images/arrow.gif alt='flèche'></div></div>";
+	}
+
 }
 
+$t = $_GET['t'];
+$f = $_GET['f'];
 $page = $_GET['f'] - 1;
 $leftarrow = $_GET['f'] - 20;
 $rightarrow = $_GET['f'] + 20;
@@ -26,6 +40,17 @@ $rightarrow = $_GET['f'] + 20;
 		<link rel="stylesheet" href="Style-form.css"/>
 
 		<style>
+
+		#block_top
+		{
+			margin-bottom: 100px;
+		}
+
+		#arrow
+		{
+			float: right;
+			margin-right: 175px;
+		}
 
 		#topic
 		{
@@ -101,7 +126,13 @@ $rightarrow = $_GET['f'] + 20;
 
 <?php
 
-echo '<h3>Sujet : ' . $_GET['t'] . '</h3>';
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
+$req->execute(array($_GET['t']));
+$data = $req->fetch();
+
+echo '<h3>Sujet : ' . $data[0] . '</h3>';
+
 
 ?>
 
@@ -109,9 +140,9 @@ echo '<h3>Sujet : ' . $_GET['t'] . '</h3>';
 
     <ul>
       <li><a href="#repondre_topic">Répondre</a></li>
-      <li>Nouveau sujet</li>
-      <li>Liste des sujets</li>
-			<li><a href="topic.php?f=1">Actualiser</a></li>
+      <li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
+      <li><a href="forum.php">Liste des sujets</a></li>
+			<li> <?php echo "<a href='topic.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
     </ul>
 
 <?php
@@ -139,8 +170,8 @@ if ($page < $limitemsg)
 <?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->query("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG FROM topic_table ORDER BY ID_MSG LIMIT $page, 20");
-$req->execute(array($page));
+$req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $page, 20");
+$req->execute(array($_GET['t']));
 
 while ($data = $req->fetch())
 {
@@ -170,16 +201,16 @@ if ($page < $limitemsg)
 ?>
 
 		<ul>
-			<li>Nouveau sujet</li>
-			<li>Liste des sujets</li>
-			<li>Actualiser</li>
-		</ul>
+			<li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
+      <li><a href="forum.php">Liste des sujets</a></li>
+			<li> <?php echo "<a href='topic.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
+    </ul>
 
 		<div>
 
 		<h3 id="repondre_topic">Répondre</h3>
 
-		<form action="topic.php?f=1" method="POST">
+		<form <?php echo "action='topic.php?f=1&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
 			<p><input type="submit" value="Poster" /></p>
