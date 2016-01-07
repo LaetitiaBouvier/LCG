@@ -1,4 +1,7 @@
 <?php
+
+  session_start();
+  
   { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 

@@ -1,4 +1,24 @@
-<!-- CE FICHIER FONCTIONNE INDEPENDEMMENT DES AUTRES! PAS MOYEN DE LE METTRE DANS LE FORMULAIRE DEJA EXISTANT !-->
+<?php
+  session_start();
+  $ID=$_SESSION["ID_Utilisateur"];
+
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+  $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+  $req->execute(array($ID));
+
+  $pseudo = $req->fetch();
+
+  $reqbis = $bdd->prepare('SELECT ID_Evenement FROM evenement_table WHERE Organisateur_Evenement = ? ORDER BY ID_Evenement DESC LIMIT 1');
+  $reqbis->execute(array($pseudo['Pseudo_Utilisateur']));
+
+  $bite = $reqbis->fetch();
+
+  $IDEv = $bite['ID_Evenement'];
+
+  echo "test !!!";
+  echo $IDEv;
+
+?>
 
 <?php
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
@@ -13,16 +33,17 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
     $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
     if (in_array($extension_upload, $extensions_autorisees))
     {
-      $nomphoto = basename($_FILES['photo']['name']);
+      //$IDEv = basename($_FILES['photo']['name']);
+      $nomphoto = $IDEv.".".$extension_upload;
 
-      //$photo="Images_code/IMG_Event_Original/".$nomphoto;
+      //$photo="Images_code/IMG_Event_Original/".$IDEv;
 
       // On peut valider le fichier et le stocker définitivement
       move_uploaded_file($_FILES['photo']['tmp_name'], "Images_code/IMG_Event_Original/".$nomphoto."");
 
       // ENREGISTREMENT DANS LA BASE DE DONNEES
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE evenement_table SET Image_Evenement="'.$nomphoto.'" WHERE ID_Evenement ="'.$IDE.'"');
+      $req = $bdd->prepare('UPDATE evenement_table SET Image_Evenement="'.$nomphoto.'" WHERE ID_Evenement ="'.$IDEv.'"');
       $req->execute();
 
       // REDIMENSION
@@ -75,10 +96,11 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
   }
   else {echo ("le fichier est trop volumineux");}
 }
-//echo ("nomphoto".$nomphoto);    //affiche nomdelaphoto.extension
+//echo ("nomphoto".$IDEv);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
-
-header("location:Page_show-event.php?IDE=$");
+echo "!!!";
+echo $IDEv;
+header("location:Page_show-event.php?IDE=$IDEv");
 
 
 ?>

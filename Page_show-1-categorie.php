@@ -1,3 +1,13 @@
+<?php
+	session_start() ;
+
+	if(isset($_GET["Ev"])){
+			$Ev = $_GET["Ev"];
+	}
+ echo "tes";
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
@@ -16,10 +26,12 @@
     </nav>
 
 		<centralform>
-			<div id="corps_inscription">
-				<h2> Categorie </h2>
+			<div id="corps_accueil">
+				<h2> <?php echo("".$Ev."") ?>  </h2>
 
 				<?php include("show-1-categorie.php"); ?>
+
+
 			</div>
 		</centralform>
 
