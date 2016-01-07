@@ -13,7 +13,7 @@
 
 <?php
 
-	if (isset($_POST['valider']) && ($_POST['valider'] == "Participer/Ne plus participer à cet évènement")){
+	if (isset($_POST['participer']) && ($_POST['participer'] == "Participer/Ne plus participer à cet évènement")){
 
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 		$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
@@ -205,6 +205,12 @@
 		if($cle == '[HeureFin_Evenement]'){ $heureFin = $valeur; }
 	}
 
+	$req = $bdd->prepare('SELECT 	Image_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+  $photo=$data['Image_Evenement'];
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -221,16 +227,15 @@
 		<h2> <?php echo $nom ?></h2>
 
 
-<!-- photo !-->
-
 <?php if (isset($_SESSION["ID_Utilisateur"])): ?>
 	<form name="inscription" method="post" action="Page_show-event.php?IDE=<?=$ID?>" enctype="multiplart/form-data">
 		<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
-			<br/><div id="valid"><input type="submit" name="valider" value="Participer/Ne plus participer à cet évènement"/></div><br/>
+			<br/><div id="valid"><input type="submit" name="participer" value="Participer/Ne plus participer à cet évènement"/></div><br/>
 	</form>
 <?php else: ?>
 <?php endif; ?>
 
+<img src="Images_code/IMG_Event_Large/<?php echo $photo?>.jpg" width=99%>
 
 <fieldset>
 <legend>Informations sur l'Evenement </legend>
