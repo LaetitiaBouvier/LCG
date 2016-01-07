@@ -13,21 +13,38 @@ echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexi
 
 if (isset($_POST['nouveau_titre_topic']))
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-	$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
-	$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
+	if (isset($_SESSION['pseudo_utilisateur']))
+	{
+		if (($_POST['nouveau_titre_topic'] != "") OR ($_POST['premier_message'] != ""))
+		{
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+			$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
+			$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
 
-	$req = $bdd->query('SELECT ID_Topic FROM forum_table ORDER BY ID_Topic DESC');
-	$data = $req->fetch();
+			$req = $bdd->query('SELECT ID_Topic FROM forum_table ORDER BY ID_Topic DESC');
+			$data = $req->fetch();
 
-	$t = $data[0];
+			$t = $data[0];
 
-	echo $t;
-
-	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-	$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
-	$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $_POST['premier_message']));
-
+			$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
+			$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $_POST['premier_message']));
+		}
+		else
+		{
+			if ($_POST['nouveau_titre_topic'] = "")
+			{
+				echo "Écrivez un titre!";
+			}
+			if ($_POST['premier_message'] = "")
+			{
+				echo "Écrivez un message!";
+			}
+		}
+	}
+	else
+	{
+		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).<p><div id='arrow'><img src=images/arrow.gif alt='flèche'></div></div>";
+	}
 }
 
 $f = $_GET['f'];
@@ -40,10 +57,33 @@ $rightarrow = $_GET['f'] + 25;
 <!DOCTYPE html>
 <html>
 	<head>
-		<title> FORUM </title>
+		<title> Forum </title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="Style-form.css"/>
 		<style>
+
+		a
+		{
+			color: black;
+		}
+
+		#forum ul
+		{
+			list-style-type: none;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		#block_top
+		{
+			margin-bottom: 100px;
+		}
+
+		#arrow
+		{
+			float: right;
+			margin-right: 175px;
+		}
 
 		#forum
 		{

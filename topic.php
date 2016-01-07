@@ -8,6 +8,13 @@ if (!isset($_GET['f']))
 	exit;
 }
 
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
+$req->execute(array($_GET['t']));
+$data = $req->fetch();
+
+$titre = $data[0];
+
 if (isset($_POST['repondre_message']))
 {
 	if (isset($_SESSION['pseudo_utilisateur']))
@@ -15,6 +22,10 @@ if (isset($_POST['repondre_message']))
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic,Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
 		$req->execute(array($_GET['t'], $_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
+
+		$req = $bdd->prepare('UPDATE forum_table SET NB_MSG = NB_MSG + 1, Dernier_MSG = NOW() WHERE ID_Topic = ?');
+		$req->execute(array($_GET['t']));
+
 	}
 	else
 	{
@@ -35,11 +46,23 @@ $rightarrow = $_GET['f'] + 20;
 <html>
 
 	<head>
-		<title> TOPIC </title>
+		<title> <?php echo $titre; ?> </title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="Style-form.css"/>
 
 		<style>
+
+		a
+		{
+			color: black;
+		}
+
+		#topic ul
+		{
+			list-style-type: none;
+			display: flex;
+			justify-content: space-between;
+		}
 
 		#block_top
 		{
@@ -126,13 +149,7 @@ $rightarrow = $_GET['f'] + 20;
 
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
-$req->execute(array($_GET['t']));
-$data = $req->fetch();
-
-echo '<h3>Sujet : ' . $data[0] . '</h3>';
-
+echo '<h3>Sujet : ' . $titre . '</h3>';
 
 ?>
 
@@ -142,7 +159,7 @@ echo '<h3>Sujet : ' . $data[0] . '</h3>';
       <li><a href="#repondre_topic">Répondre</a></li>
       <li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
       <li><a href="forum.php">Liste des sujets</a></li>
-			<li> <?php echo "<a href='topic.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
+			<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
     </ul>
 
 <?php
@@ -203,7 +220,7 @@ if ($page < $limitemsg)
 		<ul>
 			<li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
       <li><a href="forum.php">Liste des sujets</a></li>
-			<li> <?php echo "<a href='topic.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
+			<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
     </ul>
 
 		<div>
