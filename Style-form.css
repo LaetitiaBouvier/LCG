@@ -138,7 +138,7 @@ input[type=password],[type=email],[type=file],[type=url] {
     width: 30%; /largeur du champs
 }
 
-a{
+a.typeblanc{
 color: white;
 
 }
