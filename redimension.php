@@ -21,7 +21,7 @@ switch ($extension)
  }
 $destination_mini = imagecreatetruecolor(270, 100); // On crée la miniature vide
 
-$destination_large = imagecreatetruecolor(1000, 545); // On crée l'agrandissement vide
+$destination_large = imagecreatetruecolor(996, 538); // On crée l'agrandissement vide
 
 // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
 

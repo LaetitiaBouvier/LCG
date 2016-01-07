@@ -138,6 +138,11 @@ input[type=password],[type=email],[type=file],[type=url] {
     width: 30%; /largeur du champs
 }
 
+a{
+color: white;
+
+}
+
 a, input[type=date],[type=time]{
       font-size:25px;
 }
