@@ -15,9 +15,6 @@
 
   $IDEv = $bite['ID_Evenement'];
 
-  echo "test !!!";
-  echo $IDEv;
-
 ?>
 
 <?php

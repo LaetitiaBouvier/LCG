@@ -60,7 +60,7 @@ while ($donnees = $req->fetch())
         <li> <h5> <a href=<?php echo("Page_show-event.php?IDE=".$donnees['ID_Evenement']."");?> class="typeblanc"><?php echo ($donnees['Nom_Evenement']);?> | <?php echo htmlspecialchars($donnees['AdressePostal_Evenement']);?> </a></h5></li>
       </ul>
     </div>
-    <a href="@" ><img src="Images_code/IMG_Event_Mini/<?php echo($donnees['Image_Evenement']);?>.jpg" class="photo1"/></a>
+    <a href=<?php echo("Page_show-event.php?IDE=".$donnees['ID_Evenement']."");?> ><img src="Images_code/IMG_Event_Mini/<?php echo($donnees['Image_Evenement']);?>.jpg" class="photo1"/></a>
     <div id="ssmenu1">
       <ul>
         <li> <?php echo nl2br(($donnees['Description_Evenement']));?> </li>

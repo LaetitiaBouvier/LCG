@@ -347,6 +347,15 @@
       <br/><div><input type="submit" name="valider" value="VALIDER MON EVENEMENT"/></div><br/>
 
       </form>
+
+      <h2> Modification de la photo </h2>
+      <form action="envoi_photo_event.php" method="post" enctype="multipart/form-data">
+
+                      </br>
+                      <input type="file" name="photo" id="photo-event"/><br />
+                      <input type="submit" value="Envoyer le fichier" />
+      
+      </form>
     </body>
 
   </html>
