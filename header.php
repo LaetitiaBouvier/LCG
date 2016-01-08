@@ -63,14 +63,14 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 		<header>
 
 <?php
-//if (isset($_SESSION['ID_Utilisateur']))
-//{
+if (!isset($_SESSION['ID_Utilisateur']))
+{
   include("signinup.html");
-//}
-//else
-//{
-//  echo "<div id='deconexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
-//}
+}
+else
+{
+  echo "<div id='deconnexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
+}
 
 ?>
 

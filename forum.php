@@ -64,7 +64,7 @@ $rightarrow = $_GET['f'] + 25;
 
 		a
 		{
-			color: black;
+			text-decoration: none;
 		}
 
 		#forum ul
@@ -72,6 +72,11 @@ $rightarrow = $_GET['f'] + 25;
 			list-style-type: none;
 			display: flex;
 			justify-content: space-between;
+		}
+
+		.heure
+		{
+			color: blue;
 		}
 
 		#block_top
@@ -196,8 +201,11 @@ $rightarrow = $_GET['f'] + 25;
 
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
+$datedujour = date("y-m-d");
+
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, DATE_FORMAT(Dernier_MSG, '%H:%i:%s') AS Date_Dernier_MSG FROM forum_table WHERE Dernier_MSG >= ? ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+$req->execute(array($datedujour));
 
 $i = 0;
 
@@ -207,7 +215,24 @@ while ($data = $req->fetch())
 
 ($i%2 == 1)?$classe="impair":$classe="pair";
 
-  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td>' . htmlspecialchars($data['Dernier_MSG']) . '</td></tr>';
+  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td class="heure">' . htmlspecialchars($data['Date_Dernier_MSG']) . '</td></tr>';
+}
+
+if ($i < 25)
+{
+	$ii = 25 - $i;
+
+	$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, DATE_FORMAT(Dernier_MSG, '%d/%m/%Y') AS Date_Dernier_MSG FROM forum_table WHERE Dernier_MSG < ? ORDER BY Dernier_MSG DESC LIMIT $page, $ii");
+	$req->execute(array($datedujour));
+
+	while ($data = $req->fetch())
+	{
+		$i++;
+
+	($i%2 == 1)?$classe="impair":$classe="pair";
+
+	  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td class="heure">' . htmlspecialchars($data['Date_Dernier_MSG']) . '</td></tr>';
+	}
 }
 
 ?>
