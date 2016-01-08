@@ -1,6 +1,5 @@
 <?php
 
-	session_start() ;
 
 	if(isset($_SESSION["ID_Utilisateur"])){
 	  $ID = $_SESSION["ID_Utilisateur"];

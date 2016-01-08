@@ -1,3 +1,7 @@
+<?php
+	session_start() ;
+?>
+
 <!-- insertion de la fonction permettant d'ajouter des utilisateurs à la base de données !-->
 <?php
 	require 'FonctionsUtilisateurs.php';

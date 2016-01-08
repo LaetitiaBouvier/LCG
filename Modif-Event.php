@@ -9,7 +9,7 @@
     $ID = -1;
   }
 
-  session_start() ;
+
 
   require 'FonctionsEvent.php';
   update_events($ID);
@@ -354,7 +354,7 @@
                       </br>
                       <input type="file" name="photo" id="photo-event"/><br />
                       <input type="submit" value="Envoyer le fichier" />
-      
+
       </form>
     </body>
 

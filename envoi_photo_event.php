@@ -1,5 +1,5 @@
 <?php
-  session_start();
+
   $ID=$_SESSION["ID_Utilisateur"];
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/

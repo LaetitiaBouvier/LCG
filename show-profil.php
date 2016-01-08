@@ -1,6 +1,6 @@
 <?php
 
-	session_start() ;
+
 	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; } // ATTENTION : Ici $IDU correspond à l'ID de l'utilisateur connecté
 
 	if(isset($_GET['IDU'])){

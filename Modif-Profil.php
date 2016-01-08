@@ -1,7 +1,7 @@
 
 <?php
 
-  session_start() ;
+
 
   require 'FonctionsUtilisateurs.php';
   update_users();
