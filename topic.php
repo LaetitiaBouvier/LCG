@@ -37,6 +37,7 @@ if (isset($_POST['repondre_message']))
 $t = $_GET['t'];
 $f = $_GET['f'];
 $page = $_GET['f'] - 1;
+$npage = $page / 20 + 1;
 $leftarrow = $_GET['f'] - 20;
 $rightarrow = $_GET['f'] + 20;
 
@@ -55,6 +56,11 @@ $rightarrow = $_GET['f'] + 20;
 		a
 		{
 			color: black;
+			text-decoration: none;
+		}
+
+		{
+
 		}
 
 		#topic ul
@@ -86,6 +92,12 @@ $rightarrow = $_GET['f'] + 20;
 		{
 			display: inline-block;
 			width: inherit;
+		}
+
+		.numero_page
+		{
+			text-align: center;
+			text-decoration: none;
 		}
 
 		.block_msg
@@ -165,18 +177,33 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 <?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->query("SELECT COUNT(*) FROM topic_table");
+$req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
+$req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
 $limitemsg = $nbmsg[0] - 20;
 
 if ($page != 0)
 {
-	echo '<form action="topic.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
+
+echo '<p class="numero_page">';
+
+$r1 = $nbmsg[0] % 20 + 1;
+$r2 = $nbmsg[0] - $r1 + 1;
+$nbpages = $r2 / 20 + 1;
+
+for ($i = 1; $i <= $nbpages; $i++)
+{
+	$a = ($i - 1) * 20 + 1;
+	echo ' <a href="topic.php?f=' . $a  . '&t=' . $t . '">' . $i . '</a>';
+}
+
+echo '</p>';
 
 if ($page < $limitemsg)
 {
-	echo '<form action="topic.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
 
 ?>
@@ -207,12 +234,26 @@ echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>"
 
 if ($page != 0)
 {
-	echo '<form action="topic.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
+
+echo '<p class="numero_page">';
+
+$r1 = $nbmsg[0] % 20;
+$r2 = $nbmsg[0] - $r1;
+$nbpages = $r2 / 20 + 1;
+
+for ($i = 1; $i <= $nbpages; $i++)
+{
+	$a = ($i - 1) * 20 + 1;
+	echo ' <a href="topic.php?f=' . $a  . '&t=' . $t . '">' . $i . '</a>';
+}
+
+echo '</p>';
 
 if ($page < $limitemsg)
 {
-	echo '<form action="topic.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
 
 ?>
