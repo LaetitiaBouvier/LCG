@@ -14,6 +14,25 @@
             <ul>
               <li><a href="Page_CategoriesAbo.php"> Catégories </a></li>
               <li><a href="Page_show-all-profilsAbo.php"> Profils </a></li>
+              <?php
+
+              //  if(isset($_SESSION["ID_Utilisateur"])){
+              //    echo "<li><a href=\"Page_show-all-profilsAbo.php\"> Profils </a></li>";
+              //  }
+              //  else
+              //  {
+              //    session_start();
+              //
+              //    if(isset($_SESSION["ID_Utilisateur"])){
+              //      echo "<li><a href=\"Page_show-all-profilsAbo.php\"> Profils </a></li>";
+              //    }
+              //
+              //    else{
+              //      echo "<li><a> Profils </a></li>";
+              //    }
+              //  }
+              
+              ?>
             </ul>
           </li>
 
