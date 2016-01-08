@@ -201,38 +201,28 @@ $rightarrow = $_GET['f'] + 25;
 
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
-$datedujour = date("y-m-d");
-
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, DATE_FORMAT(Dernier_MSG, '%H:%i:%s') AS Date_Dernier_MSG FROM forum_table WHERE Dernier_MSG >= ? ORDER BY Dernier_MSG DESC LIMIT $page, 25");
-$req->execute(array($datedujour));
+$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 
 $i = 0;
+
+$datedujour = date("d-m-y");
 
 while ($data = $req->fetch())
 {
 	$i++;
 
-($i%2 == 1)?$classe="impair":$classe="pair";
-
-  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td class="heure">' . htmlspecialchars($data['Date_Dernier_MSG']) . '</td></tr>';
-}
-
-if ($i < 25)
-{
-	$ii = 25 - $i;
-
-	$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, DATE_FORMAT(Dernier_MSG, '%d/%m/%Y') AS Date_Dernier_MSG FROM forum_table WHERE Dernier_MSG < ? ORDER BY Dernier_MSG DESC LIMIT $page, $ii");
-	$req->execute(array($datedujour));
-
-	while ($data = $req->fetch())
-	{
-		$i++;
-
 	($i%2 == 1)?$classe="impair":$classe="pair";
 
-	  echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . htmlspecialchars($data['NB_MSG']) . '</td><td class="heure">' . htmlspecialchars($data['Date_Dernier_MSG']) . '</td></tr>';
+	if ($data['Dernier_MSG'] >= date_create($datedujour))
+	{
+		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_create($data['Dernier_MSG']) . '</td></tr>';
 	}
+	else
+	{
+		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure"></td></tr>';
+	}
+
 }
 
 ?>

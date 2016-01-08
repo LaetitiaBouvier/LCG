@@ -23,7 +23,7 @@ header
 	width:24.5%;
 }
 
-#bloc_titre_principal ul
+#bloc_titre_principal ul, #deconnexion
 {
 	min-width: 300px;
 	width: 24%;

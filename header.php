@@ -62,6 +62,8 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 	<body>
 		<header>
 
+<div id='bloc_titre_principal'>
+
 <?php
 if (isset($_SESSION['ID_Utilisateur']))
 {
@@ -71,8 +73,9 @@ else
 {
   include("signinup.html");
 }
-
 ?>
+
+</div>
 
 		  <div id="barre_recherche">
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='images/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></a></div>
