@@ -1,5 +1,5 @@
 <?php
-	session_start() ;
+	//session_start() ;
 	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 
 	if(isset($_GET["IDE"])){
@@ -264,5 +264,17 @@
 </br> Lien vers le site web de l'événement : <?php echo $max ?>
 </br>
 </br>
+<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	//$req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+	//$req->execute(array($_SESSION["ID_Utilisateur"]));
+	//$admin=$req->fetch();
 
+	$req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+	$req->execute(array($IDU));
+	$admin=$req->fetch();
+
+	if ($admin['Admin_Utilisateur']=="oui"){?>
+	<form name='delete' method='post' action=<?php echo ("delete_event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
+		<input type="submit" name="valider" value="SUPPRIMER "/>
+	</form><?php } ?>
 </fieldset>

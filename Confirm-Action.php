@@ -7,5 +7,5 @@
 	</head>
 <h2>votre action a bien ete prise en compte</h2>
 <br/><div>
-		<a href="back_office.php" onclick="window.open('http://localhost/github/LCG/back_office.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LE BACK-OFFICE!</a>
+		<a href="Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LE BACK-OFFICE!</a>
 	</div><br/>
