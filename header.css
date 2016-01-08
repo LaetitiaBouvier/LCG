@@ -23,12 +23,21 @@ header
 	width:24.5%;
 }
 
-#bloc_titre_principal ul, #deconnexion
+#bloc_titre_principal ul
 {
 	min-width: 300px;
 	width: 24%;
 	float: right;
 }
+
+#deconnexion
+{
+	min-width: 300px;
+	width: 24%;
+	float: right;
+	margin-top: 26px;
+}
+
 #bloc_titre_principal li
 {
  	list-style-type:none;
