@@ -24,7 +24,7 @@
 
 <form name="évènements" method="post" action="" enctype="multiplart/form-data">
 
-<p>    Vous pouvez consulter les évènements en cliquant dessus !<br/> </p>
+<p>    Vous pouvez consulter les évènements de la région <?php echo $_GET['REG'];?> en cliquant dessus !<br/> </p>
 <br/>
 
 
@@ -37,13 +37,10 @@
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table');
+  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table WHERE AdresseRegion_Evenement = "'.$_GET['REG'].'"');
   $req->execute();
 
-	$Ev = $_GET["Ev"];
-
   foreach($req as $row){
-    if( strstr($row['Categorie_Evenement'], $Ev)){
 
 			$IDE = $row['ID_Evenement']; ?>
 
@@ -61,7 +58,7 @@
 					</ul>
 				</div>
 			</div>
-<?php    }
+<?php
 
   }
 	$req->closeCursor();
