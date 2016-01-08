@@ -181,6 +181,7 @@ $req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
 $req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
 $limitemsg = $nbmsg[0] - 20;
+$nbmsg[0]
 
 if ($page != 0)
 {
@@ -189,9 +190,9 @@ if ($page != 0)
 
 echo '<p class="numero_page">';
 
-$r1 = $nbmsg[0] % 20 + 1;
-$r2 = $nbmsg[0] - $r1 + 1;
-$nbpages = $r2 / 20 + 1;
+$r1 = $nbmsg[0] - 1;
+$r2 = $r1 % 20;
+$nbpages = ($r1 - $r2) / 20 + 1;
 
 for ($i = 1; $i <= $nbpages; $i++)
 {
@@ -227,9 +228,6 @@ echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>"
 		</table>
 		</div>
 
-
-
-
 <?php
 
 if ($page != 0)
@@ -239,9 +237,9 @@ if ($page != 0)
 
 echo '<p class="numero_page">';
 
-$r1 = $nbmsg[0] % 20;
-$r2 = $nbmsg[0] - $r1;
-$nbpages = $r2 / 20 + 1;
+$r1 = $nbmsg[0] - 1;
+$r2 = $r1 % 20;
+$nbpages = ($r1 - $r2) / 20 + 1;
 
 for ($i = 1; $i <= $nbpages; $i++)
 {
@@ -268,7 +266,7 @@ if ($page < $limitemsg)
 
 		<h3 id="repondre_topic">Répondre</h3>
 
-		<form <?php echo "action='topic.php?f=1&t=" . $t . "' method='POST'"; ?> >
+		<form <?php echo "action='topic.php?f=" . $fin_du_topic . "&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
 			<p><input type="submit" value="Poster" /></p>
