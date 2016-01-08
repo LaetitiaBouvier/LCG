@@ -13,7 +13,7 @@
 		<input type="submit" name="valider" value="BANNIR"/></div>
 		</form>
 		<form name='delete' method='post' action='delete_event.php' enctype='multipart/form-data'>
-			</br> Nom de l'évenement à supprimer  : <input type="text" name="event" value="<?php if (isset($_POST['event'])){echo $_POST['event'];} ?>"/>
-		<input type="submit" name="valider" value="SUPPRIMER"/></div>
+			</br> ID de l'évenement à supprimer  : <input type="text" name="event" value="<?php if (isset($_POST['event'])){echo $_POST['event'];} ?>"/>
+		<input type="submit" name="valider" value="SUPPRIMER "/></div>
 		</form>
 	</fieldset>
