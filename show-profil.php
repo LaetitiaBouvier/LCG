@@ -239,6 +239,7 @@ foreach($req as $row){
 
 </fieldset>
 </fieldset>
+<div id=boutons_admin>
 <?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 $req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req->execute(array($IDU));
@@ -248,3 +249,6 @@ $req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Uti
 	<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" name="valider" value="BANNIR "/>
 	</form><?php } ?>
+
+
+</div>
