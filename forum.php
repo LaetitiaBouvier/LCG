@@ -77,6 +77,7 @@ $rightarrow = $_GET['f'] + 25;
 		.heure
 		{
 			color: blue;
+			font-size: 1.27em;
 		}
 
 		#block_top
@@ -101,13 +102,14 @@ $rightarrow = $_GET['f'] + 25;
 		{
 			border: 1px solid black;
 			text-transform: uppercase;
-			font-size: 1.3em;
+			font-size: 1.25em;
 			background-color: #DDDDDD;
 		}
+
 		td
 		{
 			border: 1px solid black;
-			font-size: 1.15em;
+			font-size: 1.1em;
 		}
 
 		.impair
@@ -134,7 +136,6 @@ $rightarrow = $_GET['f'] + 25;
 		#nouveau_topic
 		{
 			color: black;
-			font-size: 1.3em;
 			text-align: left;
 		}
 
@@ -151,7 +152,7 @@ $rightarrow = $_GET['f'] + 25;
 
 		#taillesujet
 		{
-			width: 470px;
+			width: 480px;
 		}
 
 		#taillepseudo
@@ -214,13 +215,13 @@ while ($data = $req->fetch())
 
 	($i%2 == 1)?$classe="impair":$classe="pair";
 
-	if ($data['Dernier_MSG'] >= date_create($datedujour))
+	if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
 	{
-		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_create($data['Dernier_MSG']) . '</td></tr>';
+		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
 	}
 	else
 	{
-		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure"></td></tr>';
+		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
 	}
 
 }
