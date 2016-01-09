@@ -50,24 +50,30 @@ if(isset($_SESSION["ID_Utilisateur"])){
 
 <form name="categories" method="post" action="" enctype="multiplart/form-data">
 
-<p>    Vous pouvez consulter les évènements liés à un catégorie en cliquant sur la catégorie de votre choix ! <br/> </p>
+	<p>    Vous pouvez consulter les évènements liés à un catégorie en cliquant sur la catégorie de votre choix ! <br/> </p>
 
-<fieldset>
-<legend>Liste des categories :</legend>
+	<fieldset>
+	<legend>Liste des categories :</legend>
 
-<br>
-<br/>
-<a href="Page_show-1-categorie.php?Ev=Festivals"> 				Festivals 				</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Repas/Banquets"> 		Repas/Banquets 		</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Concerts"> 					Concerts 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Brocantes/Marchés"> Brocantes/Marchés </a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Soirées"> 					Soirées 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Conférences"> 			Conférences 			</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Humanitaires"> 			Humanitaires 			</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Sportifs"> 					Sportifs 					</a>	<br/>
-<a href="Page_show-1-categorie.php?Ev=Manifestations"> 		Manifestations 		</a>	<br/>
+	<br>
+	<br/>
+	<div id="categ_ligne1">
+		<div id="categ_Festival"><a  href="Page_show-1-categorie.php?Ev=Festivals"><img src="Images_code/IMG_Categorie/categ_festival.jpg"> </a> </div>
+		<div id="categ_Repas"><a  href="Page_show-1-categorie.php?Ev=Repas/Banquets"><img src="Images_code/IMG_Categorie/categ_repas.jpg"> </a> </div>
+		<div id="categ_Concert"><a  href="Page_show-1-categorie.php?Ev=Concerts"><img src="Images_code/IMG_Categorie/categ_concerts.jpg"> </a> </div>
+	</div><br/>
+	<div id="categ_ligne2">
+		<div id="categ_Brocante"><a  href="Page_show-1-categorie.php?Ev=Brocantes/Marchés"><img src="Images_code/IMG_Categorie/categ_brocantes.jpg"> </a> </div>
+		<div id="categ_Soiree"><a  href="Page_show-1-categorie.php?Ev=Soirées"><img src="Images_code/IMG_Categorie/categ_soirees.jpg"> </a> </div>
+		<div id="categ_Conference"><a  href="Page_show-1-categorie.php?Ev=Conférences"><img src="Images_code/IMG_Categorie/categ_conferences.jpg"> </a> </div>
+	</div><br/>
+	<div id="categ_ligne3">
+		<div id="categ_Humanitaire"><a  href="Page_show-1-categorie.php?Ev=Humanitaires"><img src="Images_code/IMG_Categorie/categ_humanitaires.jpg"> </a>  </div>
+		<div id="categ_Sportif"><a  href="Page_show-1-categorie.php?Ev=Sportifs"><img src="Images_code/IMG_Categorie/categ_sportifs.jpg"> </a> </div>
+		<div id="categ_Manifestation"><a  href="Page_show-1-categorie.php?Ev=Manifestations"><img src="Images_code/IMG_Categorie/categ_manifestations.jpg"> </a> </div>
+	</div><br/>
 
-<br/>
+	<br/>
 
 </form>
 

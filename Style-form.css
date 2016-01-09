@@ -1,4 +1,4 @@
-#categories, #corps_inscription, #confirm_inscription, #maps, #modifOK, #redirect{
+#corps_categories, #corps_inscription, #confirm_inscription, #maps, #modifOK, #redirect{
   display: inline-block;
   margin-left: 5%;
   margin-top: 20px;
@@ -158,4 +158,44 @@ textarea {
 
 #pres, #valid{
   text-align:center;
+}
+
+/*    Categories  */
+
+
+#categ_Festival {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Repas {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Concert {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Brocante {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Soiree {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Conference {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Humanitaire {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Sportif {
+  display: inline-block;
+  margin-left: 7%;
+}
+#categ_Manifestation {
+  display: inline-block;
+  margin-left: 7%;
 }

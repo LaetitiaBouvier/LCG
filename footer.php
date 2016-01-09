@@ -17,7 +17,8 @@
         <a href="#"> <h3> Aide en ligne |</h3> </a>
         <a href="#"> <h3> Charte </h3> </a>
       </div>
-      <h3> La Connexion Gauloise  </h3>
+      <div><h3> La Connexion Gauloise  </h3></div>
+			</br>
     </footer>
   </body>
 </html>
