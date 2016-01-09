@@ -18,7 +18,7 @@
 
 		<div id="calendrier">
 			</br></br></br>
-			<img src="Images_code/calendrier.png" alt="calendrier" width="1000px">
+			<?php include("calendrier.html"); ?>
 			</br>
 		</div>
 
