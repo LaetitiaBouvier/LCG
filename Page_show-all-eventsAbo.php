@@ -26,7 +26,7 @@
 				<?php include("show-all-eventsAbo.php"); ?>
 			</div>
 		</centralform>
-
+		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 		<footer>
 			<?php include("footer.php"); ?>
 		</footer>
