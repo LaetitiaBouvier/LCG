@@ -44,7 +44,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
     	session_start();
     	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
     	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
-    	echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . "! Bienvenue sur La Connexion Gauloise!";
+    	echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . "! Bienvenue sur La Connexion Gauloise!";
     }
   }
 }
@@ -67,6 +67,8 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 <?php
 if (isset($_SESSION['ID_Utilisateur']))
 {
+  echo '' . $_SESSION['pseudo_utilisateur'] . " , La Connexion Gauloise est heureuse de vous revoir!";
+
   echo "<div id='deconnexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
 }
 else

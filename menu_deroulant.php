@@ -31,7 +31,7 @@
               //      echo "<li><a> Profils </a></li>";
               //    }
               //  }
-              
+
               ?>
             </ul>
           </li>
@@ -44,9 +44,9 @@
             </ul>
           </li>
 
-          <li><a href="@"> Forum </a></li>
+          <li><a href="Page_Forum.php"> Forum </a></li>
 
-          <li><a href="@"> Profil </a>
+          <li> <a>Profil </a>
             <ul>
               <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
               <li><a href="@"> Consulter mon profil </a></li>

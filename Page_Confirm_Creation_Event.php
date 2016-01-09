@@ -25,11 +25,11 @@
 
 
 
-			<?php include 'fichier_photo_event.html'?>
+			<?php include 'fichier_photo_event.html';?>
 
 
 			<br/><div>
-				<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
+				<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', )">RETOUR VERS LA PAGE D'ACCUEIL!</a>
 			</div><br/>
 		</div>
 		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
