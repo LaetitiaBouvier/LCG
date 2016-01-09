@@ -39,7 +39,7 @@
   $req->execute();
 
 	$Ev = $_GET["Ev"];
-
+	$compteur=0;
   foreach($req as $row){
     if( strstr($row['Categorie_Evenement'], $Ev)){
 
@@ -59,7 +59,8 @@
 					</ul>
 				</div>
 			</div>
-<?php    }
+<?php
+$compteur=$compteur+1;    }
 
   }
 	$req->closeCursor();
@@ -68,6 +69,8 @@
 
 
 <br/>
+
+<legend><?php echo ("Il y a ".$compteur." evenements à venir dans la catégorie ".$Ev."");  ?></legend>
 
 
 </form>
