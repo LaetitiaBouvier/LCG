@@ -224,6 +224,15 @@ $req->closeCursor(); ?>
 		if($cle == '[HeureFin_Evenement]'){ $heureFin = $valeur; }
 	}
 
+	$req = $bdd->prepare('SELECT 	Organisateur_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Organisateur_Evenement]'){ $organisateur = $valeur; }
+	}
+
 	$req = $bdd->prepare('SELECT 	Image_Evenement FROM evenement_table WHERE ID_Evenement = ?');
 	$req->execute(array($ID));
 
@@ -287,6 +296,7 @@ $req->closeCursor(); ?>
 </br> Début de l'Evement : <?php echo $jourDebut ?> à : <?php echo $heureDebut ?>
 </br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
 </br>
+</br> Organisateur de l'evenement : <?php echo $organisateur ?>
 </br> Nombre maximum de participants : <?php echo $max ?>
 </br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
 </br> Evénement payant : <?php echo $payant ?>
