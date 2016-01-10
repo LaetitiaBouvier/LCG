@@ -41,7 +41,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
     else
     {
 
-    	session_start();
+    	//session_start();
     	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
     	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
     	echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . "! Bienvenue sur La Connexion Gauloise!";

@@ -91,10 +91,12 @@
 }
 /* fonction d'animation, n'oubliez pas de prefixer ! */
 @keyframes slider {
-	0%, 20%, 100%	{ left: 0 }
-	25%, 45%		{ left: -100% }
-	50%, 70%		{ left: -200% }
-	75%, 95%		{ left: -300% }
+	0%, 10%, 100%	{ left: 0 }
+	20%, 30%		{ left: -100% }
+	40%, 50%		{ left: -200% }
+	60%, 70%		{ left: -300% }
+	80%, 90%		{ left: -400% }
+
 }
 /* complétez le sélecteur : */
 #slideshow .slider {
@@ -111,9 +113,18 @@
 	background-color: #ffffff;
 }
 
+
+#titre1{
+background-color: #990000;
+}
+
+#titre2{
+background-color: #000099;
+}
+
 #titre1 ,#titre2 ,#titre3{
 	border: solid 2px ;
-	background-color: #990000;
+
 	color: white;
 	padding: 1px;
 	margin-top: 2px;

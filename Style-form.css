@@ -36,6 +36,13 @@ header{
   background-color: #fff;
 }
 
+h1 {
+  font-family:Fantasy,Cursive;
+  font-size:40px;
+  color:#000099;
+  text-align:center;
+}
+
 h2 {
   font-family:Fantasy,Cursive;
   font-size:60px;
@@ -158,6 +165,11 @@ textarea {
 
 #pres, #valid{
   text-align:center;
+}
+
+#boutons_admin{
+  display: inline;
+
 }
 
 /*    Categories  */

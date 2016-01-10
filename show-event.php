@@ -32,7 +32,10 @@
 																values ('$IDU', '$ID', '$NbReservations_Participation')")
 																or die('Error: ' . mysqli_error($connect));
 
-				echo "Vous participez bien à cet évènement !";
+				?>
+				<h1> <?php echo "Vous participez bien à cet évènement !"; ?> </h1>
+
+				<?php
 
 				//header("location:Confirm-Participation-Event.php");
 		}else{
@@ -44,10 +47,24 @@
 			mysqli_query($connect, "DELETE FROM participation_table WHERE ID_Utilisateur = $IDU AND ID_Evenement = $ID")
 															or die('Error: ' . mysqli_error($connect));
 
-			echo "Vous ne participez pas/plus à cet évènement !";
+															?>
+															<h1> <?php echo "Vous ne participez pas/plus à cet évènement !"; ?> </h1>
+
+															<?php
 		}
 	}
 ?>
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+$req = $bdd->prepare('SELECT COUNT(*) AS nb FROM participation_table WHERE ID_Evenement=? ');
+$req->execute(array($ID));
+
+$data = $req->fetch();
+
+
+$compteur=$data['nb'];
+$nbparticipants[0]=''.$compteur.'';
+$req->closeCursor(); ?>
 
 <?php
 
@@ -259,19 +276,40 @@
 </br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
 </br>
 </br> Nombre maximum de participants : <?php echo $max ?>
+</br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
 </br> Evénement payant : <?php echo $payant ?>
 </br>
-</br> Lien vers le site web de l'événement : <?php echo $max ?>
+</br> Lien vers le site web de l'événement : <?php echo $web ?>
 </br>
 </br>
 </fieldset>
-<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+
+
+<?php
+	if (isset($_SESSION["ID_Utilisateur"])):
+
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+
+	$orga=$bdd->prepare('SELECT Organisateur_Evenement FROM evenement_table WHERE ID_Evenement=?');
+	$orga->execute(array($ID));
+	$organisateur=$orga->fetch();
 
 	$req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req->execute(array($IDU));
 	$admin=$req->fetch();
 
+	if ($organisateur['Organisateur_Evenement']==$_SESSION["pseudo_utilisateur"] OR $admin['Admin_Utilisateur']=="oui") {?>
+		<div id=boutons_admin>
+<form name='modif' method='post' action=<?php echo ("Page_Modif-Event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
+		<input type="submit" name="valider" value="MODIFIER "/>
+	</form> </div> </br> <?php }
+
+
 	if ($admin['Admin_Utilisateur']=="oui"){?>
-	<form name='delete' method='post' action=<?php echo ("delete_event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
+		<div id=boutons_admin>
+<form name='delete' method='post' action=<?php echo ("delete_event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" name="valider" value="SUPPRIMER "/>
-	</form><?php } ?>
+	</form> </div><?php }
+
+endif;?>
+</div>

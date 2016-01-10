@@ -115,7 +115,7 @@ nav{
 	padding:8px 0;
 }
 #menu-demo2 li:hover li a{
-	color:#fff;
+	color:#000000;
 	text-transform:inherit;
 }
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{

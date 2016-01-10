@@ -14,7 +14,7 @@
       catch (Exception $e)
       {die('Erreur : '.$e->getMessage());} //en cas d'erreur on affiche un message
       // récupération de 10 événements aléatoires
-      $req = $bdd->query('SELECT Nom_Evenement, JourDebut_Evenement, Image_Evenement, AdressePostal_Evenement FROM evenement_table ORDER BY ID_Evenement DESC LIMIT 0,3');
+      $req = $bdd->query('SELECT Nom_Evenement, JourDebut_Evenement, Image_Evenement, AdressePostal_Evenement FROM evenement_table ORDER BY ID_Evenement DESC LIMIT 0,7');
 
       while ($donnees = $req->fetch())
       {

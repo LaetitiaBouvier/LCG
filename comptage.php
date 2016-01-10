@@ -15,14 +15,18 @@ for ($numero = 0; $numero < 9; $numero++)
 
 
     $compteur=$data['nb'];
-    echo $compteur;
-    $CHIFFRES[$numero]='Allez'.$compteur.'';
+    $CHIFFRES[$numero]=''.$compteur.'';
     $req->closeCursor();
   }
-for ($numero = 0; $numero < 9; $numero++){
-  echo $CHIFFRES[$numero];
-  //echo $categories[$numero];
-}
 
+$nb_Festivals=$CHIFFRES[0];
+$nb_Repas=$CHIFFRES[1];
+$nb_Concerts=$CHIFFRES[2];
+$nb_Brocantes=$CHIFFRES[3];
+$nb_Soirees=$CHIFFRES[4];
+$nb_Conferences=$CHIFFRES[5];
+$nb_Humanitaire=$CHIFFRES[6];
+$nb_Sportif=$CHIFFRES[7];
+$nb_Manifestation=$CHIFFRES[8];
 
 ?>
