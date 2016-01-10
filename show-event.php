@@ -296,7 +296,7 @@ $req->closeCursor(); ?>
 </br> Début de l'Evement : <?php echo $jourDebut ?> à : <?php echo $heureDebut ?>
 </br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
 </br>
-</br> Organisateur de l'evenement : <?php echo $organisateur ?>
+</br> Organisateur de l'evenement : <a href=<?php echo "'Page_show-profil.php?'.$organisateur"?>><?php echo $organisateur ?></a>
 </br> Nombre maximum de participants : <?php echo $max ?>
 </br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
 </br> Evénement payant : <?php echo $payant ?>
