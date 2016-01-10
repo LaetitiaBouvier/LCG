@@ -67,7 +67,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 <?php
 if (isset($_SESSION['ID_Utilisateur']))
 {
-  echo '' . $_SESSION['pseudo_utilisateur'] . " , La Connexion Gauloise est heureuse de vous revoir!";
+  echo '<h1>' . $_SESSION['pseudo_utilisateur'] . " , La Connexion Gauloise est heureuse de vous revoir!</h1>";
 
   echo "<div id='deconnexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
 }

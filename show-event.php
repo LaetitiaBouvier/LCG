@@ -13,6 +13,8 @@
 
 <?php
 
+
+
 	if (isset($_POST['participer']) && ($_POST['participer'] == "Participer/Ne plus participer à cet évènement")){
 
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
@@ -33,7 +35,7 @@
 																or die('Error: ' . mysqli_error($connect));
 
 				?>
-				<h1> <?php echo "Vous participez bien à cet évènement !"; ?> </h1>
+				<h1> <?php //echo "Vous participez bien à cet évènement !"; ?> </h1>
 
 				<?php
 
@@ -241,6 +243,15 @@ $req->closeCursor(); ?>
 
 	<body>
 		<centralform>
+			<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+			$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
+			$req->execute(array($IDU, $ID));
+
+			$data = $req->fetch();
+			if($data['ID_Utilisateur'] == $IDU){
+				?>
+				<h1> <?php echo "Vous participez à cet évènement !"; ?> </h1> <?php } ?>
+
 		<h2> <?php echo $nom ?></h2>
 
 

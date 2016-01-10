@@ -1,4 +1,11 @@
+
+
 <?php
+if(isset($_GET["IDE"]))
+{
+  $IDE = $_GET["IDE"];}
+  else {
+
 
   $ID=$_SESSION["ID_Utilisateur"];
 
@@ -13,8 +20,8 @@
 
   $bite = $reqbis->fetch();
 
-  $IDEv = $bite['ID_Evenement'];
-
+  $IDE = $bite['ID_Evenement'];
+}
 ?>
 
 <?php
@@ -30,17 +37,17 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
     $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
     if (in_array($extension_upload, $extensions_autorisees))
     {
-      //$IDEv = basename($_FILES['photo']['name']);
-      $nomphoto = $IDEv.".".$extension_upload;
+      //$IDE = basename($_FILES['photo']['name']);
+      $nomphoto = $IDE.".".$extension_upload;
 
-      //$photo="Images_code/IMG_Event_Original/".$IDEv;
+      //$photo="Images_code/IMG_Event_Original/".$IDE;
 
       // On peut valider le fichier et le stocker définitivement
       move_uploaded_file($_FILES['photo']['tmp_name'], "Images_code/IMG_Event_Original/".$nomphoto."");
 
       // ENREGISTREMENT DANS LA BASE DE DONNEES
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE evenement_table SET Image_Evenement="'.$nomphoto.'" WHERE ID_Evenement ="'.$IDEv.'"');
+      $req = $bdd->prepare('UPDATE evenement_table SET Image_Evenement="'.$nomphoto.'" WHERE ID_Evenement ="'.$IDE.'"');
       $req->execute();
 
       // REDIMENSION
@@ -93,11 +100,11 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
   }
   else {echo ("le fichier est trop volumineux");}
 }
-//echo ("nomphoto".$IDEv);    //affiche nomdelaphoto.extension
+//echo ("nomphoto".$IDE);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
 echo "!!!";
-echo $IDEv;
-header("location:Page_show-event.php?IDE=$IDEv");
+echo $IDE;
+header("location:Page_show-event.php?IDE=$IDE");
 
 
 ?>
