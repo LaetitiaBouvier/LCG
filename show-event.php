@@ -230,7 +230,15 @@ $req->closeCursor(); ?>
 	$data = $req->fetch();
 
 	foreach($data as $cle => $valeur) {
-		if($cle == '[Organisateur_Evenement]'){ $organisateur = $valeur; }
+		if($cle == '[Organisateur_Evenement]'){
+			$organisateur = $valeur;
+
+			$req2 = $bdd->prepare('SELECT 	ID_Utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ?');
+			$req2->execute(array($valeur));
+
+			$data = $req2->fetch();
+			$ID_orga=$data['ID_Utilisateur'];
+		}
 	}
 
 	$req = $bdd->prepare('SELECT 	Image_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -296,7 +304,7 @@ $req->closeCursor(); ?>
 </br> Début de l'Evement : <?php echo $jourDebut ?> à : <?php echo $heureDebut ?>
 </br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
 </br>
-</br> Organisateur de l'evenement : <a href=<?php echo "'Page_show-profil.php?'.$organisateur"?>><?php echo $organisateur ?></a>
+</br> Organisateur de l'evenement : <a href=<?php echo("Page_show-profil.php?IDU=".$ID_orga."");?>><?php echo $organisateur ?></a>
 </br> Nombre maximum de participants : <?php echo $max ?>
 </br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
 </br> Evénement payant : <?php echo $payant ?>
