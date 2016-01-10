@@ -71,33 +71,6 @@ if(isset($_SESSION["ID_Utilisateur"])){
 		<div id="categ_Humanitaire"><a  href="Page_show-1-categorie.php?Ev=Humanitaires"><img src="Images_code/IMG_Categorie/categ_humanitaires.jpg"> </a>  </div>
 		<div id="categ_Sportif"><a  href="Page_show-1-categorie.php?Ev=Sportifs"><img src="Images_code/IMG_Categorie/categ_sportifs.jpg"> </a> </div>
 		<div id="categ_Manifestation"><a  href="Page_show-1-categorie.php?Ev=Manifestations"><img src="Images_code/IMG_Categorie/categ_manifestations.jpg"> </a> </div>
-	</div><br/>
-
-	<br/>
+	</div>
 
 </form>
-
-<?php
-
-  if( ($ID != -1) && (isset($_POST['valider'])) && ($_POST['valider'] == "Valider mes selections") ){
-
-    $categorieFavorite = "";
-
-    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))	{ $categorieFavorite 	.= $_POST['categorieFavorite1']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.= $_POST['categorieFavorite2']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.= $_POST['categorieFavorite3']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.= $_POST['categorieFavorite4']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.= $_POST['categorieFavorite5']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.= $_POST['categorieFavorite6']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.= $_POST['categorieFavorite7']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.= $_POST['categorieFavorite8']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.= $_POST['categorieFavorite9']; $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-
-    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-    $req = $bdd->prepare('UPDATE utilisateur_table SET Categorie_Favorite="'.$categorieFavorite.'" WHERE ID_Utilisateur ="'.$ID.'"');
-    $req->execute();
-
-		header("location:Confirm-Modif-Categories.html");
-
-  }
-?>

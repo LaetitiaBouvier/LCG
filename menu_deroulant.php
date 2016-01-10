@@ -10,29 +10,12 @@
 
           <li><a href="Page_Categories.php"> Catégories </a></li>
 
+          <?php if(isset($_SESSION["ID_Utilisateur"])){?>
           <li><a> Mes Abonnements </a>
             <ul>
               <li><a href="Page_CategoriesAbo.php"> Catégories </a></li>
               <li><a href="Page_show-all-profilsAbo.php"> Profils </a></li>
-              <?php
 
-              //  if(isset($_SESSION["ID_Utilisateur"])){
-              //    echo "<li><a href=\"Page_show-all-profilsAbo.php\"> Profils </a></li>";
-              //  }
-              //  else
-              //  {
-              //    session_start();
-              //
-              //    if(isset($_SESSION["ID_Utilisateur"])){
-              //      echo "<li><a href=\"Page_show-all-profilsAbo.php\"> Profils </a></li>";
-              //    }
-              //
-              //    else{
-              //      echo "<li><a> Profils </a></li>";
-              //    }
-              //  }
-
-              ?>
             </ul>
           </li>
 
@@ -52,7 +35,7 @@
               <li><a href="@"> Consulter mon profil </a></li>
             </ul>
           </li>
-
+          <?php } ?>
           <li> <a href="Page_Map.php"><img src="Images_code/map.png" class="carte" width=120px/></a> </li>
           <li><a href="Page_Calendrier.php"> <img src="Images_code/calendrier.png" class="calendrier" width=110px/> </a></li>
         </ul>

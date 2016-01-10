@@ -74,6 +74,7 @@ if (isset($_SESSION['ID_Utilisateur']))
 else
 {
   include("signinup.html");
+  echo "<h1> Inscrivez-vous pour avoir accès aux fonctionnalités avancées !</h1>";
 }
 ?>
 
@@ -82,10 +83,12 @@ else
 		  <div id="barre_recherche">
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></a></div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
-          <li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>
+          <?php if(isset($_SESSION["ID_Utilisateur"])){?>
+<li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>
+<?php  } ?>
            <input type="search" name="barre_de_recherche" id="barre_de_recherche" size="50" placeholder=" Rechercher un membre ou un événement" />
 					 <input type="submit" id="rechercher" value="Rechercher"/>
-					<p id="recherche_avancee">Recherche avancée</p>
+					<!--<p id="recherche_avancee">Recherche avancée</p>!-->
 				</form>
 			</div>
 		</header>

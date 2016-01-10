@@ -35,7 +35,7 @@
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table');
+  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table ORDER BY JourFin_Evenement DESC');
   $req->execute();
 
 	$Ev = $_GET["Ev"];
@@ -70,7 +70,7 @@ $compteur=$compteur+1;    }
 
 <br/>
 
-<legend><?php echo ("Il y a ".$compteur." evenements à venir dans la catégorie ".$Ev."");  ?></legend>
+<legend><?php echo ("Il y a ".$compteur." evenements enregistré(s) dans la catégorie ".$Ev."");  ?></legend>
 
 
 </form>

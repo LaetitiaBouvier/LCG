@@ -243,19 +243,20 @@ $req->closeCursor(); ?>
 
 	<body>
 		<centralform>
-			<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-			$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
-			$req->execute(array($IDU, $ID));
-
-			$data = $req->fetch();
-			if($data['ID_Utilisateur'] == $IDU){
-				?>
-				<h1> <?php echo "Vous participez à cet évènement !"; ?> </h1> <?php } ?>
 
 		<h2> <?php echo $nom ?></h2>
 
 
 <?php if (isset($_SESSION["ID_Utilisateur"])): ?>
+	<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
+	$req->execute(array($IDU, $ID));
+
+	$data = $req->fetch();
+	if($data['ID_Utilisateur'] == $IDU){
+		?>
+		<h1> <?php echo "Vous participez à cet évènement !"; ?> </h1> <?php } ?>
+
 	<form name="inscription" method="post" action="Page_show-event.php?IDE=<?=$ID?>" enctype="multiplart/form-data">
 		<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
 			<br/><div id="valid"><input type="submit" name="participer" value="Participer/Ne plus participer à cet évènement"/></div><br/>

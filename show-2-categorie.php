@@ -24,7 +24,7 @@
 <?php
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table WHERE JourDebut_Evenement=?');
+  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table WHERE JourDebut_Evenement=? ORDER BY JourFin_Evenement DESC');
   $req->execute(array($Date));
 
 	$Ev = $_GET["Ev"];
