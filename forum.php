@@ -8,8 +8,17 @@ if (!isset($_GET['f']))
 	exit;
 }
 
-$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
-echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
+$f = $_GET['f'];
+$page = $_GET['f'] - 1;
+$leftarrow = $_GET['f'] - 25;
+$rightarrow = $_GET['f'] + 25;
+
+if (($_GET['f'] % 25) != 1)
+{
+	$f2 = $f - (($f - 1) % 25);
+	header("Location: forum.php?f=$f2");
+	exit;
+}
 
 if (isset($_POST['nouveau_titre_topic']))
 {
@@ -28,6 +37,9 @@ if (isset($_POST['nouveau_titre_topic']))
 
 			$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
 			$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $_POST['premier_message']));
+
+			header("Location: topic.php?f=1&t=$t");
+			exit;
 		}
 		else
 		{
@@ -47,10 +59,8 @@ if (isset($_POST['nouveau_titre_topic']))
 	}
 }
 
-$f = $_GET['f'];
-$page = $_GET['f'] - 1;
-$leftarrow = $_GET['f'] - 25;
-$rightarrow = $_GET['f'] + 25;
+$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
+echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
 
 ?>
 

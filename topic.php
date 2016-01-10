@@ -2,9 +2,18 @@
 
 session_start();
 
-if (!isset($_GET['f']))
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
+$req->execute(array($_GET['t']));
+$nbmsg = $req->fetch();
+
+$nbpages = ($nbmsg[0] - 1 - (($nbmsg[0] - 1) % 20)) / 20 + 1;
+
+$t = $_GET['t'];
+
+if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 {
-	header('Location: topic.php?f=1');
+	header("Location: topic.php?f=1&t=$t");
 	exit;
 }
 
@@ -36,10 +45,8 @@ if (isset($_POST['repondre_message']))
 
 $t = $_GET['t'];
 $f = $_GET['f'];
-$page = $_GET['f'] - 1;
-$npage = $page / 20 + 1;
-$leftarrow = $_GET['f'] - 20;
-$rightarrow = $_GET['f'] + 20;
+$leftarrow = $_GET['f'] - 1;
+$rightarrow = $_GET['f'] + 1;
 
 ?>
 
@@ -176,33 +183,21 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
-$req->execute(array($_GET['t']));
-$nbmsg = $req->fetch();
-$limitemsg = $nbmsg[0] - 20;
-$nbmsg[0]
-
-if ($page != 0)
+if ($f != 1)
 {
 	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
 echo '<p class="numero_page">';
 
-$r1 = $nbmsg[0] - 1;
-$r2 = $r1 % 20;
-$nbpages = ($r1 - $r2) / 20 + 1;
-
 for ($i = 1; $i <= $nbpages; $i++)
 {
-	$a = ($i - 1) * 20 + 1;
-	echo ' <a href="topic.php?f=' . $a  . '&t=' . $t . '">' . $i . '</a>';
+	echo ' <a href="topic.php?f=' . $i  . '&t=' . $t . '">' . $i . '</a>';
 }
 
 echo '</p>';
 
-if ($page < $limitemsg)
+if ($f < $nbpages)
 {
 	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
@@ -214,8 +209,10 @@ if ($page < $limitemsg)
 
 <?php
 
+$nmsg = 20 * ($f - 1);
+
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $page, 20");
+$req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
 while ($data = $req->fetch())
@@ -230,26 +227,21 @@ echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>"
 
 <?php
 
-if ($page != 0)
+if ($f != 1)
 {
 	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
 echo '<p class="numero_page">';
 
-$r1 = $nbmsg[0] - 1;
-$r2 = $r1 % 20;
-$nbpages = ($r1 - $r2) / 20 + 1;
-
 for ($i = 1; $i <= $nbpages; $i++)
 {
-	$a = ($i - 1) * 20 + 1;
-	echo ' <a href="topic.php?f=' . $a  . '&t=' . $t . '">' . $i . '</a>';
+	echo ' <a href="topic.php?f=' . $i  . '&t=' . $t . '">' . $i . '</a>';
 }
 
 echo '</p>';
 
-if ($page < $limitemsg)
+if ($f < $nbpages)
 {
 	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
@@ -266,7 +258,7 @@ if ($page < $limitemsg)
 
 		<h3 id="repondre_topic">Répondre</h3>
 
-		<form <?php echo "action='topic.php?f=" . $fin_du_topic . "&t=" . $t . "' method='POST'"; ?> >
+		<form <?php echo "action='topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
 			<p><input type="submit" value="Poster" /></p>
