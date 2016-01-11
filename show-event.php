@@ -66,7 +66,8 @@ $data = $req->fetch();
 
 $compteur=$data['nb'];
 $nbparticipants[0]=''.$compteur.'';
-$req->closeCursor(); ?>
+$req->closeCursor();
+?>
 
 <?php
 
@@ -311,6 +312,10 @@ $req->closeCursor(); ?>
 </br>
 </br> Lien vers le site web de l'événement : <?php echo $web ?>
 </br>
+</br>
+<div id="notation">
+<?php include("notation.html"); ?>
+</div>
 </br>
 </fieldset>
 
