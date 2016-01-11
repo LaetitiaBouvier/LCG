@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 
 if (!isset($_GET['f']))
 {
@@ -45,22 +45,24 @@ if (isset($_POST['nouveau_titre_topic']))
 		{
 			if ($_POST['nouveau_titre_topic'] == "")
 			{
-				echo "Écrivez un titre!";
+				echo "<p class='warning'>Vous n'avez pas écrit le titre de votre topic!</p>";
 			}
 			if ($_POST['premier_message'] == "")
 			{
-				echo "Écrivez un message!";
+				echo "<p class='warning'>Vous n'avez pas écrit le premier message de votre topic!</p>";
 			}
 		}
 	}
 	else
 	{
-		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).<p><div id='arrow'><img src=images/arrow.gif alt='flèche'></div></div>";
+		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).";
 	}
 }
-
-$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
-echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
+else
+{
+	$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
+	echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
+}
 
 ?>
 
@@ -75,6 +77,14 @@ echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexi
 		a
 		{
 			text-decoration: none;
+		}
+
+		.warning
+		{
+			color: red;
+			font-size: 2em;
+			text-decoration: none;
+			text-transform: uppercase;
 		}
 
 		#forum ul
