@@ -24,6 +24,12 @@ session_start();
     else
       { $description = " ";}
 
+  // SPONSORS DE L'EVENEMENT
+    if(isset($_POST['sponsors'])				 && !empty($_POST['sponsors']))
+      {	$sponsors=$_POST['sponsors'];}
+    else
+      { $sponsors = " ";}
+
 
     // METTRE LA PHOTO PAR DEFAUT
 
@@ -123,9 +129,9 @@ $organisateur=$_SESSION["pseudo_utilisateur"];
                                   JourFin_Evenement, HeureDebut_Evenement, HeureFin_Evenement, Description_Evenement, NbMaxParticipants_Evenement,
                                   Categorie_Evenement, Cibles_Evenement, NomLieu_Evenement, AdresseRue_Evenement, AdressePostal_Evenement,
                                   AdresseVille_Evenement, AdresseDepartement_Evenement, AdresseRegion_Evenement, Payant_Evenement,
-                                  LienSiteWeb_Evenement)
+                                  LienSiteWeb_Evenement, Sponsors_Evenement)
                                 values ('$nom', '$organisateur', '$photo', '$datedeb', '$datefin', '$heuredeb','$heurefin','$description','$participants',
-                                '$categorie', '$cible', '$endroit', '$rue', '$CP', '$ville', '$departement', '$region', '$payant','$website')")
+                                '$categorie', '$cible', '$endroit', '$rue', '$CP', '$ville', '$departement', '$region', '$payant','$website', '$sponsors')")
                                 or die('Error: ' . mysqli_error($connect));
 
 

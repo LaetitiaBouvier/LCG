@@ -90,6 +90,16 @@ $req->closeCursor();
 		if($cle == '[Description_Evenement]'){ $description = $valeur; }
 	}
 
+	$req = $bdd->prepare('SELECT Sponsors_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+	$req->execute(array($ID));
+
+	$data = $req->fetch();
+
+	foreach($data as $cle => $valeur) {
+		if($cle == '[Sponsors_Evenement]'){ $sponsors = $valeur; }
+	}
+
+
 	$req = $bdd->prepare('SELECT Categorie_Evenement FROM evenement_table WHERE ID_Evenement = ?');
 	$req->execute(array($ID));
 
@@ -290,6 +300,8 @@ $req->closeCursor();
 </br>
 </br> Nom de l'Evenement : <?php echo $nom ?>
 </br> Description de l'Evenement : <?php echo $description ?>
+</br> Sponsors de l'Evenement : <?php echo $sponsors ?>
+
 </br>
 </br> Categorie : <?php echo $categorie ?>
 </br>
@@ -310,7 +322,7 @@ $req->closeCursor();
 </br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
 </br> Evénement payant : <?php echo $payant ?>
 </br>
-</br> Lien vers le site web de l'événement : <?php echo $web ?>
+</br> Lien vers le site web de l'événement : <?php echo "<a href='$web'>cliquez ici</a>" ?>
 </br>
 </br>
 <div id="notation">

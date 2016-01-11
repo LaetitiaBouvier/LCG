@@ -33,6 +33,14 @@ if (!$connect)
       $req->execute();
     }
 
+    if(isset($_POST['sponsors']))
+    {
+      $sponsors=$_POST['sponsors'];
+
+      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+      $req = $bdd->prepare('UPDATE evenement_table SET Description_Evenement="'.$sponsors.'" WHERE ID_Evenement ="'.$ID.'"');
+      $req->execute();
+    }
 
     if(isset($_POST['categorie']) && !empty($_POST['categorie']))
     {
@@ -105,11 +113,24 @@ if (!$connect)
 
 
     // DEPARTEMENT
-    $departement=NULL;
+    if(isset($_POST['departement']))
+      {	$departement=$_POST['departement'];
+
+        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+        $req = $bdd->prepare('UPDATE evenement_table SET AdresseVille_Evenement="'.$departement.'" WHERE ID_Evenement ="'.$ID.'"');
+        $req->execute();
+      }
 
 
-    // REGION
-    $region=NULL;
+
+  // REGION
+  if(isset($_POST['region']))
+    {	$region=$_POST['region'];
+
+      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+      $req = $bdd->prepare('UPDATE evenement_table SET AdresseVille_Evenement="'.$region.'" WHERE ID_Evenement ="'.$ID.'"');
+      $req->execute();
+    }
 
 
     // DATE DEBUT EVENT
