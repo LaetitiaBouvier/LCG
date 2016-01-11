@@ -137,7 +137,7 @@ header
 	padding-right: 40px;
 }
 
-#s_inscrire:hover, #recherche_avancee:hover
+#s_inscrire:hover, #recherche_avancee:hover, #rechercher:hover, #se_deconnecter:hover
 {
 	background-color: #539ef9;
 }
