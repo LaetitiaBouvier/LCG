@@ -13,7 +13,7 @@
         <a href="https://plus.google.com/101393851519255100835/posts"><img src="Images_code/google-plus-logo-transparent.png" class="google"/></a>
       </div>
       <div id="site">
-        <a href="#"> <h3>Nous Contacter |</h3> </a>
+        <a href="Page_NousContacter.php"> <h3>Nous Contacter |</h3> </a>
         <a href="#"> <h3> Aide en ligne |</h3> </a>
         <a href="#"> <h3> Charte </h3> </a>
       </div>
