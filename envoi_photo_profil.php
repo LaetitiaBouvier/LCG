@@ -1,6 +1,10 @@
 
 
 <?php
+
+session_start();
+
+
 if(isset($_GET["IDU"]))
 {
   $IDU = $_GET["IDU"];}
