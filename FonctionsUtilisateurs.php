@@ -379,8 +379,12 @@ $categorieFavorite = "";
 
   // DATE INSCRIPTION
 		$dateInscription = date("Y-m-d");
-		$admin = 0;
 
+  // DROITS D'ADMIN
+	$admin = "non";
+
+  // DATE INSCRIPTION
+  $avatar="profil.jpeg";
 
   // ENREGISTREMENT DANS LA BASE DE DONNEES
 		if($cond == true)
@@ -391,7 +395,12 @@ $categorieFavorite = "";
                                       '$adresseOK', '$mailOK', '$nomPrenomOK', '$planningOK', '$AlertesEvenementsOK', '$AlertesAbonnementsOK')")
                               or die('Error: ' . mysqli_error($connect));
 
-      header("location:Page_Confirm_Inscription.php");
+      $req = $bdd->prepare('SELECT ID_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = DESC LIMIT 1');
+      $req->execute();
+      $identity = $req->fetch();
+      $IDU = $identity['ID_Utilisateur'];
+
+      header("location:Page_Confirm_Inscription.php?IDU=".$IDU."");
 		  }
     else
       { print "Les informations entrées sont incorrectes ! "; }

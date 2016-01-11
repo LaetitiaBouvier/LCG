@@ -120,7 +120,7 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-$req = $bdd->prepare('SELECT ID_Evenement FROM participation_table WHERE ID_Utilisateur ="'.$IDU.'"');
+$req = $bdd->prepare('SELECT ID_Evenement FROM participation_table WHERE ID_Utilisateur ="'.$ID.'"');
 $req->execute();
 
 foreach($req as $row){
@@ -144,7 +144,7 @@ if($OKplanning_Utilisateur == "non") { echo "Non divulgué"; }
 <?php
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$IDU.'"');
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$ID.'"');
 	$req->execute();
 
 	foreach($req as $row)
@@ -168,19 +168,31 @@ if($OKplanning_Utilisateur == "non") { echo "Non divulgué"; }
 	}
 ?>
 
+	<?php
+		if (isset($_SESSION["ID_Utilisateur"])):
 
-</fieldset>
-</fieldset>
-<div id=boutons_admin>
-<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-$req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
-	$req->execute(array($IDU));
-	$admin=$req->fetch();
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-	if ($admin['Admin_Utilisateur']=="oui"){?>
+		$crea=$bdd->prepare('SELECT ID_Utilisateur FROM evenement_table WHERE ID_Utilisateur=?');
+		$crea->execute(array($ID));
+		$createur=$crea->fetch();
+
+		$req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+		$req->execute(array($IDU));
+		$admin=$req->fetch();
+
+		if ($createur['ID_Utilisateur']==$_SESSION["ID_Utilisateur"] OR $admin['Admin_Utilisateur']=="oui") {?>
+			<div id=boutons_admin>
+	<form name='modif' method='post' action=<?php echo ("Page_Modif-Event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
+			<input type="submit" name="valider" value="MODIFIER "/>
+		</form> </div> </br> <?php }
+
+
+		if ($admin['Admin_Utilisateur']=="oui"){?>
+			<div id=boutons_admin>
 	<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
-		<input type="submit" name="valider" value="BANNIR "/>
-	</form><?php } ?>
+			<input type="submit" name="valider" value="BANNIR "/>
+		</form> </div><?php }
 
-
+	endif;?>
 </div>
