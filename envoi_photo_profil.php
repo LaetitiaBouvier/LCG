@@ -1,21 +1,13 @@
 
 
 <?php
+
+session_start();
+
+
 if(isset($_GET["IDU"]))
 {
   $IDU = $_GET["IDU"];}
-if(isset($_SESSION["ID_Utilisateur"])){
-  $ID=$_SESSION["ID_Utilisateur"];
-}
-else{
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-  $req = $bdd->prepare('SELECT ID_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = DESC LIMIT 1');
-  $req->execute();
-
-  $identity = $req->fetch();
-  $IDU = $identity['ID_Utilisateur'];
-
-}
 ?>
 
 <?php
@@ -97,7 +89,8 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
 
-header("location:Page_show-profil.php?IDU=$IDU");
+header("location:Page_show-profil.php?IDU=".$IDU."");
+
 
 
 ?>

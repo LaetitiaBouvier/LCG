@@ -4,42 +4,9 @@
 	<head>
 		<title> Calendrier </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" href="Style-form.css"/>
+		<link rel="stylesheet" href="calendrier.css"/>
 	</head>
 
-  <style type="text/css">
-    html, body {
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      }
-    #conteneur {
-      position: relative;
-      margin: 0 auto;
-      padding : 0;
-      width: 1100px;
-      border : 2px solid #000;
-
-      }
-    table, td {
-      margin: 0 auto;
-      border : 1px dotted #000;
-      }
-    table td a {
-      display : block;
-      width : 150px;     /* taille de  */
-      height : 100px;    /*  l'image   */
-      line-height : 100px;
-      }
-    table td #sansimg {
-      background-color: #000
-      }
-     table td p {
-      margin : 0;
-      background-color: #efefef;
-      }
-    </style>
-</head>
 <body>
 
 </br></br></br>
@@ -49,7 +16,7 @@
     <table border="0">
     <thead>
       <tr>
-        <td colspan="7"> CALENDRIER </td>
+        <td colspan="7"> CALENDRIER - Aujourd'hui nous sommes le <?php echo date("d / m / Y"); ?> </td>
       </tr>
     <tfoot>
 
@@ -57,94 +24,94 @@
     <tbody>
       <tr>
 
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d"); ?>"> <?php echo date("d-m-Y"); ?> </a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d"); ?>"> <?php echo date("d-m"); ?> </a></p></td>
 
         <?php $demain =  time() + 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
       </tr>
       <tr>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
       </tr>
       <tr>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
       </tr>
       <tr>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
 
         <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m-Y", $demain); ?></a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); ?></a></p></td>
       </tr>
       <tbody>
     </table>

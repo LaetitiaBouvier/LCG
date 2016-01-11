@@ -178,8 +178,7 @@ else{
       <br/>
       <br/>
 
-      Avatar/Photo de profil :  <input type="file" name="avatar" id="avatar" value=""/><br />
-      <br />
+    
 
       Présentez-vous en quelques lignes : <br />
       <div>

@@ -1,12 +1,11 @@
 <?php
-
+session_start();
 
 
   { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 
     $organisateur = $_SESSION["pseudo_utilisateur"];
-
 
   if (isset($_POST['valider']) && $_POST['valider'] == "VALIDER MON EVENEMENT")
     { $cond=true; // Vérifie que le formulaire soit bien validé (absence du "else" plus tard)
@@ -119,7 +118,7 @@
   else{ $website = NULL; }
 
     // ENREGISTREMENT DANS LA BASE DE DONNEES
-
+$organisateur=$_SESSION["pseudo_utilisateur"];
          mysqli_query($connect, "insert into evenement_table (Nom_Evenement, Organisateur_Evenement, Image_Evenement, JourDebut_Evenement,
                                   JourFin_Evenement, HeureDebut_Evenement, HeureFin_Evenement, Description_Evenement, NbMaxParticipants_Evenement,
                                   Categorie_Evenement, Cibles_Evenement, NomLieu_Evenement, AdresseRue_Evenement, AdressePostal_Evenement,
