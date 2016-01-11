@@ -50,7 +50,7 @@ function calendrier()
         }
         if(jour==i)
         {
-            document.write('<td class="cal_aujourdhui">'+i+'</td>');
+            document.write('<td class="cal_aujourdhui">'+i+'<div id="icone"><input type="submit" name="categorie"/></div>'+'</td>');
         }
         else
         {
