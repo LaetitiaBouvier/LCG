@@ -23,14 +23,14 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 
   $dataPseudo = $req->fetch();
 
-  $reqbis = $bdd->prepare('SELECT ID_Utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
+  $reqbis = $bdd->prepare('SELECT ID_Utilisateur, Avatar_Utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ? AND mdp_utilisateur = ?');
   $reqbis->execute(array($pseudo_hache, $mdp_hache));
 
   $dataID = $reqbis->fetch();
 
   if(isset($_SESSION['ID_Utilisateur']) && isset($_SESSION['pseudo_utilisateur']))
   {
-    echo 'Bonjour ' . $dataPseudo['pseudo_utilisateur'] . " Bienvenue sur La Connexion Gauloise!";
+    echo "<h1> Bonjour ! </h1>";
   }
   else
   {
@@ -44,7 +44,9 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
     	//session_start();
     	$_SESSION['ID_Utilisateur'] = $dataID['ID_Utilisateur'];
     	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
-    	echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . "! Bienvenue sur La Connexion Gauloise!";
+      $_SESSION['Avatar_Utilisateur']= $dataID['Avatar_Utilisateur'];
+
+      echo "<h1> Bonjour ! </h1>";
     }
   }
 }
@@ -81,7 +83,10 @@ else
 </div>
 
 		  <div id="barre_recherche">
-        <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' /></a></div>
+        <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' width="55%";/></a>
+          <?php if (isset($_SESSION['ID_Utilisateur']))
+          {?>
+        <img src="<?php echo"Images_code/IMG_Profil_Moyen/" .$_SESSION['ID_Utilisateur'].".jpg.jpg" ;?>"/> <?php } ;?> </div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
           <?php if(isset($_SESSION["ID_Utilisateur"])){?>
 <li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>

@@ -12,8 +12,9 @@ header
 
 #bloc_titre_principal img
 {
-	width: 55%;
+
 	margin-left: 10px;
+	display:inline-block;
 }
 #barre_de_recherche
 {
