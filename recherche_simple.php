@@ -63,13 +63,31 @@
   if(isset($_POST['barre_de_recherche'])){
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, JourDebut_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
+    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, JourDebut_Evenement, HeureFin_Evenement, JourFin_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
     $req->execute();
 
     foreach($req as $row)
     {
 ?>
 <div id="cat1">
+
+  <?php
+    echo $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+
+    $now = date(’Y-m-d H:i:s’);
+    $expire = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+
+    // format the 2 dates using DateTime
+    $now = new DateTime( $now );
+    $now = $now->format(’Y-m-d H:i:s’);
+    $expire = new DateTime( $expire );
+    $expire = $expire->format(’Y-m-d H:i:s’);
+
+    if($now > $expire) echo "Les données n'ont pas expiré";
+
+
+  ?><br/><br/>
+
   <div id="titre1">
     <ul>
       <li> <h3> <?php echo ($row['JourDebut_Evenement']);?> </h3> </li>
@@ -85,6 +103,8 @@
 </div>
     <?php
     }
+
+    //
   }
 ?>
 <br/>
