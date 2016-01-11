@@ -1,6 +1,7 @@
-
-
 <?php
+
+session_start();
+
 if(isset($_GET["IDE"]))
 {
   $IDE = $_GET["IDE"];}
