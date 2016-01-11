@@ -30,11 +30,12 @@
 
 					mysqli_query($connect, "insert into abonnerutilisateur_table (ID_UtilisateurAbonne, ID_UtilisateurCible)
 																	values ('$IDU', '$ID')")
-																	or die('Error: ' . mysqli_error($connect));
+																	or die('Error: ' . mysqli_error($connect)); ?>
 
-					echo "Vous suivez bien cet utilisateur !";
+					<h1> <?php echo "Vous suivez bien cet utilisateur !"; ?> </h1>
+<?php
+					//header("location:Confirm-Participation-Event.php")
 
-					//header("location:Confirm-Participation-Event.php");
 			}else{
 
 				$NbReservations_Participation = 0;
@@ -42,10 +43,10 @@
 				$connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
 				mysqli_query($connect, "DELETE FROM abonnerutilisateur_table WHERE ID_UtilisateurAbonne = $IDU AND ID_UtilisateurCible = $ID")
-																or die('Error: ' . mysqli_error($connect));
+																or die('Error: ' . mysqli_error($connect)); ?>
 
-				echo "Vous ne suivez pas/plus cet utilisateur !";
-			}
+				<h1> <?php echo "Vous ne suivez pas/plus cet utilisateur !"; ?> </h1>
+			<?php }
 		}
 
 	?>
@@ -194,5 +195,5 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 			<input type="submit" id="droit" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>
 		</form><?php } ?>
 
-
+<?php endif; ?>
 </div>
