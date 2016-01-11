@@ -191,6 +191,6 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 		<form name='droit' method='post' action=<?php echo ("droit_admin.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 			<input type="submit" name="valider" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>
 		</form><?php } ?>
->>>>>>> origin/master
+
 
 </div>
