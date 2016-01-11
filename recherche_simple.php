@@ -74,16 +74,9 @@
   <?php
     echo $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
 
-    $now = date(’Y-m-d H:i:s’);
-    $expire = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+    $date = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
 
-    // format the 2 dates using DateTime
-    $now = new DateTime( $now );
-    $now = $now->format(’Y-m-d H:i:s’);
-    $expire = new DateTime( $expire );
-    $expire = $expire->format(’Y-m-d H:i:s’);
-
-    if($now > $expire) echo "Les données n'ont pas expiré";
+    
 
 
   ?><br/><br/>
