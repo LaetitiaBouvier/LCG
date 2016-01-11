@@ -1,34 +1,32 @@
-.cal_calendrier
-{
-    border:1px solid black;
-    padding:1px;
-    background-color:#4594ff;
-    width:1000px;
-    margin:auto;
-    height:800px;
-    background-color: #D7D7D7;
+#conteneur {
+  width: 1100px;
+  background-color: #D7D7D7;
+  padding: 0px;
+  display: inline-block;
+  text-align: center;
+  }
+table thead {
+  background-color: #990000;
+  color : white;
 }
-.cal_calendrier th
-{
-    border:1px solid black;
-    border-radius: 5px;
-    background-color:#990000;
-    color: white;
-}
-.cal_calendrier td
-{
-    border:1px solid black;
-    border-radius: 5px;
-    background-color:#ffffff;
-    text-align: start;
-}
-.cal_aujourdhui
-{
-    color:#ff0000;
-    font-style: bold;
-}
-.cal_jours_av_ap
-{
-    color:#5a779e;
-}
-Â
+
+table, td {
+  margin: 0 auto;
+  border : 1px dotted #000;
+  }
+table td a {
+  display : block;
+  width : 150px;     /* taille de  */
+  height : 100px;    /*  l'image   */
+  line-height : 100px;
+  color: black;
+  text-decoration: none;
+  }
+table td #sansimg {
+  background-color: #000
+  }
+ table td p {
+  margin : 0;
+  background-color: #efefef;
+  border-radius: 5px;
+  }
