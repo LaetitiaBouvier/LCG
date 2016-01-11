@@ -4,18 +4,6 @@
 if(isset($_GET["IDU"]))
 {
   $IDU = $_GET["IDU"];}
-if(isset($_SESSION["ID_Utilisateur"])){
-  $ID=$_SESSION["ID_Utilisateur"];
-}
-else{
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-  $req = $bdd->prepare('SELECT ID_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = DESC LIMIT 1');
-  $req->execute();
-
-  $identity = $req->fetch();
-  $IDU = $identity['ID_Utilisateur'];
-
-}
 ?>
 
 <?php

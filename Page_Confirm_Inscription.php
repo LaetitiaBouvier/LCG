@@ -22,7 +22,7 @@
 			<h2> Création de profil </h2>
 
 		  <p> Votre inscription a bien été prise en compte ! </p>
-			<?php include 'fichier_photo_profil.html';?>
+
 			<br/>
 
 			<br/><div>
