@@ -2,7 +2,7 @@
 
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
 $req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
@@ -17,7 +17,7 @@ if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 	exit;
 }
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
 $req->execute(array($_GET['t']));
 $data = $req->fetch();
@@ -28,7 +28,7 @@ if (isset($_POST['repondre_message']))
 {
 	if (isset($_SESSION['pseudo_utilisateur']))
 	{
-		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic,Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
 		$req->execute(array($_GET['t'], $_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
 
@@ -211,7 +211,7 @@ if ($f < $nbpages)
 
 $nmsg = 20 * ($f - 1);
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
