@@ -26,7 +26,7 @@ if (isset($_POST['nouveau_titre_topic']))
 	{
 		if (($_POST['nouveau_titre_topic'] != "") AND ($_POST['premier_message'] != ""))
 		{
-			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 			$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
 			$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
 
@@ -57,11 +57,6 @@ if (isset($_POST['nouveau_titre_topic']))
 	{
 		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).";
 	}
-}
-else
-{
-	$_SESSION['pseudo_utilisateur'] = "dimiboydimiboy1";
-	echo 'Bonjour ' . $_SESSION['pseudo_utilisateur'] . " ! Bienvenue sur La Connexion Gauloise !";
 }
 
 ?>
@@ -222,7 +217,7 @@ else
 
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 
 $i = 0;
