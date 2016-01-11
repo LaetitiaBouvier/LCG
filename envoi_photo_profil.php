@@ -1,14 +1,22 @@
-
-
 <?php
 
 session_start();
 
-
 if(isset($_GET["IDU"]))
 {
   $IDU = $_GET["IDU"];}
-?>
+
+else {
+  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+  $req = $bdd->prepare('SELECT ID_Utilisateur, Pseudo_Utilisateur FROM utilisateur_table ORDER BY ID_Utilisateur DESC LIMIT 1');
+  $req->execute();
+
+  $recup = $req->fetch();
+  $IDU = $recup['ID_Utilisateur'];
+  $Pseudo = $recup['ID_Utilisateur'];
+  }
+  ?>
+
 
 <?php
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
@@ -88,7 +96,6 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 }
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
-
 header("location:Page_show-profil.php?IDU=".$IDU."");
 
 

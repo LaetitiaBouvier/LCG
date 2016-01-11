@@ -384,7 +384,7 @@ $categorieFavorite = "";
 		$admin = 0;
 
   // avatar
-  $avatar="profil.jpeg";
+  $avatar="profil.jpg";
 
   // ENREGISTREMENT DANS LA BASE DE DONNEES
 		if($cond == true)

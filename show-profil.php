@@ -4,7 +4,7 @@
 	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; } // ATTENTION : Ici $IDU correspond à l'ID de l'utilisateur connecté
 
 	if(isset($_GET['IDU'])){
-	  $ID = $_GET['IDU'];																													// ATTENTION : Ici 'IDU' correspond à l'ID de l'utilisateur recherché
+	  $ID = $_GET['IDU'];		// ATTENTION : Ici 'IDU' correspond à l'ID de l'utilisateur recherché
 	}
 	else{
 	  $ID = -1;
@@ -47,6 +47,7 @@
 				echo "Vous ne suivez pas/plus cet utilisateur !";
 			}
 		}
+
 	?>
 
 
@@ -114,6 +115,7 @@
 </br> Présentation : <?php echo $desc ?>
 </fieldset>
 
+<?php if (isset($_SESSION["ID_Utilisateur"])): ?>
 <fieldset>
 </br> <legend>Evenements auxquels <?php echo $pseudo ?> participe :</legend>
 <?php
@@ -191,6 +193,6 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 		<form name='droit' method='post' action=<?php echo ("droit_admin.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 			<input type="submit" name="valider" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>
 		</form><?php } ?>
-
+<?php endif; ?>
 
 </div>
