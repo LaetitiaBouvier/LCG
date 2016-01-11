@@ -55,7 +55,7 @@ if (isset($_POST['nouveau_titre_topic']))
 	}
 	else
 	{
-		echo "<div id='block_top'><p>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).";
+		echo "<div id='block_top'><p class='warning'>Vous tentez d'accéder à un contenu qui nécessite que vous soyez connecté(e).</p></div>";
 	}
 }
 

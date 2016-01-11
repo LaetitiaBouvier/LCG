@@ -16,7 +16,14 @@
     display: inline-block;
     border: 1px solid black;
     width: 800px;
+		background-color: white;
+		padding-left: 10px;
   }
+
+	#faq a
+	{
+		font-size: 1em;
+	}
 
   #faq h2
   {
@@ -47,6 +54,8 @@
       <?php include("menu_deroulant.php"); ?>
     </nav>
 
+		<div id="block_faq">
+
     <div id="faq">
 
     <h2>Généralités</h2>
@@ -54,18 +63,18 @@
     <h3>Liens utiles pour le forumeur</h3>
 
     <ul>
-      <li>Pour modifier les informations de son profil</li>
-      <li>Pour recevoir son mot de passe par e-mail</li>
-      <li>Pour contacter un administrateur du site</li>
-      <li>Charte des forums</li>
-      <li>Pour consulter les conditions générales d’utilisation du site</li>
+      <li><a href="">Pour modifier les informations de son profil</a></li>
+      <li><a href="">Pour recevoir son mot de passe par e-mail</a></li>
+      <li><a href="">Pour contacter un administrateur du site</a></li>
+      <li><a href="">Charte des forums</a></li>
+      <li><a href="">Pour consulter les conditions générales d’utilisation du site</a></li>
     </ul>
 
     <h3>Lexique du forum</h3>
 
     <h4>Administrateur (admin)</h4>
 
-    <p>Personne travaillant pour La Connexion Gauloise ayant accès à l'administration du forum. Généralement on le reconnaît, car il poste en rouge sur tous les forums. Attention, tous les employés de laconnexiongauloise.com ne sont pas admins. Un admin peut supprimer des messages, épingler ou verrouiller des topics, exclure temporairement un membre, il peut aussi bannir temporairement ou définitivement un compte.</p>
+    <p>Personne travaillant pour La Connexion Gauloise ayant accès à l'administration du forum. Généralement on le reconnaît, car il poste en rouge sur le forum. Attention, tous les employés de laconnexiongauloise.com ne sont pas admins. Un admin peut supprimer des messages, bannir un compte.</p>
 
     <h4>Bannissement</h4>
 
@@ -82,7 +91,7 @@
 
     <h4>Boost</h4>
 
-    <p>Message posté uniquement dans le but d'augmenter son compteur dans sa carte de visite.</p>
+    <p>Message posté uniquement dans le but d'augmenter son compteur dans sa profil.</p>
 
     <h4>Cookie</h4>
 
@@ -137,64 +146,166 @@
     <p>Si lors de votre inscription votre adresse e-mail est rejetée, cela peut-être dû à trois choses :</p>
 
     <ul>
-    <li>La première quand au fait que trop de pseudos sont associés à cet e-mail. On ne peut pas avoir plus de trois comptes par adresse e-mail.</li>
-    <li>La seconde peut venir du fait qu'un pseudo associé à cet e-mail ait été banni. Auquel cas cela bannit aussi l'adresse e-mail. On ne débannit pas cette dernière, à moins que le pseudo soit innocenté.</li>
-    <li>Enfin la troisième raison peut être que vous essayez de vous inscrire avec une adresse jetable de type yopmail. Ces dernières sont interdites à cause de réservations massives et automatiques de comptes.</li>
-    <ul>
+	    <li>La première quand au fait que trop de pseudos sont associés à cet e-mail. On ne peut pas avoir plus de trois comptes par adresse e-mail.</li>
+	    <li>La seconde peut venir du fait qu'un pseudo associé à cet e-mail ait été banni. Auquel cas cela bannit aussi l'adresse e-mail. On ne débannit pas cette dernière, à moins que le pseudo soit innocenté.</li>
+	    <li>Enfin la troisième raison peut être que vous essayez de vous inscrire avec une adresse jetable de type yopmail. Ces dernières sont interdites à cause de réservations massives et automatiques de comptes.</li>
+    </ul>
 
     <h3>Comment modifier mon compte ?</h3>
 
-    Vous pouvez à tout moment modifier les données de votre compte. Pour cela il suffit de cliquer sur ce lien.
+    <p>Vous pouvez à tout moment modifier les données de votre compte. Pour cela il suffit de cliquer sur ce lien.</p>
 
-    J'ai changé mon adresse e-mail, mais je ne reçois pas l'e-mail de confirmation
+    <h3>J'ai changé mon adresse e-mail, mais je ne reçois pas l'e-mail de confirmation</h3>
 
-    Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.
+    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.</p>
 
-    Connectez-vous et dans le formulaire, en dessous de votre adresse e-mail, un lien vous propose de vous renvoyer l'e-mail de confirmation.
+    <p>Connectez-vous et dans le formulaire, en dessous de votre adresse e-mail, un lien vous propose de vous renvoyer l'e-mail de confirmation.</p>
 
-    Je me suis trompé d'adresse e-mail en la changeant dans mon profil, que faire ?
+    <h3>Je me suis trompé d'adresse e-mail en la changeant dans mon profil, que faire ?</h3>
 
-    Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.
+    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.</p>
 
-    Connectez-vous et dans le formulaire, il vous suffit juste de modifier de nouveau votre adresse e-mail.
+    <p>Connectez-vous et dans le formulaire, il vous suffit juste de modifier de nouveau votre adresse e-mail.</p>
 
-    J'ai oublié mon mot de passe ?
+    <h3>J'ai oublié mon mot de passe ?</h3>
 
-    En cas de perte de son mot de passe, il suffit juste de rentrer votre pseudo dans le formulaire en cliquant sur ce lien.
+    <p>En cas de perte de son mot de passe, il suffit juste de rentrer votre pseudo dans le formulaire en cliquant sur ce lien.</p>
 
-    Votre mot de passe sera automatiquement renvoyé sur votre adresse e-mail associée.
+    <p>Votre mot de passe sera automatiquement renvoyé sur votre adresse e-mail associée.</p>
 
-    J'ai oublié mon mot de passe, mais mon adresse e-mail n'est plus valide ?
+    <h3>J'ai oublié mon mot de passe, mais mon adresse e-mail n'est plus valide ?</h3>
 
-    Vous pouvez nous envoyer un message via le formulaire de contact (motif Pseudos / Compte) ou par e-mail à moderation@jeuxvideo.com en précisant bien le pseudo que vous souhaitez récupérer. Merci également de fournir un lien vers un message que vous avez posté le plus récemment possible avec ce pseudo.
+    <p>Vous pouvez nous envoyer un message via le formulaire de contact (motif Pseudos / Compte) ou par e-mail à moderation@laconnexiongauloise.com en précisant bien le pseudo que vous souhaitez récupérer. Merci également de fournir un lien vers un message que vous avez posté le plus récemment possible avec ce pseudo.</p>
 
-    Attention : nous ne garantissons pas que nous serons en mesure d'établir que ce compte vous appartient bien, surtout si celui-ci est inactif depuis longtemps.
+    <p>Attention : nous ne garantissons pas que nous serons en mesure d'établir que ce compte vous appartient bien, surtout si celui-ci est inactif depuis longtemps.</p>
 
-    Comment faire supprimer mon compte ?
+    <h3>Comment faire supprimer mon compte ?</h3>
 
-    Il faut bien différencier la suppression d'un compte et le bannissement d'un compte. Le bannissement est une opération qui peut se faire par simple demande sur le forum Réclamations en prenant soin de faire la demande avec le pseudo dont vous souhaitez le bannissement.
+    <p>Il faut bien différencier la suppression d'un compte et le bannissement d'un compte. Le bannissement est une opération qui peut se faire par simple demande sur le forum Réclamations en prenant soin de faire la demande avec le pseudo dont vous souhaitez le bannissement.</p>
 
-    La suppression de compte efface complètement de notre base de données toutes les informations et tous les messages postés par ce compte. Par conséquent, cette opération est irréversible, une procédure a donc été mise en place pour éviter les abus.
+    <p>La suppression de compte efface complètement de notre base de données toutes les informations et tous les messages postés par ce compte. Par conséquent, cette opération est irréversible, une procédure a donc été mise en place pour éviter les abus.</p>
 
-    Afin de procéder à la suppression de votre compte jeuxvideo.com et de tous les messages postés avec celui-ci, vous devrez donc nous faire parvenir les éléments suivants pour justifier de votre identité :
+    <p>Afin de procéder à la suppression de votre compte laconnexiongauloise.com et de tous les messages postés avec celui-ci, vous devrez donc nous faire parvenir les éléments suivants pour justifier de votre identité :</p>
 
-    Envoi d'un e-mail ou d'un courrier demandant la suppression du compte en question en précisant bien le pseudo à supprimer.
-    Envoi de la copie recto verso d'une pièce d'identité.
-    Envoi de la copie de la page "mon compte" où figurent votre nom, prénom ainsi que vos coordonnées en vous connectant à l'adresse suivante : lien
-    Attention : pour que nous puissions valider votre demande, il est nécessaire que les informations figurant sur votre carte d'identité et les renseignements entrés pour ce compte soient identiques, sinon quoi nous ne pourrons pas considérer ce compte comme vous appartenant. Vous pouvez modifier ces informations en cliquant sur ce lien.
+		<ul>
+	    <li>Envoi d'un e-mail ou d'un courrier demandant la suppression du compte en question en précisant bien le pseudo à supprimer.</li>
+	    <li>Envoi de la copie recto verso d'une pièce d'identité.</li>
+	    <li>Envoi de la copie de la page "mon compte" où figurent votre nom, prénom ainsi que vos coordonnées en vous connectant à l'adresse suivante : lien</li>
+		</ul>
 
-    Si votre compte est banni, ou que vous ne pouvez pas accéder à la page "mon compte" (perte de mot de passe, ...), vous pouvez tout de même faire la demande en envoyant simplement une copie de votre pièce d'identité. Nous regarderons si les informations correspondent bien avec celles de votre compte.
+		<p>Attention : pour que nous puissions valider votre demande, il est nécessaire que les informations figurant sur votre carte d'identité et les renseignements entrés pour ce compte soient identiques, sinon quoi nous ne pourrons pas considérer ce compte comme vous appartenant. Vous pouvez modifier ces informations en cliquant sur ce lien.</p>
 
-    Vous pouvez envoyer les documents à l'adresse e-mail suivante : moderation@jeuxvideo.com
+    <p>Si votre compte est banni, ou que vous ne pouvez pas accéder à la page "mon compte" (perte de mot de passe, ...), vous pouvez tout de même faire la demande en envoyant simplement une copie de votre pièce d'identité. Nous regarderons si les informations correspondent bien avec celles de votre compte.</p>
 
-    Ou bien par courrier postal à l'adresse :
+    <p>Vous pouvez envoyer les documents à l'adresse e-mail suivante : moderation@laconnexiongauloise.com</p>
 
-    L'Odyssée Interactive – jeuxvideo.com
-    2, Rue Paul Vaillant Couturier,
-    92300 LEVALLOIS-PERRET
+		<h2>Profil</h2>
 
+		<h3>Comment modifier les informations affichées dans le profil de ma profil ?</h3>
+
+		<p>Lorsque vous êtes connecté avec votre pseudo, allez dans votre profil. Vous pouvez modifier la plupart des informations tout simplement en cliquant sur le bouton « Modifier ».</p>
+
+		<p>Pour modifier la partie « Infos », vous devez vous rendre sur la page « Mon Compte » tout simplement en cliquant sur l'onglet du même nom.</p>
+
+		<h3>J'ai changé mon avatar mais il n'apparaît pas dans ma profil, pourquoi ?</h3>
+
+		<p>Pour que votre avatar soit pris en compte, il faut qu'il soit validé manuellement par un admin. Cela peut prendre du coup quelques heures, en particulier le week-end.</p>
+
+		<h3>Mon nouvel avatar a bien été validé, mais je vois toujours l'ancien, que faire ?</h3>
+
+		<p>Il suffit juste de rafraîchir votre profil. Pour cela appuyez sur la touche F5 ou bien sur la combinaison Ctrl+R.
+
+		<h3>Pourquoi mon avatar est refusé ?</h3>
+
+		<p>Ne sont pas acceptés les avatars qui pourraient heurter la sensibilité des plus jeunes, ainsi que ceux incitant à la haine ou au racisme.</p>
+
+		<p>Si vous ne comprenez pas pourquoi votre avatar est refusé, vous pouvez toujours en faire la demande via le formulaire de contact (motif Pseudos / Compte) avec un lien vers l'avatar refusé. Un admin se chargera de vous expliquer ce qui ne va pas.</p>
+
+		<h3>L'avatar d'une personne me dérange, que faire ?</h3>
+
+		<p>Vous pouvez le signaler en passant par le formulaire de contact (motif Pseudos / Compte) avec un lien vers le profil concerné, et en faisant l'argumentaire de ce qui vous gêne dans l'avatar.</p>
+
+		<h3>Comment réorganiser les cadres de l'onglet Profil ?</h3>
+
+		<p>Il suffit juste d'aller dans votre profil tout en étant connecté, puis avec la souris de déplacer les différents cadres comme vous le souhaitez. Les internautes verront votre profil, comme vous l'aurez agencée.</p>
+
+		<h3>Je n'ai pas rempli certains cadres, les autres internautes les verront-ils ?</h3>
+
+		<p>Non, toutes les parties non remplies sont invisibles pour les lecteurs.</p>
+
+		<h3>Je ne souhaite pas que les internautes voient mes derniers messages postés, comment faire ?</h3>
+
+		<p>Il suffit juste de cocher la case « Masquer ce bloc ». Vous verrez encore le cadre, mais il sera invisible pour les autres utilisateurs.</p>
+
+		<h3>Comment remettre visibles mes derniers messages postés ?</h3>
+
+		<p>Il suffit juste de décocher la case « Masquer ce bloc ». La modification est instantanée.</p>
+
+		<h3>Je ne vois plus les boutons pour modifier mon profil dans mon profil, pourquoi ?</h3>
+
+		<p>Vous êtes sûrement déconnecté, ou alors pas connecté avec le bon pseudo. Pour cela utilisez le formulaire de connexion en haut à droite du site.</p>
+
+		<h2>Forum</h2>
+
+		<h3>J'essaye de poster avec mon pseudo mais on me dit que le mot de passe n'est pas bon</h3>
+
+		<p>Vérifiez bien que vous l'avez tapé correctement en respectant les majuscules (vérifiez sur votre clavier que Verr Num soit bien enclenché et a contrario que Caps lock ne le soit pas). Si tout est bon vous pouvez toujours vous faire renvoyer votre mot de passe grâce au formulaire en cliquant sur ce lien.</p>
+
+		<p>Si vous ne recevez pas l'e-mail, il est possible que votre compte ait été volé. Dans ce cas reportez-vous plus bas.</p>
+
+		<h3>On m'a volé mon compte, que faire ?</h3>
+
+		<p>En cas de vol de compte, vous pouvez nous envoyer un message via le formulaire de contact (motif Pseudos / Compte) ou par e-mail à l'adresse moderation@laconnexiongauloise.com en précisant bien le pseudo qui vous a été volé. Merci également de fournir un lien vers un message posté le plus récemment possible par vous-même avec ce pseudo.</p>
+
+		<p>Attention : essayez de nous contacter le plus rapidement possible. Plus l'affaire sera ancienne et plus il nous sera compliqué d'établir que ce compte vous appartient bien.</p>
+
+		<h3>Je n'ai pas reçu de message concernant mon bannissement</h3>
+
+		<p>Si en essayant de poster, un message vous indique que ce pseudo est banni, vous devriez normalement recevoir un message sur l'adresse e-mail associée au compte, vous expliquant le motif de votre exclusion. Pensez à bien vérifier dans les courriers indésirables si vous ne recevez rien. Si pour une raison ou une autre vous n'avez pas reçu de message, vous pouvez toujours demander le motif de votre bannissement sur le forum Réclamations.</p>
+
+		<h3>Je pense que le bannissement de mon compte est une erreur, que faire ?</h3>
+
+		<p>Vous pouvez en toute légitimité demander le débannissement de votre pseudo sur le forum Réclamations. N'oubliez pas de mettre le message de votre ban. Si vous avez été banni sur un forum modéré, vous pouvez aussi demander l'avis du modérateur concerné.</p>
+
+		<h3>Le forum ne marche pas, qui contacter ?</h3>
+
+		<p>Si en essayant d'aller sur le forum ce dernier ne marchait pas, passez par le formulaire de contact (motif Signaler un bug sur le site).</p>
+
+		<p>Dans le corps du message précisez les informations suivantes :</p>
+
+		<ul>
+			<li>Lien</li>
+			<li>Message d'erreur</li>
+			<li>Date et heure à laquelle s'est produite l'erreur</li>
+			<li>Système d'exploitation</li>
+			<li>Votre navigateur internet et si vous en avez, les modules complémentaires que vous utilisez.</li>
+			<li>Si vous passez par un proxy : fournisseur d'accès internet, votre firewall et votre antivirus.</li>
+		<ul>
+
+		<p>Cela permettra à l'équipe technique de cerner au plus vite le problème.</p>
+
+		<h3>Comment signaler un abus ou bien un message hors-charte ?</h3>
+
+		<p>Si vous constatez un abus ou bien un message hors charte sur les forums, ou bien sur les commentaires de news, vidéos, etc., vous pouvez nous les signaler de quatre manières :</p>
+
+		<ul>
+			<li>En cliquant sur le point d'exclamation à droite du message. Cela enverra une alertes aux administrateurs.</li>
+			<li>Si c'est un forum modéré, vous pouvez le signaler au modérateur dudit forum sur son topic de modération.</li>
+			<li>Si vous avez moins de 30 jours de présence sur le site et que le forum n'est pas modéré, vous pouvez signaler les messages hors-charte sur le forum Réclamations.</li>
+			<li>Enfin vous pouvez aussi nous signaler les messages à supprimer via le formulaire de contact (motif Forums / Modération).</li>
+		</ul>
+
+		<p>Dans les trois derniers cas, n'oubliez pas de mettre un lien vers le message, la date et l'heure de ce dernier, ainsi que le pseudo l'ayant posté.</p>
+
+		<h3>Quelles sont les règles pour upper un topic ?</h3>
+
+		<p>Si vous créez un topic et que celui-ci coule – c'est-à-dire qu'il se retrouve en deuxième page -, vous pouvez poster dessus afin de le faire remonter. Attention à le faire avec parcimonie, auquel cas votre topic pourrait être supprimé.</p>
+
+		<p>De plus sachez qu'il n'est pas interdit de upper un vieux topic pour y apporter des informations ou bien compléter un débat. Mais attention cela est toléré uniquement si le up est réellement justifié.</p>
 
   	</div>
+
+		</div>
 
     <footer>
       <?php include("footer.php"); ?>

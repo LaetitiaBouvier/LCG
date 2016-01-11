@@ -95,7 +95,7 @@
 <?php if (isset($_SESSION["ID_Utilisateur"])): ?>
 	<form name="inscription" method="post" action="Page_show-profil.php?IDU=<?=$ID?>" enctype="multiplart/form-data">
 		<?php //echo 'action="Page_show-event.php?IDE='.$IDE.'">"'; ?>
-			<br/><div id="valid"><input type="submit" name="valider" value="Suivre/Ne plus suivre cet utilisateur"/></div><br/>
+			<br/><div id="valid"><input type="submit" name="valider" id="suivre" value="Suivre/Ne plus suivre cet utilisateur"/></div><br/>
 	</form>
 <?php else: ?>
 <?php endif; ?>
@@ -173,26 +173,26 @@ if($OKplanning_Utilisateur == "non") { echo "Non divulgué"; }
 
 </fieldset>
 </fieldset>
-<div id=boutons_admin>
+<div id="boutons_admin">
 <?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 $req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req->execute(array($IDU));
 	$admin=$req->fetch();
-
 $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req2->execute(array($ID));
 	$admin2=$req2->fetch();
 
 	if ($admin['Admin_Utilisateur']=="oui"){?>
 		<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
-			<input type="submit" name="valider" value="BANNIR ":>
+			<input type="submit" id="bannir" value="BANNIR ":>
 		</form>
 	</br>
 		<h3><?php if ($admin2['Admin_Utilisateur']=="oui"){ echo "Ce membre est administrateur";}
 		else {echo "Ce membre n'est pas administrateur";} ?><h3>
-		<form name='droit' method='post' action=<?php echo ("droit_admin.php?IDU=".$ID."");?> enctype='multipart/form-data'>
-			<input type="submit" name="valider" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>
+
+		<form name='droits' method='post' action=<?php echo ("droit_admin.php?IDU=".$ID."");?> enctype='multipart/form-data'>
+			<input type="submit" id="droit" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>
 		</form><?php } ?>
-<?php endif; ?>
+
 
 </div>
