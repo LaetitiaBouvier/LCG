@@ -72,27 +72,28 @@
 <div id="cat1">
 
   <?php
-    echo $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
 
     $dateFin = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
     $dateDeb = $row['JourDebut_Evenement']." ".$row['HeureDebut_Evenement'];
 
-    $aujd =  date("Y-m-d H:i:s", time());
+    $dateAujd =  date("Y-m-d H:i:s", time());
 
+    $aujd = DateTime::createFromFormat('Y-m-d H:i:s', $dateAujd);
+    $fin  = DateTime::createFromFormat('Y-m-d H:i:s', $dateFin);
+    $deb  = DateTime::createFromFormat('Y-m-d H:i:s', $dateDeb);
+    //echo var_dump($fin < $deb);
+    //echo var_dump($fin > $deb);
 
-    if($dateFin < $aujd){
-      echo "Cet évènement est terminé !";
+    if(($deb < $aujd) && ($fin > $aujd)){
+      echo "Cet évènement est en cours !";
     }
-    else{
 
-      if($dateDeb > $aujd){
+    if(($deb > $aujd) && ($fin > $aujd)){
+      echo "Cet évènement n'a pas commencé !";
+    }
 
-        echo "Cet évènement est en cours !";
-      }
-      else{
-
-        echo "Cet évènement n'a pas encore commencé !";
-      }
+    if(($deb < $aujd) && ($fin < $aujd)){
+      echo "Cet évènement est terminé !";
     }
 
 
