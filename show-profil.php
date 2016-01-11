@@ -53,7 +53,9 @@
 	<?php
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-	$req = $bdd->prepare('SELECT Pseudo_Utilisateur, Adresse_Utilisateur, Nom_Utilisateur, Prenom_Utilisateur, Avatar_Utilisateur, Date_Naissance, Mail_Utilisateur, Description_Utilisateur  FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur, Adresse_Utilisateur, Nom_Utilisateur, Prenom_Utilisateur, Avatar_Utilisateur, Date_Naissance, Mail_Utilisateur, Description_Utilisateur,
+															 OKadresse_Utilisateur, OKmail_Utilisateur, OKNomPrenom_Utilisateur
+												FROM utilisateur_table WHERE id_utilisateur = ?');
 	$req->execute(array($ID));
 
 	$data = $req->fetch();
@@ -66,6 +68,9 @@
 	$mail=$data['Mail_Utilisateur'];
 	$desc=$data['Description_Utilisateur'];
 	$avatar=$data['Avatar_Utilisateur'];
+	$OKadresse_Utilisateur=$data['OKadresse_Utilisateur'];
+	$OKmail_Utilisateur=$data['OKmail_Utilisateur'];
+	$OKNomPrenom_Utilisateur=$data['OKNomPrenom_Utilisateur'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

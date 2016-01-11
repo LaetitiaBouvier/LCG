@@ -28,8 +28,10 @@ session_start();
 			<input type="date" name="Date"/>
 			<input type="submit" name="CHERCHER DATE" />
 		</br></br>
-			<?php include("calendrier.html"); ?>
-			</br>
+			<?php // include("calendrier.html"); ?>
+		</br></br>
+			<?php include("pseudo_calendrier.php"); ?>
+		</br>
 		</div>
 
 		<footer>
