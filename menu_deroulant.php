@@ -32,7 +32,7 @@
           <li> <a>Profil </a>
             <ul>
               <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
-              <li><a href="@"> Consulter mon profil </a></li>
+              <li><a href="Page_ConsulterProfil.php"> Consulter mon profil </a></li>
             </ul>
           </li>
           <?php } ?>

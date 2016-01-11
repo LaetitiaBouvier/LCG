@@ -1,14 +1,7 @@
 <?php
 
 
-	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; } // ATTENTION : Ici $IDU correspond à l'ID de l'utilisateur connecté
-
-	if(isset($_GET['IDU'])){
-	  $ID = $_GET['IDU'];																													// ATTENTION : Ici 'IDU' correspond à l'ID de l'utilisateur recherché
-	}
-	else{
-	  $ID = -1;
-	}
+	if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; $ID = $IDU; } // ATTENTION : Ici $IDU correspond à l'ID de l'utilisateur connecté
 
 	?>
 
