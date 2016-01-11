@@ -188,9 +188,9 @@
     <p>Afin de procéder à la suppression de votre compte laconnexiongauloise.com et de tous les messages postés avec celui-ci, vous devrez donc nous faire parvenir les éléments suivants pour justifier de votre identité :</p>
 
 		<ul>
-    <li>Envoi d'un e-mail ou d'un courrier demandant la suppression du compte en question en précisant bien le pseudo à supprimer.</li>
-    <li>Envoi de la copie recto verso d'une pièce d'identité.</li>
-    <li>Envoi de la copie de la page "mon compte" où figurent votre nom, prénom ainsi que vos coordonnées en vous connectant à l'adresse suivante : lien</li>
+	    <li>Envoi d'un e-mail ou d'un courrier demandant la suppression du compte en question en précisant bien le pseudo à supprimer.</li>
+	    <li>Envoi de la copie recto verso d'une pièce d'identité.</li>
+	    <li>Envoi de la copie de la page "mon compte" où figurent votre nom, prénom ainsi que vos coordonnées en vous connectant à l'adresse suivante : lien</li>
 		</ul>
 
 		<p>Attention : pour que nous puissions valider votre demande, il est nécessaire que les informations figurant sur votre carte d'identité et les renseignements entrés pour ce compte soient identiques, sinon quoi nous ne pourrons pas considérer ce compte comme vous appartenant. Vous pouvez modifier ces informations en cliquant sur ce lien.</p>
