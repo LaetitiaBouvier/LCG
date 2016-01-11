@@ -53,78 +53,19 @@
 	<?php
 
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur, Adresse_Utilisateur, Nom_Utilisateur, Prenom_Utilisateur, Avatar_Utilisateur, Date_Naissance, Mail_Utilisateur, Description_Utilisateur  FROM utilisateur_table WHERE id_utilisateur = ?');
 	$req->execute(array($ID));
 
 	$data = $req->fetch();
 
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Pseudo_Utilisateur]'){ $pseudo = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Adresse_Utilisateur]'){ $adresse = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Nom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Nom_Utilisateur]'){ $nom = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Prenom_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Prenom_Utilisateur]'){ $prenom = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Date_Naissance FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Date_Naissance]'){ $datenaissance = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Mail_Utilisateur]'){ $mail = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Description_Utilisateur]'){ $desc = $valeur; }
-	}
-
-	$req = $bdd->prepare('SELECT Avatar_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
-
-	$data = $req->fetch();
-
-	foreach($data as $cle => $valeur) {
-		if($cle == '[Avatar_Utilisateur]'){ $avatar = $valeur; }
-	}
-
+	$pseudo=$data['Pseudo_Utilisateur'];
+	$nom=$data['Nom_Utilisateur'];
+	$prenom=$data['Prenom_Utilisateur'];
+	$datenaissance=$data['Date_Naissance'];
+	$adresse=$data['Adresse_Utilisateur'];
+	$mail=$data['Mail_Utilisateur'];
+	$desc=$data['Description_Utilisateur'];
+	$avatar=$data['Avatar_Utilisateur'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -142,7 +83,7 @@
 		<img src="Images_code/IMG_Profil_Moyen/<?php echo $avatar ?>.jpg" title="Mon image"/>
 
 
-<!-- photo !-->
+
 
 <?php if (isset($_SESSION["ID_Utilisateur"])): ?>
 	<form name="inscription" method="post" action="Page_show-profil.php?IDU=<?=$ID?>" enctype="multiplart/form-data">
@@ -183,7 +124,7 @@ foreach($req as $row){
 
 	$data = $reqbis->fetch();
 
-	echo '<a href="Page_show-event.php?IDE='.$row['ID_Evenement'].'">"'.$data['Nom_Evenement'].'"</a>', '<br/>';
+	echo '<a href="Page_show-event.php?IDE='.$row['ID_Evenement'].'">'.$data['Nom_Evenement'].'</a>', '<br/>';
 }
 
 
@@ -215,7 +156,7 @@ foreach($req as $row){
 		foreach($reqbis as $rowbis){
 
 				$IDE = $rowbis['ID_Evenement'];
-				echo '<a href="Page_Modif-Event.php?IDE='.$IDE.' " target="_blank">"'.$row['Nom_Evenement'].'"</a>', '<br/>';
+				echo '<a href="Page_show-event.php?IDE='.$IDE.' " target="_blank">'.$row['Nom_Evenement'].'</a>', '<br/>';
 		}
 	}
 ?>
