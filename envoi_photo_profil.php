@@ -85,7 +85,8 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
 
-header("location:Page_show-profil.php?IDU=$IDU");
+header("location:Page_show-profil.php?IDU=".$IDU."");
+
 
 
 ?>

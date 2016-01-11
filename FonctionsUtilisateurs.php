@@ -379,8 +379,12 @@ $categorieFavorite = "";
 
   // DATE INSCRIPTION
 		$dateInscription = date("Y-m-d");
+
+  // ADMIN
 		$admin = 0;
 
+  // avatar
+  $avatar="profil.jpeg";
 
   // ENREGISTREMENT DANS LA BASE DE DONNEES
 		if($cond == true)
