@@ -5,7 +5,7 @@
 
 	<body>
     <footer>
-			<h3>Nous retrouver sur :</h3>
+			<h3>Nous retrouver sur les réseaux sociaux :</h3>
       <div id="logof">
         <a href="https://www.facebook.com/La-Connexion-Gauloise-929945667090395/"><img src="Images_code/facebook.png" class="facebook" /></a>
         <a href="https://twitter.com/laconnexiongaul"><img src="Images_code/logo-twitter.png" class="twitter"/></a>

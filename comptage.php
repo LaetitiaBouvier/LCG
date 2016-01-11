@@ -2,6 +2,9 @@
 if(isset($_GET["Date"])){
     $Date = $_GET["Date"];}
 
+if(isset($_POST['Date'])){
+  $Date = $_POST['Date'];}
+
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
 $categories=array('Festivals','Repas/Banquets','Concerts','Brocantes/Marchés','Soirées','Conférences','Humanitaires','Sportifs','Manifestations');

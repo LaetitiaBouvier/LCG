@@ -11,12 +11,12 @@
 <?php
 
 if(isset($_SESSION["ID_Utilisateur"])){
-  $ID = $_SESSION["ID_Utilisateur"];
+  $IDU = $_SESSION["ID_Utilisateur"];
 
 /*
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 	$req = $bdd->prepare('SELECT * FROM utilisateur_table WHERE id_utilisateur = ?');
-	$req->execute(array($ID));
+	$req->execute(array($IDU));
 
 	$data = $req->fetch();
 
@@ -35,7 +35,7 @@ if(isset($_SESSION["ID_Utilisateur"])){
   */
 }
 else{
-  $ID = -1;
+  $IDU = -1;
 }
 
  ?>
@@ -61,10 +61,10 @@ else{
       <legend>Informations personnelles</legend>
 
       Nom <em>*</em>: <input type="text" name="nom" required="" value="<?php
-            if($ID != -1){
+            if($IDU != -1){
                            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                            $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                           $req->execute(array($ID));
+                           $req->execute(array($IDU));
 
                            $data = $req->fetch();
 
@@ -78,10 +78,10 @@ else{
       <br/>
 
       Prénom <em>*</em>: <input type="text" name="prenom" required="" value="<?php
-          if($ID != -1){
+          if($IDU != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT prenom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                        $req->execute(array($ID));
+                        $req->execute(array($IDU));
 
                         $data = $req->fetch();
                         //print_r($data);
@@ -98,10 +98,10 @@ else{
 
       Sexe :
       <input type="radio" name="genre" value="H"<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -116,10 +116,10 @@ else{
                        }
          ?>/> Homme
       <input type="radio" name="genre" value="F"<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -136,10 +136,10 @@ else{
       <br/><br/>
 
       Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Date_Naissance FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -160,10 +160,10 @@ else{
       <legend>Informations de connexion</legend>
 
       Pseudo <em>*</em>: <?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -184,10 +184,10 @@ else{
       Présentez-vous en quelques lignes : <br />
       <div>
       <textarea id="desc" name="description" ><?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Description_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -216,10 +216,10 @@ else{
       <legend>Contact</legend>
 
       Code postal<em>*</em> : <input type="text" name="adresse" maxlength="5" required="" value="<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -235,10 +235,10 @@ else{
       <br/>
 
       Adresse e-mail<em>*</em> : <input type="email" name="mail" required="" value="<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -254,10 +254,10 @@ else{
       <br/>
 
       Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mail" required="" value="<?php
-          if($ID != -1){
+          if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($ID));
+                          $req->execute(array($IDU));
 
                           $data = $req->fetch();
                           //print_r($data);
@@ -281,7 +281,7 @@ else{
       <?php
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
         $req = $bdd->prepare('SELECT Categorie_Favorite FROM utilisateur_table WHERE id_utilisateur = ?');
-        $req->execute(array($ID));
+        $req->execute(array($IDU));
 
         $data = $req->fetch();
 
@@ -320,7 +320,7 @@ else{
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
         $req = $bdd->prepare('SELECT OKadresse_Utilisateur, OKmail_Utilisateur, OKNomPrenom_Utilisateur, OKplanning_Utilisateur, OKAlertesEvenements_Utilisateur, OKAlertesAbonnements_Utilisateur
                               FROM utilisateur_table WHERE id_utilisateur = ?');
-        $req->execute(array($ID));
+        $req->execute(array($IDU));
 
 
 
@@ -368,6 +368,15 @@ else{
       <p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
 
       <br/><div><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
+
+      </form>
+
+      <h2> Modification de l'avatar </h2>
+      <form <?php  echo 'action="envoi_photo_profil.php?IDU='.$IDU.'"'?> method="post" enctype="multipart/form-data">
+
+                      </br>
+                      <input type="file" name="photo" id="photo-profil"/><br />
+                      <input type="submit" value="Envoyer le fichier" />
 
       </form>
     </body>

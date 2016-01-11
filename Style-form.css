@@ -24,6 +24,10 @@
   width: 65%;
 }
 
+#calendrier{
+  text-align:center;
+}
+
 nav{
   float: left;
 }

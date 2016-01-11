@@ -6,7 +6,8 @@
 	else{
 	  $ID = -1;
 	}
-
+	if(isset($_GET["Date"])){
+			$Date = $_GET["Date"];}
 ?>
 
 
@@ -60,6 +61,7 @@ $compteur=$compteur+1;
 
 <br/>
 
-<legend><?php echo ("Il y a ".$compteur." evenements dans la catégorie ".$Ev." le ".$Date."");  ?></legend>
+<legend><?php echo ("Il y a ".$compteur." evenements dans la catégorie ".$Ev." le ".$Date."");  ?></legend></br>
+<a <?php echo ("href=Page_categories-2.php?Ev=Humanitaires&Date=".$Date."");?>>REVENIR A LA LISTE DES CATEGORIES DES EVENEMENTS DU <?php echo ("".$Date."");?></a>
 
 </form>

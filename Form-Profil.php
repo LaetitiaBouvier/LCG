@@ -13,8 +13,8 @@ Prénom <em>*</em>: <input type="text" name="prenom" required="" value="<?php if
 <br/>
 
 Sexe :
-<input type="radio" name="genre" value="H" <?php if (isset($_POST['genre'])){if($_POST['genre']=='H') echo 'checked="checked"';}?>/> Homme
-<input type="radio" name="genre" value="F" <?php if (isset($_POST['genre'])){if($_POST['genre']=='F') echo 'checked="checked"';}?>/> Femme
+<input type="radio" name="genre" value="Homme" <?php if (isset($_POST['genre'])){if($_POST['genre']=='H') echo 'checked="checked"';}?>/> Homme
+<input type="radio" name="genre" value="Femme" <?php if (isset($_POST['genre'])){if($_POST['genre']=='F') echo 'checked="checked"';}?>/> Femme
 <br/><br/>
 
 Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="<?php if (isset($_POST['dateNaissance'])){echo $_POST['dateNaissance'];} ?>"/><br/>
@@ -28,11 +28,6 @@ Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required=
 Pseudo <em>*</em>: <input type="text" name="pseudo" required="" value="<?php if (isset($_POST['pseudo'])){echo $_POST['pseudo'];} ?>"/> <br/>
 <br/>
 
-Avatar/Photo de profil :
-<!-- On limite le fichier à 100Ko -->
-<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-<input type="file" name="avatar" id="avatar" value=""/><br />
-<br />
 
 Présentez-vous en quelques lignes : <br />
 <div id="pres">

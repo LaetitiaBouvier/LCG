@@ -1,27 +1,9 @@
 
 
 <?php
-if(isset($_GET["IDE"]))
+if(isset($_GET["IDU"]))
 {
-  $IDE = $_GET["IDE"];}
-  else {
-
-
-  $ID=$_SESSION["ID_Utilisateur"];
-
-  $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-  $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
-  $req->execute(array($ID));
-
-  $pseudo = $req->fetch();
-
-  $reqbis = $bdd->prepare('SELECT ID_Evenement FROM evenement_table WHERE Organisateur_Evenement = ? ORDER BY ID_Evenement DESC LIMIT 1');
-  $reqbis->execute(array($pseudo['Pseudo_Utilisateur']));
-
-  $try = $reqbis->fetch();
-
-  $IDE = $try['ID_Evenement'];
-}
+  $IDU = $_GET["IDU"];}
 ?>
 
 <?php
@@ -37,17 +19,17 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
     $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
     if (in_array($extension_upload, $extensions_autorisees))
     {
-      //$IDE = basename($_FILES['photo']['name']);
-      $nomphoto = $IDE.".".$extension_upload;
+      //$IDU = basename($_FILES['photo']['name']);
+      $nomphoto = $IDU.".".$extension_upload;
 
-      //$photo="Images_code/IMG_Event_Original/".$IDE;
+      //$photo="Images_code/IMG_Profil_Original/".$IDU;
 
       // On peut valider le fichier et le stocker définitivement
-      move_uploaded_file($_FILES['photo']['tmp_name'], "Images_code/IMG_Event_Original/".$nomphoto."");
+      move_uploaded_file($_FILES['photo']['tmp_name'], "Images_code/IMG_Profil_Original/".$nomphoto."");
 
       // ENREGISTREMENT DANS LA BASE DE DONNEES
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE evenement_table SET Image_Evenement="'.$nomphoto.'" WHERE ID_Evenement ="'.$IDE.'"');
+      $req = $bdd->prepare('UPDATE utilisateur_table SET Avatar_Utilisateur="'.$nomphoto.'" WHERE ID_Utilisateur ="'.$IDU.'"');
       $req->execute();
 
       // REDIMENSION
@@ -59,18 +41,18 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
               {
                   case ".jpeg":
                   case ".jpg":
-                      $source = imagecreatefromjpeg("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                      $source = imagecreatefromjpeg("Images_code/IMG_Profil_Original/".$nomphoto.""); // La photo est la source
                       break;
                   case ".gif":
-                      $source = imagecreatefromgif("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                      $source = imagecreatefromgif("Images_code/IMG_Profil_Original/".$nomphoto.""); // La photo est la source
                       break;
                   case ".png":
-                      $source = imagecreatefrompng("Images_code/IMG_Event_Original/".$nomphoto.""); // La photo est la source
+                      $source = imagecreatefrompng("Images_code/IMG_Profil_Original/".$nomphoto.""); // La photo est la source
                       break;
        }
-      $destination_mini = imagecreatetruecolor(270, 100); // On crée la miniature vide
+      $destination_mini = imagecreatetruecolor(100, 100); // On crée la miniature vide
 
-      $destination_large = imagecreatetruecolor(1000, 545); // On crée l'agrandissement vide
+      $destination_large = imagecreatetruecolor(350, 250); // On crée l'agrandissement vide
 
       // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
 
@@ -91,8 +73,8 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 
       // On enregistre la miniature et l'agrandissement
 
-      imagejpeg($destination_mini, "Images_code/IMG_Event_Mini/".$nomphoto.".jpg");
-      imagejpeg($destination_large, "Images_code/IMG_Event_Large/".$nomphoto.".jpg");
+      imagejpeg($destination_mini, "Images_code/IMG_Profil_Mini/".$nomphoto.".jpg");
+      imagejpeg($destination_large, "Images_code/IMG_Profil_Moyen/".$nomphoto.".jpg");
 
 
     }
@@ -100,10 +82,10 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
   }
   else {echo ("le fichier est trop volumineux");}
 }
-//echo ("nomphoto".$IDE);    //affiche nomdelaphoto.extension
+//echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
 
-header("location:Page_show-event.php?IDE=$IDE");
+header("location:Page_show-profil.php?IDU=$IDU");
 
 
 ?>

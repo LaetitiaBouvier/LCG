@@ -57,6 +57,8 @@ if(isset($_SESSION["ID_Utilisateur"])){
 
 	<br>
 	<br/>
+
+
 	<div id="categ_ligne1">
 		<div id="categ_Festival"><a  href="Page_show-1-categorie.php?Ev=Festivals"><img src="Images_code/IMG_Categorie/categ_festival.jpg"> </a> </div>
 		<div id="categ_Repas"><a  href="Page_show-1-categorie.php?Ev=Repas/Banquets"><img src="Images_code/IMG_Categorie/categ_repas.jpg"> </a> </div>
@@ -72,5 +74,6 @@ if(isset($_SESSION["ID_Utilisateur"])){
 		<div id="categ_Sportif"><a  href="Page_show-1-categorie.php?Ev=Sportifs"><img src="Images_code/IMG_Categorie/categ_sportifs.jpg"> </a> </div>
 		<div id="categ_Manifestation"><a  href="Page_show-1-categorie.php?Ev=Manifestations"><img src="Images_code/IMG_Categorie/categ_manifestations.jpg"> </a> </div>
 	</div>
+
 
 </form>

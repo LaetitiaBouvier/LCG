@@ -21,7 +21,13 @@ session_start();
     </nav>
 
 		<div id="calendrier">
-			</br></br></br>
+			</br>
+
+			<form name="recherche_date" method="post" action="Page_Categories-2.php" enctype="multiplart/form-data">
+			<p>Rechercher les evenements ayant lieu le :</p>
+			<input type="date" name="Date"/>
+			<input type="submit" name="CHERCHER DATE" />
+		</br></br>
 			<?php include("calendrier.html"); ?>
 			</br>
 		</div>
