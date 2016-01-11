@@ -63,7 +63,7 @@
   if(isset($_POST['barre_de_recherche'])){
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, JourDebut_Evenement, HeureFin_Evenement, JourFin_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
+    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, HeureDebut_Evenement, JourDebut_Evenement, HeureFin_Evenement, JourFin_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
     $req->execute();
 
     foreach($req as $row)
@@ -72,11 +72,29 @@
 <div id="cat1">
 
   <?php
-    echo $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
 
-    $date = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+    $dateFin = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+    $dateDeb = $row['JourDebut_Evenement']." ".$row['HeureDebut_Evenement'];
 
-    
+    $dateAujd =  date("Y-m-d H:i:s", time());
+
+    $aujd = DateTime::createFromFormat('Y-m-d H:i:s', $dateAujd);
+    $fin  = DateTime::createFromFormat('Y-m-d H:i:s', $dateFin);
+    $deb  = DateTime::createFromFormat('Y-m-d H:i:s', $dateDeb);
+    //echo var_dump($fin < $deb);
+    //echo var_dump($fin > $deb);
+
+    if(($deb < $aujd) && ($fin > $aujd)){
+      echo "Cet évènement est en cours !";
+    }
+
+    if(($deb > $aujd) && ($fin > $aujd)){
+      echo "Cet évènement n'a pas commencé !";
+    }
+
+    if(($deb < $aujd) && ($fin < $aujd)){
+      echo "Cet évènement est terminé !";
+    }
 
 
   ?><br/><br/>
