@@ -63,7 +63,7 @@
   if(isset($_POST['barre_de_recherche'])){
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, JourDebut_Evenement, HeureFin_Evenement, JourFin_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
+    $req = $bdd->prepare('SELECT Nom_Evenement, ID_Evenement, HeureDebut_Evenement, JourDebut_Evenement, HeureFin_Evenement, JourFin_Evenement, Description_Evenement, AdressePostal_Evenement, Image_Evenement FROM evenement_table WHERE Nom_Evenement LIKE "%'.$recherche.'%"');
     $req->execute();
 
     foreach($req as $row)
@@ -74,9 +74,26 @@
   <?php
     echo $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
 
-    $date = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+    $dateFin = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+    $dateDeb = $row['JourDebut_Evenement']." ".$row['HeureDebut_Evenement'];
 
-    
+    $aujd =  date("Y-m-d H:i:s", time());
+
+
+    if($dateFin < $aujd){
+      echo "Cet évènement est terminé !";
+    }
+    else{
+
+      if($dateDeb > $aujd){
+
+        echo "Cet évènement est en cours !";
+      }
+      else{
+
+        echo "Cet évènement n'a pas encore commencé !";
+      }
+    }
 
 
   ?><br/><br/>
