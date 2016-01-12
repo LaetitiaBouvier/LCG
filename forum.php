@@ -1,6 +1,16 @@
 <?php
 
 session_start();
+if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
+
+	if(isset($_GET["IDE"])){
+			$ID = $_GET["IDE"];
+	}
+	else{
+		$ID = -1;
+	}
+
+
 
 if (!isset($_GET['f']))
 {
@@ -227,6 +237,13 @@ $datedujour = date("d-m-y");
 while ($data = $req->fetch())
 {
 	$i++;
+	$req4=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+	$req4->execute(array($IDU));
+	$admin=$req4->fetch();
+if ($admin['Admin_Utilisateur']=="oui"){?>
+		<form method='post' action="delete_topic.php" >
+			<input type="image" name='suprtopic' src='Images_code/Supprimer3.png' id="delmsg" value= <?php echo($data['ID_Topic']);?> ><?php
+}
 
 	($i%2 == 1)?$classe="impair":$classe="pair";
 
