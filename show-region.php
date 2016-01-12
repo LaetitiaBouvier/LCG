@@ -37,7 +37,7 @@
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement,JourDebut_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table WHERE AdresseRegion_Evenement = "'.$_GET['REG'].'"');
+  $req = $bdd->prepare('SELECT ID_Evenement, Nom_Evenement, Categorie_Evenement, JourDebut_Evenement, HeureDebut_Evenement, JourFin_Evenement, HeureFin_Evenement, AdressePostal_Evenement, Image_Evenement,Description_Evenement FROM evenement_table WHERE AdresseRegion_Evenement = "'.$_GET['REG'].'"');
   $req->execute();
 
   foreach($req as $row){
@@ -45,6 +45,35 @@
 			$IDE = $row['ID_Evenement']; ?>
 
 			<div id="cat1">
+
+				<?php
+
+			    $dateFin = $row['JourFin_Evenement']."  ".$row['HeureFin_Evenement'];
+			    $dateDeb = $row['JourDebut_Evenement']." ".$row['HeureDebut_Evenement'];
+
+			    $dateAujd =  date("Y-m-d H:i:s", time());
+
+			    $aujd = DateTime::createFromFormat('Y-m-d H:i:s', $dateAujd);
+			    $fin  = DateTime::createFromFormat('Y-m-d H:i:s', $dateFin);
+			    $deb  = DateTime::createFromFormat('Y-m-d H:i:s', $dateDeb);
+			    //echo var_dump($fin < $deb);
+			    //echo var_dump($fin > $deb);
+
+			    if(($deb < $aujd) && ($fin > $aujd)){
+			      echo "Cet évènement est en cours !";
+			    }
+
+			    if(($deb > $aujd) && ($fin > $aujd)){
+			      echo "Cet évènement n'a pas commencé !";
+			    }
+
+			    if(($deb < $aujd) && ($fin < $aujd)){
+			      echo "Cet évènement est terminé !";
+			    }
+
+
+			  ?><br/><br/>
+
 				<div id="titre1">
 					<ul>
 						<li> <h3> <?php echo ($row['JourDebut_Evenement']);?> </h3> </li>
