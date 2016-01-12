@@ -76,31 +76,33 @@ Catégories qui vont m'interesser le plus (plusieurs réponses possibles): <br>
 
 Souhaitez vous que les autres utilisateurs aient accès à : <br/></br>
 Votre 	adresse e-mail ?
-<br/><input type="radio" name="mailOK" value="oui" <?php if (isset($_POST['mailOK'])){if($_POST['mailOK']=='oui') echo 'checked="checked"';}?>/>                 oui
+<br/><input type="radio" name="mailOK" value="oui" checked="checked" <?php if (isset($_POST['mailOK'])){if($_POST['mailOK']=='oui') echo 'checked="checked"';}?>/>                 oui
 <br/><input type="radio" name="mailOK" value="non" <?php if (isset($_POST['mailOK'])){if($_POST['mailOK']=='non') echo 'checked="checked"';}?>/>                 non
 <br/>
 Votre code-postal?
-<br/><input type="radio" name="adresseOK" value="oui" <?php if (isset($_POST['adresseOK'])){if($_POST['adresseOK']=='oui') echo 'checked="checked"';}?>/>        oui
+<br/><input type="radio" name="adresseOK" value="oui" checked="checked" <?php if (isset($_POST['adresseOK'])){if($_POST['adresseOK']=='oui') echo 'checked="checked"';}?>/>        oui
 <br/><input type="radio" name="adresseOK" value="non" <?php if (isset($_POST['adresseOK'])){if($_POST['adresseOK']=='non') echo 'checked="checked"';}?>/>        non
 <br/>
 Votre nom et prénom?
-<br/><input type="radio" name="nomPrenomOK" value="oui" <?php if (isset($_POST['nomPrenomOK'])){if($_POST['nomPrenomOK']=='oui') echo 'checked="checked"';}?>/>  oui
+<br/><input type="radio" name="nomPrenomOK" value="oui" checked="checked" <?php if (isset($_POST['nomPrenomOK'])){if($_POST['nomPrenomOK']=='oui') echo 'checked="checked"';}?>/>  oui
 <br/><input type="radio" name="nomPrenomOK" value="non" <?php if (isset($_POST['nomPrenomOK'])){if($_POST['nomPrenomOK']=='non') echo 'checked="checked"';}?>/>  non
 <br/>
 Votre planning?
-<br/><input type="radio" name="planningOK" value="oui" <?php if (isset($_POST['planningOK'])){if($_POST['planningOK']=='oui') echo 'checked="checked"';}?>/>     oui
+<br/><input type="radio" name="planningOK" value="oui" checked="checked" <?php if (isset($_POST['planningOK'])){if($_POST['planningOK']=='oui') echo 'checked="checked"';}?>/>     oui
 <br/><input type="radio" name="planningOK" value="non" <?php if (isset($_POST['planningOK'])){if($_POST['planningOK']=='non') echo 'checked="checked"';}?>/>     non
 <br/>
 <br/>
 
 Je souhaite recevoir par e-mail des alertes sur les événements auxquels je m'inscris :
-<br/><input type="radio" name="AlertesEvenementsOK" value="oui" <?php if (isset($_POST['AlertesEvenementsOK'])){if($_POST['AlertesEvenementsOK']=='oui') echo 'checked="checked"';}?>/> oui
+<br/><input type="radio" name="AlertesEvenementsOK" value="oui" checked="checked" <?php if (isset($_POST['AlertesEvenementsOK'])){if($_POST['AlertesEvenementsOK']=='oui') echo 'checked="checked"';}?>/> oui
 <br/><input type="radio" name="AlertesEvenementsOK" value="non" <?php if (isset($_POST['AlertesEvenementsOK'])){if($_POST['AlertesEvenementsOK']=='non') echo 'checked="checked"';}?>/> non
 <br/>
 Je souhaite recevoir par e-mail des alertes sur mes abonnements :
-<br/><input type="radio" name="AlertesAbonnementsOK" value="oui" <?php if (isset($_POST['AlertesAbonnementsOK'])){if($_POST['AlertesAbonnementsOK']=='oui') echo 'checked="checked"';}?>/> oui
+<br/><input type="radio" name="AlertesAbonnementsOK" value="oui" checked="checked" <?php if (isset($_POST['AlertesAbonnementsOK'])){if($_POST['AlertesAbonnementsOK']=='oui') echo 'checked="checked"';}?>/> oui
 <br/><input type="radio" name="AlertesAbonnementsOK" value="non" <?php if (isset($_POST['AlertesAbonnementsOK'])){if($_POST['AlertesAbonnementsOK']=='non') echo 'checked="checked"';}?>/> non
 <br/>
+<br/><br/>
+<br/><input type="radio" name="Acondition_utilisation_charte" value="oui" required="" />J'accepte <a href="">les conditions d'utilisations</a> et j'ai pris connaissance de <a href="Charte_LCG.pdf">la charte du site</a> <em>*</em>
 
 </fieldset>
 
