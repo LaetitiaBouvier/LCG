@@ -16,18 +16,21 @@ session_start() ;
 
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-  $req = $bdd->prepare('SELECT ID_Utilisateur FROM noter_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
-  $req->execute(array($IDU, $ID));
+  $req = $bdd->prepare('SELECT * FROM noter_table WHERE ID_Utilisateur = ? AND ID_Evenement = ? AND Note = ?');
+  $req->execute(array($IDU, $ID, $note));
 
   $data = $req->fetch();
 
 
   if($data['ID_Utilisateur']== $IDU){
-
+		$req = $bdd->prepare('UPDATE note_table SET Note = :new_note  WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
+		$req->execute(array($IDU, $ID, 'new_note' => $note));
 	}
   else{
     $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise");
     mysqli_query($connect, "insert into noter_table (Note, ID_Utilisateur, ID_Evenement) values ('$note', '$IDU', '$ID')");
   }
 
+
+	header("location:Page_show-event.php?IDE=$ID");
 ?>
