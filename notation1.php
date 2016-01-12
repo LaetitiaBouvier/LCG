@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="notation.css" />
 
 <form name="notation" action="notation.php">
+	<h4>Noter l'évènement :</h4>
 	<ul class="notes-echelle">
 		<li>
 			<label for="note01" title="Note&nbsp;: 1 sur 5">1</label>
@@ -23,5 +24,5 @@
 			<input type="radio" name="notesA" id="note05" value="5" />
 		</li>
 	</ul>
-	<input type="submit" name="Noter" value="Noter Event.<?php echo(''.$ID.'');?>"/>
+	<input type="submit" name="Noter" value="Noter/re-Noter Event.<?php echo(''.$ID.'');?>"/>
 </form>

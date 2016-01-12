@@ -328,7 +328,7 @@ $req->closeCursor();
 <div id="notation">
 	<?php
 		if (isset($_SESSION["ID_Utilisateur"])):
-	 	include("notation.html");
+	 	include("notation1.php");
 	 	endif;
 	?>
 </div>
