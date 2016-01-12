@@ -87,7 +87,7 @@ else
           <?php if (isset($_SESSION['ID_Utilisateur']))
           {?>
           <div id="avatar">
-            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['ID_Utilisateur'].".jpg.jpg" ;?>"/> <?php } ;?>
+            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['Avatar_Utilisateur'].".jpg" ;?>"/> <?php } ;?>
           </div>
         </div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
