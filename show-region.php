@@ -37,7 +37,9 @@
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
+
   $req = $bdd->prepare('SELECT * FROM evenement_table WHERE AdresseRegion_Evenement = "'.$_GET['REG'].'"');
+
   $req->execute();
 
   foreach($req as $row){

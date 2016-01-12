@@ -326,9 +326,11 @@ $req->closeCursor();
 </br>
 </br>
 <div id="notation">
-<?php if (isset($_SESSION["ID_Utilisateur"])):
- include("notation.html");
- endif;?>
+	<?php
+		if (isset($_SESSION["ID_Utilisateur"])):
+	 	include("notation.html");
+	 	endif;
+	?>
 </div>
 </br>
 </fieldset>
