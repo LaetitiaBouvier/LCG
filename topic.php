@@ -9,7 +9,7 @@ if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 	else{
 		$ID = -1;
 	}
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
 $req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
@@ -24,7 +24,7 @@ if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 	exit;
 }
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
 $req->execute(array($_GET['t']));
 $data = $req->fetch();
@@ -35,7 +35,7 @@ if (isset($_POST['repondre_message']))
 {
 	if (isset($_SESSION['pseudo_utilisateur']))
 	{
-		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic,Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
 		$req->execute(array($_GET['t'], $_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
 
@@ -67,13 +67,14 @@ $rightarrow = $_GET['f'] + 1;
 
 		<style>
 
-		a
+		a, .page_actuelle
 		{
 			color: black;
 			text-decoration: none;
+			font-size: 0.9em;
 		}
 
-		#page_actuelle
+		.page_actuelle
 		{
 			background-color: orange;
 		}
@@ -192,7 +193,7 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 		{
 			if ($f == $i)
 			{
-				echo " <a id='page_actuelle' href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+				echo " <span class='page_actuelle'>" . $i . '</span>';
 			}
 			else
 			{
@@ -226,7 +227,7 @@ $nmsg = 20 * ($f - 1);
 
 $mois = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
@@ -271,7 +272,7 @@ for ($i = 1; $i <= $nbpages; $i++)
 {
 	if ($f == $i)
 	{
-		echo " <a id='page_actuelle' href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+		echo " <span class='page_actuelle'>" . $i . '</span>';
 	}
 else
 	{
