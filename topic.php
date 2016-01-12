@@ -73,8 +73,9 @@ $rightarrow = $_GET['f'] + 1;
 			text-decoration: none;
 		}
 
+		#page_actuelle
 		{
-
+			background-color: orange;
 		}
 
 		#topic ul
@@ -91,7 +92,6 @@ $rightarrow = $_GET['f'] + 1;
 
 		#arrow
 		{
-			float: right;
 			margin-right: 175px;
 		}
 
@@ -148,15 +148,12 @@ $rightarrow = $_GET['f'] + 1;
 		#leftarrow
 		{
 			display: inline-block;
-			margin-left: 20px;
-			margin-bottom: 30px;
 		}
 
 		#rightarrow
 		{
 			display: inline-block;
 			float: right;
-			margin-right: 20px;
 		}
 
 		</style>
@@ -181,12 +178,30 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 
 		<div id="topic">
 
-    <ul>
-      <li><a href="#repondre_topic">Répondre</a></li>
-      <li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
-      <li><a href="forum.php">Liste des sujets</a></li>
-			<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
-    </ul>
+	    <ul>
+	      <li><a href="#repondre_topic">Répondre</a></li>
+	      <li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li><a href="forum.php">Liste des sujets</a></li>
+				<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+	    </ul>
+
+<p class="numero_page">
+
+<?php
+		for ($i = 1; $i <= $nbpages; $i++)
+		{
+			if ($f == $i)
+			{
+				echo " <a id='page_actuelle' href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+			}
+			else
+			{
+				echo " <a href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+			}
+		}
+?>
+
+</p>
 
 <?php
 
@@ -194,15 +209,6 @@ if ($f != 1)
 {
 	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
-
-echo '<p class="numero_page">';
-
-for ($i = 1; $i <= $nbpages; $i++)
-{
-	echo ' <a href="topic.php?f=' . $i  . '&t=' . $t . '">' . $i . '</a>';
-}
-
-echo '</p>';
 
 if ($f < $nbpages)
 {
@@ -218,13 +224,15 @@ if ($f < $nbpages)
 
 $nmsg = 20 * ($f - 1);
 
+$mois = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
+
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
 while ($data = $req->fetch())
 {
-echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . htmlspecialchars($data['Date_MSG']) . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . '</div>';
+echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . '</div>';
 
 $req3=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req3->execute(array($IDU));
@@ -248,15 +256,6 @@ if ($f != 1)
 	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
-echo '<p class="numero_page">';
-
-for ($i = 1; $i <= $nbpages; $i++)
-{
-	echo ' <a href="topic.php?f=' . $i  . '&t=' . $t . '">' . $i . '</a>';
-}
-
-echo '</p>';
-
 if ($f < $nbpages)
 {
 	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
@@ -264,11 +263,30 @@ if ($f < $nbpages)
 
 ?>
 
-		<ul>
-			<li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
-      <li><a href="forum.php">Liste des sujets</a></li>
-			<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
-    </ul>
+<p class="numero_page">
+
+<?php
+
+for ($i = 1; $i <= $nbpages; $i++)
+{
+	if ($f == $i)
+	{
+		echo " <a id='page_actuelle' href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+	}
+else
+	{
+		echo " <a href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+	}
+}
+?>
+
+</p>
+
+			<ul>
+				<li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li><a href="forum.php">Liste des sujets</a></li>
+				<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+	    </ul>
 
 		<div>
 
