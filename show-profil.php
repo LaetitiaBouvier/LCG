@@ -185,7 +185,7 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 
 	if ($admin['Admin_Utilisateur']=="oui"){?>
 		<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
-			<input type="submit" id="bannir" value="BANNIR ":>
+			<input type="submit" id="bannir" value="BANNIR ">
 		</form>
 	</br>
 		<h3><?php if ($admin2['Admin_Utilisateur']=="oui"){ echo "Ce membre est administrateur";}
