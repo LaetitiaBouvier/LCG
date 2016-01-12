@@ -37,7 +37,7 @@
   <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> ><img src="Images_code/IMG_Profil_Mini/<?php echo($row['Avatar_Utilisateur']);?>.jpg" class="photo1"/></a>
   <div id="titre2">
     <ul>
-      <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> class="typeblanc"><?php echo ($row['Pseudo_Utilisateur']);?> | <?php echo htmlspecialchars($row['Date_Naissance']);?> </a></h3></li>
+      <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> class="typeblanc"><?php echo ($row['Pseudo_Utilisateur']);?> </a></h3></li>
     </ul>
   </div>
   <div id="ssmenu1">

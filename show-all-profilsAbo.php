@@ -17,7 +17,7 @@
 	<head>
 		<title> Mes évènements </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" href="Style-form.css"/>
+		<link rel="stylesheet" href="corps_accueil.css"/>
 	</head>
 
 <form name="évènements" method="post" action="" enctype="multiplart/form-data">
@@ -40,15 +40,26 @@
 
   foreach($req as $row){
 
-    $reqbis = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$row['ID_UtilisateurCible'].'"');
+    $reqbis = $bdd->prepare('SELECT Pseudo_Utilisateur, ID_Utilisateur, Description_Utilisateur, Avatar_Utilisateur, Date_Naissance FROM utilisateur_table WHERE ID_Utilisateur ="'.$row['ID_UtilisateurCible'].'"');
     $reqbis->execute();
 
-    $data = $reqbis->fetch();
+    $data = $reqbis->fetch(); ?>
+		<div id="cat1">
+		  <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_UtilisateurCible']."");?> ><img src="Images_code/IMG_Profil_Mini/<?php echo($data['Avatar_Utilisateur']);?>.jpg" class="photo1"/></a>
+		  <div id="titre2">
+		    <ul>
+		      <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_UtilisateurCible']."");?> class="typeblanc"><?php echo ($data['Pseudo_Utilisateur']);?> </a></h3></li>
+		    </ul>
+		  </div>
+		  <div id="ssmenu1">
+		    <ul>
+		      <li> <?php echo nl2br(($data['Description_Utilisateur']));?> </li>
+		    </ul>
+		  </div>
+		</div>
+<?php   }  ;?>
 
-    echo '<a href="Page_show-profil.php?IDU='.$row['ID_UtilisateurCible'].'">"'.$data['Pseudo_Utilisateur'].'"</a>', '<br/>';
-  }
 
-?>
 
 <br/>
 
