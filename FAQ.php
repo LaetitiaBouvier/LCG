@@ -74,7 +74,7 @@
 
     <h4>Administrateur (admin)</h4>
 
-    <p>Personne travaillant pour La Connexion Gauloise ayant accès à l'administration du forum. Généralement on le reconnaît, car il poste en rouge sur le forum. Attention, tous les employés de laconnexiongauloise.com ne sont pas admins. Un admin peut supprimer des messages, bannir un compte.</p>
+    <p>Personne travaillant pour La Connexion Gauloise ayant accès à l'administration du forum. Généralement on le reconnaît, car il poste en rouge sur le forum. Attention, tous les employés de laconnexiongauloise.com ne sont pas admins. Un admin peut supprimer des messages, bannir un compte, supprimer un événement et administrer la FAQ.</p>
 
     <h4>Bannissement</h4>
 
