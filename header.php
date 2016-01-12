@@ -86,11 +86,14 @@ else
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' width="55%";/></a>
           <?php if (isset($_SESSION['ID_Utilisateur']))
           {?>
-        <img src="<?php echo"Images_code/IMG_Profil_Moyen/" .$_SESSION['ID_Utilisateur'].".jpg.jpg" ;?>"/> <?php } ;?> </div>
+          <div id="avatar">
+            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['ID_Utilisateur'].".jpg.jpg" ;?>"/> <?php } ;?>
+          </div>
+        </div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
           <?php if(isset($_SESSION["ID_Utilisateur"])){?>
-<li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>
-<?php  } ?>
+            <li id="creer_un_evenement"><a href="Page_Create-Event.php">Créer un événement</a></li>
+            <?php  } ?>
            <input type="search" name="barre_de_recherche" id="barre_de_recherche" size="50" placeholder=" Rechercher un membre ou un événement" />
 					 <input type="submit" id="rechercher" value="Rechercher"/>
 					<!--<p id="recherche_avancee">Recherche avancée</p>!-->

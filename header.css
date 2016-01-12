@@ -214,3 +214,12 @@ header
   width: 50%;
   border-radius:10px;
 }
+
+#avatar {
+	width: 30px;
+	display: inline-block;
+	float: right;
+	margin-top: 70px;
+	margin-right: 0px;
+
+}
