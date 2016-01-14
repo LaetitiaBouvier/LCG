@@ -25,6 +25,7 @@
       <tr>
 
 				<?php
+				$demain=time();
 				$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 			 	$req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE JourDebut_Evenement = ?');
 			 	$req->execute(array($demain));
