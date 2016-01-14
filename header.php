@@ -70,7 +70,10 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 if (isset($_SESSION['ID_Utilisateur']))
 {
   echo "<div id='deconnexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
-}
+  ?>
+  <div id="avatar">
+    <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['Avatar_Utilisateur'].".jpg" ;?>"/>
+<?php }
 else
 {
   include("signinup.html");
@@ -81,13 +84,12 @@ else
 
 		  <div id="barre_recherche">
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' width="55%";/></a>
-          <?php if (isset($_SESSION['ID_Utilisateur']))
-          {?>
+          <div id="phrase"><h1> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1></div>
 
-          <div id="avatar">
-            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['Avatar_Utilisateur'].".jpg" ;?>"/> <?php }
+          <?php if (isset($_SESSION['ID_Utilisateur'])){}
+
             else
-            {  echo "<h2> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h2> <h5>Pour avoir accès aux fonctionnalités avancées, Connectez-vous !</h5> <h6>C'est votre première visite? Inscrivez-vous !  </h6>";
+            {  echo "<h5>Pour avoir accès aux fonctionnalités avancées, Connectez-vous !</h5> <h6>C'est votre première visite? Inscrivez-vous !  </h6>";
             };?>
           </div>
 
