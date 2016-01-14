@@ -90,8 +90,8 @@ else
             {  echo "<h2> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h2> <h5>Pour avoir accès aux fonctionnalités avancées, Connectez-vous !</h5> <h6>C'est votre première visite? Inscrivez-vous !  </h6>";
             };?>
           </div>
-          
-          <div id="phrase"><h1> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1></div>
+
+
         </div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">
           <?php if(isset($_SESSION["ID_Utilisateur"])){?>
