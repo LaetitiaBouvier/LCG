@@ -49,8 +49,8 @@ if (isset($_POST['nouveau_titre_topic']))
 
 			$t = $data[0];
 
-			$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
-			$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $_POST['premier_message']));
+			$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG) VALUES(?,?,?,NOW(),?)');
+			$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $pseudo_admin, $_POST['premier_message']));
 
 			header("Location: topic.php?f=1&t=$t");
 			exit;
