@@ -27,7 +27,7 @@
             </ul>
           </li>
 
-          <li><a href="forum.php?f=1"> Forum </a></li>
+          <li><a href="Page_Forum.php?f=1"> Forum </a></li>
 
           <li> <a>Profil </a>
             <ul>

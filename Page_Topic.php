@@ -247,11 +247,11 @@ while ($data = $req->fetch())
 {
 	if ($data['Admin_Utilisateur'] == 'oui')
 	{
-		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div>";
+		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 	}
 	else
 	{
-		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div>";
+		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 	}
 }
 
