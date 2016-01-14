@@ -99,7 +99,7 @@ function update_users()
     // MAJ DE L'ADRESSE
     if(isset($_POST['adresse']) && !empty($_POST['adresse']))
     {
-      $adresse=mysql_real_escape_string(htmlspecialchars($_POST['adresse']);
+      $adresse=mysql_real_escape_string(htmlspecialchars($_POST['adresse']));
 
       if(strlen($adresse) == 5 AND is_numeric($adresse))
       {
