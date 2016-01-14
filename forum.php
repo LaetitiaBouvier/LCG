@@ -10,8 +10,6 @@ if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 		$ID = -1;
 	}
 
-
-
 if (!isset($_GET['f']))
 {
 	header('Location: forum.php?f=1');
@@ -37,8 +35,14 @@ if (isset($_POST['nouveau_titre_topic']))
 		if (($_POST['nouveau_titre_topic'] != "") AND ($_POST['premier_message'] != ""))
 		{
 			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-			$req = $bdd->prepare('INSERT INTO forum_table(Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,0,NOW())');
-			$req->execute(array($_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
+
+			$req1 = $bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+			$req1->execute(array($_SESSION['ID_Utilisateur']));
+			$pseudo_admin_array = $req1->fetch();
+			$pseudo_admin = $pseudo_admin_array[0];
+
+			$req2 = $bdd->prepare('INSERT INTO forum_table(ID_Utilisateur, Admin_Utilisateur, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG) VALUES(?,?,?,?,0,NOW())');
+			$req2->execute(array($_SESSION['ID_Utilisateur'],$pseudo_admin , $_POST['nouveau_titre_topic'], $_SESSION['pseudo_utilisateur']));
 
 			$req = $bdd->query('SELECT ID_Topic FROM forum_table ORDER BY ID_Topic DESC');
 			$data = $req->fetch();
@@ -147,6 +151,11 @@ if (isset($_POST['nouveau_titre_topic']))
 			background-color: white;
 		}
 
+		.admin_topic
+		{
+			color: red;
+		}
+
 		table
 		{
 			border-collapse: collapse;
@@ -228,7 +237,7 @@ if (isset($_POST['nouveau_titre_topic']))
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 
 $i = 0;
 
@@ -236,24 +245,29 @@ $datedujour = date("d-m-y");
 
 while ($data = $req->fetch())
 {
-	$i++;
-	$req4=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
-	$req4->execute(array($IDU));
-	$admin=$req4->fetch();
-if ($admin['Admin_Utilisateur']=="oui"){?>
-		<form method='post' action="delete_topic.php" >
-			<input type="image" name='suprtopic' src='Images_code/Supprimer3.png' id="delmsg" value= <?php echo($data['ID_Topic']);?> ><?php
-}
-
 	($i%2 == 1)?$classe="impair":$classe="pair";
 
-	if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
+	if ($data['Admin_Utilisateur'] == 'oui')
 	{
-		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
+		if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
+		{
+			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
+		}
+		else
+		{
+			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
+		}
 	}
 	else
 	{
-		echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
+		if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
+		{
+			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
+		}
+		else
+		{
+			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
+		}
 	}
 
 }
