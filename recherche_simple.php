@@ -20,42 +20,6 @@
 
 
 <fieldset>
-<legend>Liste des profils correspondant :</legend>
-
-<br>
-<?php
-  if(isset($_POST['barre_de_recherche'])){
-    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-
-    $req = $bdd->prepare('SELECT Pseudo_Utilisateur, ID_Utilisateur, Description_Utilisateur, Avatar_Utilisateur, Date_Naissance FROM utilisateur_table WHERE Pseudo_Utilisateur LIKE "%'.$recherche.'%"');
-    $req->execute();
-
-    foreach($req as $row)
-    {
-?>
-<div id="cat1">
-  <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> ><img src="Images_code/IMG_Profil_Mini/<?php echo($row['Avatar_Utilisateur']);?>.jpg" class="photo1"/></a>
-  <div id="titre2">
-    <ul>
-      <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> class="typeblanc"><?php echo ($row['Pseudo_Utilisateur']);?> </a></h3></li>
-    </ul>
-  </div>
-  <div id="ssmenu1">
-    <ul>
-      <li> <?php echo nl2br(($row['Description_Utilisateur']));?> </li>
-    </ul>
-  </div>
-</div>
-    <?php
-    }
-  }
-?>
-
-<br/>
-
-</fieldset>
-
-<fieldset>
 <legend>Liste des évènements correspondant :</legend>
 
 <br>
@@ -102,7 +66,7 @@
   <div id="titre1">
     <ul>
       <li> <h3> <?php echo ($row['JourDebut_Evenement']);?> </h3> </li>
-      <li> <h5> <a href=<?php echo("Page_show-event.php?IDE=".$row['ID_Evenement']."");?> class="typeblanc"><?php echo ($row['Nom_Evenement']);?> | <?php echo htmlspecialchars($row['AdressePostal_Evenement']);?> </a></h5></li>
+      <li> <h3> <a href=<?php echo("Page_show-event.php?IDE=".$row['ID_Evenement']."");?> class="typeblanc"><?php echo ($row['Nom_Evenement']);?> | <?php echo htmlspecialchars($row['AdressePostal_Evenement']);?> </a></h3></li>
     </ul>
   </div>
   <a href=<?php echo("Page_show-event.php?IDE=".$row['ID_Evenement']."");?> ><img src="Images_code/IMG_Event_Mini/<?php echo($row['Image_Evenement']);?>.jpg" class="photo1"/></a>
@@ -121,5 +85,43 @@
 <br/>
 
 </fieldset>
+
+
+<fieldset>
+<legend>Liste des profils correspondant :</legend>
+
+<br>
+<?php
+  if(isset($_POST['barre_de_recherche'])){
+    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+
+    $req = $bdd->prepare('SELECT Pseudo_Utilisateur, ID_Utilisateur, Description_Utilisateur, Avatar_Utilisateur, Date_Naissance FROM utilisateur_table WHERE Pseudo_Utilisateur LIKE "%'.$recherche.'%"');
+    $req->execute();
+
+    foreach($req as $row)
+    {
+?>
+<div id="cat1">
+  <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> ><img src="Images_code/IMG_Profil_Mini/<?php echo($row['Avatar_Utilisateur']);?>.jpg" class="photo1"/></a>
+  <div id="titre2">
+    <ul>
+      <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> class="typeblanc"><?php echo ($row['Pseudo_Utilisateur']);?> </a></h3></li>
+    </ul>
+  </div>
+  <div id="ssmenu1">
+    <ul>
+      <li> <?php echo nl2br(($row['Description_Utilisateur']));?> </li>
+    </ul>
+  </div>
+</div>
+    <?php
+    }
+  }
+?>
+
+<br/>
+
+</fieldset>
+
 
 </form>

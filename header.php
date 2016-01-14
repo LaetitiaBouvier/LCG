@@ -30,7 +30,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 
   if(isset($_SESSION['ID_Utilisateur']) && isset($_SESSION['pseudo_utilisateur']))
   {
-    echo "<h1> Bonjour ! </h1>";
+    echo "<h1> Bonjour " . $_SESSION['pseudo_utilisateur'] . " ! </h1>";
   }
   else
   {
@@ -46,7 +46,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
     	$_SESSION['pseudo_utilisateur'] = $dataPseudo['pseudo_utilisateur'];
       $_SESSION['Avatar_Utilisateur']= $dataID['Avatar_Utilisateur'];
 
-      echo "<h1> Bonjour ! </h1>";
+      echo "<h1> Bonjour " . $_SESSION['pseudo_utilisateur'] . "! </h1>";
     }
   }
 }
@@ -69,14 +69,11 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 <?php
 if (isset($_SESSION['ID_Utilisateur']))
 {
-  echo '<h1>' . $_SESSION['pseudo_utilisateur'] . " , La Connexion Gauloise est heureuse de vous revoir!</h1>";
-
   echo "<div id='deconnexion'><a href='signout.php' id='se_deconnecter'>Se déconnecter</a></div>";
 }
 else
 {
   include("signinup.html");
-  echo "<h1> Inscrivez-vous pour avoir accès aux fonctionnalités avancées !</h1>";
 }
 ?>
 
@@ -86,8 +83,13 @@ else
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' width="55%";/></a>
           <?php if (isset($_SESSION['ID_Utilisateur']))
           {?>
+            <div id="phrase"><h1> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1></div>
+
           <div id="avatar">
-            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['Avatar_Utilisateur'].".jpg" ;?>"/> <?php } ;?>
+            <img src="<?php echo"Images_code/IMG_Profil_Mini/" .$_SESSION['Avatar_Utilisateur'].".jpg" ;?>"/> <?php }
+            else
+            {  echo "<h1> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1> <h5>Pour avoir accès aux fonctionnalités avancées, Connectez-vous !</h5> <h6>C'est votre première visite? Inscrivez-vous !  </h6>";
+};?>
           </div>
         </div>
         <form method="post" action="Page_recherche-simple.php" id="bloc_barre_de_recherche">

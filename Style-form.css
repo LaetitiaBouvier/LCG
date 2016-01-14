@@ -58,6 +58,20 @@ h2 {
   text-align:center;
 }
 
+h5 {
+  font-family:Fantasy,Cursive;
+  font-size:30px;
+  color:#990000;
+  text-align:center;
+}
+
+h6 {
+  font-family:Fantasy,Cursive;
+  font-size:25px;
+  color:#000099;
+  text-align:center;
+}
+
 p {
   font-family:Arial;
   color : #000099;

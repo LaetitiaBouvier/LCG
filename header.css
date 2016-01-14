@@ -222,3 +222,7 @@ header
 	right: 290px;
 	margin-top: 90px;
 }
+
+#phrase {
+float:inherit;
+}
