@@ -36,7 +36,7 @@ if (isset($_POST['repondre_message']))
 	if (isset($_SESSION['pseudo_utilisateur']))
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic,Pseudo_MSG, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
+		$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG) VALUES(?,?,NOW(),?)');
 		$req->execute(array($_GET['t'], $_SESSION['pseudo_utilisateur'], $_POST['repondre_message']));
 
 		$req = $bdd->prepare('UPDATE forum_table SET NB_MSG = NB_MSG + 1, Dernier_MSG = NOW() WHERE ID_Topic = ?');
@@ -228,12 +228,19 @@ $nmsg = 20 * ($f - 1);
 $mois = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
-$req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
+$req = $bdd->prepare("SELECT Pseudo_MSG, Date_MSG, Contenu_MSG, ID_MSG, Admin_Utilisateur FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
 while ($data = $req->fetch())
 {
-echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . '</div>';
+	if (1 == 1)
+	{
+		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . '</div>';
+	}
+	else
+	{
+		echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . '</div>';
+	}
 
 $req3=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 	$req3->execute(array($IDU));
