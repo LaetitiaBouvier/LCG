@@ -26,20 +26,20 @@
 
 				<?php
 				$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-			 	$req = $bdd->prepare('SELECT ID_Evenement, JourDebut_Evenement, JourFin_Evenement FROM evenement_table');
-			 	$req->execute(array('ID_Evenement', 'JourDebut_Evenement', 'JourFin_Evenement'));
+			 	$req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE JourDebut_Evenement = ?');
+			 	$req->execute(array($demain));
 
 			 	$data = $req->fetch();
 				?>
 
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d"); ?>"> <?php echo date("d-m"); if (date("Y-m-d")==$data['JourDebut_Evenement']) { echo " !!"; } ?> </a></p></td>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d"); ?>"> <?php echo date("d-m"); if (date("Y-m-d")==$data['JourDebut_Evenement']) { echo " !!"; } else { echo" .";}?> </a></p></td>
 
         <?php $demain =  time() + 86400; ?>
         <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";} ?> </a></p></td>
 
         <?php $demain += 86400; ?>
         <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";}?></a></p></td>
-				<?php var_dump($data); ?>
+
         <?php $demain += 86400; ?>
         <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";}?></a></p></td>
 
@@ -121,7 +121,7 @@
         <?php $demain += 86400; ?>
 				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
       </tr>
-      <tbody>
+		</tbody>
     </table>
   </div>
 </centralform>
