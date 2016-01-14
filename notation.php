@@ -34,6 +34,12 @@ session_start() ;
 		echo "Vous avez noté cet évènement ".$note."/5";
   }
 
+	$moyenne = mysqli_query("SELECT AVG(Note) FROM note_table");
+
+	$req = $bdd->prepare('UPDATE evenement_table SET Note_Evenement = :note_moyenne  WHERE ID_Evenement = ?');
+	$req->execute(array($ID, 'note_moyenne' => $moyenne));
+	echo "Note moyenne de l'évènement :";
+	print round($moyenne, 2);
 
 	header("location:Page_show-event.php?IDE=$ID");
 ?>

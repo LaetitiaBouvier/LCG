@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 12 Janvier 2016 à 10:30
--- Version du serveur :  5.6.17
+-- Généré le :  Jeu 14 Janvier 2016 à 11:29
+-- Version du serveur :  5.6.17-log
 -- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `evenement_table` (
   `Payant_Evenement` varchar(3) NOT NULL,
   `LienSiteWeb_Evenement` varchar(500) NOT NULL,
   `ID_Evenement` int(10) NOT NULL AUTO_INCREMENT,
+  `Note_Evenement` float NOT NULL,
   PRIMARY KEY (`ID_Evenement`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
 
@@ -76,13 +77,13 @@ CREATE TABLE IF NOT EXISTS `evenement_table` (
 -- Contenu de la table `evenement_table`
 --
 
-INSERT INTO `evenement_table` (`Nom_Evenement`, `Organisateur_Evenement`, `Image_Evenement`, `JourDebut_Evenement`, `JourFin_Evenement`, `HeureDebut_Evenement`, `HeureFin_Evenement`, `Description_Evenement`, `Sponsors_Evenement`, `NbMaxParticipants_Evenement`, `Categorie_Evenement`, `Cibles_Evenement`, `NomLieu_Evenement`, `AdresseRue_Evenement`, `AdressePostal_Evenement`, `AdresseVille_Evenement`, `AdresseDepartement_Evenement`, `AdresseRegion_Evenement`, `Payant_Evenement`, `LienSiteWeb_Evenement`, `ID_Evenement`) VALUES
-('lolp', 'test', '45.jpg', '2015-12-05', '2015-12-25', '00:00:00', '00:00:00', 'te', '', 0, 'Festivals', 'Enfants ', 'Paris', '', '75019', '', '', '', 'oui', 'http://', 45),
-('aaaaaa', 'test', '46.jpg', '2016-01-06', '2016-01-06', '21:16:00', '21:16:00', 'test', '', 23, 'Festivals', 'Bas-Ã¢ge ', 'par', 'afafz', '95400', '', '', '', 'non', 'http://google.com', 46),
-('zej', 'Laeti', '47.jpg', '2016-01-06', '2016-01-06', '21:18:00', '17:18:00', 'ye', '', 0, 'Manifestations', 'Bas-Ã¢ge ', 'par', '', '95400', '', '', '', 'non', 'http://', 47),
-('Concert Tame Impala', 'Laeti', '52.jpg', '2016-11-02', '2016-11-02', '19:30:00', '23:00:00', 'Concert du Groupe de Rock australien\nNouvel album : Currents\n', '', 0, 'ConfÃ©rences', 'Adultes ', 'Zenith de Paris', '', '75019', '', '', '', 'non', 'http://', 52),
-('Course au Jardin du Luxembourg', 'Laeti', '53.jpeg', '2016-05-24', '2016-05-24', '10:30:00', '12:00:00', 'La 21 eme edition des 21km du Luxembourg\nN hesitez pas a vous inscrire !\n', '', 0, 'Manifestations', 'Enfants ', 'Jardin du Luxembourg', '', '75019', '', '', '', 'non', 'http://', 53),
-('Soiree Raclette', 'Laeti', '54.jpg', '2016-10-23', '2016-10-23', '20:00:00', '23:00:00', 'Soiree a la salle des fetes du XVIIIeme.\r\nVenez nombreux !\r\n', 'Tefal', 150, 'Repas/Banquets', 'Enfants Ados Adultes Seniors ', 'Salle des fetes du XVIIIe', '2 rue de Paris', '75018', 'Paris', '75-Paris', 'Ile-de-France', 'non', 'http://www.google.com', 54);
+INSERT INTO `evenement_table` (`Nom_Evenement`, `Organisateur_Evenement`, `Image_Evenement`, `JourDebut_Evenement`, `JourFin_Evenement`, `HeureDebut_Evenement`, `HeureFin_Evenement`, `Description_Evenement`, `Sponsors_Evenement`, `NbMaxParticipants_Evenement`, `Categorie_Evenement`, `Cibles_Evenement`, `NomLieu_Evenement`, `AdresseRue_Evenement`, `AdressePostal_Evenement`, `AdresseVille_Evenement`, `AdresseDepartement_Evenement`, `AdresseRegion_Evenement`, `Payant_Evenement`, `LienSiteWeb_Evenement`, `ID_Evenement`, `Note_Evenement`) VALUES
+('lolp', 'test', '45.jpg', '2015-12-05', '2015-12-25', '00:00:00', '00:00:00', 'te', '', 0, 'Festivals', 'Enfants ', 'Paris', '', '75019', '', '', '', 'oui', 'http://', 45, 0),
+('aaaaaa', 'test', '46.jpg', '2016-01-06', '2016-01-06', '21:16:00', '21:16:00', 'test', '', 23, 'Festivals', 'Bas-Ã¢ge ', 'par', 'afafz', '95400', '', '', '', 'non', 'http://google.com', 46, 0),
+('zej', 'Laeti', '47.jpg', '2016-01-06', '2016-01-06', '21:18:00', '17:18:00', 'ye', '', 0, 'Manifestations', 'Bas-Ã¢ge ', 'par', '', '95400', '', '', '', 'non', 'http://', 47, 0),
+('Concert Tame Impala', 'Laeti', '52.jpg', '2016-11-02', '2016-11-02', '19:30:00', '23:00:00', 'Concert du Groupe de Rock australien\nNouvel album : Currents\n', '', 0, 'ConfÃ©rences', 'Adultes ', 'Zenith de Paris', '', '75019', '', '', '', 'non', 'http://', 52, 0),
+('Course au Jardin du Luxembourg', 'Laeti', '53.jpeg', '2016-05-24', '2016-05-24', '10:30:00', '12:00:00', 'La 21 eme edition des 21km du Luxembourg\nN hesitez pas a vous inscrire !\n', '', 0, 'Manifestations', 'Enfants ', 'Jardin du Luxembourg', '', '75019', '', '', '', 'non', 'http://', 53, 0),
+('Soiree Raclette', 'Laeti', '54.jpg', '2016-10-23', '2016-10-23', '20:00:00', '23:00:00', 'Soiree a la salle des fetes du XVIIIeme.\r\nVenez nombreux !\r\n', 'Tefal', 150, 'Repas/Banquets', 'Enfants Ados Adultes Seniors ', 'Salle des fetes du XVIIIe', '2 rue de Paris', '75018', 'Paris', '75-Paris', 'Ile-de-France', 'non', 'http://www.google.com', 54, 0);
 
 -- --------------------------------------------------------
 
