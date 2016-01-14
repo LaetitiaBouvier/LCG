@@ -47,7 +47,7 @@ try
 { $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');}
 catch (Exception $e)
 {die('Erreur : '.$e->getMessage());} //en cas d'erreur on affiche un message
-// récupération des 3 derniers événements postés
+// récupération de 3  événements aléatoires
 $req = $bdd->query('SELECT ID_Evenement, Nom_Evenement, JourDebut_Evenement, Description_Evenement, Image_Evenement, AdressePostal_Evenement FROM evenement_table ORDER BY RAND() LIMIT 3');
 
 while ($donnees = $req->fetch())

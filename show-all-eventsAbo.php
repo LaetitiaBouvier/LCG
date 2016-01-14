@@ -83,7 +83,7 @@
 			<div id="titre1">
 				<ul>
 					<li> <h3> <?php echo ($rowbis['JourDebut_Evenement']);?> </h3> </li>
-					<li> <h5> <a href=<?php echo("Page_show-event.php?IDE=".$IDE."");?> class="typeblanc"> <?php echo ($rowbis['Nom_Evenement']);?> | <?php echo htmlspecialchars($rowbis['AdressePostal_Evenement']);?> </a></h5></li>
+					<li> <h3> <a href=<?php echo("Page_show-event.php?IDE=".$IDE."");?> class="typeblanc"> <?php echo ($rowbis['Nom_Evenement']);?> | <?php echo htmlspecialchars($rowbis['AdressePostal_Evenement']);?> </a></h3></li>
 				</ul>
 			</div>
 			<a href=<?php echo("Page_show-event.php?IDE=".$IDE."")?> ><img src="Images_code/IMG_Event_Mini/<?php echo($rowbis['Image_Evenement']);?>.jpg" class="photo1"/></a>
