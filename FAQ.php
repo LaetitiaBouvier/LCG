@@ -261,7 +261,14 @@
 
 		<p>Dans le corps du message précisez les informations suivantes :</p>
 
-	
+		<ul>
+			<li>Lien</li>
+			<li>Message d'erreur</li>
+			<li>Date et heure à laquelle s'est produite l'erreur</li>
+			<li>Système d'exploitation</li>
+			<li>Votre navigateur internet et si vous en avez, les modules complémentaires que vous utilisez.</li>
+			<li>Si vous passez par un proxy : fournisseur d'accès internet, votre firewall et votre antivirus.</li>
+		<ul>
 
 		<p>Cela permettra à l'équipe technique de cerner au plus vite le problème.</p>
 
