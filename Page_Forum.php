@@ -12,7 +12,7 @@ if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 
 if (!isset($_GET['f']))
 {
-	header('Location: forum.php?f=1');
+	header('Location: Page_Forum.php?f=1');
 	exit;
 }
 
@@ -24,7 +24,7 @@ $rightarrow = $_GET['f'] + 25;
 if (($_GET['f'] % 25) != 1)
 {
 	$f2 = $f - (($f - 1) % 25);
-	header("Location: forum.php?f=$f2");
+	header("Location: Page_Forum.php?f=$f2");
 	exit;
 }
 
@@ -52,7 +52,7 @@ if (isset($_POST['nouveau_titre_topic']))
 			$req = $bdd->prepare('INSERT INTO topic_table(ID_Topic, Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG) VALUES(?,?,?,NOW(),?)');
 			$req->execute(array($t, $_SESSION['pseudo_utilisateur'], $pseudo_admin, $_POST['premier_message']));
 
-			header("Location: topic.php?f=1&t=$t");
+			header("Location: Page_Topic.php?f=1&t=$t");
 			exit;
 		}
 		else
@@ -227,7 +227,7 @@ if (isset($_POST['nouveau_titre_topic']))
 		<ul>
 	    <li><a href="#nouveau_topic">Nouveau sujet</a></li>
 	    <li>Barre de recherche</li>
-			<li> <?php echo "<a href='forum.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
+			<li> <?php echo "<a href='Page_Forum.php?f=" . $f . "'>Actualiser</a>"; ?> </li>
 	  </ul>
 
       <table>
@@ -251,22 +251,22 @@ while ($data = $req->fetch())
 	{
 		if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
 		{
-			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
+			echo '<tr class=' . $classe . "><td><a href='Page_Topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
 		}
 		else
 		{
-			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
+			echo '<tr class=' . $classe . "><td><a href='Page_Topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td class="admin_topic">' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
 		}
 	}
 	else
 	{
 		if (date_create($data['Dernier_MSG']) >= date_create(date("y-m-d")))
 		{
-			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
+			echo '<tr class=' . $classe . "><td><a href='Page_Topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'H:i:s') . '</td></tr>';
 		}
 		else
 		{
-			echo '<tr class=' . $classe . "><td><a href='topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
+			echo '<tr class=' . $classe . "><td><a href='Page_Topic.php?f=1&t=" . $data['ID_Topic'] ."'>" . htmlspecialchars($data['Titre_Topic']) . '</a></td><td>' . htmlspecialchars($data['PseudoAuteur_Topic']) . '</td><td>' . $data['NB_MSG'] . '</td><td class="heure">' . date_format(date_create($data['Dernier_MSG']), 'd/m/Y') . '</td></tr>';
 		}
 	}
 
@@ -284,12 +284,12 @@ $limitetopic = $nbtopic[0] - 25;
 
 if ($page != 0)
 {
-	echo '<form action="forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	echo '<form action="Page_Forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
 if ($page < $limitetopic)
 {
-	echo '<form action="forum.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	echo '<form action="Page_Forum.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
 
 
@@ -303,7 +303,7 @@ if ($page < $limitetopic)
 
 			<h2 id="nouveau_topic">Nouveau Topic</h2>
 
-			<form action="forum.php?f=1" method="POST">
+			<form action="Page_Forum.php?f=1" method="POST">
 
 	      <p><input type="text" name="nouveau_titre_topic" id="nouveau_titre_topic" maxlength=50 placeholder="Saisir le titre du topic" size="300px" /></p>
 	      <p><textarea name="premier_message" id="premier_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>

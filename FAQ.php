@@ -146,8 +146,8 @@
     <p>Si lors de votre inscription votre adresse e-mail est rejetée, cela peut-être dû à trois choses :</p>
 
     <ul>
-	    <li>La première quand au fait que trop de pseudos sont associés à cet e-mail. On ne peut pas avoir plus de trois comptes par adresse e-mail.</li>
-	    <li>La seconde peut venir du fait qu'un pseudo associé à cet e-mail ait été banni. Auquel cas cela bannit aussi l'adresse e-mail. On ne débannit pas cette dernière, à moins que le pseudo soit innocenté.</li>
+	    <li>La première raison peut être que l'adresse e-mail est déjà associée à un compte.</li>
+	    <li>La seconde peut venir du fait que le pseudo associé à cet e-mail ait été banni. Auquel cas cela bannit aussi l'adresse e-mail. On ne débannit pas cette dernière, à moins que le pseudo soit innocenté.</li>
 	    <li>Enfin la troisième raison peut être que vous essayez de vous inscrire avec une adresse jetable de type yopmail. Ces dernières sont interdites à cause de réservations massives et automatiques de comptes.</li>
     </ul>
 
@@ -201,7 +201,7 @@
 
 		<h2>Profil</h2>
 
-		<h3>Comment modifier les informations affichées dans le profil de ma profil ?</h3>
+		<h3>Comment modifier les informations affichées dans mon profil ?</h3>
 
 		<p>Lorsque vous êtes connecté avec votre pseudo, allez dans votre profil. Vous pouvez modifier la plupart des informations tout simplement en cliquant sur le bouton « Modifier ».</p>
 
@@ -225,21 +225,9 @@
 
 		<p>Vous pouvez le signaler en passant par le formulaire de contact (motif Pseudos / Compte) avec un lien vers le profil concerné, et en faisant l'argumentaire de ce qui vous gêne dans l'avatar.</p>
 
-		<h3>Comment réorganiser les cadres de l'onglet Profil ?</h3>
-
-		<p>Il suffit juste d'aller dans votre profil tout en étant connecté, puis avec la souris de déplacer les différents cadres comme vous le souhaitez. Les internautes verront votre profil, comme vous l'aurez agencée.</p>
-
-		<h3>Je n'ai pas rempli certains cadres, les autres internautes les verront-ils ?</h3>
+		<h3>Je n'ai pas rempli certaines rubriques, les autres internautes les verront-ils ?</h3>
 
 		<p>Non, toutes les parties non remplies sont invisibles pour les lecteurs.</p>
-
-		<h3>Je ne souhaite pas que les internautes voient mes derniers messages postés, comment faire ?</h3>
-
-		<p>Il suffit juste de cocher la case « Masquer ce bloc ». Vous verrez encore le cadre, mais il sera invisible pour les autres utilisateurs.</p>
-
-		<h3>Comment remettre visibles mes derniers messages postés ?</h3>
-
-		<p>Il suffit juste de décocher la case « Masquer ce bloc ». La modification est instantanée.</p>
 
 		<h3>Je ne vois plus les boutons pour modifier mon profil dans mon profil, pourquoi ?</h3>
 
@@ -273,20 +261,13 @@
 
 		<p>Dans le corps du message précisez les informations suivantes :</p>
 
-		<ul>
-			<li>Lien</li>
-			<li>Message d'erreur</li>
-			<li>Date et heure à laquelle s'est produite l'erreur</li>
-			<li>Système d'exploitation</li>
-			<li>Votre navigateur internet et si vous en avez, les modules complémentaires que vous utilisez.</li>
-			<li>Si vous passez par un proxy : fournisseur d'accès internet, votre firewall et votre antivirus.</li>
-		<ul>
+	
 
 		<p>Cela permettra à l'équipe technique de cerner au plus vite le problème.</p>
 
 		<h3>Comment signaler un abus ou bien un message hors-charte ?</h3>
 
-		<p>Si vous constatez un abus ou bien un message hors charte sur les forums, ou bien sur les commentaires de news, vidéos, etc., vous pouvez nous les signaler de quatre manières :</p>
+		<p>Si vous constatez un abus ou bien un message hors charte sur les forums, ou bien sur les commentaires des événements, photos, vidéos, etc., vous pouvez nous les signaler de quatre manières :</p>
 
 		<ul>
 			<li>En cliquant sur le point d'exclamation à droite du message. Cela enverra une alertes aux administrateurs.</li>

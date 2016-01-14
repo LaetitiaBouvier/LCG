@@ -21,7 +21,7 @@ $t = $_GET['t'];
 
 if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 {
-	header("Location: topic.php?f=1&t=$t");
+	header("Location: Page_Topic.php?f=1&t=$t");
 	exit;
 }
 
@@ -193,9 +193,9 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 
 	    <ul>
 	      <li><a href="#repondre_topic">Répondre</a></li>
-	      <li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
-	      <li><a href="forum.php">Liste des sujets</a></li>
-				<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+	      <li><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li><a href="Page_Forum.php">Liste des sujets</a></li>
+				<li> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
 	    </ul>
 
 <p class="numero_page">
@@ -209,7 +209,7 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 			}
 			else
 			{
-				echo " <a href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+				echo " <a href='Page_Topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
 			}
 		}
 ?>
@@ -220,12 +220,12 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 
 if ($f != 1)
 {
-	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	echo '<form action="Page_Topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
 if ($f < $nbpages)
 {
-	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	echo '<form action="Page_Topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
 
 ?>
@@ -266,12 +266,12 @@ while ($data = $req->fetch())
 
 if ($f != 1)
 {
-	echo '<form action="topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	echo '<form action="Page_Topic.php?f=' . $leftarrow . '&t=' . $t . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
 }
 
 if ($f < $nbpages)
 {
-	echo '<form action="topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	echo '<form action="Page_Topic.php?f=' . $rightarrow . '&t=' . $t . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
 }
 
 ?>
@@ -288,7 +288,7 @@ for ($i = 1; $i <= $nbpages; $i++)
 	}
 else
 	{
-		echo " <a href='topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
+		echo " <a href='Page_Topic.php?f=" . $i  . "&t=" . $t . "'>" . $i . '</a>';
 	}
 }
 ?>
@@ -296,16 +296,16 @@ else
 </p>
 
 			<ul>
-				<li><a href="forum.php#nouveau_topic">Nouveau sujet</a></li>
-	      <li><a href="forum.php">Liste des sujets</a></li>
-				<li> <?php echo "<a href='topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+				<li><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li><a href="Page_Forum.php">Liste des sujets</a></li>
+				<li> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
 	    </ul>
 
 		<div>
 
 		<h3 id="repondre_topic">Répondre</h3>
 
-		<form <?php echo "action='topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
+		<form <?php echo "action='Page_Topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
 			<p><input type="submit" value="Poster" /></p>
