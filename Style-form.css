@@ -16,6 +16,12 @@ input[id=droit]:hover, input[id=bannir]:hover, input[id=suivre]:hover
 #bloc_connexion
 {
   width:250px;
+  text-align: center;
+  border-style: outset;
+  border-color: #990000;
+  background-color: #adadad;
+  display:inline-block;
+  margin-left: 300px;
 }
 #redirect{
   margin-top: 50px;

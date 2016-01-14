@@ -173,7 +173,7 @@ if($OKplanning_Utilisateur == "non") { echo "Non divulgué"; }
 
 
 </fieldset>
-</fieldset>
+
 <div id="boutons_admin">
 <?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 $req=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
@@ -183,9 +183,19 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 	$req2->execute(array($ID));
 	$admin2=$req2->fetch();
 
+	if ($ID==$IDU OR $admin['Admin_Utilisateur']=="oui") {?>
+		<div id=boutons_admin>
+	<form name='modif' method='post' action=<?php echo ("Page_Modif-Profil.php?IDU=".$ID."");?> enctype='multipart/form-data'>
+		<input type="submit" name="valider" value="MODIFIER "/>
+	</form> </div> </br>
+	<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
+		<input type="submit" id="bannir" value="SUPPRIMER ">
+	</form>
+</br> <?php }
+
 	if ($admin['Admin_Utilisateur']=="oui"){?>
 		<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
-			<input type="submit" id="bannir" value="BANNIR ">
+			<input type="submit" id="bannir" value="BANNIR DU SITE ">
 		</form>
 	</br>
 		<h3><?php if ($admin2['Admin_Utilisateur']=="oui"){ echo "Ce membre est administrateur";}

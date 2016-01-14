@@ -96,7 +96,12 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 }
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
-header("location:Page_show-profil.php?IDU=".$IDU."");
+if ($_POST['button']=="Ajouter ma photo de profil"){
+  header("location:Page_Confirm_Inscription-2.php");
+}
+else{
+  header("location:Page_show-profil.php?IDU=".$IDU."");
+}
 
 
 
