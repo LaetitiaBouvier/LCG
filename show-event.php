@@ -274,7 +274,6 @@ $req->closeCursor();
 
 		<h2> <?php echo $nom ?></h2>
 
-
 <?php if (isset($_SESSION["ID_Utilisateur"])): ?>
 	<?php $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 	$req = $bdd->prepare('SELECT ID_Utilisateur FROM participation_table WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
@@ -324,7 +323,6 @@ $req->closeCursor();
 </br>
 </br> Lien vers le site web de l'événement : <?php echo "<a href='$web'>cliquez ici</a>" ?>
 </br>
-</br>
 <div id="notation">
 	<?php
 		if (isset($_SESSION["ID_Utilisateur"])):
@@ -333,6 +331,12 @@ $req->closeCursor();
 	?>
 </div>
 </br>
+<PARTAGE> <h6>Partager cette page sur :
+						<a href="https://www.facebook.com/sharer/sharer.php?u=Page_show-event.php?IDE=<?=$ID?>" title="Share on Facebook"><span class="social-icon icon-facebook"></span><span class="count"><img src="Images_code/facebook.png" class="facebook" /></span></a>
+						<a href="https://twitter.com/intent/tweet?text=Page_show-event.php?IDE=<?=$ID?>" title="Share on Twitter"><span class="social-icon icon-twitter"></span><span class="count"><img src="Images_code/logo-twitter.png" class="twitter"/></span></a>
+						<a href="https://plus.google.com/share?url=Page_show-event.php?IDE=<?=$ID?>" title="Share on Google Plus"><span class="social-icon icon-googleplus"></span><span class="count"><img src="Images_code/google-plus-logo-transparent.png" class="google"/></span></a>
+. </h6>
+</PARTAGE>
 </fieldset>
 
 
@@ -353,10 +357,8 @@ $req->closeCursor();
 		<div id=boutons_admin>
 <form name='modif' method='post' action=<?php echo ("Page_Modif-Event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" name="valider" value="MODIFIER "/>
-	</form> </div> </br> <?php }
+	</form> </div> </br>
 
-
-	if ($admin['Admin_Utilisateur']=="oui"){?>
 		<div id=boutons_admin>
 <form name='delete' method='post' action=<?php echo ("delete_event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" name="valider" value="SUPPRIMER "/>

@@ -1,7 +1,17 @@
+PARTAGE img{
+  width:35px;
+  height:35px;
+margin-right: 4px;
+margin-left: 6px;}
+
+PARTAGE{
+  margin-left: 200px;
+ }
 input[id=droit]:hover, input[id=bannir]:hover, input[id=suivre]:hover
 {
   background-color: #e8222b;
 }
+
 #corps_categories, #corps_inscription, #confirm_inscription, #maps, #modifOK, #redirect{
   display: inline-block;
   margin-left: 5%;
@@ -168,9 +178,9 @@ input[type=submit] {
   border: 2px solid #333;
 }
 
-input[type=password],[type=email],[type=file],[type=url] {
+input[type=password],[type=email],[type=file],[type=textarea],[type=url] {
     font-size:25px;
-    width: 30%; /largeur du champs
+    width: auto; /largeur du champs
 }
 
 a.typeblanc{

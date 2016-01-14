@@ -9,7 +9,7 @@
       <div id="logof">
         <a href="https://www.facebook.com/La-Connexion-Gauloise-929945667090395/"><img src="Images_code/facebook.png" class="facebook" /></a>
         <a href="https://twitter.com/laconnexiongaul"><img src="Images_code/logo-twitter.png" class="twitter"/></a>
-        <a href="#"><img src="Images_code/instagram-logo-vector-image.png" class="insta" /></a>
+        <!--<a href="#"><img src="Images_code/instagram-logo-vector-image.png" class="insta" /></a>!-->
         <a href="https://plus.google.com/101393851519255100835/posts"><img src="Images_code/google-plus-logo-transparent.png" class="google"/></a>
       </div>
       <div id="site">

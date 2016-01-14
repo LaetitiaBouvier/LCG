@@ -19,19 +19,15 @@
 		</nav>
 
 		<div id="confirm_inscription">
-			<h2> Création de profil </h2>
+			<h2> Création de profil - Ajout de l'avatar </h2>
 
 			<fieldset>
 			<?php include 'fichier_photo_profil.html';?>
 		</fieldset>
 
-		
-
-		</br></br></br>
 
 
-
-</br></br></br></br></br></br></br></br></br>
+</br></br>
 		<footer>
 			<?php include("footer.php"); ?>
 		</footer>

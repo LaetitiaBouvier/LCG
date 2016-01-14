@@ -20,7 +20,7 @@ else {
 
 <?php
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
+if (isset($_FILES['photo']) AND !empty($_POST['photo']) AND $_FILES['photo']['error'] == 0)
 {
   // Testons si le fichier n'est pas trop gros
   if ($_FILES['photo']['size'] <= 1000000)
@@ -87,21 +87,22 @@ if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 
       imagejpeg($destination_mini, "Images_code/IMG_Profil_Mini/".$nomphoto.".jpg");
       imagejpeg($destination_large, "Images_code/IMG_Profil_Moyen/".$nomphoto.".jpg");
-
+      if ($_POST['button']=="Ajouter ma photo de profil"){
+        header("location:Page_Confirm_Inscription-2.php");
+      }
+      else{
+        header("location:Page_show-profil.php?IDU=".$IDU."");
+      }
 
     }
     else {echo ("le fichier doit être de format .jpg, .jpeg, .png ou .gif");}
   }
   else {echo ("le fichier est trop volumineux");}
 }
+else {echo("Vous n'avez pas entré de fichier");}
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
-if ($_POST['button']=="Ajouter ma photo de profil"){
-  header("location:Page_Confirm_Inscription-2.php");
-}
-else{
-  header("location:Page_show-profil.php?IDU=".$IDU."");
-}
+
 
 
 
