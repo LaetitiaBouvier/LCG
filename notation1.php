@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="notation.css" />
 
-<form name="notation" action="notation.php" method="POST">
+<form name="notation" action="notation.php">
 	<h4>Noter l'évènement :</h4>
 	<ul class="notes-echelle">
 		<li>
