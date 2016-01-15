@@ -2,7 +2,7 @@
 
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
 $req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
@@ -17,14 +17,14 @@ if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 	exit;
 }
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
 $req->execute(array($_GET['t']));
 $data = $req->fetch();
 
 $titre = $data[0];
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 
 $req1 = $bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 $req1->execute(array($_SESSION['ID_Utilisateur']));
@@ -160,7 +160,8 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			display: inline-block;
 			height: inherit;
-			margin-top: 10px;
+			float:right;
+			margin-left: 10px;
 		}
 
 		.block_admin form
@@ -295,7 +296,7 @@ $nmsg = 20 * ($f - 1);
 
 $mois = array("01" => 'janvier', "02" => 'février', "03" => 'mars', "04" => 'avril', "05" => 'mai', "06" => 'juin', "07" => 'juillet', "08" => 'août', "09" => 'septembre', "10" => 'octobre', "11" => 'novembre', "12" => 'décembre');
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
