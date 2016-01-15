@@ -1,14 +1,6 @@
 <?php
 
 session_start();
-if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
-
-	if(isset($_GET["IDE"])){
-			$ID = $_GET["IDE"];
-	}
-	else{
-		$ID = -1;
-	}
 
 if (!isset($_GET['f']))
 {
@@ -28,14 +20,14 @@ if (($_GET['f'] % 25) != 1)
 	exit;
 }
 
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+
 if (isset($_POST['nouveau_titre_topic']))
 {
 	if (isset($_SESSION['pseudo_utilisateur']))
 	{
 		if (($_POST['nouveau_titre_topic'] != "") AND ($_POST['premier_message'] != ""))
 		{
-			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
-
 			$req1 = $bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 			$req1->execute(array($_SESSION['ID_Utilisateur']));
 			$pseudo_admin_array = $req1->fetch();
