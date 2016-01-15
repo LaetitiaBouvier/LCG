@@ -292,7 +292,7 @@ if ($f < $nbpages)
 
 $nmsg = 20 * ($f - 1);
 
-$mois = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
+$mois = array("01" => 'janvier', "02" => 'février', "03" => 'mars', "04" => 'avril', "05" => 'mai', "06" => 'juin', "07" => 'juillet', "08" => 'août', "09" => 'septembre', "10" => 'octobre', "11" => 'novembre', "12" => 'décembre');
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
@@ -301,26 +301,29 @@ $req->execute(array($_GET['t']));
 while ($data = $req->fetch())
 {
 
+$date_mois = date_format($data['Date_MSG'], "m");
+$date_mois = "$date_mois";
+
 	if ($pseudo_admin == 'oui')
 	{
 		if ($data['Admin_Utilisateur'] == 'oui')
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 		else
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 	}
 	else
 	{
 		if ($data['Admin_Utilisateur'] == 'oui')
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 		else
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 	}
 }
