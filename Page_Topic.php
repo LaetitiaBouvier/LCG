@@ -1,16 +1,8 @@
 <?php
 
 session_start();
-if(isset($_SESSION["ID_Utilisateur"])){ $IDU = $_SESSION["ID_Utilisateur"]; }
 
-	if(isset($_GET["IDE"])){
-			$ID = $_GET["IDE"];
-	}
-	else{
-		$ID = -1;
-	}
-
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT COUNT(*) FROM topic_table WHERE ID_Topic = ?");
 $req->execute(array($_GET['t']));
 $nbmsg = $req->fetch();
@@ -25,14 +17,14 @@ if (!isset($_GET['f']) OR ($_GET['f'] > $nbpages))
 	exit;
 }
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare('SELECT Titre_Topic FROM forum_table WHERE ID_Topic = ?');
 $req->execute(array($_GET['t']));
 $data = $req->fetch();
 
 $titre = $data[0];
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 
 $req1 = $bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 $req1->execute(array($_SESSION['ID_Utilisateur']));
@@ -75,9 +67,9 @@ $rightarrow = $_GET['f'] + 1;
 
 		<style>
 
-		a, .page_actuelle
+		a
 		{
-			color: black;
+			color: white;
 			text-decoration: none;
 			font-size: 0.9em;
 		}
@@ -85,6 +77,9 @@ $rightarrow = $_GET['f'] + 1;
 		.page_actuelle
 		{
 			background-color: orange;
+			color: black;
+			text-decoration: none;
+			font-size: 0.9em;
 		}
 
 		#topic ul
@@ -92,6 +87,23 @@ $rightarrow = $_GET['f'] + 1;
 			list-style-type: none;
 			display: flex;
 			justify-content: space-between;
+		}
+
+		#topic ul li
+		{
+			border: 1px solid black;
+			border-radius: 10px;
+			padding: 3px;
+		}
+
+		.bouton
+		{
+			background-color: #000099;
+		}
+
+		.repondre
+		{
+			background-color: #990000;
 		}
 
 		#block_top
@@ -109,6 +121,7 @@ $rightarrow = $_GET['f'] + 1;
 			display: inline-block;
 			border: 1px black solid;
 			width: 800px;
+			background-color: white;
 		}
 
 		#block_all_msg
@@ -125,21 +138,35 @@ $rightarrow = $_GET['f'] + 1;
 
 		.block_msg
 		{
-			border: 1px black solid;
+			border: 1px rgba(0, 0, 0, .4) solid;
 			margin-bottom: 5px;
+			background-color: rgba(0, 0, 200, 0.07);
+			padding-left: 5px;
+			padding-right: 5px;
+			margin-left: 5px;
+			margin-right: 5px;
 		}
 
 		.block_pseudo
 		{
-			border: 1px black solid;
 			display: inline-block;
+			font-size: 1.3em;
+			font-weight: bold;
+			margin-bottom: 1px;
 		}
 
 		.block_admin
 		{
-			border: 1px black solid;
+			display: inline-block;
+			height: inherit;
+			margin-top: 10px;
+		}
+
+		.block_admin form
+		{
 			display: inline-block;
 		}
+
 
 		.admin_msg
 		{
@@ -148,21 +175,42 @@ $rightarrow = $_GET['f'] + 1;
 
 		.block_date
 		{
-			border: 1px black solid;
 			display: inline-block;
 			float: right;
+			color: blue;
+			margin-top: 4px;
 		}
 
 		.block_contenu
 		{
-			border: 1px black solid;
+			border-top: 1px rgba(0, 0, 0, .3) solid;
 			word-wrap: break-word;
+		}
+
+		li
+		{
+			border: 1px block solid;
+			display: inline-block;
+			font-weight: 2em;
+		}
+
+		#block_repondre
+		{
+			display: inline-block;
+			width: 100%;
+			border: 1px black solid;
+		}
+
+		#form_repondre
+		{
+			margin-top: 0px;
 		}
 
 		textarea
 		{
 			height: 90px;
-			width: 100%;
+			width: 98%;
+			margin-left: 5px;
 		}
 
 		#leftarrow
@@ -199,10 +247,10 @@ echo '<h3>Sujet : ' . $titre . '</h3>';
 		<div id="topic">
 
 	    <ul>
-	      <li><a href="#repondre_topic">Répondre</a></li>
-	      <li><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
-	      <li><a href="Page_Forum.php">Liste des sujets</a></li>
-				<li> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+	      <li class="repondre"><a href="#repondre_topic">Répondre</a></li>
+	      <li class="bouton"><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li class="bouton"><a href="Page_Forum.php">Liste des sujets</a></li>
+				<li class="bouton"> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
 	    </ul>
 
 <p class="numero_page">
@@ -246,7 +294,7 @@ $nmsg = 20 * ($f - 1);
 
 $mois = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
 $req = $bdd->prepare("SELECT Pseudo_MSG, Admin_Utilisateur, Date_MSG, Contenu_MSG, ID_MSG FROM topic_table WHERE ID_Topic = ? ORDER BY ID_MSG LIMIT $nmsg, 20");
 $req->execute(array($_GET['t']));
 
@@ -257,22 +305,22 @@ while ($data = $req->fetch())
 	{
 		if ($data['Admin_Utilisateur'] == 'oui')
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div></div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 		else
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "<div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div></div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 	}
 	else
 	{
 		if ($data['Admin_Utilisateur'] == 'oui')
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 		else
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Dernier_MSG']), "d") . ' ' . $mois[date_format($data['Dernier_MSG'], "m")] . ' ' . date_format(date_create($data['Dernier_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[date_format($data['Date_MSG'], "m")] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 	}
 }
@@ -318,16 +366,17 @@ else
 </p>
 
 			<ul>
-				<li><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
-	      <li><a href="Page_Forum.php">Liste des sujets</a></li>
-				<li> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
+				<li class="bouton"><a href="Page_Forum.php#nouveau_topic">Nouveau sujet</a></li>
+	      <li class="bouton"><a href="Page_Forum.php">Liste des sujets</a></li>
+				<li class="bouton"> <?php echo "<a href='Page_Topic.php?f=" . $f . "&t=" . $t . "'>Actualiser</a>"; ?> </li>
 	    </ul>
 
-		<div>
+		<br />
+		<br />
 
-		<h3 id="repondre_topic">Répondre</h3>
+		<div id='block_repondre'>
 
-		<form <?php echo "action='Page_Topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
+		<form id='form_repondre' <?php echo "action='Page_Topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
 			<p><input type="submit" value="Poster" /></p>
