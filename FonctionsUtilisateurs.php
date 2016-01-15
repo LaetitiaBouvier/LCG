@@ -227,7 +227,7 @@ function insert_users()
 
 
   //PSEUDO UTILISATEUR
-		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo'])   && preg_match('#^[a-zA-Z0-9]*$#', $_POST['pseudo']))
+		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo'])   && preg_match('#^[a-zA-Z0-9]*$#', $_POST['pseudo'])  && strlen($_POST['pseudo'])<33  && strlen($_POST['pseudo'])>3)
       { $pseudo =htmlspecialchars($_POST['pseudo']);
 
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); //root pour mac
@@ -242,19 +242,19 @@ function insert_users()
         if($data)
           { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre pseudo est déjà utilisé par un autre utilisateur. </br> Veuillez en choisir un autre.</div>"; }
       }
-			else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre pseudo contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
+			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre pseudo doit être composé de 4 à 32 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
 
 
 
 //NOM UTILISATEUR
-		if(isset($_POST['nom'])								&& !empty($_POST['nom']))
+		if(isset($_POST['nom'])								&& !empty($_POST['nom'])  && preg_match('#^[a-zA-Z]*$#', $_POST['nom'])  && strlen($_POST['nom'])<33  && strlen($_POST['nom'])>1)
       { $nom=htmlspecialchars($_POST['nom']);}
-
+		else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
 
 //PRENOM UTILISATEUR
-		if(isset($_POST['prenom'])						&& !empty($_POST['prenom']))
+		if(isset($_POST['prenom'])						&& !empty($_POST['prenom']) && preg_match('#^[a-zA-Z]*$#', $_POST['nom'])  && strlen($_POST['nom'])<33  && strlen($_POST['nom'])>1)
       {	$prenom=htmlspecialchars($_POST['prenom']);}
-
+			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre prénom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
 
 // DATE DE NAISSANCE UTILISATEUR
     if(isset($_POST['dateNaissance'])			&& !empty($_POST['dateNaissance']))
@@ -265,17 +265,15 @@ function insert_users()
         $maxnew  = date('Y-m-d', $past12Years);
 
       if ($dateNaissance < $maxancien OR $dateNaissance > $maxnew)
-      { $cond = false; print "<div class='alert-box notice'><span>remarque: </span>La date de naissance indiquée de vous permet pas l'accès au site.</br> Pour une utilisation optimale, nous vous conseillons de vous inscrire après vos 12 ans et avant vos 100 ans.</div>"; }
-    }
+      { $cond = false; print "<div class='alert-box success'><span>remarque: </span>La date de naissance indiquée de vous permet pas l'accès au site.</br> Pour une utilisation optimale, nous vous conseillons de vous inscrire après vos 12 ans et avant vos 100 ans.</div>"; }
+   }
 
 
 // CODE POSTAL UTILISATEUR
-    if(isset($_POST['adresse'])						&& !empty($_POST['adresse']))
-    { $adresse=htmlspecialchars($_POST['adresse']);
+    if(isset($_POST['adresse'])						&& !empty($_POST['adresse'])  && strlen($_POST['adresse'])==5 && preg_match('#^[0-9]*$#', $_POST['adresse']))
+    { $adresse=htmlspecialchars($_POST['adresse']);  }
+    else { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre code postal doit être un composé de 5 chiffres.</div>"; }
 
-      if(strlen($adresse) != 5 AND !is_numeric($adresse))
-        { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre code postal doit être un composé de 5 chiffres.</div>"; }
-    }
 
 
 // MOT DE PASSE UTILISATEUR
@@ -285,8 +283,8 @@ function insert_users()
         $confirm_mdp= $_POST['confirm_mdp'];
       if($mdp != $confirm_mdp)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Vous n'avez pas saisi deux fois le même mot de passe. </div>";}
-      if(strlen($mdp) <= 5)
-        { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Votre mot de passe doit faire au moins 6 caractères. </div>";}
+      if(strlen($mdp) < 6 &&  strlen($mdp)<33)
+        { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Votre mot de passe doit contenir entre 6 et 32 caractères. </div>";}
       }
 
 
@@ -309,14 +307,13 @@ function insert_users()
 
 
 // DESCRIPTION UTILISATEUR
-    if(isset($_POST['description'])				 && !empty($_POST['description']))
+    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
       {	$description=htmlspecialchars($_POST['description']);}
-    else
-      { $description = " ";}
+			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
 
 
 // GENRE / SEXE UTILISATEUR
-    if( isset($_POST['genre'])							 && !empty($_POST['genre']))
+    if( isset($_POST['genre'])							 && !empty($_POST['genre'])  && preg_match('#^[a-zA-Z]*$#', $_POST['genre'])  && strlen($_POST['genre'])==5)
       {	$genre=htmlspecialchars($_POST['genre']);}
     else
       { $genre = NULL;}
