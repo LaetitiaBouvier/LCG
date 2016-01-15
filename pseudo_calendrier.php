@@ -25,102 +25,104 @@
       <tr>
 
 				<?php
-				$demain=time();
+				$date=time();
 				$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 			 	$req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE JourDebut_Evenement = ?');
-			 	$req->execute(array($demain));
+			 	$req->execute(array($date));
 
 			 	$data = $req->fetch();
 				?>
 
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d"); ?>"> <?php echo date("d-m"); if (date("Y-m-d")==$data['JourDebut_Evenement']) { echo " !!"; } else { echo" .";}?> </a></p></td>
 
-        <?php $demain =  time() + 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";} ?> </a></p></td>
+				<?php $date = time(); ?>
+        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";}?></a></p></td>
+        <?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo" !!"; } else { echo" .";}?></a></p></td>
+        <?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
+
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
       </tr>
-      <tr>
 
-        <?php $demain += 86400; ?>
-        <td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+			<tr>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
       </tr>
-      <tr>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+			<tr>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
       </tr>
-      <tr>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+			<tr>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
 
-        <?php $demain += 86400; ?>
-				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $demain); ?>"> <?php echo date("d-m", $demain); if (date("Y-m-d", $demain)==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?></a></p></td>
+				<?php $date += 86400; ?>
+				<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo"Images_code/Alerte.png"; } ?> </a></p></td>
       </tr>
 		</tbody>
     </table>

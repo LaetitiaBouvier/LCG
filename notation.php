@@ -24,24 +24,15 @@ session_start() ;
 
   if($data['ID_Utilisateur']== $IDU){
 		echo "Vous avez noté cet évènement ".$note."/5";
-		$req = $bdd->prepare('UPDATE note_table SET Note = :new_note  WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
+		$req = $bdd->prepare('UPDATE noter_table SET Note = :new_note  WHERE ID_Utilisateur = ? AND ID_Evenement = ?');
 		$req->execute(array($IDU, $ID, 'new_note' => $note));
 		echo "Vous avez re-noté cet évènement ".$note."/5";
-		$moyenne = mysqli_query("SELECT AVG(Note) FROM note_table");
-		$req = $bdd->prepare('UPDATE evenement_table SET Note_Evenement = :note_moyenne  WHERE ID_Evenement = ?');
-		$req->execute(array($ID, 'note_moyenne' => $moyenne));
-		echo "Note moyenne de l'évènement :";
-		print round($moyenne, 2);
+
 	}
   else{
     $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise");
     mysqli_query($connect, "insert into noter_table (Note, ID_Utilisateur, ID_Evenement) values ('$note', '$IDU', '$ID')");
 		echo "Vous avez noté cet évènement ".$note."/5";
-		$moyenne = mysqli_query("SELECT AVG(Note) FROM note_table");
-		$req = $bdd->prepare('UPDATE evenement_table SET Note_Evenement = :note_moyenne  WHERE ID_Evenement = ?');
-		$req->execute(array($ID, 'note_moyenne' => $moyenne));
-		echo "Note moyenne de l'évènement :";
-		print round($moyenne, 2);
   }
 
 

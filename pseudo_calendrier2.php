@@ -27,27 +27,29 @@
 				<?php
 				$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 			 	$req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE JourDebut_Evenement = ?');
-			 	$req->execute(array($demain));
+			 	$req->execute(array('JourDebut_Evenement'));
 
 			 	$data = $req->fetch();
 
-				$date=date(Y-m-d)
+				$date=date("Y-m-d");
 
-				for ($i=1, $i<=4, $i++)
-				{
+				for ($i=1; $i<=4; $i++)
+				{?>
 					<tr>
-					for ($j=1, $j<=7, $j++)
+					<?php
+					for ($j=1; $j<=7; $j++)
 					{
-								<td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo " !!"; } else else { echo" .";} </a></p></td>;
-								if (date("Y-m-d", $date)==$data['JourDebut_Evenement']) {
+								?><td><p><a href="Page_Categories-2.php?Date=<?php echo date("Y-m-d", $date); ?>"> <?php echo date("d-m", $date); if ($date==$data['JourDebut_Evenement']) { echo " !!"; } else { echo" .";} ?> </a></p></td>;
+								<?php if (date("Y-m-d", $date)==$data['JourDebut_Evenement']) {
 									echo " !!";
 								}
 								else {
 									echo" vide";
 								}
-									$date++
-					}
+									$date++;
+					}?>
 					</tr>
+				<?php
 				}
 			?>
 		</tbody>
