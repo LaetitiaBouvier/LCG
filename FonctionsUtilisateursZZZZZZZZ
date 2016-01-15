@@ -18,7 +18,7 @@ if (!$connect)
 function update_users()
 {
 
-  if (isset($_POST['valider']) &&htmlspecialchars($_POST['valider']) == "VALIDER MON PROFIL")
+  if (isset($_POST['valider']) && htmlspecialchars($_POST['valider']) == "VALIDER MON PROFIL")
   {
 
     $ID = $_SESSION["ID_Utilisateur"];
@@ -81,7 +81,7 @@ function update_users()
     if(isset($_POST['mdp']) && !empty($_POST['mdp']) && isset($_POST['confirm_mdp']) && !empty($_POST['confirm_mdp'])){
 
       $mdp=htmlspecialchars($_POST['mdp']);
-      $confirm_mdp=htmlspecialchars($_POST['confirm_mdp']);
+      $confirm_mdp= htmlspecialchars($_POST['confirm_mdp']);
 
       if(($mdp == $confirm_mdp) && (strlen($mdp) > 5))
       {
@@ -118,7 +118,7 @@ function update_users()
     if(isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['confirm_mail']) && !empty($_POST['confirm_mail']))
     {
       $mail=htmlspecialchars($_POST['mail']);
-      $confirm_mail =htmlspecialchars($_POST['confirm_mail']);
+      $confirm_mail = htmlspecialchars($_POST['confirm_mail']);
 
       if($mail == $confirm_mail)
       {
@@ -136,15 +136,15 @@ function update_users()
     // MAJ CATEGORIES FAVORITES UTILSATEUR
 
     $categorieFavorite = "";
-    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite1']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite2']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite3']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite4']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite5']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite6']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite7']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite8']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite9']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite1']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite2']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite3']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite4']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite5']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite6']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite7']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite8']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite9']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
 
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
     $req = $bdd->prepare('UPDATE utilisateur_table SET Categorie_Favorite="'.$categorieFavorite.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -153,7 +153,7 @@ function update_users()
     // MAJ ADRESSE EMAIL VISIBLE ?
     if(isset($_POST['mailOK']) && !empty($_POST['mailOK']))
     {
-      $mailOK =htmlspecialchars($_POST['mailOK']);
+      $mailOK = htmlspecialchars($_POST['mailOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKmail_Utilisateur="'.$mailOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -163,7 +163,7 @@ function update_users()
     // MAJ CODE POSTAL VISIBLE ?
     if(isset($_POST['adresseOK']) && !empty($_POST['adresseOK']))
     {
-      $adresseOK =htmlspecialchars($_POST['adresseOK']);
+      $adresseOK = htmlspecialchars($_POST['adresseOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKadresse_Utilisateur="'.$adresseOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -174,7 +174,7 @@ function update_users()
     // MAJ NOM ET PRENOM VISIBLES
     if(isset($_POST['nomPrenomOK']) && !empty($_POST['nomPrenomOK']))
     {
-      $nomPrenomOK =htmlspecialchars($_POST['nomPrenomOK']);
+      $nomPrenomOK = htmlspecialchars($_POST['nomPrenomOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKNomPrenom_Utilisateur="'.$nomPrenomOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -185,7 +185,7 @@ function update_users()
     // PLANNING PERSO VISIBLE
     if(isset($_POST['planningOK']) && !empty($_POST['planningOK']))
     {
-      $planningOK =htmlspecialchars($_POST['planningOK']);
+      $planningOK = htmlspecialchars($_POST['planningOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKplanning_Utilisateur="'.$planningOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -196,7 +196,7 @@ function update_users()
     // SPAM EMAIL EVENEMENTS
     if(isset($_POST['AlertesEvenementsOK']) && !empty($_POST['AlertesEvenementsOK']))
     {
-      $AlertesEvenementsOK =htmlspecialchars($_POST['AlertesEvenementsOK']);
+      $AlertesEvenementsOK = htmlspecialchars($_POST['AlertesEvenementsOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKAlertesEvenements_Utilisateur="'.$AlertesEvenementsOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -207,7 +207,7 @@ function update_users()
     // SPAM EMAIL ABONNEMENTS
     if(isset($_POST['AlertesAbonnementsOK']) && !empty($_POST['AlertesAbonnementsOK']))
     {
-      $AlertesAbonnementsOK =htmlspecialchars($_POST['AlertesAbonnementsOK']);
+      $AlertesAbonnementsOK = htmlspecialchars($_POST['AlertesAbonnementsOK']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKAlertesAbonnements_Utilisateur="'.$AlertesAbonnementsOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -222,13 +222,13 @@ function update_users()
 function insert_users()
   { $connect = mysqli_connect("localhost", "root", "", "Connexion_Gauloise"); // mdp = "root", "pass" ou encore "" (A MODIFIER SELON VOTRE ORDI)
 
-  if (isset($_POST['valider']) && htmlspecialchars($_POST['valider']) == "VALIDER MON PROFIL")
+  if (isset($_POST['valider']) && htmlspecialchars($_POST['valider']) == "VALIDER MON PROFIL" AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['valider']))
     { $cond=true; // Vérifie que le formulaire soit bien validé (absence du "else" plus tard)
 
 
   //PSEUDO UTILISATEUR
-		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo'])   && preg_match('#^[a-zA-Z0-9]*$#', $_POST['pseudo']))
-      { $pseudo =htmlspecialchars($_POST['pseudo']);
+		if(isset($_POST['pseudo']) 						&& !empty($_POST['pseudo'])   AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['pseudo']))
+      { $pseudo = htmlspecialchars($_POST['pseudo']);
 
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); //root pour mac
         $req = $bdd->prepare('SELECT pseudo_utilisateur FROM utilisateur_table WHERE pseudo_utilisateur = ?');
@@ -242,22 +242,21 @@ function insert_users()
         if($data)
           { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre pseudo est déjà utilisé par un autre utilisateur. </br> Veuillez en choisir un autre.</div>"; }
       }
-			else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre pseudo contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
-
+		else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre pseudo contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 
 //NOM UTILISATEUR
-		if(isset($_POST['nom'])								&& !empty($_POST['nom']))
+		if(isset($_POST['nom'])								&& !empty($_POST['nom'])		AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['nom']))
       { $nom=htmlspecialchars($_POST['nom']);}
-
+		else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre nom contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 //PRENOM UTILISATEUR
-		if(isset($_POST['prenom'])						&& !empty($_POST['prenom']))
+		if(isset($_POST['prenom'])	&& !empty($_POST['prenom'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['prenom']))
       {	$prenom=htmlspecialchars($_POST['prenom']);}
-
+		else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre prénom contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 // DATE DE NAISSANCE UTILISATEUR
-    if(isset($_POST['dateNaissance'])			&& !empty($_POST['dateNaissance']))
+    if(isset($_POST['dateNaissance'])			&& !empty($_POST['dateNaissance'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['dateNaissance']))
       { $dateNaissance=htmlspecialchars($_POST['dateNaissance']);
         $past100Years = time() - (100 * 365 * 24 * 60 * 60);
         $past12Years = time() - (12 * 365 * 24 * 60 * 60);
@@ -267,56 +266,62 @@ function insert_users()
       if ($dateNaissance < $maxancien OR $dateNaissance > $maxnew)
       { $cond = false; print "<div class='alert-box notice'><span>remarque: </span>La date de naissance indiquée de vous permet pas l'accès au site.</br> Pour une utilisation optimale, nous vous conseillons de vous inscrire après vos 12 ans et avant vos 100 ans.</div>"; }
     }
+		else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre date de naissance contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
+
 
 
 // CODE POSTAL UTILISATEUR
-    if(isset($_POST['adresse'])						&& !empty($_POST['adresse']))
+    if(isset($_POST['adresse'])						&& !empty($_POST['adresse'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['adresse']))
     { $adresse=htmlspecialchars($_POST['adresse']);
 
       if(strlen($adresse) != 5 AND !is_numeric($adresse))
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre code postal doit être un composé de 5 chiffres.</div>"; }
     }
+		else {$cond = false; print "<div class='alert-box notice'><span>remarque: </span>Votre code postal contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
+
 
 
 // MOT DE PASSE UTILISATEUR
-    if(isset($_POST['mdp'])               && !empty($_POST['mdp'])
-    && isset($_POST['confirm_mdp'])       && !empty($_POST['confirm_mdp']))
+    if(isset($_POST['mdp'])               && !empty($_POST['mdp'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['mdp'])
+    && isset($_POST['confirm_mdp'])       && !empty($_POST['confirm_mdp'])   AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['confirm_mdp']))
       { $mdp=htmlspecialchars($_POST['mdp']);
-        $confirm_mdp= $_POST['confirm_mdp'];
+        $confirm_mdp= htmlspecialchars($_POST['confirm_mdp']);
       if($mdp != $confirm_mdp)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Vous n'avez pas saisi deux fois le même mot de passe. </div>";}
       if(strlen($mdp) <= 5)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Votre mot de passe doit faire au moins 6 caractères. </div>";}
       }
+		else {print "<div class='alert-box notice'><span>remarque: </span>Votre mot de passe contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 
 // MAIL DE L'UTILISATEUR
-    if(isset($_POST['mail'])							&& !empty($_POST['mail'])
-    && isset($_POST['confirm_mail'])      && !empty($_POST['confirm_mail']))
+    if(isset($_POST['mail'])							&& !empty($_POST['mail'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['mail'])
+    && isset($_POST['confirm_mail'])      && !empty($_POST['confirm_mail'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['confirm_mail']))
     { $mail=htmlspecialchars($_POST['mail']);
-      $confirm_mail = $_POST['confirm_mail'];
+      $confirm_mail = htmlspecialchars($_POST['confirm_mail']);
       if($mail != $confirm_mail)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Vous n'avez pas saisi deux fois la même adresse email.</div>";}
-    }
+
     $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); //root pour mac
     $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE Mail_Utilisateur = ?');
     $req->execute(array($mail));
 
     $data = $req->fetch();
 
-    if($data)
-      { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre adresse email est déjà utilisée par un utilisateur. </br> Veuillez vous connectez, ou en choisir une autre.</div>"; }
+	    if($data)
+	      { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre adresse email est déjà utilisée par un utilisateur. </br> Veuillez vous connectez, ou en choisir une autre.</div>"; }
+		}
+		else {print "<div class='alert-box notice'><span>remarque: </span>Votre mail contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 
 // DESCRIPTION UTILISATEUR
-    if(isset($_POST['description'])				 && !empty($_POST['description']))
+    if(isset($_POST['description'])				 && !empty($_POST['description'])   AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['description']))
       {	$description=htmlspecialchars($_POST['description']);}
-    else
-      { $description = " ";}
+		else {print "<div class='alert-box notice'><span>remarque: </span>Votre description contient des caractères non-autorisés. </br> Veuillez le reformuler.</div>";}
 
 
 // GENRE / SEXE UTILISATEUR
-    if( isset($_POST['genre'])							 && !empty($_POST['genre']))
+    if( isset($_POST['genre'])							 && !empty($_POST['genre'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['genre']))
       {	$genre=htmlspecialchars($_POST['genre']);}
     else
       { $genre = NULL;}
@@ -324,66 +329,66 @@ function insert_users()
 
 // CATEGORIES FAVORITES UTILSATEUR
 $categorieFavorite = "";
-    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite1']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite2']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite3']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite4']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite5']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite6']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite7']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite8']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
-    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']))	{ $categorieFavorite 	.=htmlspecialchars($_POST['categorieFavorite9']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite1']) && !empty($_POST['categorieFavorite1']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite1']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite1']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite2']) && !empty($_POST['categorieFavorite2']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite2']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite2']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite3']) && !empty($_POST['categorieFavorite3']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite3']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite3']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite4']) && !empty($_POST['categorieFavorite4']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite4']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite4']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite5']) && !empty($_POST['categorieFavorite5']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite5']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite5']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite6']) && !empty($_POST['categorieFavorite6']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite6']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite6']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite7']) && !empty($_POST['categorieFavorite7']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite7']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite7']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite8']) && !empty($_POST['categorieFavorite8']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite8']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite8']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
+    if(isset($_POST['categorieFavorite9']) && !empty($_POST['categorieFavorite9']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['categorieFavorite9']))	{ $categorieFavorite 	.= htmlspecialchars($_POST['categorieFavorite9']); $categorieFavorite .= " ";}else{ $categorieFavorite .= "";}
 
 
   // ADRESSE EMAIL VISIBLE
-    if(isset($_POST['mailOK']) && !empty($_POST['mailOK']))
+    if(isset($_POST['mailOK']) && !empty($_POST['mailOK']) AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['mailOK']))
       {
-        $mailOK =htmlspecialchars($_POST['mailOK']);
+        $mailOK = htmlspecialchars($_POST['mailOK']);
       }
     else
       { $mailOK = NULL;}
 
 
   // CODE POSTAL VISIBLE
-    if(isset($_POST['adresseOK']) && !empty($_POST['adresseOK']))
+    if(isset($_POST['adresseOK']) && !empty($_POST['adresseOK'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['adresseOK']))
       {
-        $adresseOK =htmlspecialchars($_POST['adresseOK']);
+        $adresseOK = htmlspecialchars($_POST['adresseOK']);
       }
     else
       { $adresseOK = NULL;}
 
 
 // NOM ET PRENOM VISIBLES
-    if(isset($_POST['nomPrenomOK']) && !empty($_POST['nomPrenomOK']))
+    if(isset($_POST['nomPrenomOK']) && !empty($_POST['nomPrenomOK'])   AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['nomPrenomOK']))
       {
-        $nomPrenomOK =htmlspecialchars($_POST['nomPrenomOK']);
+        $nomPrenomOK = htmlspecialchars($_POST['nomPrenomOK']);
       }
     else
       { $nomPrenomOK = NULL;}
 
 
   // PLANNING PERSO VISIBLE
-    if(isset($_POST['planningOK']) && !empty($_POST['planningOK']))
+    if(isset($_POST['planningOK']) && !empty($_POST['planningOK'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['planningOK']))
       {
-        $planningOK =htmlspecialchars($_POST['planningOK']);
+        $planningOK = htmlspecialchars($_POST['planningOK']);
       }
     else
       { $planningOK = NULL;}
 
 
   // SPAM EMAIL EVENEMENTS
-    if(isset($_POST['AlertesEvenementsOK']) && !empty($_POST['AlertesEvenementsOK']))
+    if(isset($_POST['AlertesEvenementsOK']) && !empty($_POST['AlertesEvenementsOK'])   AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['AlertesEvenementsOK']))
       {
-        $AlertesEvenementsOK =htmlspecialchars($_POST['AlertesEvenementsOK']);
+        $AlertesEvenementsOK = htmlspecialchars($_POST['AlertesEvenementsOK']);
       }
     else
       { $AlertesEvenementsOK = NULL;}
 
 
   // SPAM EMAIL ABONNEMENTS
-    if(isset($_POST['AlertesAbonnementsOK']) && !empty($_POST['AlertesAbonnementsOK']))
+    if(isset($_POST['AlertesAbonnementsOK']) && !empty($_POST['AlertesAbonnementsOK'])  AND preg_match('#^[a-zA-Z0-9]*$#', $_POST['AlertesAbonnementsOK']))
       {
-        $AlertesAbonnementsOK =htmlspecialchars($_POST['AlertesAbonnementsOK']);
+        $AlertesAbonnementsOK = htmlspecialchars($_POST['AlertesAbonnementsOK']);
       }
     else
       { $AlertesAbonnementsOK = NULL;}
