@@ -24,113 +24,104 @@ function update_users()
     $ID = $_SESSION["ID_Utilisateur"];
 
     // MAJ DU NOM
-    if(isset($_POST['nom']) && !empty($_POST['nom']))
-    {
-      $nom=htmlspecialchars($_POST['nom']);
+		if(isset($_POST['nom'])								&& !empty($_POST['nom'])  && preg_match('#^[a-zA-Z]*$#', $_POST['nom'])  && strlen($_POST['nom'])<33  && strlen($_POST['nom'])>1)
+		{
+			$nom=htmlspecialchars($_POST['nom']);
 
-      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE utilisateur_table SET Nom_Utilisateur="'.$nom.'" WHERE ID_Utilisateur ="'.$ID.'"');
-      $req->execute();
-    }
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+			$req = $bdd->prepare('UPDATE utilisateur_table SET Nom_Utilisateur="'.$nom.'" WHERE ID_Utilisateur ="'.$ID.'"');
+			$req->execute();
+		}
+		else {print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
+
 
 
     // MAJ DU PRENOM
-    if(isset($_POST['prenom']) && !empty($_POST['prenom']))
-    {
+		if(isset($_POST['prenom'])						&& !empty($_POST['prenom']) && preg_match('#^[a-zA-Z]*$#', $_POST['nom'])  && strlen($_POST['nom'])<33  && strlen($_POST['nom'])>1)
+		{
       $prenom=htmlspecialchars($_POST['prenom']);
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
       $req = $bdd->prepare('UPDATE utilisateur_table SET Prenom_Utilisateur="'.$prenom.'" WHERE ID_Utilisateur ="'.$ID.'"');
       $req->execute();
     }
+			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre prénom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
 
 
     // MAJ DU GENRE
-    if( isset($_POST['genre']) && !empty($_POST['genre']))
-    {
-      $genre=htmlspecialchars($_POST['genre']);
+		if( isset($_POST['genre'])							 && !empty($_POST['genre'])  && preg_match('#^[a-zA-Z]*$#', $_POST['genre'])  && strlen($_POST['genre'])==5)
+		{
+			$genre=htmlspecialchars($_POST['genre']);
 
-      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE utilisateur_table SET Genre_Utilisateur="'.$genre.'" WHERE ID_Utilisateur ="'.$ID.'"');
-      $req->execute();
-    }
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+			$req = $bdd->prepare('UPDATE utilisateur_table SET Genre_Utilisateur="'.$genre.'" WHERE ID_Utilisateur ="'.$ID.'"');
+			$req->execute();
+		}
 
 
     // MAJ DE LA DATE DE NAISSANCE
-    if(isset($_POST['dateNaissance']) && !empty($_POST['dateNaissance'])){
-      $dateNaissance=htmlspecialchars($_POST['dateNaissance']);
+		if(isset($_POST['dateNaissance'])			&& !empty($_POST['dateNaissance']))
+      { $dateNaissance=htmlspecialchars($_POST['dateNaissance']);
+        $past100Years = time() - (100 * 365 * 24 * 60 * 60);
+        $past12Years = time() - (12 * 365 * 24 * 60 * 60);
+        $maxancien  = date('Y-m-d', $past100Years);
+        $maxnew  = date('Y-m-d', $past12Years);
+				$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+				$req = $bdd->prepare('UPDATE utilisateur_table SET Date_Naissance="'.$dateNaissance.'" WHERE ID_Utilisateur ="'.$ID.'"');
+				$req->execute();
 
-      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE utilisateur_table SET Date_Naissance="'.$dateNaissance.'" WHERE ID_Utilisateur ="'.$ID.'"');
-      $req->execute();
-    }
-
-
-    // MAJ DE LA DESCRITPION
-    if(isset($_POST['description']) && !empty($_POST['description']))
-    {
-      $description=htmlspecialchars($_POST['description']);
-
-      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE utilisateur_table SET Description_Utilisateur="'.$description.'" WHERE ID_Utilisateur ="'.$ID.'"');
-      $req->execute();
-    }
+      if ($dateNaissance < $maxancien OR $dateNaissance > $maxnew)
+      { $cond = false; print "<div class='alert-box success'><span>remarque: </span>La date de naissance indiquée de vous permet pas l'accès au site.</br> Pour une utilisation optimale, nous vous conseillons de vous inscrire après vos 12 ans et avant vos 100 ans.</div>"; }
+   }
 
 
-    // MAJ DU MDP
-    if(isset($_POST['mdp']) && !empty($_POST['mdp']) && isset($_POST['confirm_mdp']) && !empty($_POST['confirm_mdp'])){
-
-      $mdp=htmlspecialchars($_POST['mdp']);
-      $confirm_mdp=htmlspecialchars($_POST['confirm_mdp']);
-
-      if(($mdp == $confirm_mdp) && (strlen($mdp) > 5))
-      {
-        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-        $req = $bdd->prepare('UPDATE utilisateur_table SET MDP_Utilisateur="'.$mdp.'" WHERE ID_Utilisateur ="'.$ID.'"');
-        $req->execute();
-      }
-      else
-      {
-        echo "Mot de passe incorrect !";
-      }
-    }
 
 
-    // MAJ DE L'ADRESSE
-    if(isset($_POST['adresse']) && !empty($_POST['adresse']))
-    {
-      $adresse=htmlspecialchars($_POST['adresse']);
 
-      if(strlen($adresse) == 5 AND is_numeric($adresse))
-      {
-        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-        $req = $bdd->prepare('UPDATE utilisateur_table SET Adresse_Utilisateur="'.$adresse.'" WHERE ID_Utilisateur ="'.$ID.'"');
-        $req->execute();
-      }
-      else
-      {
-        echo "Adresse incorrecte !";
-      }
-    }
+    // MAJ DE LA DESCRITPION UTILISATEUR
+		    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
+		      {	$description=htmlspecialchars($_POST['description']);
+						$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+			      $req = $bdd->prepare('UPDATE utilisateur_table SET Description_Utilisateur="'.$description.'" WHERE ID_Utilisateur ="'.$ID.'"');
+			      $req->execute();}
+				else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
+
+
+
+
+    // MAJ DU CODE POSTAL UTILISATEUR
+		    if(isset($_POST['adresse'])						&& !empty($_POST['adresse'])  && strlen($_POST['adresse'])==5 && preg_match('#^[0-9]*$#', $_POST['adresse']))
+		    { $adresse=htmlspecialchars($_POST['adresse']);
+					$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	        $req = $bdd->prepare('UPDATE utilisateur_table SET Adresse_Utilisateur="'.$adresse.'" WHERE ID_Utilisateur ="'.$ID.'"');
+	        $req->execute();}
+		    else { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre code postal doit être un composé de 5 chiffres.</div>"; }
+
 
 
     // MAJ DU MAIL
-    if(isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['confirm_mail']) && !empty($_POST['confirm_mail']))
-    {
-      $mail=htmlspecialchars($_POST['mail']);
-      $confirm_mail =htmlspecialchars($_POST['confirm_mail']);
+		if(isset($_POST['mail'])							&& !empty($_POST['mail'])
+    && isset($_POST['confirm_mail'])      && !empty($_POST['confirm_mail']))
+    { $mail=htmlspecialchars($_POST['mail']);
+      $confirm_mail = htmlspecialchars($_POST['confirm_mail']);
+      if($mail != $confirm_mail)
+        { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Vous n'avez pas saisi deux fois la même adresse email.</div>";}
 
-      if($mail == $confirm_mail)
-      {
-        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-        $req = $bdd->prepare('UPDATE utilisateur_table SET Mail_Utilisateur="'.$mail.'" WHERE ID_Utilisateur ="'.$ID.'"');
-        $req->execute();
+    $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); //root pour mac
+    $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE Mail_Utilisateur = ?');
+    $req->execute(array($mail));
+
+    $data = $req->fetch();
+
+    if($data)
+      { print "<div class='alert-box warning'><span>attention: </span>Votre adresse email est déjà utilisée par un utilisateur. </br> Veuillez vous connectez, ou en choisir une autre.</div>"; }
+
+			else {
+      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+      $req = $bdd->prepare('UPDATE utilisateur_table SET Mail_Utilisateur="'.$mail.'" WHERE ID_Utilisateur ="'.$ID.'"');
+      $req->execute();}
       }
-      else
-      {
-      echo "Mail incorrecte !";
-      }
-    }
+
 
 
     // MAJ CATEGORIES FAVORITES UTILSATEUR
@@ -280,7 +271,7 @@ function insert_users()
     if(isset($_POST['mdp'])               && !empty($_POST['mdp'])
     && isset($_POST['confirm_mdp'])       && !empty($_POST['confirm_mdp']))
       { $mdp=htmlspecialchars($_POST['mdp']);
-        $confirm_mdp= $_POST['confirm_mdp'];
+        $confirm_mdp= htmlspecialchars($_POST['confirm_mdp']);
       if($mdp != $confirm_mdp)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span> Vous n'avez pas saisi deux fois le même mot de passe. </div>";}
       if(strlen($mdp) < 6 &&  strlen($mdp)<33)
@@ -292,7 +283,7 @@ function insert_users()
     if(isset($_POST['mail'])							&& !empty($_POST['mail'])
     && isset($_POST['confirm_mail'])      && !empty($_POST['confirm_mail']))
     { $mail=htmlspecialchars($_POST['mail']);
-      $confirm_mail = $_POST['confirm_mail'];
+      $confirm_mail = htmlspecialchars($_POST['confirm_mail']);
       if($mail != $confirm_mail)
         { $cond = false; print "<div class='alert-box warning'><span>attention: </span>Vous n'avez pas saisi deux fois la même adresse email.</div>";}
     }

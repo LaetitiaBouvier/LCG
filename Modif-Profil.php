@@ -60,7 +60,7 @@ else{
       <fieldset>
       <legend>Informations personnelles</legend>
 
-      Nom <em>*</em>: <input type="text" name="nom" required="" value="<?php
+      Nom : <input type="text" name="nom"  value="<?php
             if($IDU != -1){
                            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                            $req = $bdd->prepare('SELECT nom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -77,7 +77,7 @@ else{
         /><br/>
       <br/>
 
-      Prénom <em>*</em>: <input type="text" name="prenom" required="" value="<?php
+      Prénom : <input type="text" name="prenom"  value="<?php
           if($IDU != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT prenom_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -135,7 +135,7 @@ else{
         ?>/> Femme
       <br/><br/>
 
-      Date de naissance <em>*</em> : <input type="date" name="dateNaissance" required="" value="<?php
+      Date de naissance  : <input type="date" name="dateNaissance"  value="<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Date_Naissance FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -159,7 +159,7 @@ else{
       <fieldset>
       <legend>Informations de connexion</legend>
 
-      Pseudo <em>*</em>: <?php
+      Pseudo : <?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -178,7 +178,7 @@ else{
       <br/>
       <br/>
 
-    
+
 
       Présentez-vous en quelques lignes : <br />
       <div>
@@ -203,18 +203,12 @@ else{
       <br />
       <br />
 
-      Mot de passe<em>*</em> (6 caractères au moins): <input type="password" name="mdp" required="" value=""/><br/>
-      <br/>
-
-      Confirmez votre mot de passe<em>*</em> : <input type="password" name="confirm_mdp" required="" value=""/><br/>
-      <br/>
-
       </fieldset>
 
       <fieldset>
       <legend>Contact</legend>
 
-      Code postal<em>*</em> : <input type="text" name="adresse" maxlength="5" required="" value="<?php
+      Code postal : <input type="text" name="adresse" maxlength="5"  value="<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Adresse_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -233,7 +227,7 @@ else{
         /><br/>
       <br/>
 
-      Adresse e-mail<em>*</em> : <input type="email" name="mail" required="" value="<?php
+      Adresse e-mail : <input type="email" name="mail"  value="<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -252,7 +246,7 @@ else{
         /><br/>
       <br/>
 
-      Confirmez votre adresse e-mail<em>*</em> : <input type="email" name="confirm_mail" required="" value="<?php
+      Confirmez votre adresse e-mail : <input type="email" name="confirm_mail"  value="<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -364,7 +358,7 @@ else{
 
       </fieldset>
 
-      <p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
+      <p2>signifie que ces champs doivent absolument être remplis.</p2>
 
       <br/><div><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
 
