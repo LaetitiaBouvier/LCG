@@ -34,7 +34,7 @@ if (isset($_POST['nouveau_titre_topic']))
 	{
 		if (($_POST['nouveau_titre_topic'] != "") AND ($_POST['premier_message'] != ""))
 		{
-			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+			$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 
 			$req1 = $bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
 			$req1->execute(array($_SESSION['ID_Utilisateur']));
@@ -236,7 +236,7 @@ if (isset($_POST['nouveau_titre_topic']))
 
 echo "<tr><th id='taillesujet'>Sujet</th><th id='taillepseudo'>Auteur</th><th>NB</th><th>Dernier MSG</th>";
 
-$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', 'root');
 $req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
 
 $i = 0;
