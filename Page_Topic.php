@@ -301,7 +301,7 @@ $req->execute(array($_GET['t']));
 while ($data = $req->fetch())
 {
 
-$date_mois = date_format($data['Date_MSG'], "m");
+$date_mois = date_format(date_create($data['Date_MSG']), "m");
 $date_mois = "$date_mois";
 
 	if ($pseudo_admin == 'oui')
