@@ -157,7 +157,8 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			display: inline-block;
 			height: inherit;
-			margin-top: 10px;
+			float:right;
+			margin-left: 10px;
 		}
 
 		.block_admin form
