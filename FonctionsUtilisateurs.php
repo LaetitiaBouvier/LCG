@@ -14,6 +14,30 @@ if (!$connect)
   { printf("Echec de la connexion : %s\n", mysqli_connect_error());
     exit(); }
 
+function update_mdp()
+{
+	$ID = $_SESSION["ID_Utilisateur"];
+
+	// MAJ DU MDP
+if(isset($_POST['mdp']) && !empty($_POST['mdp']) && isset($_POST['confirm_mdp']) && !empty($_POST['confirm_mdp']) && isset($_POST['mdp_actu']) && !empty($_POST['mdp_actu'])){
+	$mdp=htmlspecialchars($_POST['mdp']);
+	$confirm_mdp=htmlspecialchars($_POST['confirm_mdp']);
+	$mdp_actu=htmlspecialchars($_POST['mdp_actu']);
+	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+	$req = $bdd->prepare('SELECT MDP_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur = ?');
+	$req->execute(array($ID));
+	$data = $req->fetch();
+
+	if( $data['MDP_Utilisateur']==$mdp_actu && ($mdp == $confirm_mdp) && (strlen($mdp) > 5))
+	{
+		$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+		$req = $bdd->prepare('UPDATE utilisateur_table SET MDP_Utilisateur="'.$mdp.'" WHERE ID_Utilisateur ="'.$ID.'"');
+		$req->execute();
+		print "<div class='alert-box success'><span>FELICITATIONS : </span>Votre mot de passe a été mis à jour </div>";}
+
+	else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Veuillez vous assurer d'avoir entré correctement votre mot de passe actuel et d'avoir entré deux fois votre nouveau mot de passe. </div>";}
+}
+}
 
 function update_users()
 {
@@ -32,7 +56,7 @@ function update_users()
 			$req = $bdd->prepare('UPDATE utilisateur_table SET Nom_Utilisateur="'.$nom.'" WHERE ID_Utilisateur ="'.$ID.'"');
 			$req->execute();
 		}
-		else {$cond = false, print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
+		else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
 
 
 
@@ -205,7 +229,8 @@ function update_users()
       $req->execute();
     }
   }
-	
+	print "<div class='alert-box success'><span>FELICITATIONS : </span>Vots informations ont été mises à jour </div>";
+
 }
 
 
