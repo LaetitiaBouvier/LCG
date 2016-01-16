@@ -348,7 +348,7 @@ else{
 
                       </br>
                       <input type="file" name="photo" id="photo-profil"/><br />
-                      <input type="submit" value="Envoyer le fichier" />
+                      <input type="submit" name="maj_photo" value="Envoyer le fichier" />
 
       </form>
     </body>

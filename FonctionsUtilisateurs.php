@@ -17,7 +17,6 @@ if (!$connect)
 function update_mdp()
 {
 	$ID = $_SESSION["ID_Utilisateur"];
-
 	// MAJ DU MDP
 if(isset($_POST['mdp']) && !empty($_POST['mdp']) && isset($_POST['confirm_mdp']) && !empty($_POST['confirm_mdp']) && isset($_POST['mdp_actu']) && !empty($_POST['mdp_actu'])){
 	$mdp=htmlspecialchars($_POST['mdp']);
@@ -103,12 +102,12 @@ function update_users()
 
 
     // MAJ DE LA DESCRITPION UTILISATEUR
-		    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z 0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
+		    if(isset($_POST['description'])				 && !empty($_POST['description'])   && strlen($_POST['description'])<256)
 		      {	$description=htmlspecialchars($_POST['description']);
 						$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 			      $req = $bdd->prepare('UPDATE utilisateur_table SET Description_Utilisateur="'.$description.'" WHERE ID_Utilisateur ="'.$ID.'"');
 			      $req->execute();}
-				else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
+				else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères. </br> Veuillez la reformuler.</div>";}
 
 
 
@@ -228,8 +227,9 @@ function update_users()
       $req = $bdd->prepare('UPDATE utilisateur_table SET OKAlertesAbonnements_Utilisateur="'.$AlertesAbonnementsOK.'" WHERE ID_Utilisateur ="'.$ID.'"');
       $req->execute();
     }
+		if($cond == true) {print "<div class='alert-box success'><span>FELICITATIONS : </span>Vos informations ont été mises à jour </div>";}
+
   }
-	print "<div class='alert-box success'><span>FELICITATIONS : </span>Vots informations ont été mises à jour </div>";
 
 }
 
@@ -324,9 +324,9 @@ function insert_users()
 
 
 // DESCRIPTION UTILISATEUR
-    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z 0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
+    if(isset($_POST['description'])				 && !empty($_POST['description'])   && strlen($_POST['description'])<256)
       {	$description=htmlspecialchars($_POST['description']);}
-			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
+			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères.</br> Veuillez la reformuler.</div>";}
 
 
 // GENRE / SEXE UTILISATEUR

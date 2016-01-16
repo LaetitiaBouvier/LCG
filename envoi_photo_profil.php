@@ -5,7 +5,6 @@ session_start();
 if(isset($_GET["IDU"]))
 {
   $IDU = $_GET["IDU"];}
-
 else {
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
   $req = $bdd->prepare('SELECT ID_Utilisateur, Pseudo_Utilisateur FROM utilisateur_table ORDER BY ID_Utilisateur DESC LIMIT 1');
@@ -20,7 +19,7 @@ else {
 
 <?php
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (isset($_FILES['photo']) AND !empty($_POST['photo']) AND $_FILES['photo']['error'] == 0)
+if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
 {
   // Testons si le fichier n'est pas trop gros
   if ($_FILES['photo']['size'] <= 1000000)
@@ -87,10 +86,11 @@ if (isset($_FILES['photo']) AND !empty($_POST['photo']) AND $_FILES['photo']['er
 
       imagejpeg($destination_mini, "Images_code/IMG_Profil_Mini/".$nomphoto.".jpg");
       imagejpeg($destination_large, "Images_code/IMG_Profil_Moyen/".$nomphoto.".jpg");
+
       if ($_POST['button']=="Ajouter ma photo de profil"){
         header("location:Page_Confirm_Inscription-2.php");
       }
-      else{
+      if ($_POST['maj_photo']=="Envoyer le fichier"){
         header("location:Page_show-profil.php?IDU=".$IDU."");
       }
 
@@ -98,12 +98,20 @@ if (isset($_FILES['photo']) AND !empty($_POST['photo']) AND $_FILES['photo']['er
     else {echo ("le fichier doit être de format .jpg, .jpeg, .png ou .gif");}
   }
   else {echo ("le fichier est trop volumineux");}
-}
-else {echo("Vous n'avez pas entré de fichier");}
+
 //echo ("nomphoto".$IDU);    //affiche nomdelaphoto.extension
 //echo ("photo".$photo);      //affiche urldelaphoto
 
+}
 
-
-
-?>
+else { ?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http;//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+  	<head>
+  		<title> ENVOI AVATAR </title>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  		<link rel="stylesheet" href="Style-form.css"/>
+  	</head>
+    <body>
+      <?php print "<div class='alert-box error'><span>erreur: </span>Vous n'avez pas sélectionné de fichier, veuillez réessayer !</div> "; } ?>
+    </body>
