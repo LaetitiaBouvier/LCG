@@ -64,19 +64,17 @@ $rightarrow = $_GET['f'] + 1;
 
 		<style>
 
-		a
-		{
-			color: white;
-			text-decoration: none;
-			font-size: 0.9em;
-		}
-
 		.page_actuelle
 		{
 			background-color: orange;
 			color: black;
 			text-decoration: none;
 			font-size: 0.9em;
+		}
+
+		body
+		{
+			background-color: rgba(200, 200, 200, 0.1);
 		}
 
 		#topic ul
@@ -88,9 +86,16 @@ $rightarrow = $_GET['f'] + 1;
 
 		#topic ul li
 		{
-			border: 1px solid black;
+			border: 2px solid black;
 			border-radius: 10px;
 			padding: 3px;
+		}
+
+		#topic ul li a
+		{
+			color: white;
+			text-decoration: none;
+			font-size: 1.3em;
 		}
 
 		.bouton
@@ -98,9 +103,35 @@ $rightarrow = $_GET['f'] + 1;
 			background-color: #000099;
 		}
 
+		.bouton:hover
+		{
+			background-color: #539ef9;
+		}
+
 		.repondre
 		{
 			background-color: #990000;
+		}
+
+		.repondre:hover
+		{
+			background-color: #e8222b;
+		}
+
+		#bouton_poster
+		{
+			font-size: 0.7em;
+			border: 2px solid black;
+			border-radius: 30px;
+			padding: 3px;
+			background-color: #1200505;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		#bouton_poster:hover
+		{
+			background-color: #e8222b;
 		}
 
 		#block_top
@@ -118,7 +149,7 @@ $rightarrow = $_GET['f'] + 1;
 			display: inline-block;
 			border: 1px black solid;
 			width: 800px;
-			background-color: white;
+			background-color: rgba(200, 200, 200, 0.1);
 			margin-left: 10px;
 		}
 
@@ -138,7 +169,7 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			border: 1px rgba(0, 0, 0, .4) solid;
 			margin-bottom: 5px;
-			background-color: rgba(0, 0, 200, 0.07);
+			background-color: rgba(0, 0, 250, 0.05);
 			padding-left: 5px;
 			padding-right: 5px;
 			margin-left: 5px;
@@ -165,7 +196,6 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			display: inline-block;
 		}
-
 
 		.admin_msg
 		{
@@ -204,6 +234,12 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			margin-top: 0px;
 		}
+
+		form p
+		{
+			line-height: 200%;
+		}
+
 
 		textarea
 		{
@@ -306,11 +342,11 @@ $date_mois = "$date_mois";
 	{
 		if ($data['Admin_Utilisateur'] == 'oui')
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'><span class='admin_msg'>" . htmlspecialchars($data['Pseudo_MSG']) . "</span></div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='supprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 		else
 		{
-			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='suprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
+			echo "<div class='block_msg'><div class='header_msg'><div class='block_pseudo'>" . htmlspecialchars($data['Pseudo_MSG']) . "</div><div class='block_admin'><form method='POST' action='delete_msg.php' ><input type='image' name='supprmsg' src='Images_code/Supprimer3.png' id='delmsg' value=" . $data['ID_MSG'] . " ></form></div><div class='block_date'>" . date_format(date_create($data['Date_MSG']), "d") . ' ' . $mois[$date_mois] . ' ' . date_format(date_create($data['Date_MSG']), "Y à H:i:s") . "</div></div><div class='block_contenu'>" . htmlspecialchars($data['Contenu_MSG']) . "</div></div>";
 		}
 	}
 	else
@@ -375,12 +411,14 @@ else
 		<br />
 		<br />
 
+		<h3 id="repondre_topic">Répondre</h3>
+
 		<div id='block_repondre'>
 
 		<form id='form_repondre' <?php echo "action='Page_Topic.php?f=" . $nbpages . "&t=" . $t . "' method='POST'"; ?> >
 
 			<p><textarea name="repondre_message" id="repondre_message" placeholder="Ne postez pas d'insultes, évitez les majuscules, faites une recherche avant de poster pour voir si la question n'a pas déjà été posée... Tout message d'incitation au piratage est strictement interdit et sera puni d'un banissement." /></textarea></p>
-			<p><input type="submit" value="Poster" /></p>
+			<p><input type="submit" value="Poster" id="bouton_poster" /></p>
 
 		</form>
 
