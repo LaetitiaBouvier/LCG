@@ -13,12 +13,13 @@ $moyenne = $bdd->prepare('SELECT AVG(Note) AS moyenne FROM noter_table WHERE ID_
 $moyenne->execute(array($ID));
 
 while ($a = $moyenne->fetch()) {
-  if (isset($a['AVG(Note)'])) {
-    echo $a['AVG(Note)'];
+  if (isset($a['moyenne'])) {
+    echo $a['moyenne'];
   }
-}
 
-$NoteMoyenne=$a['AVG(Note)'];
+}
+$NoteMoyenne=$a['moyenne'];
+
 
 $req = $bdd->prepare('UPDATE evenement_table SET Note_Evenement = :note_moyenne  WHERE ID_Evenement = :id');
 $req->execute(array('note_moyenne'=>$NoteMoyenne, 'id'=>$ID));
