@@ -297,31 +297,36 @@ $req->closeCursor();
 <legend>Informations sur l'Evenement </legend>
 
 </br>
-</br> Nom de l'Evenement : <?php echo $nom ?>
-</br> Description de l'Evenement : <?php echo $description ?>
-</br> Sponsors de l'Evenement : <?php echo $sponsors ?>
+<?php
+if (!empty($nom)) {echo "Nom de l'Evenement : ".$nom."</br>";}
 
-</br>
-</br> Categorie : <?php echo $categorie ?>
-</br>
-</br> Publique ciblé : <?php echo $cibles ?>
-</br>
-</br> Lieu de l'endroit / la salle : <?php echo $lieu ?>
-</br> N° de rue : <?php echo $rue ?>
-</br> Code postal : <?php echo $postal ?>
-</br> Ville : <?php echo $ville ?>
-</br> Département : <?php echo $departement ?>
-</br>	Region : <?php echo $region ?>
-</br>
-</br> Début de l'Evement : <?php echo $jourDebut ?> à : <?php echo $heureDebut ?>
-</br> Fin de l'Evement : <?php echo $jourFin ?> à : <?php  echo $heureFin ?>
-</br>
-</br> Organisateur de l'evenement : <a href=<?php echo("Page_show-profil.php?IDU=".$ID_orga."");?>><?php echo $organisateur ?></a>
-</br> Nombre maximum de participants : <?php echo $max ?>
-</br> Nombre actuel de participants sur notre site : <?php echo $nbparticipants[0] ?>
-</br> Evénement payant : <?php echo $payant ?>
-</br>
-</br> Lien vers le site web de l'événement : <?php echo "<a href='$web'>cliquez ici</a>" ?>
+if (!empty($description)) {echo "</br>Description de l'Evenement : ".$description."</br>";}
+if (!empty($sponsors)) {echo "Sponsors de l'Evenement : ".$sponsors."</br>";}
+
+if (!empty($categorie)) {echo "</br>Categorie :  ".$categorie."</br>";}
+
+if (!empty($cibles)) {echo "</br>Publique ciblé :  ".$cibles."</br>";}
+
+if (!empty($lieu)) {echo "</br>Lieu de l'endroit / la salle :  ".$lieu."</br>";}
+if (!empty($rue)) {echo "N° de rue :  ".$rue."</br>";}
+if (!empty($postal)) {echo "Code postal :  ".$postal."</br>";}
+if (!empty($ville)) {echo "Ville:  ".$ville."</br>";}
+if (!empty($departement)) {echo "Département : ".$departement."</br>";}
+if (!empty($region)) {echo "Région : ".$region."</br>";}
+
+if (!empty($jourDebut)) {echo "Début de l'Evement :  ".$jourDebut." à : ";
+	if (!empty($heureDebut)) {echo $heureDebut."</br>";}}
+if (!empty($jourFin)) {echo "Fin de l'Evement :  ".$jourFin." à : ";
+	if (!empty($heureFin)) {echo $heureFin."</br>";}}
+
+if (!empty($organisateur)) {echo "</br>Organisateur de l'evenement : <a href=Page_show-profil.php?IDU=".$ID_orga.">".$organisateur."</a></br>";}
+if (!empty($max)) {echo "Nombre maximum de participants :  ".$max."</br>";}
+if (!empty($nbparticipants[0])) {echo "Nombre actuel de participants sur notre site :  ".$nbparticipants[0]."</br>";}
+if (!empty($payant)) {echo "Evénement payant :  ".$payant."</br>";}
+
+if (!empty($web)) {echo "</br>Lien vers le site web de l'événement : <a href=".$web.">cliquez ici</a></br>";}
+?>
+
 </br>
 <div id="notation">
 	<?php

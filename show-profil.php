@@ -105,13 +105,16 @@
 <legend>Informations personnelles</legend>
 
 </br>
-</br> Nom : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $nom; } else { echo "Non divulgué";}  ?>
-</br> Prénom : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $prenom; } else { echo "Non divulgué";} ?>
-</br> Date de naissance : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $datenaissance; } else { echo "Non divulgué";}  ?>
+</br> Pseudo : <?php echo $pseudo ?>
 </br>
-</br> Code postal : <?php if($OKadresse_Utilisateur == "oui") { echo $adresse; } else { echo "Non divulgué";} ?>
+</br> Nom : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $nom; } else { echo "Information non divulguée";}  ?>
+</br> Prénom : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $prenom; } else { echo "Information non divulguée";} ?>
 </br>
-</br> Adresse e-mail : <?php if($OKmail_Utilisateur == "oui") { echo $mail; } else { echo "Non divulgué";} ?>
+</br> Date de naissance : <?php if($OKNomPrenom_Utilisateur == "oui") { echo $datenaissance; } else { echo "Information non divulguée";}  ?>
+</br>
+</br> Code postal : <?php if($OKadresse_Utilisateur == "oui") { echo $adresse; } else { echo "Information non divulguée";} ?>
+</br>
+</br> Adresse e-mail : <?php if($OKmail_Utilisateur == "oui") { echo $mail; } else { echo "Information non divulguée";} ?>
 </br>
 </br> Présentation : <?php echo $desc ?>
 </fieldset>
@@ -135,7 +138,7 @@ foreach($req as $row){
 
 	if($OKplanning_Utilisateur == "oui") { echo '<a href="Page_show-event.php?IDE='.$row['ID_Evenement'].'">'.$data['Nom_Evenement'].'</a>', '<br/>'; }
 }
-if($OKplanning_Utilisateur == "non") { echo "Non divulgué"; }
+if($OKplanning_Utilisateur == "non") { echo "Information non divulguée"; }
 
 
 ?>
