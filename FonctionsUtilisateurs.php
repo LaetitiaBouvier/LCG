@@ -19,7 +19,7 @@ function update_users()
 {
 
   if (isset($_POST['modifier']) &&htmlspecialchars($_POST['modifier']) == "MODIFIER MON PROFIL")
-  {
+  {$cond = true;
 
     $ID = $_SESSION["ID_Utilisateur"];
 
@@ -32,7 +32,7 @@ function update_users()
 			$req = $bdd->prepare('UPDATE utilisateur_table SET Nom_Utilisateur="'.$nom.'" WHERE ID_Utilisateur ="'.$ID.'"');
 			$req->execute();
 		}
-		else {print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
+		else {$cond = false, print "<div class='alert-box warning'><span>attention: </span>Votre nom doit être composé de 2 à 32 lettres et ne pas contenir de caractères spéciaux ni de chiffres. </br> Veuillez le reformuler.</div>";}
 
 
 
@@ -205,6 +205,7 @@ function update_users()
       $req->execute();
     }
   }
+	
 }
 
 

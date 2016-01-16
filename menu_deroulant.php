@@ -31,8 +31,9 @@
 
           <li> <a>Profil </a>
             <ul>
-              <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
               <li><a href="Page_ConsulterProfil.php"> Consulter mon profil </a></li>
+              <li><a href="Page_Modif-Profil.php"> Modifier mon profil </a></li>
+              <li><a href="Page_Modif-MDP.php"> Modifier mon mot de passe </a></li>
             </ul>
           </li>
           <?php } ?>
