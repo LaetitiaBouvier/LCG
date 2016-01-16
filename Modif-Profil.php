@@ -52,6 +52,8 @@ else{
 
  	<body>
  		<h2> Formulaire de modification de profil </h2>
+
+
       <form name="inscription" method="post" action="Page_Modif-Profil.php" enctype="multiplart/form-data">
 
       <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
@@ -97,7 +99,7 @@ else{
       <br/>
 
       Sexe :
-      <input type="radio" name="genre" value="H"<?php
+      <input type="radio" name="genre" value="Homme"<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -110,12 +112,12 @@ else{
                           {
                             // echo $cle ,' : ', $valeur;
                             if($cle == '[genre]'){
-                              if($valeur == 'H'){ echo 'checked="checked"'; }
+                              if($valeur == 'Homme'){ echo 'checked="checked"'; }
                             }
                           }
                        }
          ?>/> Homme
-      <input type="radio" name="genre" value="F"<?php
+      <input type="radio" name="genre" value="Femme"<?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT genre_utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -128,7 +130,7 @@ else{
                           {
                             // echo $cle ,' : ', $valeur;
                             if($cle == '[genre]'){
-                              if($valeur == 'F'){ echo 'checked="checked"'; }
+                              if($valeur == 'Femme'){ echo 'checked="checked"'; }
                             }
                           }
                        }
@@ -227,7 +229,7 @@ else{
         /><br/>
       <br/>
 
-      Adresse e-mail : <input type="email" name="mail"  value="<?php
+      Adresse e-mail : <?php
           if($IDU != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                           $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
@@ -242,28 +244,7 @@ else{
                             if($cle == '[Mail_Utilisateur]'){  echo $valeur; }
                           }
                         }
-        ?>"
-        /><br/>
-      <br/>
-
-      Confirmez votre adresse e-mail : <input type="email" name="confirm_mail"  value="<?php
-          if($IDU != -1){
-                          $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-                          $req = $bdd->prepare('SELECT Mail_Utilisateur FROM utilisateur_table WHERE id_utilisateur = ?');
-                          $req->execute(array($IDU));
-
-                          $data = $req->fetch();
-                          //print_r($data);
-
-                          foreach($data as $cle => $valeur)
-                          {
-                            // echo $cle ,' : ', $valeur;
-                            if($cle == '[Mail_Utilisateur]'){  echo $valeur; }
-                          }
-                        }
-        ?>"
-        /><br/>
-      <br/>
+        ?>
 
       </fieldset>
 
@@ -358,9 +339,7 @@ else{
 
       </fieldset>
 
-      <p2>signifie que ces champs doivent absolument être remplis.</p2>
-
-      <br/><div><input type="submit" name="valider" value="VALIDER MON PROFIL"/></div><br/>
+      <br/><div><input type="submit" name="modifier" value="MODIFIER MON PROFIL"/></div><br/>
 
       </form>
 

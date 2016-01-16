@@ -18,7 +18,7 @@ if (!$connect)
 function update_users()
 {
 
-  if (isset($_POST['valider']) &&htmlspecialchars($_POST['valider']) == "VALIDER MON PROFIL")
+  if (isset($_POST['modifier']) &&htmlspecialchars($_POST['modifier']) == "MODIFIER MON PROFIL")
   {
 
     $ID = $_SESSION["ID_Utilisateur"];
@@ -79,7 +79,7 @@ function update_users()
 
 
     // MAJ DE LA DESCRITPION UTILISATEUR
-		    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
+		    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z 0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
 		      {	$description=htmlspecialchars($_POST['description']);
 						$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 			      $req = $bdd->prepare('UPDATE utilisateur_table SET Description_Utilisateur="'.$description.'" WHERE ID_Utilisateur ="'.$ID.'"');
@@ -99,7 +99,7 @@ function update_users()
 
 
 
-    // MAJ DU MAIL
+    /*// MAJ DU MAIL
 		if(isset($_POST['mail'])							&& !empty($_POST['mail'])
     && isset($_POST['confirm_mail'])      && !empty($_POST['confirm_mail']))
     { $mail=htmlspecialchars($_POST['mail']);
@@ -117,11 +117,11 @@ function update_users()
       { print "<div class='alert-box warning'><span>attention: </span>Votre adresse email est déjà utilisée par un utilisateur. </br> Veuillez vous connectez, ou en choisir une autre.</div>"; }
 
 			else {
-      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+      $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); //root pour mac
       $req = $bdd->prepare('UPDATE utilisateur_table SET Mail_Utilisateur="'.$mail.'" WHERE ID_Utilisateur ="'.$ID.'"');
       $req->execute();}
       }
-
+*/
 
 
     // MAJ CATEGORIES FAVORITES UTILSATEUR
@@ -298,7 +298,7 @@ function insert_users()
 
 
 // DESCRIPTION UTILISATEUR
-    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
+    if(isset($_POST['description'])				 && !empty($_POST['description'])  && preg_match('#^[a-zA-Z 0-9]*$#', $_POST['description'])  && strlen($_POST['description'])<256)
       {	$description=htmlspecialchars($_POST['description']);}
 			else {$cond = false; print "<div class='alert-box warning'><span>attention: </span>Votre description doit contenir entre 0 et 255 caractères et ne pas contenir de caractères spéciaux. </br> Veuillez le reformuler.</div>";}
 
