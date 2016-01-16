@@ -21,8 +21,8 @@
 
           <li><a> Mes Evenements </a>
             <ul>
-              <li><a href="Page_Create-Event.php"> Créer un évènement </a></li>
-              <li><a href="Page_show-all-events.php"> Modifier mes évènemements </a></li>
+              <li><a href="Page_Create-Event.php"> Créer </a></li>
+              <li><a href="Page_show-all-events.php"> Afficher, Modifier, Supprimer mes évènemements </a></li>
               <li><a href="Page_show-all-eventsAbo.php"> Evènements auxquels je participe </a></li>
             </ul>
           </li>

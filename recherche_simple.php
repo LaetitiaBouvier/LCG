@@ -19,8 +19,8 @@
 <br/>
 
 
-<fieldset>
-<legend>Liste des évènements correspondant :</legend>
+
+<legend>Liste des évènements correspondants :</legend>
 
 <br>
 <?php
@@ -84,11 +84,11 @@
 ?>
 <br/>
 
-</fieldset>
 
 
-<fieldset>
-<legend>Liste des profils correspondant :</legend>
+
+
+<legend>Liste des profils correspondants :</legend>
 
 <br>
 <?php
@@ -106,7 +106,7 @@
   <div id="titre2">
     <ul>
       <li> <h3> <a href=<?php echo("Page_show-profil.php?IDU=".$row['ID_Utilisateur']."");?> class="typeblanc"><?php echo ($row['Pseudo_Utilisateur']);?> </a></h3></li>
-    </ul>
+    </br></ul>
   </div>
   <div id="ssmenu1">
     <ul>
@@ -121,7 +121,7 @@
 
 <br/>
 
-</fieldset>
+
 
 
 </form>

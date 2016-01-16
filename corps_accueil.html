@@ -48,12 +48,40 @@ try
 catch (Exception $e)
 {die('Erreur : '.$e->getMessage());} //en cas d'erreur on affiche un message
 // récupération de 3  événements aléatoires
-$req = $bdd->query('SELECT ID_Evenement, Nom_Evenement, JourDebut_Evenement, Description_Evenement, Image_Evenement, AdressePostal_Evenement FROM evenement_table ORDER BY RAND() LIMIT 3');
+$req = $bdd->query('SELECT * FROM evenement_table ORDER BY RAND() LIMIT 3');
 
 while ($donnees = $req->fetch())
 {
   ?>
   <div id="cat1">
+
+    <?php
+
+      $dateFin = $donnees['JourFin_Evenement']."  ".$donnees['HeureFin_Evenement'];
+      $dateDeb = $donnees['JourDebut_Evenement']." ".$donnees['HeureDebut_Evenement'];
+
+      $dateAujd =  date("Y-m-d H:i:s", time());
+
+      $aujd = DateTime::createFromFormat('Y-m-d H:i:s', $dateAujd);
+      $fin  = DateTime::createFromFormat('Y-m-d H:i:s', $dateFin);
+      $deb  = DateTime::createFromFormat('Y-m-d H:i:s', $dateDeb);
+      //echo var_dump($fin < $deb);
+      //echo var_dump($fin > $deb);
+
+      if(($deb < $aujd) && ($fin > $aujd)){
+        echo "Cet évènement est en cours !";
+      }
+
+      if(($deb > $aujd) && ($fin > $aujd)){
+        echo "Cet évènement n'a pas commencé !";
+      }
+
+      if(($deb < $aujd) && ($fin < $aujd)){
+        echo "Cet évènement est terminé !";
+      }
+
+
+    ?><br/><br/>
     <div id="titre1">
       <ul>
         <li> <h3> <?php echo ($donnees['JourDebut_Evenement']);?> </h3> </li>

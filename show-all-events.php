@@ -18,7 +18,6 @@
 <br/>
 
 
-<fieldset>
 <legend>Liste des événements que j'organise :</legend>
 
 <br>
@@ -54,10 +53,10 @@
 					<div id="titre1">
 						<ul>
 							<li> <h3> <?php echo ($rowbis['JourDebut_Evenement']);?> </h3> </li>
-							<li> <h3> <a href=<?php echo("Page_Modif-Event.php?IDE=".$IDE."");?> class="typeblanc"> <?php echo ($rowbis['Nom_Evenement']);?> | <?php echo htmlspecialchars($rowbis['AdressePostal_Evenement']);?> </a></h3></li>
+							<li> <h3> <a href=<?php echo("Page_Show-Event.php?IDE=".$IDE."");?> class="typeblanc"> <?php echo ($rowbis['Nom_Evenement']);?> | <?php echo htmlspecialchars($rowbis['AdressePostal_Evenement']);?> </a></h3></li>
 						</ul>
 					</div>
-					<a href=<?php echo("Page_Modif-Event.php?IDE='.$IDE.' ")?> ><img src="Images_code/IMG_Event_Mini/<?php echo($rowbis['Image_Evenement']);?>.jpg" class="photo1"/></a>
+					<a href=<?php echo("Page_Show-Event.php?IDE='.$IDE.' ")?> ><img src="Images_code/IMG_Event_Mini/<?php echo($rowbis['Image_Evenement']);?>.jpg" class="photo1"/></a>
 					<div id="ssmenu1">
 						<ul>
 							<li> <?php echo nl2br(($rowbis['Description_Evenement']));?> </li>
@@ -72,6 +71,6 @@
 
 <br/>
 
-</fieldset>
+
 
 </form>

@@ -7,7 +7,9 @@
 	<head>
 		<title> RESULTATS DE LA RECHERCHE </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="corps_accueil.css"/>
 		<link rel="stylesheet" href="Style-form.css"/>
+
 	</head>
 
 	<body>
@@ -20,11 +22,12 @@
     </nav>
 
 		<centralform>
-			<div id="corps_inscription">
+			<div id="corps_accueil">
 
 				<?php include("Recherche_simple.php"); ?>
 			</div>
 		</centralform>
+
 
 		<footer>
 			<?php include("footer.php"); ?>

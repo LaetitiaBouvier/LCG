@@ -26,7 +26,7 @@
 <br/>
 
 
-<fieldset>
+
 <legend>Liste des évènements suivis :</legend>
 
 <br>
@@ -100,6 +100,6 @@
 
 <br/>
 
-</fieldset>
+
 
 </form>
