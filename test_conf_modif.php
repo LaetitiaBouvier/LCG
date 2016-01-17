@@ -2,7 +2,7 @@
 
 if (isset($_POST['pseudo']) OR isset($_POST['mdp']))
 {
-/* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
+  $mdp_hache = sha1($_POST['mdp']);
   $mdp_hache = $_POST['mdp'];
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
