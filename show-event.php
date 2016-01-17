@@ -331,7 +331,7 @@ if (!empty($web)) {echo "</br>Lien vers le site web de l'événement : <a href="
 <div id="notation">
 	<?php
 		if (isset($_SESSION["ID_Utilisateur"])):
-	 	include("notation1.php");
+		 	include("notation1.php");
 	 	endif;
 	?>
 </div>

@@ -1,7 +1,12 @@
+<?php
+if(isset($_SESSION["ID_Utilisateur"]))
+	{$IDU = $_SESSION["ID_Utilisateur"];} ?>
+
 <link rel="stylesheet" href="notation.css" />
 
 <form name="notation" action="notation.php">
 	<p> Note de l'évènement : <?php include ("note_moyenne.php"); echo "$NoteMoyenne/5" ?> </p>
+	
 	<h4>Noter l'évènement :</h4>
 
 	<ul class="notes-echelle">
@@ -27,11 +32,4 @@
 		</li>
 	</ul>
 	<input type="submit" name="Noter" value="Noter/re-Noter Event.<?php echo(''.$ID.'');?>"/>
-
-	<?php
-		
-	  if($data['ID_Utilisateur']== $IDU){
-			echo "Vous avez noté cet évènement ".$note."/5";
-		}
-	 ?>
 </form>
