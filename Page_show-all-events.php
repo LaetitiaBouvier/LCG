@@ -21,12 +21,13 @@
     </nav>
 
 		<centralform>
-			<div id="corps_accueil">
+			<div id="corps_event">
 				<h2> Affichage et Modification </h2>
 
 				<?php include("show-all-events.php"); ?>
 			</div>
 		</centralform>
+		</br>
 
 		<footer>
 			<?php include("footer.php"); ?>

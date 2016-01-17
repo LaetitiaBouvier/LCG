@@ -20,13 +20,14 @@
     </nav>
 
 		<centralform>
-			<div id="corps_inscription">
+			<div id="corps_event">
 				<h2> Evènements suivis </h2>
 
 				<?php include("show-all-eventsAbo.php"); ?>
 			</div>
 		</centralform>
-		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+		</br></br>
+		
 		<footer>
 			<?php include("footer.php"); ?>
 		</footer>

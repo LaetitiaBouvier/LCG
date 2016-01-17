@@ -76,10 +76,9 @@ if (isset($_POST['nouveau_titre_topic']))
 		<link rel="stylesheet" href="Style-form.css"/>
 		<style>
 
-		body
-		{
-			background-color: rgba(200, 200, 200, 0.1);
-		}
+
+
+
 
 		a
 		{
@@ -99,6 +98,11 @@ if (isset($_POST['nouveau_titre_topic']))
 			margin-left: 20px;
 			margin-top: 20px;
 			padding-left: 5px;
+			background-color: #F5F5F5;
+			display: inline-block;
+			border: 1px solid black;
+			width: 800px;
+
 		}
 
 		#block_boutons
@@ -155,13 +159,7 @@ if (isset($_POST['nouveau_titre_topic']))
 			margin-right: 175px;
 		}
 
-		#forum
-		{
-			display: inline-block;
-			border: 1px solid black;
-			width: 800px;
-			background-color: rgba(200, 200, 200, 0.1);
-		}
+
 
 		th
 		{
