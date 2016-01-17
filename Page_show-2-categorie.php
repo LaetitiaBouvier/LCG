@@ -32,7 +32,7 @@
     </nav>
 
 		<centralform>
-			<div id="corps_accueil">
+			<div id="corps_event">
 				<h2> <?php echo ("Evenements dans la catégorie ".$Ev." le ".$Date."");  ?> </h2>
 
 				<?php include("show-2-categorie.php"); ?>

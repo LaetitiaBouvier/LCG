@@ -29,7 +29,7 @@
     </nav>
 
 		<centralform>
-			<div id="corps_accueil">
+			<div id="corps_event">
 				<h2> <?php echo("".$REG."") ?>  </h2>
 
 				<?php include("show-region.php"); ?>
