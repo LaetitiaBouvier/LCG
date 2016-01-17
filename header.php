@@ -83,7 +83,7 @@ else
 
 		  <div id="barre_recherche">
         <div id='bloc_titre_principal'><a href='Accueil.php'><img src='Images_code/[A1G2E]Logo La Connexion Gauloise2.png' alt='titre principal' width="55%";/></a>
-          <div id="phrase"><h1> <?php if (isset($_SESSION['pseudo_utilisateur'])){ECHO $_SESSION['pseudo_utilisateur'].", ";}; ?> Avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1></div>
+          <div id="phrase"><h1> <?php if (isset($_SESSION['pseudo_utilisateur'])){ECHO $_SESSION['pseudo_utilisateur'].", ";}; ?> avec La Connexion Gauloise, découvrez les événements organisés partout en France !</h1></div>
 
           <?php if (isset($_SESSION['ID_Utilisateur'])){}
 

@@ -222,7 +222,6 @@ $rightarrow = $_GET['f'] + 1;
 		{
 			display: inline-block;
 			width: 100%;
-			border: 1px black solid;
 		}
 
 		#form_repondre
