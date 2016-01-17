@@ -94,6 +94,13 @@ if (isset($_POST['nouveau_titre_topic']))
 			text-transform: uppercase;
 		}
 
+		#forum
+		{
+			margin-left: 20px;
+			margin-top: 20px;
+			padding-left: 5px;
+		}
+
 		#block_boutons
 		{
 			display: inline-block;
@@ -275,6 +282,7 @@ if (isset($_POST['nouveau_titre_topic']))
     </nav>
 
 		<div id="forum">
+		</br>
 
 		<div id = "block_boutons" >
 
@@ -283,7 +291,7 @@ if (isset($_POST['nouveau_titre_topic']))
 
 		</div>
 
-		<form method="POST" action="Page_Forum.php"><input type="text" name="barre_forum" id="barre_forum" placeholder="Rechercher un sujet" ><input type="submit" value="Rechercher" ></form>
+		<form method="POST" action="Page_Forum.php"><input type="text" name="barre_forum" id="barre_forum" placeholder="Rechercher un sujet" ><input type="submit" value="Rechercher" ></form> </br>
 
       <table>
 
@@ -408,10 +416,13 @@ if ($page < $limitetopic)
 	      <p><input type="submit" value="Poster" id="bouton_poster" /></p>
 
 	    </form>
+			</br>
 
 			</div>
+			</br>
 
 		</div>
+		</br>
 
 		<footer>
 			<?php include("footer.php"); ?>
