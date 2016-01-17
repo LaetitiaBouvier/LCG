@@ -16,7 +16,7 @@
 ?>
 
  		<h2> Formulaire de modification d'évènement </h2>
-      <form name="inscription" method="post" <?php  echo 'action="Page_Confirm_Modification_InfosEvent.php?IDE='.$IDE.'"'?> enctype="multiplart/form-data">
+      <form name="inscription" method="post" <?php  echo 'action="UpdateEvent.php?IDE='.$IDE.'"'?> enctype="multiplart/form-data">
 
       <p>    VEUILLEZ COMPLETER LES CHAMPS CI-APRES : <br/> </p>
       <br/>
@@ -24,7 +24,7 @@
       <fieldset>
       <legend>Informations générales </legend>
 
-      Nom de l'évènement : <input type="text" name="nom" required="" value="<?php
+      Nom de l'évènement : <input type="text" name="nom"  value="<?php
             if($IDE != -1){
                            $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                            $req = $bdd->prepare('SELECT Nom_Evenement FROM evenement_table WHERE ID_Evenement = ?');
