@@ -72,11 +72,6 @@ $rightarrow = $_GET['f'] + 1;
 			font-size: 0.9em;
 		}
 
-		body
-		{
-			background-color: rgba(200, 200, 200, 0.1);
-		}
-
 		#topic ul
 		{
 			list-style-type: none;
@@ -149,7 +144,7 @@ $rightarrow = $_GET['f'] + 1;
 			display: inline-block;
 			border: 1px black solid;
 			width: 800px;
-			background-color: rgba(200, 200, 200, 0.1);
+			background-color: #f5f5f5;
 			margin-left: 10px;
 		}
 
