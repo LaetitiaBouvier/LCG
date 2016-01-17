@@ -9,7 +9,10 @@ header
 	font-size: 1em;
 	color: white;
 }
-
+#bloc_barre_de_recherche
+{
+	margin-bottom: 10px
+}
 #bloc_titre_principal img
 {
 
