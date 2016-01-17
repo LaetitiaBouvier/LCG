@@ -1,4 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine on
-
-RewriteRule ^http://connexion1.freeheberg.org/$ /http://connexion1.freeheberg.org/Accueil.php [L]
