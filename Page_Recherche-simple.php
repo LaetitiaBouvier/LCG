@@ -22,7 +22,7 @@
     </nav>
 
 		<centralform>
-			<div id="corps_accueil">
+			<div id="corps_event">
 
 				<?php include("Recherche_simple.php"); ?>
 			</div>
