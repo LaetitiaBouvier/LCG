@@ -285,6 +285,8 @@ if (isset($_POST['nouveau_titre_topic']))
 
 		</div>
 
+		<form method="POST" action="Page_Forum.php?f=1"><input type="text" name="barre_forum" id="barre_forum" placeholder="Rechercher un sujet" ><input type="submit" value="Rechercher" ></form> </br>
+
       <table>
 
 <tr>
@@ -307,7 +309,17 @@ else
 
 <?php
 
-$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+if (isset($_POST['barre_forum']))
+{
+	$recherche = $_POST['barre_forum'];
+	$recherche2 = "%$recherche%";
+	$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table WHERE Titre_Topic LIKE '$recherche2' ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+	$req->execute();
+}
+else
+{
+	$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+}
 
 $i = 0;
 
