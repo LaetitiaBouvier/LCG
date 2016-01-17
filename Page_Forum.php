@@ -76,10 +76,6 @@ if (isset($_POST['nouveau_titre_topic']))
 		<link rel="stylesheet" href="Style-form.css"/>
 		<style>
 
-
-
-
-
 		a
 		{
 			text-decoration: none;
@@ -288,8 +284,6 @@ if (isset($_POST['nouveau_titre_topic']))
 			<div id="actualiser"> <?php echo "<a href='Page_Forum.php?f=" . $f . "'>Actualiser</a>"; ?> </div>
 
 		</div>
-
-		<form method="POST" action="Page_Forum.php"><input type="text" name="barre_forum" id="barre_forum" placeholder="Rechercher un sujet" ><input type="submit" value="Rechercher" ></form> </br>
 
       <table>
 
