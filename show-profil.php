@@ -126,7 +126,7 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-$req = $bdd->prepare('SELECT ID_Evenement FROM participation_table WHERE ID_Utilisateur ="'.$IDU.'"');
+$req = $bdd->prepare('SELECT ID_Evenement FROM participation_table WHERE ID_Utilisateur ="'.$ID.'"');
 $req->execute();
 
 foreach($req as $row){
@@ -150,7 +150,7 @@ if($OKplanning_Utilisateur == "non") { echo "Information non divulguée"; }
 <?php
 	$bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
 
-	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$IDU.'"');
+	$req = $bdd->prepare('SELECT Pseudo_Utilisateur FROM utilisateur_table WHERE ID_Utilisateur ="'.$ID.'"');
 	$req->execute();
 
 	foreach($req as $row)
@@ -186,18 +186,22 @@ $req2=$bdd->prepare('SELECT Admin_Utilisateur FROM utilisateur_table WHERE ID_Ut
 	$req2->execute(array($ID));
 	$admin2=$req2->fetch();
 
-	if ($ID==$IDU OR $admin['Admin_Utilisateur']=="oui") {?>
+	if ($ID==$IDU) {?>
 		<div id=boutons_admin>
 	<form name='modif' method='post' action=<?php echo ("Page_Modif-Profil.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" name="valider" value="MODIFIER "/>
 	</form> </div> </br>
+	<?php }
+		if ($ID==$IDU OR $admin['Admin_Utilisateur']=="oui") {?>
 	<form name='delete' method='post' action=<?php echo ("bannir.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 		<input type="submit" id="bannir" value="SUPPRIMER ">
 	</form>
-</br> 
+</br>
 	</br>
-		<h3><?php if ($admin2['Admin_Utilisateur']=="oui"){ echo "Ce membre est administrateur";}
+		<h3><?php }
+		if ($admin2['Admin_Utilisateur']=="oui"){ echo "Ce membre est administrateur";}
 		else {echo "Ce membre n'est pas administrateur";} ?><h3>
+			<?php if ($admin['Admin_Utilisateur']=="oui") {?>
 
 		<form name='droits' method='post' action=<?php echo ("droit_admin.php?IDU=".$ID."");?> enctype='multipart/form-data'>
 			<input type="submit" id="droit" value="DONNER / RETIRER LES DROITS D'ADMINISTRATEUR "/>

@@ -102,7 +102,7 @@ Je souhaite recevoir par e-mail des alertes sur mes abonnements :
 <br/><input type="radio" name="AlertesAbonnementsOK" value="non" <?php if (isset($_POST['AlertesAbonnementsOK'])){if($_POST['AlertesAbonnementsOK']=='non') echo 'checked="checked"';}?>/> non
 <br/>
 <br/><br/>
-<br/><input type="radio" name="Acondition_utilisation_charte" value="oui" required="" />J'accepte <a href="">les conditions d'utilisations</a> et j'ai pris connaissance de <a href="Charte_LCG.pdf">la charte du site</a> <em>*</em>
+<br/><input type="radio" name="Acondition_utilisation_charte" value="oui" required="" /><em>*</em> J'accepte <a href="">les conditions d'utilisations</a> et j'ai pris connaissance de <a href="Charte_LCG.pdf">la charte du site</a>
 
 </fieldset>
 
