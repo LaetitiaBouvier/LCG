@@ -39,7 +39,7 @@ if (!$connect)
       $sponsors=$_POST['sponsors'];
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE evenement_table SET Description_Evenement="'.$sponsors.'" WHERE ID_Evenement ="'.$IDE.'"');
+      $req = $bdd->prepare('UPDATE evenement_table SET Sponsors_Evenement="'.$sponsors.'" WHERE ID_Evenement ="'.$IDE.'"');
       $req->execute();
     }
 
@@ -118,7 +118,7 @@ if (!$connect)
       {	$departement=$_POST['departement'];
 
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-        $req = $bdd->prepare('UPDATE evenement_table SET AdresseVille_Evenement="'.$departement.'" WHERE ID_Evenement ="'.$IDE.'"');
+        $req = $bdd->prepare('UPDATE evenement_table SET AdresseDepartement_Evenement="'.$departement.'" WHERE ID_Evenement ="'.$IDE.'"');
         $req->execute();
       }
 
@@ -129,7 +129,7 @@ if (!$connect)
     {	$region=$_POST['region'];
 
       $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
-      $req = $bdd->prepare('UPDATE evenement_table SET AdresseVille_Evenement="'.$region.'" WHERE ID_Evenement ="'.$IDE.'"');
+      $req = $bdd->prepare('UPDATE evenement_table SET AdresseRegion_Evenement="'.$region.'" WHERE ID_Evenement ="'.$IDE.'"');
       $req->execute();
     }
 

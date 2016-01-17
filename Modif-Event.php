@@ -41,7 +41,7 @@
         <br/>
       <br/>
 
-      Description de l'évènement <em>*</em>: <textarea id="desc" name="description"><?php
+      Description de l'évènement : <textarea id="desc" name="description"><?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT Description_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -58,8 +58,26 @@
         <br/>
       <br/>
 
+      Sponsors de l'événement : <br />
+      <div>
+      <textarea id="sponsors" name="sponsors"><?php
+          if($IDE != -1){
+                        $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
+                        $req = $bdd->prepare('SELECT Sponsors_Evenement FROM evenement_table WHERE ID_Evenement = ?');
+                        $req->execute(array($IDE));
 
-      Catégorie de l'événement (1 seule réponse possible)<em>*</em> : <br/> <br/>
+                        $data = $req->fetch();
+
+                        foreach($data as $cle => $valeur)
+                        {
+                          if($cle == '[Description_Evenement]'){  echo $valeur; }
+                        }
+                       }
+         ?></textarea>
+      </div>
+      </br>
+
+      Catégorie de l'événement (1 seule réponse possible) : <br/> <br/>
       <?php
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
         $req = $bdd->prepare('SELECT Categorie_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -84,20 +102,20 @@
         $OKManifestations = false;      if( strstr($chaineCat, "Manifestations"     ))  { $OKManifestations = true;     }
 
       ?>
-      <input type="checkbox" name="categorieFavorite1" value="Festivals"          <?php if ($OKFestivals)         { echo 'checked="checked"'; }         ?>/>Festivals<br>
-      <input type="checkbox" name="categorieFavorite2" value="Repas/Banquets"     <?php if ($OKRespas_Banquets)   { echo 'checked="checked"'; }    ?>/>Repas/Banquets<br>
-      <input type="checkbox" name="categorieFavorite3" value="Concerts"           <?php if ($OKConcerts)          { echo 'checked="checked"'; }          ?>/>Concerts<br>
-      <input type="checkbox" name="categorieFavorite4" value="Brocantes/Marchés"  <?php if ($OKBroquante_Marchés) { echo 'checked="checked"'; } ?>/>Brocantes/Marchés<br>
-      <input type="checkbox" name="categorieFavorite5" value="Soirées"            <?php if ($OKSoirées)           { echo 'checked="checked"'; }           ?>/>Soirées<br>
-      <input type="checkbox" name="categorieFavorite6" value="Conférences"        <?php if ($OKConférences)       { echo 'checked="checked"'; }       ?>/>Conférences<br>
-      <input type="checkbox" name="categorieFavorite7" value="Humanitaires"       <?php if ($OKHumanitaires)      { echo 'checked="checked"'; }      ?>/>Humanitaires<br>
-      <input type="checkbox" name="categorieFavorite8" value="Sportifs"           <?php if ($OKSportifs)          { echo 'checked="checked"'; }          ?>/>Sportifs<br>
-      <input type="checkbox" name="categorieFavorite9" value="Manifestations"     <?php if ($OKManifestations)    { echo 'checked="checked"'; }    ?>/>Manifestations<br>
+      <input type="radio" name="categorie" value="Festivals"          <?php if ($OKFestivals)         { echo 'checked="checked"'; }         ?>/>Festivals<br>
+      <input type="radio" name="categorie" value="Repas/Banquets"     <?php if ($OKRespas_Banquets)   { echo 'checked="checked"'; }    ?>/>Repas/Banquets<br>
+      <input type="radio" name="categorie" value="Concerts"           <?php if ($OKConcerts)          { echo 'checked="checked"'; }          ?>/>Concerts<br>
+      <input type="radio" name="categorie" value="Brocantes/Marchés"  <?php if ($OKBroquante_Marchés) { echo 'checked="checked"'; } ?>/>Brocantes/Marchés<br>
+      <input type="radio" name="categorie" value="Soirées"            <?php if ($OKSoirées)           { echo 'checked="checked"'; }           ?>/>Soirées<br>
+      <input type="radio" name="categorie" value="Conférences"        <?php if ($OKConférences)       { echo 'checked="checked"'; }       ?>/>Conférences<br>
+      <input type="radio" name="categorie" value="Humanitaires"       <?php if ($OKHumanitaires)      { echo 'checked="checked"'; }      ?>/>Humanitaires<br>
+      <input type="radio" name="categorie" value="Sportifs"           <?php if ($OKSportifs)          { echo 'checked="checked"'; }          ?>/>Sportifs<br>
+      <input type="radio" name="categorie" value="Manifestations"     <?php if ($OKManifestations)    { echo 'checked="checked"'; }    ?>/>Manifestations<br>
       <br/>
       <br/>
 
 
-      Cibles de l'événement (plusieurs réponses possibles) <em>*</em>: <br/> </br>
+      Cibles de l'événement (plusieurs réponses possibles) : <br/> </br>
 
       <?php
         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
@@ -132,7 +150,7 @@
 
       LIEU DE L'EVENEMENT : <br/> <br/>
 
-      Nom de l'endroit / de la salle <em>*</em>: <input type="text" name="endroit" value="<?php
+      Nom de l'endroit / de la salle : <input type="text" name="endroit" value="<?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT NomLieu_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -149,7 +167,7 @@
       <br/><br/>
 
       ADRESSE : <br/><br/>
-      Numéro et rue : <input type="text" name="rue" maxlength="3" value="<?php
+      Numéro et rue : <input type="text" name="rue" value="<?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT AdresseRue_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -164,7 +182,7 @@
                        }
          ?>"/>
       <br/>
-      Code postal <em>*</em>: <input type="text" name="CP" maxlength="5" value="<?php
+      Code postal : <input type="text" name="CP" maxlength="5" value="<?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT AdressePostal_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -353,7 +371,7 @@
          </br>
 
       DEBUT DE L'EVENEMENT : <br/><br/>
-      Date <em>*</em>: <input type="date" name="datedeb" value="<?php
+      Date : <input type="date" name="datedeb" value="<?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT JourDebut_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -384,7 +402,7 @@
       <br/>
 
       FIN DE L'EVENEMENT : <br/><br/>
-      Date <em>*</em>: <input type="date" name="datefin" value="<?php
+      Date : <input type="date" name="datefin" value="<?php
           if($IDE != -1){
                         $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
                         $req = $bdd->prepare('SELECT JourFin_Evenement FROM evenement_table WHERE ID_Evenement = ?');
@@ -433,7 +451,7 @@
                        }
          ?>"/><br/> <br/>
 
-      Evénement payant <em>*</em>:
+      Evénement payant :
       <input type="radio" name="payant" value="oui" <?php
           if($IDE != -1){
                           $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', ''); /*root pour mac*/
@@ -489,7 +507,7 @@
          ?>"> <br />
       </fieldset>
 
-      <p2><em>*</em>signifie que ces champs doivent absolument être remplis.</p2>
+      <p2>signifie que ces champs doivent absolument être remplis.</p2>
 
       <br/><div><input type="submit" name="valider" value="VALIDER MON EVENEMENT"/></div><br/>
 
