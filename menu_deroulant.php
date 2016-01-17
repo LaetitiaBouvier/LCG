@@ -5,8 +5,8 @@
     <nav>
       <div id="menu">
         <ul id="menu-demo2">
-          <li><a href='Accueil.php'><img src="Images_code/[A1G2E]Logo LaCG.png" alt="logo" width=200px /></a></li>
-          <li><a href="Accueil.php"> Accueil </a></li>
+          <li><a href='Index.php'><img src="Images_code/[A1G2E]Logo LaCG.png" alt="logo" width=200px /></a></li>
+          <li><a href="Index.php"> Accueil </a></li>
 
           <li><a href="Page_Categories.php"> Catégories </a></li>
 

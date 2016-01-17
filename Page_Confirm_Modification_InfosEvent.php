@@ -39,7 +39,7 @@ Vous pouvez aussi modifier la photo de votre événement :
 
 
 			<br/><div>
-				<a href="http://localhost/github/LCG/Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
+				<a href="http://localhost/github/LCG/Index.php" onclick="window.open('http://localhost/github/LCG/Index.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS LA PAGE D'ACCUEIL!</a>
 			</div><br/>
 		</div>
 		</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>

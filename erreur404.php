@@ -11,6 +11,6 @@
 
 	<h2>Vous êtes sur une page qui n'existe plus ou n'a jamais existé</h2>
 	<br/>
-	<div><a href="Accueil.php" onclick="window.open('http://localhost/github/LCG/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS L'ACCUEIL !</a></div>
+	<div><a href="Index.php" onclick="window.open('http://localhost/github/LCG/Index.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">RETOUR VERS L'ACCUEIL !</a></div>
 	</body>
 </html>

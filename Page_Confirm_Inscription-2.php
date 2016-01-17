@@ -25,7 +25,7 @@
 			<h6>Connectez-vous :</h6>
 			<div id='bloc_connexion'>
 					<ul id="se_connecter">
-						<form method=POST action='Accueil.php' >
+						<form method=POST action='Index.php' >
 						<li><label for='pseudo_utilisateur'>Pseudo:</label><input type='text' name='pseudo' id='pseudo' /></li>
 						<li><label for="mdp_utilisateur">Mot de passe:</label><input type="password" name="mdp" id="mdp" /></li>
 						<li><input type="submit" value="Connexion" /></li>
@@ -35,7 +35,7 @@
 
 </br></br></br></br>
 <div>
-				<a href="Accueil.php" onclick="window.open('http://localhost/github/Accueil.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">Retour vers la PAGE D'ACCUEIL.</a>
+				<a href="Index.php" onclick="window.open('http://localhost/github/Index.php', 'exemple', 'height=30%, width=30%, top=90, left=350', );">Retour vers la PAGE D'ACCUEIL.</a>
 			</div><br/>
 		</div>
 
