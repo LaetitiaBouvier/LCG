@@ -2,6 +2,13 @@
 
 session_start();
 
+if (isset($_GET['bf']) AND (!isset($_GET['f'])))
+{
+	$bf = $_GET['bf'];
+	header("Location: Page_Forum.php?f=1&bf=$bf");
+	exit;
+}
+
 if (!isset($_GET['f']))
 {
 	header('Location: Page_Forum.php?f=1');
@@ -155,8 +162,6 @@ if (isset($_POST['nouveau_titre_topic']))
 			margin-right: 175px;
 		}
 
-
-
 		th
 		{
 			border: 1px solid black;
@@ -285,6 +290,9 @@ if (isset($_POST['nouveau_titre_topic']))
 
 		</div>
 
+		<form method="GET" action="Page_Forum.php"><input type="text" name="bf" id="bf" placeholder="Rechercher un sujet" ><input type="submit" value="Rechercher" ></form>
+		</br>
+
       <table>
 
 <tr>
@@ -307,9 +315,17 @@ else
 
 <?php
 
-
-$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
-
+if (isset($_GET['bf']))
+{
+	$recherche = $_GET['bf'];
+	$recherche2 = "%$recherche%";
+	$req = $bdd->prepare("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table WHERE Titre_Topic LIKE '$recherche2' ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+	$req->execute();
+}
+else
+{
+	$req = $bdd->query("SELECT ID_Topic, Titre_Topic, PseudoAuteur_Topic, Admin_Utilisateur, NB_MSG, Dernier_MSG FROM forum_table ORDER BY Dernier_MSG DESC LIMIT $page, 25");
+}
 
 $i = 0;
 
@@ -378,18 +394,45 @@ while ($data = $req->fetch())
 
 <?php
 
-$req = $bdd->query("SELECT COUNT(*) FROM forum_table");
-$nbtopic = $req->fetch();
-$limitetopic = $nbtopic[0] - 25;
-
-if ($page != 0)
+if ((isset($_GET['bf'])))
 {
-	echo '<form action="Page_Forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	$req = $bdd->query("SELECT COUNT(*) FROM forum_table WHERE Titre_Topic LIKE '$recherche2'");
+	$nbtopic = $req->fetch();
+}
+else
+{
+	$req = $bdd->query("SELECT COUNT(*) FROM forum_table");
+	$nbtopic = $req->fetch();
 }
 
-if ($page < $limitetopic)
+$limitetopic = $nbtopic[0] - 25;
+
+if ((isset($_GET['bf'])))
 {
-	echo '<form action="Page_Forum.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+
+	$bf = $_GET['bf'];
+
+	if ($page != 0)
+	{
+		echo '<form action="Page_Forum.php?f=' . $leftarrow . '&bf=' . $bf . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	}
+
+	if ($page < $limitetopic)
+	{
+		echo '<form action="Page_Forum.php?f=' . $rightarrow . '&bf=' . $bf . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	}
+}
+else
+{
+	if ($page != 0)
+	{
+		echo '<form action="Page_Forum.php?f=' . $leftarrow . '" method="POST" id="leftarrow"><input type="submit" value="<" /></form>';
+	}
+
+	if ($page < $limitetopic)
+	{
+		echo '<form action="Page_Forum.php?f=' . $rightarrow . '" method="POST" id="rightarrow"><input type="submit" value=">" /></form>';
+	}
 }
 
 
