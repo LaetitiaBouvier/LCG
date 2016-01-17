@@ -18,6 +18,8 @@
     width: 800px;
 		background-color: white;
 		padding-left: 10px;
+		margin-left: 15px;
+		margin-top: 15px;
   }
 
 	#faq a
