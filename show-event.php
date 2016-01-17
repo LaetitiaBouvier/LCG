@@ -335,7 +335,8 @@ if (!empty($web)) {echo "</br>Lien vers le site web de l'événement : <a href="
 </br>
 <div id="notation">
 	<?php
-		if (isset($_SESSION["ID_Utilisateur"])):
+	$datetoday = date("Y-m-d");
+		if (isset($_SESSION["ID_Utilisateur"]) && $datetoday>$jourDebut):
 		 	include("notation1.php");
 	 	endif;
 	?>
