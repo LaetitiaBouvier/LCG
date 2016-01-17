@@ -13,8 +13,7 @@ catch (Exception $e)
 
 if (isset($_POST['pseudo']) && isset($_POST['mdp']))
 {
-/* $mdp_hache = sha1($_POST['mdp']); pour crypter les mdps */
-  $mdp_hache = $_POST['mdp'];
+  $mdp_hache = sha1($_POST['mdp']);
   $pseudo_hache = $_POST['pseudo'];
 
   $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');
