@@ -5,8 +5,8 @@ if(isset($_SESSION["ID_Utilisateur"]))
 <link rel="stylesheet" href="notation.css" />
 
 <form name="notation" action="notation.php">
-	<p> Note de l'évènement : <?php include ("note_moyenne.php"); echo "$NoteMoyenne/5" ?> </p>
-	
+	 Note de l'évènement : <?php include ("note_moyenne.php");  ?> 
+
 	<h4>Noter l'évènement :</h4>
 
 	<ul class="notes-echelle">
