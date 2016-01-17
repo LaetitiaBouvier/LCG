@@ -40,7 +40,6 @@
     font-size: 1em;
   }
 
-
   </style>
 
 	</head>
@@ -63,11 +62,11 @@
     <h3>Liens utiles pour le forumeur</h3>
 
     <ul>
-      <li><a href="">Pour modifier les informations de son profil</a></li>
-      <li><a href="">Pour recevoir son mot de passe par e-mail</a></li>
-      <li><a href="">Pour contacter un administrateur du site</a></li>
-      <li><a href="">Charte des forums</a></li>
-      <li><a href="">Pour consulter les conditions générales d’utilisation du site</a></li>
+      <li>Pour modifier les informations de son profil</li>
+      <li>Pour recevoir son mot de passe par e-mail</li>
+      <li>Pour contacter un administrateur du site</li>
+      <li>Charte des forums</li>
+      <li>Pour consulter les conditions générales d’utilisation du site</li>
     </ul>
 
     <h3>Lexique du forum</h3>
@@ -135,11 +134,9 @@
 
     <h3>Je me suis inscrit et je ne reçois pas mon e-mail de confirmation</h3>
 
-    <p>En premier lieu vérifiez bien que l'e-mail ne soit pas dans vos courriers indésirables. Si ce n'est pas le cas, vous pouvez tenter de vous le faire renvoyer en cliquant sur ce lien.</p>
+    <p>En premier lieu vérifiez bien que l'e-mail ne soit pas dans vos courriers indésirables. Si vous n'avez pas reçu le mail, vous pouvez nous contacter pour que nous résolvions le problème.</p>
 
-    <p>Un message d'erreur apparaîtra et juste en-dessous un lien vous proposera de vous renvoyer l'e-mail de confirmation.</p>
-
-    <p>Si au bout de sept jours le compte n'est toujours pas confirmé il faudra reprendre l'étape de réservation depuis le début.</p>
+    <p>Si au bout de sept jours le compte n'est toujours pas confirmé il faudra reprendre l'étape d'inscription depuis le début.</p>
 
     <h3>Je n'arrive pas à m'inscrire, mon adresse e-mail est refusée, pourquoi ?</h3>
 
@@ -153,23 +150,23 @@
 
     <h3>Comment modifier mon compte ?</h3>
 
-    <p>Vous pouvez à tout moment modifier les données de votre compte. Pour cela il suffit de cliquer sur ce lien.</p>
+    <p>Vous pouvez à tout moment modifier les données de votre compte. Pour cela il suffit de cliquer sur "Profil" -> "Modifier mon profil".</p>
 
     <h3>J'ai changé mon adresse e-mail, mais je ne reçois pas l'e-mail de confirmation</h3>
 
-    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.</p>
+    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte.</p>
 
     <p>Connectez-vous et dans le formulaire, en dessous de votre adresse e-mail, un lien vous propose de vous renvoyer l'e-mail de confirmation.</p>
 
     <h3>Je me suis trompé d'adresse e-mail en la changeant dans mon profil, que faire ?</h3>
 
-    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte en cliquant sur ce lien.</p>
+    <p>Quand vous changez d'adresse e-mail vous ne pouvez pas poster avec votre pseudo tant que vous n'avez pas cliqué sur l'e-mail de confirmation. Cependant vous avez toujours la possibilité de vous connecter sur la page de modification de votre compte.</p>
 
     <p>Connectez-vous et dans le formulaire, il vous suffit juste de modifier de nouveau votre adresse e-mail.</p>
 
     <h3>J'ai oublié mon mot de passe ?</h3>
 
-    <p>En cas de perte de son mot de passe, il suffit juste de rentrer votre pseudo dans le formulaire en cliquant sur ce lien.</p>
+    <p>En cas de perte de son mot de passe, il suffit de nous envoyer un mail avec votre pseudo et votre adresse mail.</p>
 
     <p>Votre mot de passe sera automatiquement renvoyé sur votre adresse e-mail associée.</p>
 
@@ -193,7 +190,7 @@
 	    <li>Envoi de la copie de la page "mon compte" où figurent votre nom, prénom ainsi que vos coordonnées en vous connectant à l'adresse suivante : lien</li>
 		</ul>
 
-		<p>Attention : pour que nous puissions valider votre demande, il est nécessaire que les informations figurant sur votre carte d'identité et les renseignements entrés pour ce compte soient identiques, sinon quoi nous ne pourrons pas considérer ce compte comme vous appartenant. Vous pouvez modifier ces informations en cliquant sur ce lien.</p>
+		<p>Attention : pour que nous puissions valider votre demande, il est nécessaire que les informations figurant sur votre carte d'identité et les renseignements entrés pour ce compte soient identiques, sinon quoi nous ne pourrons pas considérer ce compte comme vous appartenant..</p>
 
     <p>Si votre compte est banni, ou que vous ne pouvez pas accéder à la page "mon compte" (perte de mot de passe, ...), vous pouvez tout de même faire la demande en envoyant simplement une copie de votre pièce d'identité. Nous regarderons si les informations correspondent bien avec celles de votre compte.</p>
 
@@ -232,14 +229,6 @@
 		<h3>Je ne vois plus les boutons pour modifier mon profil dans mon profil, pourquoi ?</h3>
 
 		<p>Vous êtes sûrement déconnecté, ou alors pas connecté avec le bon pseudo. Pour cela utilisez le formulaire de connexion en haut à droite du site.</p>
-
-		<h2>Forum</h2>
-
-		<h3>J'essaye de poster avec mon pseudo mais on me dit que le mot de passe n'est pas bon</h3>
-
-		<p>Vérifiez bien que vous l'avez tapé correctement en respectant les majuscules (vérifiez sur votre clavier que Verr Num soit bien enclenché et a contrario que Caps lock ne le soit pas). Si tout est bon vous pouvez toujours vous faire renvoyer votre mot de passe grâce au formulaire en cliquant sur ce lien.</p>
-
-		<p>Si vous ne recevez pas l'e-mail, il est possible que votre compte ait été volé. Dans ce cas reportez-vous plus bas.</p>
 
 		<h3>On m'a volé mon compte, que faire ?</h3>
 

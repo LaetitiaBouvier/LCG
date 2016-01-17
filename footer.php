@@ -14,7 +14,7 @@
       </div>
       <div id="site">
         <a href="Page_NousContacter.php"> <h3>Nous Contacter |</h3> </a>
-        <a href="#"> <h3> Aide en ligne |</h3> </a>
+        <a href="Page_FAQ.php"> <h3> Aide en ligne |</h3> </a>
         <a href="Charte_LCG.pdf"> <h3> Charte </h3> </a>
       </div>
       <div><h3> La Connexion Gauloise  </h3></div>
