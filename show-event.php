@@ -267,6 +267,11 @@ $req->closeCursor();
 		<title> Mon Evènement </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" href="Style-form.css"/>
+		<style>
+				#boutons:hover{
+					background-color: #e8222b;
+				}
+		</style>
 	</head>
 
 	<body>
@@ -361,12 +366,12 @@ if (!empty($web)) {echo "</br>Lien vers le site web de l'événement : <a href="
 	if ($organisateur['Organisateur_Evenement']==$_SESSION["pseudo_utilisateur"] OR $admin['Admin_Utilisateur']=="oui") {?>
 		<div id=boutons_admin>
 <form name='modif' method='post' action=<?php echo ("Page_Modif-Event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
-		<input type="submit" name="valider" value="MODIFIER "/>
+		<input type="submit" name="valider" id="boutons" value="MODIFIER "/>
 	</form> </div> </br>
 
 		<div id=boutons_admin>
 <form name='delete' method='post' action=<?php echo ("delete_event.php?IDE=".$ID."");?> enctype='multipart/form-data'>
-		<input type="submit" name="valider" value="SUPPRIMER "/>
+		<input type="submit" name="valider" id="boutons" value="SUPPRIMER "/>
 	</form> </div><?php }
 
 endif;?>
