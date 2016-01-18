@@ -343,9 +343,9 @@ if (!empty($web)) {echo "</br>Lien vers le site web de l'événement : <a href="
 </div>
 </br>
 <PARTAGE> <h6>Partager cette page sur :
-						<a href="https://www.facebook.com/sharer/sharer.php?u=Page_show-event.php?IDE=<?=$ID?>" title="Share on Facebook"><span class="social-icon icon-facebook"></span><span class="count"><img src="Images_code/facebook.png" class="facebook" /></span></a>
-						<a href="https://twitter.com/intent/tweet?text=Page_show-event.php?IDE=<?=$ID?>" title="Share on Twitter"><span class="social-icon icon-twitter"></span><span class="count"><img src="Images_code/logo-twitter.png" class="twitter"/></span></a>
-						<a href="https://plus.google.com/share?url=Page_show-event.php?IDE=<?=$ID?>" title="Share on Google Plus"><span class="social-icon icon-googleplus"></span><span class="count"><img src="Images_code/google-plus-logo-transparent.png" class="google"/></span></a>
+						<a href="https://www.facebook.com/sharer/sharer.php?u=connexion1.freeheberg.org/Page_show-event.php?IDE=<?=$ID?>" title="Share on Facebook"><span class="social-icon icon-facebook"></span><span class="count"><img src="Images_code/facebook.png" class="facebook" /></span></a>
+						<a href="https://twitter.com/intent/tweet?text=connexion1.freeheberg.org/Page_show-event.php?IDE=<?=$ID?>" title="Share on Twitter"><span class="social-icon icon-twitter"></span><span class="count"><img src="Images_code/logo-twitter.png" class="twitter"/></span></a>
+						<a href="https://plus.google.com/share?url=connexion1.freeheberg.org/Page_show-event.php?IDE=<?=$ID?>" title="Share on Google Plus"><span class="social-icon icon-googleplus"></span><span class="count"><img src="Images_code/google-plus-logo-transparent.png" class="google"/></span></a>
 . </h6>
 </PARTAGE>
 </fieldset>
