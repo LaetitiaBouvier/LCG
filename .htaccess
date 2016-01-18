@@ -1,4 +1,6 @@
 Options +FollowSymlinks
 RewriteEngine on
 
-ErrorDocument 404 /GitHub/LCG/erreur404.php
+RewriteRule ^http://connexion1.freeheberg.org/$ /http://connexion1.freeheberg.org/Accueil.php [L]
+
+ErrorDocument 404 /erreur404.php
