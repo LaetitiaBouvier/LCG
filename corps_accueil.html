@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="corps_accueil.css" />
+
+<section id="slideshow">
+
+  <div class="container">
+    <div class="c_slider"></div>
+    <div class="slider">
+
+      <?php
+      try
+      { $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');}
+      catch (Exception $e)
+      {die('Erreur : '.$e->getMessage());} //en cas d'erreur on affiche un message
+      // récupération de 4 événements aléatoires
+      $req = $bdd->query('SELECT Nom_Evenement, JourDebut_Evenement, Image_Evenement, AdressePostal_Evenement FROM evenement_table ORDER BY ID_Evenement DESC LIMIT 4');
+
+      while ($donnees = $req->fetch())
+      {
+        ?>
+
+        <figure>
+          <img src="Images_code/IMG_Event_Large/<?php echo($donnees['Image_Evenement']);?>.jpg" class="photo1"/>
+          <figcaption>
+            <p><h3> <?php echo ($donnees['Nom_Evenement']);?> | <?php echo ($donnees['JourDebut_Evenement']);?> </h3></p>
+            <p> <?php echo htmlspecialchars($donnees['AdressePostal_Evenement']);?> </p>
+          </figcaption>
+
+        </figure>
+
+        <?php
+      } // Fin de la boucle
+      $req->closeCursor();
+      ?>
+
+    </div>
+  </div>
+</br>
+</br>
+
+
+
+
+<?php
+try
+{ $bdd = new PDO('mysql:host=localhost;dbname=connexion_gauloise', 'root', '');}
+catch (Exception $e)
+{die('Erreur : '.$e->getMessage());} //en cas d'erreur on affiche un message
+// récupération de 3  événements aléatoires
+$req = $bdd->query('SELECT * FROM evenement_table ORDER BY RAND() LIMIT 3');
+
+while ($donnees = $req->fetch())
+{
+  ?>
+  <div id="cat1">
+
+    <?php
+
+      $dateFin = $donnees['JourFin_Evenement']."  ".$donnees['HeureFin_Evenement'];
+      $dateDeb = $donnees['JourDebut_Evenement']." ".$donnees['HeureDebut_Evenement'];
+
+      $dateAujd =  date("Y-m-d H:i:s", time());
+
+      $aujd = DateTime::createFromFormat('Y-m-d H:i:s', $dateAujd);
+      $fin  = DateTime::createFromFormat('Y-m-d H:i:s', $dateFin);
+      $deb  = DateTime::createFromFormat('Y-m-d H:i:s', $dateDeb);
+      //echo var_dump($fin < $deb);
+      //echo var_dump($fin > $deb);
+
+      if(($deb < $aujd) && ($fin > $aujd)){
+        echo "Cet évènement est en cours !";
+      }
+
+      if(($deb > $aujd) && ($fin > $aujd)){
+        echo "Cet évènement n'a pas commencé !";
+      }
+
+      if(($deb < $aujd) && ($fin < $aujd)){
+        echo "Cet évènement est terminé !";
+      }
+
+
+    ?><br/><br/>
+    <div id="titre1">
+      <ul>
+        <li> <h3> <?php echo ($donnees['JourDebut_Evenement']);?> </h3> </li>
+        <li> <h3> <a href=<?php echo("Page_show-event.php?IDE=".$donnees['ID_Evenement']."");?> class="typeblanc"><?php echo ($donnees['Nom_Evenement']);?> | <?php echo htmlspecialchars($donnees['AdressePostal_Evenement']);?> </a></h3></li>
+      </ul>
+    </div>
+    <a href=<?php echo("Page_show-event.php?IDE=".$donnees['ID_Evenement']."");?> ><img src="Images_code/IMG_Event_Mini/<?php echo($donnees['Image_Evenement']);?>.jpg" class="photo1"/></a>
+    <div id="ssmenu1">
+      <ul>
+        <li> <?php echo nl2br(($donnees['Description_Evenement']));?> </li>
+      </ul>
+    </div>
+  </div>
+
+  <?php
+} // Fin de la boucle
+$req->closeCursor();
+?>
+
+</section>
+
+</html>

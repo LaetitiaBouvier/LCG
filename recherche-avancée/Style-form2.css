@@ -1,0 +1,143 @@
+#corps_inscription, #confirm_inscription, #maps, #modifOK, #redirect{
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 20px;
+  width: 65%;
+  background-color: #ffffff;
+  border: solid black 3px;
+  border-radius: 2px;
+  padding: 10px;
+	box-shadow: 0px 3px 1px black;
+}
+
+#redirect{
+  margin-top: 50px;
+}
+
+nav{
+  float: left;
+}
+
+body{
+  background-color: #d7d7d7;
+}
+
+header{
+  background-color: #fff;
+}
+
+h2 {
+  font-family:Fantasy,Cursive;
+  font-size:60px;
+  color:#990000;
+  text-align:center;
+}
+
+p {
+  font-family:Arial;
+  color : #000099;
+  text-decoration:underline;
+  font-size:30px;
+}
+
+p2 {
+  font-family:Arial;
+  color : #000099;
+  font-size:20px;
+  font-style:italic;
+  margin-left:30px;
+}
+
+fieldset {
+  width: 95%;
+  margin-bottom: 15px; //espace entre les rubriques
+  padding: 10px;
+  color:#000099;
+  font-family:Arial;
+  text-align:justify;
+  font-size: 25px;
+  background-color:#f4f4f4;
+  border : 2px solid #990000;
+}
+
+legend {
+  padding: 0px 3px;
+  font-weight: bold;
+  font-variant: small-caps;
+  color:#990000;
+  font-family:Cursive;
+  font-size: 35px;
+  margin-bottom:10px;
+}
+
+#desc-utilisateur,#desc-evenement{
+  width:80%;
+  height: 200px;
+  font-size:25px;
+  font-family:Arial;
+}
+
+label {
+  width: 110px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 6px;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+  color: #990000;
+  font-size:30px;
+}
+
+input[type=text] {
+  width: 20%; /largeur du champs
+  height: 25px;
+  font-size: 25px; //taille du texte dans la barre
+}
+
+select {
+  width: auto;
+  font-size: 25px;
+}
+
+input[type=checkbox] {
+  width: 40px; height: 40px; //taille de la case
+}
+
+input[type=radio] {
+  width: 20px; height: 20px; //taille du rond
+}
+
+input[type=submit] {
+  width: auto;
+  background-color:#990000;
+  color:white;
+  font-size:30px;
+  font-family:cursive;
+  font-style:bold;
+  margin-top:20px;
+}
+
+input[type=password],[type=email],[type=file],[type=url] {
+    font-size:25px;
+    width: 30%; /largeur du champs
+}
+
+a, input[type=date],[type=time]{
+      font-size:25px;
+}
+
+option[value] {
+    text-align:center;
+}
+
+textarea {
+  width: 249px;
+  margin-top:10px;
+}
+
+#pres, #valid{
+  text-align:center;
+}
